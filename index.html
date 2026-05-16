@@ -1,0 +1,2608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Herramienta abierta para consultar y entender el modelo de medición Minciencias 2024-2026. Aporte del grupo de investigación SUMECO (Sujeto, Mente y Comunidad), Escuela de Ciencias Sociales, Artes y Humanidades, Universidad Nacional Abierta y a Distancia, UDR La Tebaida, Zona Occidente.">
+<meta name="author" content="Ángel Saúl Díaz-Téllez · Jennifer Mejía-Ríos · Grupo SUMECO · UNAD">
+<title>Cómo Mide Minciencias · SUMECO · UNAD</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,900;1,8..60,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ============ TOKENS UNAD ============ */
+  :root {
+    --bg: #ffffff;
+    --bg-paper: #fafbfc;
+    --bg-soft: #f1f4f8;
+    --ink: #0d1b2a;
+    --ink-soft: #1e2a3a;
+    --ink-muted: #5a6a7e;
+    --ink-light: #8a96a8;
+    --rule: #d6dde6;
+    --rule-soft: #e8eef5;
+    /* Paleta oficial UNAD según Manual de Identidad Institucional */
+    --unad-blue: #005883;
+    --unad-blue-deep: #003d5c;
+    --unad-blue-light: #3380ab;
+    --unad-orange: #f47920;
+    --unad-orange-deep: #d86610;
+    --unad-yellow: #f0b429;
+    --unad-yellow-soft: #fdf5dd;
+    /* Colores institucionales auxiliares disponibles */
+    --unad-green: #50b748;
+    --unad-magenta: #a54686;
+    --unad-cyan: #43c7f4;
+    --sumeco-coral: #e8654e;
+    --sumeco-blue: #3b8db5;
+    --sumeco-yellow: #f3c84a;
+    --accent: var(--unad-orange);
+    --success: #1e7a3e;
+    --top-bg: var(--unad-blue);
+    --top-fg: #ffffff;
+    --a-bg: var(--unad-orange);
+    --a-fg: #ffffff;
+    --b-bg: var(--unad-yellow);
+    --b-fg: var(--unad-blue-deep);
+    --asc-bg: var(--unad-blue-light);
+    --asc-fg: #ffffff;
+    --dpc-bg: #f1f4f8;
+    --dpc-fg: var(--unad-blue);
+    --frh-bg: var(--sumeco-coral);
+    --frh-fg: #ffffff;
+    --sans: 'Source Sans 3', system-ui, sans-serif;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  /* ============ RESET ============ */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ INSTITUTIONAL BAR ============ */
+  .top-strip {
+    background: var(--unad-blue-deep);
+    color: rgba(255, 255, 255, 0.85);
+    padding: 6px 0;
+    font-size: 12px;
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+  .top-strip-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .top-strip a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .top-strip a:hover { color: var(--unad-yellow); }
+  @media (max-width: 760px) {
+    .top-strip-inner { padding: 0 16px; font-size: 11px; }
+    .top-strip-inner .right-strip { display: none; }
+  }
+
+  /* ============ NAV ============ */
+  nav.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    box-shadow: 0 1px 3px rgba(0, 35, 71, 0.05);
+  }
+  .topbar-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+  .logo-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .logo-title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--unad-blue-deep);
+    letter-spacing: -0.01em;
+  }
+  .logo-sub {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-top: 2px;
+    font-weight: 500;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .nav-links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 6px 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .nav-links a:hover { border-bottom-color: var(--unad-orange); color: var(--unad-blue); }
+  @media (max-width: 880px) {
+    .nav-links { display: none; }
+    .topbar-inner { padding: 12px 16px; }
+    .logo-title { font-size: 16px; }
+    .logo-img { width: 42px; height: 42px; }
+  }
+
+  /* ============ HERO ============ */
+  header.hero {
+    background: linear-gradient(135deg, var(--unad-blue-deep) 0%, var(--unad-blue) 60%, var(--unad-blue-light) 100%);
+    color: #ffffff;
+    padding: 70px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  header.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: radial-gradient(circle at 70% 30%, rgba(253, 185, 19, 0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  header.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--unad-orange) 0%, var(--unad-orange) 33%, var(--unad-yellow) 33%, var(--unad-yellow) 66%, var(--unad-blue-light) 66%, var(--unad-blue-light) 100%);
+  }
+  .hero-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+    position: relative;
+    z-index: 2;
+  }
+  @media (max-width: 760px) {
+    header.hero { padding: 40px 0 0; }
+    .hero-inner { padding: 0 20px 50px; }
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--unad-yellow);
+    font-weight: 600;
+    margin-bottom: 28px;
+    padding: 8px 14px;
+    border: 1px solid rgba(253, 185, 19, 0.4);
+    background: rgba(253, 185, 19, 0.08);
+    border-radius: 4px;
+  }
+  .eyebrow-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--unad-yellow);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(253, 185, 19, 0.25);
+  }
+  h1.title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+    margin-bottom: 0;
+    max-width: 1080px;
+  }
+  h1.title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--unad-yellow);
+  }
+  h1.title .underline-acc {
+    position: relative;
+    display: inline-block;
+  }
+  h1.title .underline-acc::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--unad-orange);
+    z-index: -1;
+  }
+  .hero-meta {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    align-items: end;
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  @media (max-width: 900px) {
+    .hero-meta { grid-template-columns: 1fr; gap: 30px; }
+  }
+  .lede {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(18px, 1.8vw, 22px);
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.92);
+    max-width: 620px;
+    letter-spacing: -0.005em;
+  }
+  .lede strong {
+    font-weight: 600;
+    color: var(--unad-yellow);
+    font-style: italic;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .stat-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 20px 22px;
+    border-radius: 6px;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 700;
+    line-height: 1;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+  }
+  .stat-num .unit {
+    font-size: 0.5em;
+    font-weight: 400;
+    color: var(--unad-yellow);
+    margin-left: 4px;
+    font-style: italic;
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    margin-top: 10px;
+    font-weight: 500;
+  }
+
+  /* ============ INTRO ============ */
+  section.intro {
+    background: var(--bg-paper);
+    padding: 70px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .intro-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  @media (max-width: 760px) {
+    section.intro { padding: 50px 0; }
+    .intro-inner { padding: 0 20px; }
+  }
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 760px) {
+    .intro-grid { grid-template-columns: 1fr; gap: 20px; }
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--unad-blue);
+    font-weight: 700;
+    padding-top: 10px;
+    border-top: 3px solid var(--unad-orange);
+    width: fit-content;
+  }
+  .intro-text {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 820px;
+    letter-spacing: -0.005em;
+  }
+  .intro-text p + p { margin-top: 18px; }
+  .intro-text strong {
+    font-weight: 700;
+    color: var(--unad-blue);
+  }
+  .intro-text .ink-strong {
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    font-style: normal;
+  }
+  .intro-text .highlight {
+    background: var(--unad-yellow-soft);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+    color: var(--unad-blue-deep);
+  }
+
+  /* ============ SECTION ============ */
+  section.section {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 80px 32px;
+  }
+  @media (max-width: 760px) { section.section { padding: 50px 20px; } }
+  .section-head {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 56px;
+    margin-bottom: 44px;
+    align-items: start;
+  }
+  @media (max-width: 760px) {
+    .section-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 30px; }
+  }
+  h2.section-title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(30px, 4.2vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--unad-blue-deep);
+    margin-bottom: 14px;
+  }
+  h2.section-title em {
+    font-style: italic;
+    color: var(--unad-orange);
+    font-weight: 500;
+  }
+  .section-desc {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--ink-muted);
+    max-width: 740px;
+    line-height: 1.45;
+  }
+
+  /* ============ DIMENSIONES ============ */
+  .dim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .dim-card {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--unad-blue);
+    padding: 28px 26px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    border-radius: 4px;
+  }
+  .dim-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 35, 71, 0.1);
+    border-top-color: var(--unad-orange);
+  }
+  .dim-card.dim-1 { border-top-color: var(--unad-blue); }
+  .dim-card.dim-2 { border-top-color: var(--unad-blue-light); }
+  .dim-card.dim-3 { border-top-color: var(--unad-orange); }
+  .dim-card.dim-4 { border-top-color: var(--unad-yellow); }
+  .dim-card.dim-5 { border-top-color: var(--sumeco-coral); }
+  .dim-card-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--unad-blue);
+    font-weight: 700;
+  }
+  .dim-card-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--unad-blue-deep);
+    letter-spacing: -0.015em;
+  }
+  .dim-card-desc {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+    flex: 1;
+  }
+  .dim-card-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .dim-card-count {
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .dim-card-count .of {
+    font-size: 0.4em;
+    color: var(--ink-light);
+    font-weight: 400;
+    margin-left: 4px;
+    font-style: italic;
+  }
+  .dim-card-weight {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-muted);
+    text-align: right;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .dim-card-weight strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--unad-orange);
+    font-weight: 700;
+    margin-top: 2px;
+    letter-spacing: -0.02em;
+    font-style: italic;
+  }
+
+  /* ============ COEFICIENTES ============ */
+  .coef-table {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .coef-row {
+    display: grid;
+    grid-template-columns: 1fr 90px 100px 1fr;
+    gap: 20px;
+    padding: 16px 24px;
+    align-items: center;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .coef-row:last-child { border-bottom: none; }
+  @media (max-width: 760px) {
+    .coef-row { grid-template-columns: 1fr 60px 70px; gap: 10px; padding: 14px 14px; }
+    .coef-row .col-bar { display: none; }
+  }
+  .coef-row.header {
+    background: var(--unad-blue-deep);
+    color: #ffffff;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .coef-name {
+    font-family: var(--sans);
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 14px;
+  }
+  .coef-value {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--unad-orange);
+    text-align: right;
+    letter-spacing: -0.02em;
+  }
+  .coef-pct {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-muted);
+    text-align: right;
+    font-weight: 600;
+  }
+  .coef-bar-track {
+    height: 8px;
+    background: var(--bg-soft);
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+  }
+  .coef-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--unad-blue) 0%, var(--unad-orange) 100%);
+    border-radius: 1px;
+  }
+  .coef-row.total {
+    background: var(--unad-yellow-soft);
+    border-top: 2px solid var(--unad-yellow);
+  }
+  .coef-row.total .coef-name { font-weight: 700; color: var(--unad-blue-deep); }
+  .coef-row.total .coef-value { color: var(--unad-blue-deep); }
+  .coef-row.total .coef-pct { color: var(--unad-blue-deep); font-weight: 700; }
+
+  /* ============ CONTROLES ============ */
+  .controls {
+    background: var(--unad-blue-deep);
+    color: #ffffff;
+    padding: 22px 26px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: center;
+    border-radius: 4px 4px 0 0;
+  }
+  @media (max-width: 760px) {
+    .controls { grid-template-columns: 1fr; padding: 16px; gap: 12px; }
+  }
+  .search-wrap { position: relative; }
+  .search-wrap::before {
+    content: "⌕";
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: var(--unad-blue);
+    pointer-events: none;
+    font-weight: 700;
+  }
+  input.search {
+    width: 100%;
+    padding: 13px 18px 13px 46px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    border: 2px solid transparent;
+    background: #ffffff;
+    color: var(--ink);
+    border-radius: 3px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  input.search:focus { border-color: var(--unad-orange); }
+  input.search::placeholder { color: var(--ink-muted); font-weight: 400; }
+  .sort-wrap { display: flex; gap: 10px; align-items: center; }
+  .sort-wrap label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+  }
+  select.sort {
+    padding: 10px 36px 10px 14px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    border: 2px solid transparent;
+    background: #ffffff;
+    color: var(--ink);
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23003a70' stroke-width='2'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    border-radius: 3px;
+  }
+  select.sort:focus { border-color: var(--unad-orange); }
+
+  .filters-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--ink-muted);
+    margin-top: 14px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .filters-eyebrow strong { color: var(--unad-blue-deep); font-weight: 700; }
+  .filters-divider {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--unad-orange);
+    background: var(--bg-paper);
+    padding: 10px 16px 8px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-left: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .filter-chips-nivel {
+    border-top: none;
+  }
+  .filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-top: none;
+    padding: 0;
+  }
+  .chip {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 14px 20px;
+    border: none;
+    border-right: 1px solid var(--rule);
+    border-bottom: 3px solid transparent;
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .chip:last-child { border-right: none; }
+  .chip:hover { background: var(--bg-soft); color: var(--unad-blue); }
+  .chip.active {
+    color: var(--unad-blue-deep);
+    border-bottom-color: var(--unad-orange);
+    background: var(--unad-yellow-soft);
+  }
+  .chip-count {
+    font-family: var(--mono);
+    font-size: 11px;
+    opacity: 0.65;
+    margin-left: 5px;
+    font-weight: 500;
+  }
+  .chip.active .chip-count { color: var(--unad-orange); opacity: 1; }
+
+  .results-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    margin: 20px 0 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* ============ RANKING ============ */
+  .ranking {
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 70px 140px 1fr 110px 150px 80px;
+    gap: 18px;
+    padding: 16px 24px;
+    align-items: center;
+    border-bottom: 1px solid var(--rule-soft);
+    background: var(--bg);
+    transition: background 0.12s;
+  }
+  .row:last-child { border-bottom: none; }
+  .row:hover { background: var(--bg-soft); }
+  .row.header {
+    background: var(--unad-blue-deep);
+    color: #ffffff;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 14px 24px;
+  }
+  .row.header:hover { background: var(--unad-blue-deep); }
+  @media (max-width: 900px) {
+    .row { grid-template-columns: 36px 1fr 80px; gap: 12px; padding: 14px 14px; }
+    .row .col-codigo, .row .col-cat, .row .col-pag { display: none; }
+  }
+  .rank-num {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink-light);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .row.top10 .rank-num {
+    color: var(--unad-orange);
+  }
+  .row.top10 .rank-num::before {
+    content: "★";
+    color: var(--unad-yellow);
+    font-size: 12px;
+    margin-right: 4px;
+    vertical-align: 2px;
+  }
+  .codigo {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    background: var(--bg-soft);
+    padding: 5px 10px;
+    display: inline-block;
+    letter-spacing: 0.02em;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+  }
+  .desc {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-soft);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .cat-badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 5px 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    min-width: 56px;
+    border-radius: 3px;
+  }
+  .cat-TOP   { background: var(--top-bg);   color: var(--top-fg); }
+  .cat-A     { background: var(--a-bg);     color: var(--a-fg); }
+  .cat-B     { background: var(--b-bg);     color: var(--b-fg); }
+  .cat-ASC   { background: var(--asc-bg);   color: var(--asc-fg); }
+  .cat-DPC   { background: var(--dpc-bg);   color: var(--dpc-fg); border: 1px solid var(--rule); }
+  .cat-FRH_A { background: var(--frh-bg);     color: var(--frh-fg); }
+  .cat-FRH_B { background: var(--unad-yellow); color: var(--unad-blue-deep); }
+  .cat-SIN   { background: var(--bg-soft);    color: var(--ink-muted); border: 1px solid var(--rule); }
+  .peso-vis {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .peso-num {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    line-height: 1;
+    letter-spacing: -0.025em;
+  }
+  .peso-bar {
+    height: 4px;
+    background: var(--bg-soft);
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+  }
+  .peso-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--unad-orange), var(--unad-yellow));
+  }
+  .pag-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--unad-blue);
+    text-decoration: none;
+    transition: color 0.15s;
+    text-align: right;
+    font-weight: 600;
+    padding: 4px 6px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+  }
+  .pag-link:hover { color: var(--unad-orange); border-color: var(--unad-orange); background: var(--unad-yellow-soft); }
+  .pag-link::after { content: " ↗"; }
+  .row.piloto .peso-num { color: var(--ink-light); font-style: italic; font-size: 14px; }
+  .row.piloto .peso-bar-fill { background: var(--ink-light); }
+
+  /* ============ ACERCA SUMECO ============ */
+  .acerca-section {
+    background: linear-gradient(180deg, var(--bg-paper) 0%, var(--bg) 100%);
+    padding: 80px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .acerca-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  @media (max-width: 760px) {
+    .acerca-section { padding: 50px 0; }
+    .acerca-inner { padding: 0 20px; }
+  }
+  .acerca-card {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-top: 6px solid var(--unad-orange);
+    padding: 50px 50px 40px;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 50px;
+    align-items: start;
+    box-shadow: 0 4px 16px rgba(0, 35, 71, 0.06);
+  }
+  @media (max-width: 760px) {
+    .acerca-card { grid-template-columns: 1fr; gap: 24px; padding: 30px 24px 28px; }
+  }
+  .acerca-logo {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    background: #f5e8d3;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .acerca-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  @media (max-width: 760px) {
+    .acerca-logo { width: 140px; height: 140px; margin: 0 auto; }
+  }
+  .acerca-body h3 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .acerca-body h3 em {
+    color: var(--unad-orange);
+    font-weight: 500;
+  }
+  .acerca-tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-muted);
+    margin-bottom: 24px;
+  }
+  .acerca-body p {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 680px;
+  }
+  .acerca-body p + p { margin-top: 14px; }
+  .acerca-body .ink-strong {
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    font-style: normal;
+  }
+
+  /* ============ LÍNEAS DE INVESTIGACIÓN ============ */
+  .lineas-block {
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+  }
+  .lineas-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--unad-blue);
+    font-weight: 700;
+    padding-top: 8px;
+    border-top: 3px solid var(--unad-orange);
+    width: fit-content;
+    margin-bottom: 14px;
+  }
+  .lineas-title {
+    font-family: var(--serif);
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .lineas-title em { font-style: italic; color: var(--unad-orange); font-weight: 500; }
+  .lineas-desc {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-muted);
+    max-width: 680px;
+    margin-bottom: 26px;
+    line-height: 1.45;
+  }
+  .lineas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .linea-card {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--unad-blue);
+    padding: 22px 24px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.2s, box-shadow 0.2s, border-left-color 0.2s;
+  }
+  .linea-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 35, 71, 0.08);
+    border-left-color: var(--unad-orange);
+  }
+  .linea-card:nth-child(1) { border-left-color: var(--unad-blue); }
+  .linea-card:nth-child(2) { border-left-color: var(--unad-orange); }
+  .linea-card:nth-child(3) { border-left-color: var(--unad-yellow); }
+  .linea-card:nth-child(4) { border-left-color: var(--sumeco-coral); }
+  .linea-card:nth-child(5) { border-left-color: var(--unad-blue-light); }
+  .linea-num {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .linea-name {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+  }
+
+  /* ============ INVESTIGADORES ============ */
+  .investigadores-section {
+    background: var(--bg-paper);
+    padding: 80px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .investigadores-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  @media (max-width: 760px) {
+    .investigadores-section { padding: 50px 0; }
+    .investigadores-inner { padding: 0 20px; }
+  }
+  .inv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  @media (max-width: 880px) {
+    .inv-grid { grid-template-columns: 1fr; }
+  }
+  .inv-card {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-top: 5px solid var(--unad-blue);
+    padding: 26px 28px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .inv-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 35, 71, 0.08);
+  }
+  .inv-card.tier-1 { border-top-color: var(--unad-blue-deep); background: linear-gradient(180deg, var(--unad-yellow-soft) 0%, var(--bg) 60%); }
+  .inv-card.tier-2 { border-top-color: var(--unad-blue); }
+  .inv-card.tier-3 { border-top-color: var(--unad-orange); }
+  .inv-card.tier-4 { border-top-color: var(--unad-yellow); }
+  .inv-card.tier-formacion { border-top-color: var(--sumeco-coral); }
+  .inv-card.tier-vinculado { border-top-color: var(--ink-light); background: var(--bg-soft); }
+
+  .inv-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .inv-head-text { flex: 1; }
+  .inv-tier {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .inv-name {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .inv-name em {
+    font-style: italic;
+    color: var(--unad-orange);
+    font-weight: 500;
+    font-size: 0.85em;
+  }
+  .inv-badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 11px;
+    background: var(--unad-blue-deep);
+    color: #ffffff;
+    border-radius: 3px;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .inv-card.tier-1 .inv-badge { background: var(--unad-orange); }
+  .inv-card.tier-2 .inv-badge { background: var(--unad-blue); }
+  .inv-card.tier-3 .inv-badge { background: var(--unad-orange); }
+  .inv-card.tier-4 .inv-badge { background: var(--unad-yellow); color: var(--unad-blue-deep); }
+  .inv-card.tier-formacion .inv-badge { background: var(--sumeco-coral); }
+  .inv-card.tier-vinculado .inv-badge { background: var(--ink-muted); }
+
+  .inv-summary {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+  .inv-reqs {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 4px;
+  }
+  .inv-reqs li {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    padding-left: 22px;
+    position: relative;
+  }
+  .inv-reqs li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--unad-orange);
+    font-weight: 700;
+    font-family: var(--mono);
+  }
+  .inv-reqs li strong {
+    color: var(--unad-blue-deep);
+    font-weight: 700;
+  }
+  .inv-note {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    padding-top: 10px;
+    border-top: 1px solid var(--rule-soft);
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+
+  .inv-group-divider {
+    margin: 36px 0 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--unad-blue-deep);
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .inv-group-divider h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    letter-spacing: -0.01em;
+  }
+  .inv-group-divider .inv-group-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--unad-orange);
+    font-weight: 700;
+  }
+  .acerca-meta {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 22px;
+  }
+  .acerca-meta-item {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .acerca-meta-item strong {
+    display: block;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--unad-blue-deep);
+    margin-top: 4px;
+    text-transform: none;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  /* ============ DESARROLLADORES ============ */
+  .devs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  .dev-card {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    padding: 24px 26px;
+    border-radius: 4px;
+    border-left: 4px solid var(--unad-blue);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .dev-card.dev-2 { border-left-color: var(--unad-orange); }
+  .dev-role {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .dev-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+  }
+  .dev-bio {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+  .dev-meta {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule-soft);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+  .dev-meta a {
+    color: var(--unad-blue);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .dev-meta a:hover { color: var(--unad-orange); }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--unad-blue-deep);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 60px 32px 0;
+    position: relative;
+  }
+  footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--unad-orange) 0%, var(--unad-orange) 33%, var(--unad-yellow) 33%, var(--unad-yellow) 66%, var(--unad-blue-light) 66%, var(--unad-blue-light) 100%);
+  }
+  .footer-inner { max-width: 1320px; margin: 0 auto; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+    footer { padding: 50px 20px 0; }
+  }
+  @media (max-width: 600px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+  .footer-brand-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .footer-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    background: #f5e8d3;
+    padding: 4px;
+  }
+  .footer-logo img { width: 100%; height: 100%; object-fit: contain; }
+  .footer-brand-text {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .footer-brand-sub {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    margin-top: 2px;
+    font-weight: 500;
+  }
+  .footer-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    max-width: 360px;
+    font-weight: 300;
+  }
+  .footer-col h4 {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--unad-yellow);
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li {
+    font-family: var(--sans);
+    font-size: 13px;
+    margin-bottom: 9px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+  }
+  .footer-col a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.15s;
+    border-bottom: 1px solid transparent;
+  }
+  .footer-col a:hover { color: var(--unad-yellow); border-bottom-color: var(--unad-yellow); }
+  .footer-bottom {
+    padding: 22px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .unad-credit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #ffffff;
+    padding: 10px 18px;
+    border-radius: 4px;
+  }
+  .unad-logo-img {
+    height: 72px;
+    width: auto;
+    display: block;
+  }
+
+  /* ============ SCROLLBAR ============ */
+  ::-webkit-scrollbar { width: 12px; height: 12px; }
+  ::-webkit-scrollbar-track { background: var(--bg-soft); }
+  ::-webkit-scrollbar-thumb { background: var(--unad-blue); border: 2px solid var(--bg-soft); border-radius: 6px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--unad-orange); }
+
+  /* ============ FADE ============ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  .fade-in.d1 { animation-delay: 0.1s; }
+  .fade-in.d2 { animation-delay: 0.2s; }
+  .fade-in.d3 { animation-delay: 0.3s; }
+
+  /* ============ EMPTY ============ */
+  .empty {
+    padding: 70px 24px;
+    text-align: center;
+    color: var(--ink-muted);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 19px;
+  }
+
+  /* ============ TABLA DE COEFICIENTES MEJORADA ============ */
+  .coef-row.group-header {
+    background: var(--unad-blue-deep);
+    color: #ffffff;
+    padding: 14px 24px;
+    border-top: 2px solid var(--unad-orange);
+  }
+  .coef-row.group-header.complementarios {
+    background: var(--unad-orange);
+    border-top: 2px solid var(--unad-yellow);
+  }
+  .coef-group-name {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+  .coef-group-total {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--unad-yellow);
+    text-align: right;
+    letter-spacing: -0.02em;
+  }
+  .coef-row.group-header.complementarios .coef-group-total {
+    color: var(--unad-blue-deep);
+  }
+  .coef-group-pct {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: right;
+    font-weight: 600;
+  }
+  .coef-row.group-header.complementarios .coef-group-pct {
+    color: var(--unad-blue-deep);
+  }
+  .coef-row.sublevel {
+    padding-left: 36px;
+    background: var(--bg);
+  }
+  .coef-row.sublevel:hover {
+    background: var(--bg-soft);
+  }
+  .level-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-right: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    min-width: 48px;
+    text-align: center;
+  }
+  .level-tag.level-top   { background: var(--unad-blue-deep); color: #ffffff; }
+  .level-tag.level-a     { background: var(--unad-orange); color: #ffffff; }
+  .level-tag.level-b     { background: var(--unad-yellow); color: var(--unad-blue-deep); }
+  .level-tag.level-asc   { background: var(--unad-blue-light); color: #ffffff; }
+  .level-tag.level-dpc   { background: var(--ink-muted); color: #ffffff; }
+  .level-tag.level-frha  { background: var(--unad-orange); color: #ffffff; }
+  .level-tag.level-frhb  { background: var(--unad-yellow); color: var(--unad-blue-deep); }
+  .level-tag.level-comp  { background: var(--sumeco-coral); color: #ffffff; }
+
+  /* ============ NOTA SOBRE NIVELES ============ */
+  .nota-niveles {
+    margin-top: 30px;
+    padding: 28px 32px;
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-left: 6px solid var(--unad-blue-deep);
+    border-radius: 4px;
+  }
+  .nota-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--unad-blue-deep);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .nota-title {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2.2vw, 22px);
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    margin-bottom: 20px;
+  }
+  .nota-title em { font-style: italic; color: var(--unad-orange); font-weight: 500; }
+  .nota-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .nota-card {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    padding: 16px 18px;
+    border-radius: 4px;
+  }
+  .nota-card-tag {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .nota-card-title {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .nota-card-body {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .nota-card-body strong { color: var(--unad-orange); font-weight: 700; }
+
+  /* ============ LECTURA ESTRATÉGICA ============ */
+  .lectura-block {
+    margin-top: 40px;
+    padding: 30px 32px;
+    background: var(--unad-yellow-soft);
+    border: 1px solid var(--unad-yellow);
+    border-left: 6px solid var(--unad-orange);
+    border-radius: 4px;
+  }
+  .lectura-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--unad-orange);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .lectura-title {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .lectura-title em { font-style: italic; color: var(--unad-orange); font-weight: 500; }
+  .lectura-text {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  .lectura-text strong { color: var(--unad-blue-deep); font-weight: 700; }
+  .ejemplos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .ejemplo-card {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--unad-blue);
+    padding: 16px 18px;
+    border-radius: 4px;
+  }
+  .ejemplo-card:nth-child(2) { border-top-color: var(--unad-orange); }
+  .ejemplo-card:nth-child(3) { border-top-color: var(--unad-yellow); }
+  .ejemplo-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--unad-orange);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .ejemplo-title {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .ejemplo-body {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .ejemplo-body strong { color: var(--unad-orange); font-weight: 700; }
+  .lectura-disclaimer {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.45;
+    padding-top: 12px;
+    border-top: 1px solid var(--unad-yellow);
+  }
+
+  /* ============ FAQ ============ */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+  }
+  .faq-card {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--unad-blue);
+    padding: 22px 24px;
+    border-radius: 4px;
+    transition: transform 0.2s, box-shadow 0.2s, border-left-color 0.2s;
+  }
+  .faq-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 35, 71, 0.08);
+    border-left-color: var(--unad-orange);
+  }
+  .faq-card:nth-child(2n) { border-left-color: var(--unad-orange); }
+  .faq-card:nth-child(3n) { border-left-color: var(--unad-yellow); }
+  .faq-card:nth-child(4n) { border-left-color: var(--sumeco-coral); }
+  .faq-q {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .faq-a {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- TOP INSTITUTIONAL STRIP -->
+<div class="top-strip">
+  <div class="top-strip-inner">
+    <span>Universidad Nacional Abierta y a Distancia · UNAD</span>
+    <span class="right-strip">Escuela de Ciencias Sociales, Artes y Humanidades · UDR La Tebaida · Zona Occidente</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a href="#" class="logo-wrap">
+      <img src="data:image/jpeg;base64,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" alt="Logo SUMECO" class="logo-img">
+      <div class="logo-text">
+        <div class="logo-title">Cómo Mide Minciencias</div>
+        <div class="logo-sub">Herramienta SUMECO · 2026</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#dimensiones">Dimensiones</a>
+      <a href="#pesos">Coeficientes</a>
+      <a href="#faq">FAQ</a>
+      <a href="#productos">Productos</a>
+      <a href="#investigadores">Investigadores</a>
+      <a href="#acerca">SUMECO</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow fade-in">
+      <span class="eyebrow-dot"></span>
+      Convocatoria 957 de 2024 · Resultados publicados en diciembre 2025
+    </div>
+    <h1 class="title fade-in d1">
+      Cómo mide <em>Minciencias</em><br>
+      la <span class="underline-acc">investigación</span> en Colombia.
+    </h1>
+    <div class="hero-meta fade-in d2">
+      <p class="lede">
+        Herramienta abierta para consultar, entender y navegar los <strong>169 productos</strong> del modelo de medición de grupos e investigadores del Sistema Nacional de Ciencia, Tecnología e Innovación.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-num">169</div>
+          <div class="stat-label">Productos del modelo</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Dimensiones de producción</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Indicadores de grupo</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">252<span class="unit">pp</span></div>
+          <div class="stat-label">Documento conceptual</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="intro-inner">
+    <div class="intro-grid">
+      <div class="section-label">¿Qué es esto?</div>
+      <div class="intro-text">
+        <p>El modelo de medición Minciencias, aplicado en la <span class="highlight">Convocatoria 957 de 2024</span>, organiza la producción científica colombiana en cinco dimensiones de producción y dos indicadores complementarios del grupo (cohesión y cooperación), con un total de <strong>ciento sesenta y nueve productos reconocidos</strong>. Dentro de cada dimensión, los productos se ubican en niveles de calidad (TOP, A o B según corresponda). El documento conceptual oficial tiene doscientas cincuenta y dos páginas.</p>
+        <p><span class="ink-strong">Cronología de la convocatoria.</span> La Convocatoria 957 fue publicada por Minciencias en 2024. Operó sobre una ventana de observación de cinco años (enero de 2019 a diciembre de 2023). Los resultados preliminares se publicaron en marzo de 2025 y los resultados finales el 5 de diciembre de 2025. El modelo seguirá vigente hasta que Minciencias publique una nueva convocatoria.</p>
+        <p>Esta herramienta consolida esa información en un solo lugar consultable: buscar productos por nombre, filtrar por dimensión o categoría, comparar pesos individuales, y saltar directamente a la página exacta del documento conceptual donde aparece cada producto.</p>
+        <p>Es un aporte abierto del grupo de investigación <strong>SUMECO · Sujeto, Mente y Comunidad</strong>, Categoría A de Minciencias, adscrito a la Escuela de Ciencias Sociales, Artes y Humanidades de la <strong>Universidad Nacional Abierta y a Distancia, UDR La Tebaida</strong>, Zona Occidente.</p>
+        <p>La herramienta es de <span class="highlight">libre consulta y uso para cualquier grupo de investigación de la UNAD</span> y demás instituciones del Sistema Nacional de Ciencia, Tecnología e Innovación. Se ofrece sin restricciones de acceso, sin registro, sin publicidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIMENSIONES -->
+<section class="section" id="dimensiones">
+  <div class="section-head">
+    <div class="section-label">01 · Cinco dimensiones</div>
+    <div>
+      <h2 class="section-title">Las cinco <em>dimensiones</em> del modelo.</h2>
+      <p class="section-desc">El modelo 2024 separó la Apropiación Social del Conocimiento de la Divulgación Pública de la Ciencia: dos dimensiones paralelas con coeficientes propios. Dentro de cada dimensión, los productos se distribuyen en niveles de calidad (TOP, A o B según corresponda).</p>
+    </div>
+  </div>
+
+  <div class="dim-grid">
+    <div class="dim-card dim-1" onclick="filterByDim('GNC')">
+      <div class="dim-card-num">01 · GNC</div>
+      <h3 class="dim-card-title">Generación de Nuevo Conocimiento</h3>
+      <p class="dim-card-desc">Artículos, libros, capítulos, patentes, variedades vegetales, razas animales, obras de investigación-creación.</p>
+      <div class="dim-card-stats">
+        <div class="dim-card-count">58<span class="of">prod.</span></div>
+        <div class="dim-card-weight">peso compartido GNC + DTI<strong>64%</strong></div>
+      </div>
+    </div>
+    <div class="dim-card dim-2" onclick="filterByDim('DTI')">
+      <div class="dim-card-num">02 · DTI</div>
+      <h3 class="dim-card-title">Desarrollo Tecnológico e Innovación</h3>
+      <p class="dim-card-desc">Diseños industriales, software, prototipos, signos distintivos, empresas de base tecnológica, normas técnicas.</p>
+      <div class="dim-card-stats">
+        <div class="dim-card-count">33<span class="of">prod.</span></div>
+        <div class="dim-card-weight">peso compartido GNC + DTI<strong>64%</strong></div>
+      </div>
+    </div>
+    <div class="dim-card dim-3" onclick="filterByDim('ASC')">
+      <div class="dim-card-num">03 · ASC</div>
+      <h3 class="dim-card-title">Apropiación Social del Conocimiento</h3>
+      <p class="dim-card-desc">Procesos investigativos con participación activa de comunidades. Política pública, cadenas productivas.</p>
+      <div class="dim-card-stats">
+        <div class="dim-card-count">11<span class="of">prod.</span></div>
+        <div class="dim-card-weight">peso global<strong>15%</strong></div>
+      </div>
+    </div>
+    <div class="dim-card dim-4" onclick="filterByDim('DPC')">
+      <div class="dim-card-num">04 · DPC</div>
+      <h3 class="dim-card-title">Divulgación Pública de la Ciencia</h3>
+      <p class="dim-card-desc">Working papers, informes, contenido digital, transmedia, desarrollos web, libros de divulgación.</p>
+      <div class="dim-card-stats">
+        <div class="dim-card-count">47<span class="of">prod.</span></div>
+        <div class="dim-card-weight">peso global<strong>5%</strong></div>
+      </div>
+    </div>
+    <div class="dim-card dim-5" onclick="filterByDim('FRHCTI')">
+      <div class="dim-card-num">05 · FRHCTI</div>
+      <h3 class="dim-card-title">Formación del Recurso Humano CTeI</h3>
+      <p class="dim-card-desc">Direcciones de tesis doctorales, de maestría y pregrado, proyectos de investigación, Programa Ondas.</p>
+      <div class="dim-card-stats">
+        <div class="dim-card-count">20<span class="of">prod.</span></div>
+        <div class="dim-card-weight">peso global<strong>12%</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COEFICIENTES -->
+<section class="section" id="pesos">
+  <div class="section-head">
+    <div class="section-label">02 · Coeficientes</div>
+    <div>
+      <h2 class="section-title">Diez puntos del <em>indicador</em> de grupo.</h2>
+      <p class="section-desc">El indicador del grupo suma diez puntos, distribuidos entre las cinco dimensiones de producción (con sus niveles de calidad TOP, A y B) y los dos indicadores complementarios del grupo (cohesión y cooperación). Quien produce en nivel TOP de GNC y DTI captura el 37 por ciento del puntaje total.</p>
+    </div>
+  </div>
+
+  <div class="coef-table">
+    <div class="coef-row header">
+      <div>Dimensión / Componente</div>
+      <div style="text-align:right">Peso</div>
+      <div style="text-align:right">%</div>
+      <div class="col-bar"></div>
+    </div>
+
+    <!-- GNC + DTI: peso compartido -->
+    <div class="coef-row group-header">
+      <div class="coef-group-name">Generación de Nuevo Conocimiento + Desarrollo Tecnológico e Innovación</div>
+      <div class="coef-group-total">6,4</div>
+      <div class="coef-group-pct">64,0%</div>
+      <div class="col-bar"></div>
+    </div>
+    <div class="coef-row sublevel">
+      <div class="coef-name"><span class="level-tag level-top">TOP</span> Calidad máxima · artículos Q1 y Q2, libros A1 y A, capítulos A1 y A, patentes A1 y A2</div>
+      <div class="coef-value">3,7</div>
+      <div class="coef-pct">37,0%</div>
+      <div class="col-bar"><div class="coef-bar-track"><div class="coef-bar-fill" style="width:100%"></div></div></div>
+    </div>
+    <div class="coef-row sublevel">
+      <div class="coef-name"><span class="level-tag level-a">A</span> Calidad intermedia · artículos Q3 y Q4, libros B, capítulos B, patentes A3 y A4</div>
+      <div class="coef-value">2,3</div>
+      <div class="coef-pct">23,0%</div>
+      <div class="col-bar"><div class="coef-bar-track"><div class="coef-bar-fill" style="width:62%"></div></div></div>
+    </div>
+    <div class="coef-row sublevel">
+      <div class="coef-name"><span class="level-tag level-b">B</span> Calidad básica · artículos calidad D, notas científicas, libros C, capítulos C, patentes B</div>
+      <div class="coef-value">0,4</div>
+      <div class="coef-pct">4,0%</div>
+      <div class="col-bar"><div class="coef-bar-track"><div class="coef-bar-fill" style="width:11%"></div></div></div>
+    </div>
+
+    <!-- ASC -->
+    <div class="coef-row group-header">
+      <div class="coef-group-name">Apropiación Social del Conocimiento</div>
+      <div class="coef-group-total">1,5</div>
+      <div class="coef-group-pct">15,0%</div>
+      <div class="col-bar"></div>
+    </div>
+    <div class="coef-row sublevel">
+      <div class="coef-name"><span class="level-tag level-asc">ASC</span> Coeficiente único · política pública, cadenas productivas, Centros de Ciencia</div>
+      <div class="coef-value">1,5</div>
+      <div class="coef-pct">15,0%</div>
+      <div class="col-bar"><div class="coef-bar-track"><div class="coef-bar-fill" style="width:40%"></div></div></div>
+    </div>
+
+    <!-- DPC -->
+    <div class="coef-row group-header">
+      <div class="coef-group-name">Divulgación Pública de la Ciencia</div>
+      <div class="coef-group-total">0,5</div>
+      <div class="coef-group-pct">5,0%</div>
+      <div class="col-bar"></div>
+    </div>
+    <div class="coef-row sublevel">
+      <div class="coef-name"><span class="level-tag level-dpc">DPC</span> Coeficiente único · working papers, contenido digital, desarrollos web, libros divulgación</div>
+      <div class="coef-value">0,5</div>
+      <div class="coef-pct">5,0%</div>
+      <div class="col-bar"><div class="coef-bar-track"><div class="coef-bar-fill" style="width:14%"></div></div></div>
+    </div>
+
+    <!-- FRHCTI -->
+    <div class="coef-row group-header">
+      <div class="coef-group-name">Formación del Recurso Humano CTeI</div>
+      <div class="coef-group-total">1,2</div>
+      <div class="coef-group-pct">12,0%</div>
+      <div class="col-bar"></div>
+    </div>
+    <div class="coef-row sublevel">
+      <div class="coef-name"><span class="level-tag level-frha">FRH-A</span> Tipo A · tesis doctorales, proyectos de investigación con formación</div>
+      <div class="coef-value">1,0</div>
+      <div class="coef-pct">10,0%</div>
+      <div class="col-bar"><div class="coef-bar-track"><div class="coef-bar-fill" style="width:27%"></div></div></div>
+    </div>
+    <div class="coef-row sublevel">
+      <div class="coef-name"><span class="level-tag level-frhb">FRH-B</span> Tipo B · tesis de maestría, trabajos de pregrado</div>
+      <div class="coef-value">0,2</div>
+      <div class="coef-pct">2,0%</div>
+      <div class="col-bar"><div class="coef-bar-track"><div class="coef-bar-fill" style="width:5%"></div></div></div>
+    </div>
+
+    <!-- INDICADORES COMPLEMENTARIOS -->
+    <div class="coef-row group-header complementarios">
+      <div class="coef-group-name">Indicadores complementarios del grupo</div>
+      <div class="coef-group-total">0,4</div>
+      <div class="coef-group-pct">4,0%</div>
+      <div class="col-bar"></div>
+    </div>
+    <div class="coef-row sublevel">
+      <div class="coef-name"><span class="level-tag level-comp">COH</span> Cohesión · coautorías internas entre integrantes del grupo</div>
+      <div class="coef-value">0,1</div>
+      <div class="coef-pct">1,0%</div>
+      <div class="col-bar"><div class="coef-bar-track"><div class="coef-bar-fill" style="width:3%"></div></div></div>
+    </div>
+    <div class="coef-row sublevel">
+      <div class="coef-name"><span class="level-tag level-comp">COOP</span> Cooperación · coautorías con investigadores de otros grupos</div>
+      <div class="coef-value">0,3</div>
+      <div class="coef-pct">3,0%</div>
+      <div class="col-bar"><div class="coef-bar-track"><div class="coef-bar-fill" style="width:8%"></div></div></div>
+    </div>
+
+    <div class="coef-row total">
+      <div class="coef-name">Total del indicador de grupo</div>
+      <div class="coef-value">10,0</div>
+      <div class="coef-pct">100%</div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Nota pedagógica sobre niveles -->
+  <div class="nota-niveles">
+    <div class="nota-eyebrow">Nota importante sobre los niveles</div>
+    <h4 class="nota-title">Los rótulos <em>TOP</em>, <em>A</em> y <em>B</em> no se aplican igual en todas las dimensiones.</h4>
+    <div class="nota-grid">
+      <div class="nota-card">
+        <div class="nota-card-tag"><span class="level-tag level-top">TOP</span> <span class="level-tag level-a">A</span> <span class="level-tag level-b">B</span></div>
+        <div class="nota-card-title">GNC + DTI</div>
+        <div class="nota-card-body">Estas dos dimensiones comparten un mismo coeficiente y se subdividen en tres niveles de calidad. Es la única clasificación TOP, A, B propiamente dicha del modelo.</div>
+      </div>
+      <div class="nota-card">
+        <div class="nota-card-tag"><span class="level-tag level-asc">ASC</span></div>
+        <div class="nota-card-title">ASC y DPC</div>
+        <div class="nota-card-body">No tienen subdivisión por niveles. Cada dimensión es un único coeficiente. Todos sus productos contribuyen al mismo bloque del indicador.</div>
+      </div>
+      <div class="nota-card">
+        <div class="nota-card-tag"><span class="level-tag level-frha">FRH-A</span> <span class="level-tag level-frhb">FRH-B</span></div>
+        <div class="nota-card-title">FRHCTI</div>
+        <div class="nota-card-body"><strong>Atención.</strong> FRHCTI tiene dos niveles, llamados Tipo A y Tipo B, pero no son los mismos Tipo A y Tipo B de GNC y DTI. Son una clasificación interna y exclusiva de la dimensión de formación.</div>
+      </div>
+      <div class="nota-card">
+        <div class="nota-card-tag"><span class="level-tag level-comp">COH</span> <span class="level-tag level-comp">COOP</span></div>
+        <div class="nota-card-title">Cohesión y Cooperación</div>
+        <div class="nota-card-body">No son dimensiones de producción sino indicadores complementarios del grupo. Miden coautorías internas y con otros grupos. No tienen niveles.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lectura estratégica -->
+  <div class="lectura-block">
+    <div class="lectura-eyebrow">Cómo leer esta tabla</div>
+    <h3 class="lectura-title">El indicador premia <em>calidad</em>, no cantidad.</h3>
+    <p class="lectura-text">Un solo producto en nivel TOP de GNC o DTI aporta al indicador casi <strong>diez veces más</strong> que un producto Tipo B de la misma dimensión (3,7 frente a 0,4). La diferencia no es lineal: el modelo está diseñado para reconocer la producción de máxima calidad internacional (Q1 y Q2 para artículos) con un peso desproporcionadamente alto. Esto tiene implicaciones prácticas para la planeación de la productividad investigativa.</p>
+    <div class="ejemplos-grid">
+      <div class="ejemplo-card">
+        <div class="ejemplo-num">Caso 1</div>
+        <div class="ejemplo-title">Investigador novel</div>
+        <div class="ejemplo-body">Tres artículos calidad D al año (Tipo B): aporta <strong>1,2 puntos</strong> al indicador (3 × 0,4).</div>
+      </div>
+      <div class="ejemplo-card">
+        <div class="ejemplo-num">Caso 2</div>
+        <div class="ejemplo-title">Investigador en consolidación</div>
+        <div class="ejemplo-body">Dos artículos Q3 al año (Tipo A): aporta <strong>4,6 puntos</strong> al indicador (2 × 2,3).</div>
+      </div>
+      <div class="ejemplo-card">
+        <div class="ejemplo-num">Caso 3</div>
+        <div class="ejemplo-title">Investigador sénior</div>
+        <div class="ejemplo-body">Un artículo Q1 al año (TOP) más una tesis doctoral dirigida (FRHCTI A): aporta <strong>4,7 puntos</strong> (3,7 + 1,0).</div>
+      </div>
+    </div>
+    <p class="lectura-disclaimer">Los ejemplos son ilustrativos del peso relativo entre niveles. El cálculo real del indicador de grupo aplica una normalización logarítmica para eliminar efectos de escala, descrita en el capítulo III, sección 3.5 del documento conceptual.</p>
+  </div>
+
+</section>
+
+<!-- PREGUNTAS FRECUENTES -->
+<section class="section" id="faq">
+  <div class="section-head">
+    <div class="section-label">03 · Preguntas frecuentes</div>
+    <div>
+      <h2 class="section-title">Lo que se pregunta <em>quien empieza</em>.</h2>
+      <p class="section-desc">Respuestas breves a las dudas más comunes de investigadores noveles, estudiantes de posgrado y semilleros que se acercan por primera vez al modelo Minciencias.</p>
+    </div>
+  </div>
+
+  <div class="faq-grid">
+    <div class="faq-card">
+      <div class="faq-q">Estoy iniciando mi doctorado, ¿qué cuenta más para el grupo?</div>
+      <div class="faq-a">Para un investigador en formación lo más estratégico suele ser un buen artículo Q2 (nivel TOP: 3,7 puntos) o, si es muy difícil, un Q3 o Q4 (Tipo A: 2,3 puntos). Vale la pena recordar que los artículos Q1 y Q2 son TOP, mientras que Q3 y Q4 quedan en Tipo A. Un capítulo de libro o ponencia, aunque útiles para la trayectoria, aportan menos al indicador.</div>
+    </div>
+
+    <div class="faq-card">
+      <div class="faq-q">¿Vale la pena publicar en Q4?</div>
+      <div class="faq-a">Sí. Un artículo Q4 cuenta como Tipo A (2,3 puntos), igual que un Q3. Solo los artículos calidad D quedan en Tipo B. Es decir, Q4 todavía aporta de manera significativa al indicador y sirve para acreditar trayectoria, alimentar el CvLAC y validar pares. Es un buen punto de partida para un semillero o un primer artículo, mientras se desarrollan capacidades para apuntar a Q2 o Q1.</div>
+    </div>
+
+    <div class="faq-card">
+      <div class="faq-q">¿Qué pasa si publico con coautores de otro grupo?</div>
+      <div class="faq-a">Suma doble. El producto cuenta en su dimensión correspondiente (GNC, DTI, etc.) y además activa el indicador de Cooperación del grupo (0,3 puntos en total). El modelo Minciencias premia explícitamente las redes de investigación entre grupos colombianos y con grupos internacionales.</div>
+    </div>
+
+    <div class="faq-card">
+      <div class="faq-q">¿Y si publico con compañeros del mismo grupo SUMECO?</div>
+      <div class="faq-a">Eso alimenta el indicador de Cohesión del grupo (0,1 puntos), que mide qué tan integrado trabaja el grupo internamente. Aunque el peso es menor, fortalece la identidad investigativa colectiva y suele ser bien valorado en categorización.</div>
+    </div>
+
+    <div class="faq-card">
+      <div class="faq-q">Soy del semillero, ¿cómo aporto al grupo?</div>
+      <div class="faq-a">Como estudiante de pregrado vinculado al semillero, usted forma parte del Grupo C (integrantes vinculados). Su aporte directo al indicador llega por dos vías: como parte del talento humano en formación (FRHCTI: cuando egrese con trabajo de pregrado o de maestría, suma 0,2 puntos) y como coautor de productos. Empezar como coautor con un investigador asociado o sénior es la vía más estratégica.</div>
+    </div>
+
+    <div class="faq-card">
+      <div class="faq-q">¿Qué es más importante: muchos productos o pocos pero buenos?</div>
+      <div class="faq-a">Pocos pero buenos, sin duda. El modelo aplica una normalización logarítmica que reduce el efecto de la cantidad pura. Diez artículos calidad D (Tipo B) generan menos puntaje que dos artículos Q1 (TOP). La estrategia óptima combina productividad sostenida con orientación a TOP cuando sea posible.</div>
+    </div>
+
+    <div class="faq-card">
+      <div class="faq-q">¿Los working papers cuentan?</div>
+      <div class="faq-a">Sí, pero en la dimensión DPC (Divulgación Pública de la Ciencia, 0,5 puntos en total para todo el grupo). Un working paper bien hecho es útil como evidencia de producción intermedia, como insumo para posterior publicación Q1-Q2, y aporta directamente al GrupLAC. No es el producto de mayor peso, pero sí un buen complemento.</div>
+    </div>
+
+    <div class="faq-card">
+      <div class="faq-q">¿Cómo paso de Junior a Asociado?</div>
+      <div class="faq-a">Cumpliendo simultáneamente tres condiciones en la siguiente convocatoria: doctorado/maestría/especialidad finalizada o 7 productos GNC-DTI tipo A en toda la trayectoria; 3 productos tipo A en los últimos 10 años más 4 adicionales en 5 años; y dirección de 1 tesis doctoral, 2 maestrías u 8 pregrados en los últimos 5 años. La sección Investigadores de esta herramienta detalla los requisitos completos.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS / RANKING -->
+</section>
+
+<!-- PRODUCTOS / RANKING -->
+<section class="section" id="productos">
+  <div class="section-head">
+    <div class="section-label">04 · Ranking completo</div>
+    <div>
+      <h2 class="section-title">169 productos, del que <em>más pesa</em> al que menos.</h2>
+      <p class="section-desc">Pesos individuales calculados con la fórmula oficial del documento conceptual de la Convocatoria 957 de 2024: peso global del subtipo A1 multiplicado por el peso relativo del producto.</p>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <input type="text" id="search" class="search" placeholder="Buscar por código, descripción o palabra clave...">
+    </div>
+    <div class="sort-wrap">
+      <label for="sort">Ordenar</label>
+      <select id="sort" class="sort">
+        <option value="peso-desc">Mayor peso primero</option>
+        <option value="peso-asc">Menor peso primero</option>
+        <option value="codigo">Código alfabético</option>
+        <option value="dim">Por dimensión</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="filters-eyebrow">
+    Filtrar por <strong>dimensión</strong> · o por <strong>nivel de calidad</strong> (los niveles aplican solo a GNC, DTI y FRHCTI)
+  </div>
+
+  <div class="filter-chips" id="filters">
+    <button class="chip active" data-filter="all">Todos<span class="chip-count" id="count-all"></span></button>
+    <button class="chip" data-filter="dim-GNC">GNC<span class="chip-count" id="count-GNC"></span></button>
+    <button class="chip" data-filter="dim-DTI">DTI<span class="chip-count" id="count-DTI"></span></button>
+    <button class="chip" data-filter="dim-ASC">ASC<span class="chip-count" id="count-ASC"></span></button>
+    <button class="chip" data-filter="dim-DPC">DPC<span class="chip-count" id="count-DPC"></span></button>
+    <button class="chip" data-filter="dim-FRHCTI">FRHCTI<span class="chip-count" id="count-FRHCTI"></span></button>
+  </div>
+
+  <div class="filters-divider">Por nivel de calidad</div>
+
+  <div class="filter-chips filter-chips-nivel" id="filters-nivel">
+    <button class="chip" data-filter="cat-TOP">TOP<span class="chip-count" id="count-TOP"></span></button>
+    <button class="chip" data-filter="cat-A">Tipo A<span class="chip-count" id="count-A"></span></button>
+    <button class="chip" data-filter="cat-B">Tipo B<span class="chip-count" id="count-B"></span></button>
+    <button class="chip" data-filter="cat-FRH_A">FRH-A<span class="chip-count" id="count-FRH_A"></span></button>
+    <button class="chip" data-filter="cat-FRH_B">FRH-B<span class="chip-count" id="count-FRH_B"></span></button>
+    <button class="chip" data-filter="sin-nivel">Sin nivel<span class="chip-count" id="count-SIN"></span></button>
+  </div>
+
+  <div class="results-meta">
+    <span id="results-count">Mostrando 169 productos</span>
+    <span>Click en la página para ir al PDF →</span>
+  </div>
+
+  <div class="ranking">
+    <div class="row header">
+      <div>Puesto</div>
+      <div class="col-codigo">Código</div>
+      <div>Descripción</div>
+      <div class="col-cat">Categoría</div>
+      <div style="text-align:right">Peso</div>
+      <div class="col-pag" style="text-align:right">PDF</div>
+    </div>
+    <div id="ranking-body"></div>
+  </div>
+</section>
+
+<!-- INVESTIGADORES E INTEGRANTES -->
+<section class="investigadores-section" id="investigadores">
+  <div class="investigadores-inner">
+    <div class="section-head">
+      <div class="section-label">05 · Investigadores</div>
+      <div>
+        <h2 class="section-title">Clasificación de <em>investigadores</em> e integrantes.</h2>
+        <p class="section-desc">El modelo Minciencias reconoce niveles de investigador según trayectoria, formación y producción. Cada nivel exige condiciones específicas que se acumulan en distintas ventanas temporales.</p>
+      </div>
+    </div>
+
+    <!-- INVESTIGADORES RECONOCIDOS -->
+    <div class="inv-group-divider">
+      <span class="inv-group-eyebrow">Grupo A</span>
+      <h3>Investigadores reconocidos</h3>
+    </div>
+
+    <div class="inv-grid">
+
+      <!-- EMÉRITO -->
+      <div class="inv-card tier-1">
+        <div class="inv-head">
+          <div class="inv-head-text">
+            <div class="inv-tier">Máximo reconocimiento</div>
+            <div class="inv-name">Investigador <em>Emérito</em></div>
+          </div>
+          <div class="inv-badge">IE</div>
+        </div>
+        <p class="inv-summary">Trayectoria significativa para la CTeI del país. Reconocimiento vitalicio.</p>
+        <ul class="inv-reqs">
+          <li><strong>Doctorado finalizado</strong> o quince (15) productos de GNC o DTI tipo A en toda la trayectoria.</li>
+          <li>Productos tipo <strong>TOP o A</strong> en su producción.</li>
+          <li>Dirección de tesis de doctorado o maestría finalizadas.</li>
+          <li>Edad: <strong>65 años o más</strong>.</li>
+          <li>Vinculado a institución colombiana.</li>
+        </ul>
+        <p class="inv-note">Reconocimiento al 25 % superior de su gran área de conocimiento. Evaluación por Comité de expertos.</p>
+      </div>
+
+      <!-- SÉNIOR -->
+      <div class="inv-card tier-2">
+        <div class="inv-head">
+          <div class="inv-head-text">
+            <div class="inv-tier">Nivel sénior</div>
+            <div class="inv-name">Investigador <em>Sénior</em></div>
+          </div>
+          <div class="inv-badge">IS</div>
+        </div>
+        <p class="inv-summary">Cumplimiento simultáneo de tres condiciones de trayectoria.</p>
+        <ul class="inv-reqs">
+          <li><strong>Formación.</strong> Doctorado finalizado o quince (15) productos GNC o DTI tipo A en toda la trayectoria.</li>
+          <li><strong>Producción.</strong> Diez (10) productos tipo TOP o A en los últimos diez (10) años.</li>
+          <li><strong>Formación de talento humano.</strong> Dirección de cuatro (4) trabajos de maestría o una (1) tesis de doctorado finalizados en los últimos diez (10) años.</li>
+        </ul>
+        <p class="inv-note">Vigencia hasta la siguiente convocatoria de Minciencias.</p>
+      </div>
+
+      <!-- ASOCIADO -->
+      <div class="inv-card tier-3">
+        <div class="inv-head">
+          <div class="inv-head-text">
+            <div class="inv-tier">Nivel intermedio</div>
+            <div class="inv-name">Investigador <em>Asociado</em></div>
+          </div>
+          <div class="inv-badge">I</div>
+        </div>
+        <p class="inv-summary">Cumplimiento simultáneo de tres condiciones de trayectoria.</p>
+        <ul class="inv-reqs">
+          <li><strong>Formación.</strong> Doctorado finalizado, maestría o especialidad clínica finalizada, o siete (7) productos GNC o DTI tipo A en toda la trayectoria.</li>
+          <li><strong>Producción.</strong> Tres (3) productos GNC o DTI tipo A en los últimos diez (10) años, más cuatro (4) productos adicionales GNC o DTI en los últimos cinco (5) años.</li>
+          <li><strong>Formación de talento humano.</strong> Dirección de una (1) tesis de doctorado, dos (2) trabajos de maestría u ocho (8) trabajos de pregrado en los últimos cinco (5) años.</li>
+        </ul>
+        <p class="inv-note">Vigencia hasta la siguiente convocatoria de Minciencias.</p>
+      </div>
+
+      <!-- JUNIOR -->
+      <div class="inv-card tier-4">
+        <div class="inv-head">
+          <div class="inv-head-text">
+            <div class="inv-tier">Nivel de entrada</div>
+            <div class="inv-name">Investigador <em>Junior</em></div>
+          </div>
+          <div class="inv-badge">IJ</div>
+        </div>
+        <p class="inv-summary">Cualquiera de las dos rutas conduce al reconocimiento Junior.</p>
+        <ul class="inv-reqs">
+          <li><strong>Ruta doctoral.</strong> Doctorado finalizado en ventana de tres (3) años, integrante de un grupo de investigación y partícipe de un proyecto del grupo.</li>
+          <li><strong>Ruta de producción.</strong> Doctorado, maestría, especialidad clínica o pregrado con siete (7) productos GNC o DTI en toda la trayectoria, más un (1) producto tipo A en toda la trayectoria, más cuatro (4) productos GNC o DTI en los últimos cinco (5) años.</li>
+        </ul>
+        <p class="inv-note">Vigencia hasta la siguiente convocatoria de Minciencias.</p>
+      </div>
+
+    </div>
+
+    <!-- INTEGRANTES EN FORMACIÓN -->
+    <div class="inv-group-divider">
+      <span class="inv-group-eyebrow">Grupo B</span>
+      <h3>Integrantes en formación</h3>
+    </div>
+
+    <div class="inv-grid">
+
+      <!-- DOCTORADO -->
+      <div class="inv-card tier-formacion">
+        <div class="inv-head">
+          <div class="inv-head-text">
+            <div class="inv-tier">Formación doctoral</div>
+            <div class="inv-name">Estudiante de <em>doctorado</em></div>
+          </div>
+          <div class="inv-badge">ED</div>
+        </div>
+        <p class="inv-summary">Integrante en formación avanzada vinculado a grupo de investigación.</p>
+        <ul class="inv-reqs">
+          <li>Estudiante en formación de doctorado <strong>iniciada hace máximo ocho (8) años</strong>.</li>
+          <li>Vinculado activamente a un grupo de investigación.</li>
+        </ul>
+      </div>
+
+      <!-- MAESTRÍA -->
+      <div class="inv-card tier-formacion">
+        <div class="inv-head">
+          <div class="inv-head-text">
+            <div class="inv-tier">Formación de maestría</div>
+            <div class="inv-name">Estudiante de <em>maestría</em></div>
+          </div>
+          <div class="inv-badge">EM</div>
+        </div>
+        <p class="inv-summary">Integrante en formación de posgrado o especialidad clínica.</p>
+        <ul class="inv-reqs">
+          <li>Estudiante en formación de maestría o especialidad clínica <strong>iniciada hace máximo cuatro (4) años</strong>.</li>
+          <li>Vinculado activamente a un grupo de investigación.</li>
+        </ul>
+      </div>
+
+      <!-- PREGRADO -->
+      <div class="inv-card tier-formacion">
+        <div class="inv-head">
+          <div class="inv-head-text">
+            <div class="inv-tier">Formación de pregrado</div>
+            <div class="inv-name">Estudiante de <em>pregrado</em></div>
+          </div>
+          <div class="inv-badge">EP</div>
+        </div>
+        <p class="inv-summary">Integrante en formación de pregrado, generalmente vinculado vía semilleros de investigación.</p>
+        <ul class="inv-reqs">
+          <li>Estudiante en formación de pregrado.</li>
+          <li>Vinculado al grupo a través de proyectos o semilleros.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- INTEGRANTES VINCULADOS -->
+    <div class="inv-group-divider">
+      <span class="inv-group-eyebrow">Grupo C</span>
+      <h3>Integrantes vinculados</h3>
+    </div>
+
+    <div class="inv-grid">
+
+      <div class="inv-card tier-vinculado">
+        <div class="inv-head">
+          <div class="inv-head-text">
+            <div class="inv-tier">Con doctorado</div>
+            <div class="inv-name">Integrante <em>vinculado</em></div>
+          </div>
+          <div class="inv-badge">IV_D</div>
+        </div>
+        <p class="inv-summary">Persona vinculada al grupo, con formación doctoral culminada, que no cumple las condiciones de los niveles anteriores.</p>
+      </div>
+
+      <div class="inv-card tier-vinculado">
+        <div class="inv-head">
+          <div class="inv-head-text">
+            <div class="inv-tier">Con maestría o especialidad</div>
+            <div class="inv-name">Integrante <em>vinculado</em></div>
+          </div>
+          <div class="inv-badge">IV_M</div>
+        </div>
+        <p class="inv-summary">Persona vinculada al grupo, con formación de maestría o especialidad clínica culminada, que no cumple las condiciones de los niveles anteriores.</p>
+      </div>
+
+      <div class="inv-card tier-vinculado">
+        <div class="inv-head">
+          <div class="inv-head-text">
+            <div class="inv-tier">Con especialización</div>
+            <div class="inv-name">Integrante <em>vinculado</em></div>
+          </div>
+          <div class="inv-badge">IV_E</div>
+        </div>
+        <p class="inv-summary">Persona vinculada al grupo, con formación de especialización culminada, que no cumple las condiciones de los niveles anteriores.</p>
+      </div>
+
+      <div class="inv-card tier-vinculado">
+        <div class="inv-head">
+          <div class="inv-head-text">
+            <div class="inv-tier">Con pregrado</div>
+            <div class="inv-name">Integrante <em>vinculado</em></div>
+          </div>
+          <div class="inv-badge">IV_P</div>
+        </div>
+        <p class="inv-summary">Persona vinculada al grupo, con formación de pregrado culminada, que no cumple las condiciones de los niveles anteriores.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ACERCA SUMECO -->
+<section class="acerca-section" id="acerca">
+  <div class="acerca-inner">
+    <div class="section-head">
+      <div class="section-label">06 · Sobre el grupo</div>
+      <div>
+        <h2 class="section-title">Grupo <em>SUMECO</em>.</h2>
+        <p class="section-desc">Sujeto, Mente y Comunidad. Categoría A de Minciencias, adscrito a la Escuela de Ciencias Sociales, Artes y Humanidades de la Universidad Nacional Abierta y a Distancia.</p>
+      </div>
+    </div>
+
+    <div class="acerca-card">
+      <div class="acerca-logo">
+        <img src="data:image/jpeg;base64,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" alt="Logo SUMECO">
+      </div>
+      <div class="acerca-body">
+        <h3><em>SUMECO</em> · Sujeto, Mente y Comunidad</h3>
+        <p class="acerca-tagline">Grupo de investigación de la UNAD que integra ciencias sociales, artes y humanidades para estudiar las relaciones entre el sujeto, la mente y la comunidad.</p>
+        <p><span class="ink-strong">Misión.</span> SUMECO integra enfoques teóricos, metodológicos e interventivos provenientes de las ciencias sociales, las artes y las humanidades, para estudiar las relaciones entre el sujeto, la mente y la comunidad en sus diversas expresiones y contextos. Promueve la comprensión crítica de los fenómenos socioculturales y el fortalecimiento de procesos de transformación cultural, social y política en los territorios, articulando investigación formativa, investigativa y avanzada con prácticas académicas, comunitarias y de creación.</p>
+        <p><span class="ink-strong">Visión 2035.</span> Ser un referente académico y científico en ciencias sociales, artes y humanidades, reconocido por la producción de conocimiento multidisciplinar y transdisciplinar, con impacto local, regional y nacional mediante la incidencia en políticas públicas, prácticas institucionales y procesos comunitarios.</p>
+        <div class="acerca-meta">
+          <div class="acerca-meta-item">Categoría<strong>A · Minciencias</strong></div>
+          <div class="acerca-meta-item">Código GrupLAC<strong>COL0053302</strong></div>
+          <div class="acerca-meta-item">Creación<strong>11 enero 2008</strong></div>
+          <div class="acerca-meta-item">Sede<strong>UDR La Tebaida · Quindío</strong></div>
+          <div class="acerca-meta-item">Escuela<strong>ECSAH</strong></div>
+          <div class="acerca-meta-item">Zona<strong>Occidente</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LÍNEAS DE INVESTIGACIÓN -->
+    <div class="lineas-block">
+      <div class="lineas-eyebrow">Líneas de investigación</div>
+      <h3 class="lineas-title">Cinco <em>líneas</em> orientadoras del trabajo del grupo.</h3>
+      <p class="lineas-desc">Las cinco líneas declaradas por SUMECO ante Minciencias articulan toda la producción investigativa, formativa y de divulgación del grupo.</p>
+      <div class="lineas-grid">
+        <div class="linea-card">
+          <div class="linea-num">01</div>
+          <div class="linea-name">Artes y contextos en la era digital</div>
+        </div>
+        <div class="linea-card">
+          <div class="linea-num">02</div>
+          <div class="linea-name">Dinámicas sociales e innovaciones situadas</div>
+        </div>
+        <div class="linea-card">
+          <div class="linea-num">03</div>
+          <div class="linea-name">Horizontes del pensamiento filosófico</div>
+        </div>
+        <div class="linea-card">
+          <div class="linea-num">04</div>
+          <div class="linea-name">Salud mental, bienestar y prácticas psicosociales</div>
+        </div>
+        <div class="linea-card">
+          <div class="linea-num">05</div>
+          <div class="linea-name">Territorios, mediaciones y tecnologías</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESARROLLADORES -->
+    <div style="margin-top: 50px;">
+      <h3 style="font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--unad-blue-deep); margin-bottom: 6px;">Desarrolladores</h3>
+      <p style="font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--ink-muted); margin-bottom: 8px;">Investigadores responsables del diseño, contenido y construcción de la herramienta.</p>
+
+      <div class="devs-grid">
+        <div class="dev-card">
+          <div class="dev-role">Investigador principal · Líder SUMECO</div>
+          <div class="dev-name">Ángel Saúl Díaz-Téllez</div>
+          <div class="dev-bio">Comunicador Social. Magíster en Semiótica. Doctor en Ciencias de la Educación. Investigador Asociado de Minciencias. Líder del grupo SUMECO. Comisionado de Conaces, Sala de Ciencias Sociales, Periodismo e Información.</div>
+          <div class="dev-meta">CvLAC · <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000555754" target="_blank" rel="noopener">Ver hoja de vida</a></div>
+        </div>
+        <div class="dev-card dev-2">
+          <div class="dev-role">Investigadora · Grupo SUMECO</div>
+          <div class="dev-name">Jennifer Mejía-Ríos</div>
+          <div class="dev-bio">Psicóloga. Especialista en Gestión de Proyectos de Desarrollo. Magíster en Neuropsicología y Educación. Doctora en Pensamiento Complejo. Investigadora del grupo SUMECO, adscrita a la Escuela de Ciencias Sociales, Artes y Humanidades de la Universidad Nacional Abierta y a Distancia.</div>
+          <div class="dev-meta">CvLAC · <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001706150" target="_blank" rel="noopener">Ver hoja de vida</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-row">
+          <div class="footer-logo"><img src="data:image/jpeg;base64,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" alt="Logo SUMECO"></div>
+          <div>
+            <div class="footer-brand-text">Cómo Mide Minciencias</div>
+            <div class="footer-brand-sub">Herramienta SUMECO · 2026</div>
+          </div>
+        </div>
+        <p class="footer-text">Aporte abierto del grupo de investigación SUMECO para entender el modelo de medición de la investigación colombiana. De libre consulta y uso para cualquier grupo de investigación de la UNAD y demás instituciones del SNCTeI. Se actualiza con cada convocatoria oficial.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Fuente oficial</h4>
+        <ul>
+          <li><a href="https://minciencias.gov.co/sites/default/files/upload/convocatoria/m601pr04g01_modelo_medicion_grupos_investigacion_tecnologica_o_innovacion_y_reconocimiento_investigadores_-_2024_1.pdf" target="_blank" rel="noopener">Documento conceptual</a></li>
+          <li><a href="https://minciencias.gov.co" target="_blank" rel="noopener">Minciencias</a></li>
+          <li><a href="https://scienti.minciencias.gov.co" target="_blank" rel="noopener">Plataforma ScienTI</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>SUMECO</h4>
+        <ul>
+          <li><a href="https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000007065" target="_blank" rel="noopener">GrupLAC del grupo</a></li>
+          <li><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000555754" target="_blank" rel="noopener">CvLAC líder</a></li>
+          <li><a href="https://academia.unad.edu.co/investigacion-y-productividad-ecsah/grupos-de-investigacion" target="_blank" rel="noopener">Grupos ECSAH</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>UNAD</h4>
+        <ul>
+          <li><a href="https://www.unad.edu.co" target="_blank" rel="noopener">UNAD</a></li>
+          <li><a href="https://academia.unad.edu.co" target="_blank" rel="noopener">Académica</a></li>
+          <li><a href="https://investigaciones.unad.edu.co" target="_blank" rel="noopener">Investigaciones</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 · Díaz-Téllez & Mejía-Ríos · SUMECO · Convocatoria 957 de 2024 · Documento M601PR04G01 v.02</div>
+      <div class="unad-credit">
+        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgzIiB2aWV3Qm94PSIwIDAgMTAwIDgzIj4KPGRlZnM+CjxmaWx0ZXIgaWQ9ImZpbHRlci1yZW1vdmUtY29sb3ItYW5kLWludmVydC1hbHBoYSIgeD0iMCUiIHk9IjAlIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIj4KPGZlQ29sb3JNYXRyaXggY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIiB2YWx1ZXM9IjAgMCAwIDAgMSAwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIC0xIDEiLz4KPC9maWx0ZXI+CjxmaWx0ZXIgaWQ9ImZpbHRlci0wIiB4PSIwJSIgeT0iMCUiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgo8ZmVJbWFnZSB4bGluazpocmVmPSIjY29tcG9zaXRpbmctZ3JvdXAtMSIgcmVzdWx0PSJzb3VyY2UiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMjAiIGhlaWdodD0iOTkuNiIvPgo8ZmVJbWFnZSB4bGluazpocmVmPSIjY29tcG9zaXRpbmctZ3JvdXAtMiIgcmVzdWx0PSJkZXN0aW5hdGlvbiIgeD0iMCIgeT0iMCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSI5OS42Ii8+CjxmZUNvbXBvc2l0ZSBpbj0ic291cmNlIiBpbjI9ImRlc3RpbmF0aW9uIiBvcGVyYXRvcj0iYXJpdGhtZXRpYyIgazE9IjAiIGsyPSIxIiBrMz0iMSIgazQ9IjAiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiIvPgo8L2ZpbHRlcj4KPGltYWdlIGlkPSJzb3VyY2UtNyIgeD0iMCIgeT0iMCIgd2lkdGg9IjIwOSIgaGVpZ2h0PSIxNzEiIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBTkVBQUFDckNBWUFBQUQ0ZzNsSUFBQUFCbUpMUjBRQS93RC9BUCtndmFlVEFBQWdBRWxFUVZSNG5PeWRlWHljWmRXd3IzUFBKR202Sm1rbXk3U0ZWa0VFRkVRV1h6YlpxU1ZKRjZBZ0tBaWkxWlkyTTJsWkJXVVFVZlprMm9KYVAyVjVRYVVGQ2sxU0JGR3hLQ3BZWlZONTJRcTBtV21UdEVuM0pEUHpuTytQbWJTWnpKS1pTZEtrZGE3Zkw1VGszczZ6bk9mZXpuME9aTW1TcFYvSVVBdVFDRitONDBzbzN3UytBSXdBMW9QVVc0RWM3OFQ3bXpZUHNYaFpzdXhoMkNuUnV3c095UnRsMi9aejBLOGt5Tklxb2hlVzE3YitjWjhLbGlWTEFzeFFDOUNia2JhdFAwbWlRQURGcWxMdnJ5azdjcDhKbFNWTEVvYVZFdmxjamxNRXJrZ2g2eGpWVU8xZ3k1TWxTeW9NS3lVUzRjbzBzcC9kdExCbzBxQUpreVZMaXRnSHVrS2ZxL0FnTmJtZk1ob0tHalgvS2ZVMmIwcTFyQ3JIcERGTEUwTG1HR0I5U25WN01FM3RqcU9NU3FteHlkYmRZL05mbStMNXNDUGwxckprU2NDQUtaSFA1Zmdpb25lQmZFSFVRaEZDb3BiUDVYaGVqTzJhOHRxTi8rcXpFdEhjZE5ZNkRKTFhWeDcxWVB6dHhkWCtOcm5lQ0dXSVlsbEtYdnZPSFQ1WHlVL3RBZldVUE5DeUkrVkdzMlRweFlBTTU1cmNqcThqL0I3a0N6SDFDMTlTRGYydHlWVnlUbC8xQ1BKQk91MnE2UHRKMHozWS9XMk9KMEJxRWNwNkpZOUdkRkVvbHo5dnVIckMrSFRhelpLbEovMVdJcjlyL1BFQ1B3VnNTYktORXRIbEg4OHZkdlpSM1ZNcE55eXNLNjlyL1dkUzJkb2RIb1JaeWZJb0hHWHNYWStrM0c2V0xMM290eElwNXZ1a05pd3NzTnZsdW1RWnluYTFQQWE4bVVxN0FqY0lhS0owM3lKbk1jcWlWT3BDT00vbmNweVNVdDRzV1hyUkx5VnFudWNZalhCVzZpVjBackpVV1ViQUZwSlp3SWZKNjVIYnltdGJsaWZORXVxYWlqQWlkZGtrcVd4WnNpU2lYMG9VekxjbUFqbXBsNUJKT2lkNS90SWx6ZTlqeXprZTlNZkF6cWpTOElhcXpuRFdOWCt2ejZaVXBxUXVGNEIrSXIzOFdiS0U2ZGZxbklSeU9wUlFPa1VDTENQWVZ5Ym52YjVXWU43Nm1vbUxiS0dPSThUR2FOVCtVWG5keGc5VGxrMmtReE9QOXVJVjJKVjY1aXhaOXRJdkpTcHIycmplUDhIUkFqaFN5Uy93ajJUem1ONU1xdDJ3RzFpYmlXeEM2QithUmtjcllpVmRwTWlTSlJIOUdzN0pDa0lxK2xDcStSWDlSWC9hUzRmU2dzMXJnSGRUekw0ckVPQlhneWxQbGdPWGZxL09kV253aDZUMnNxNHBMMmg5cUwvdHBZcDRDRnFXbVF0OUR4OUJienBvYWF0djBJWEtja0RTYnlXYVV0ZmVib0ptcXNBYmlYUHBDeUhwbkNXZVZGN29nV1BpNGsyL1ErWExRQ0tMaEJCd3M3T3V0VzRmaXBYbEFHUEF6aFBwSEhMOCtjVlhJREliT0J3SUN2SUdxbytXZVZ1ZVNHY3VOTkMwdUl2TEE4Z0NZQ3FLRXlOYlVGNHlsaXd0Vzd6cHJhR1NLOHVCUVVJbCtwZUgzTUt0SmFlajFtY1F5Y1dTZDNQeXJPY2RkN1Z1MzVjQ0RpVk5ydUxEeEpnelFJdXdkSE5JNWZlVEZyZWtPcy9LOGw5Q1hDVnFxaW1kSWFxTFFRL3FsYlFWMFZ2TGExdnJockpuR1d3K25sL3N0T1hJVDBXcGpFM1ZwKzA1TXJmazdwYU4rMTZ5TE1PUkdDWHl1WXEvaWNoUDQ2WHRSWC9zckd1ZE40aHlEUmxOQzRzbWlXVjdHWmlZT0pkK0ZBeHlVbll4SWd2MFdsand1Y2NmanNqOTlEbFhrcm4rR3NkRmd5alhrQ0dXN1g5SnFrQUFjckRkTGcvdUU0R3lESHVpbEVqVVhFdUtaanlxZkdkUUpCcENtdHdsSndPbnBaajlYTDlyL1BHREtVK1cvWU1vSlZMaDNEVEtIdDE4cmFQM0daMzltL1N1SDhWTUhTeFJzdXcvN0ZFaURRL2gwbEtLWUVEN09oKzBYeUZRbmw2QkErdjZzMlRHSGlVS3I3YkoxclFLQjIxdEF5L1MwS0ZZN2VrVmtBUHErck5rUmkrTEJldWxOTW8ybFM3ZDlPRkFDalBrV1B3cHZRS3labkFFeWJJL0ViMndBQ21idjRpSzkwRGJLM0x1Ym4yV1ZJMVdsYmZMQzV0L043Z1NaZGtmaUZLaThycldGeU9INGZyaXBTMkZ6ZDdCRVdub2tHVUUxSklyZ000K3N1NFdyTXYzdFMxZ2x1RkpqQUZxZVVIcmZKUWZBb0Y0QlFRZXo4blZpaU05ZEEyNmRFUEFoTVhOTHlPY1EySi9kaDlheUZubDNzMnY3a3U1c2d4ZkVtNnFycTl4SEdKWHZVUkZqaFlsMXhKOTI2QlBsTmR1Zm1WZkNqaFVySytabUcrbjh5SlZ6a0J4cU5Bc3lPOTNoc1l1UDNUSmUzMzFWRm15Wk1tU0pVdVdMRm15Wk5rL0VDcHF6aDVxSWJCWnphenlKamtabXlHblh6R0NVWVdENTVSUlFybW9qRXFyakdYOWhXZVhiQmhRT1daZFBaNHUrNWtabHhmZFFzUGltT1Y2Ly9JeVJ5aW42d2VaVnF0Rzc1ODBveTJqNStwN1l2eW5MWnZXWk5wMmIwU2xUUXhCQlorRzVDT3g4NTd6bjYzdmlnZXJ2M1hiRWV1M0F5Rmt2N0JZQ1p3LzRQV09LM0lRQ2czaTlVbjZaNFB0NWsxbXp6dUpGUThNbkJQOWtEa0k0UTVnSkRBT3lFK3BuTEFWbFhiZ24wQ01FbGs1WGRNRm1aT3BXTVl5T3lCRkw3UzkyN1l4b1Q5dHh5Q2drVjFOTVFvVytJOGV2N1ZwSlg5VDFlZE1qajdockdyN09KT3E3VUMzNllvQUJRTWljQ29JVzlISVYwQ2luVFFPR0NHMTJIdDlFSDdKK293a2tTYTdnZTRRTFYyUitoUGZSK1d6N001NUJMaUFnZHFzWHJYa244QW5BWmc5MjBhSDgvTVJGOG9YeDhtOUNaRWI2SkpWUEZlN0pYbkZNcU0vWWlsNlBoa3EwYjVBd3grY2MwWGtYQTNLUGI2bnhyOG9ZdDFkTnJQdE55S3BQNXZvNzZqSFkxaTd2UWdyZUN3d0ZlRXFZT3dBeWZ3eUtqOUhySmZJOTMvQWloVnBlWDBjTUtybWpFUkhIZzE2RmpBSFNEZFFXQXNpUDBHbGdmek9mOGYwS0xPdUhrL0FmaDl3ZWZKcTVGWWE2anhwdHAwZWxlNUhRQy9yOFJmRk1pZXd1dmJ2ZlJYMTFUdEhhckN6aGZDSEoyTXNZeDJkeVpCdXc4cnhad204MEorMk0wWGdGVFhtMnhObXRLVGtpekQ1WUdUNmZDZVdlUmlrUC9PbVZwU3JhUFN1NmtjZGc4T3hjM0p3NW50UWJpQWx6MGY2QkFIYnQvcitnZ09WN3F0Qmw1RDRIaXNxRjlKWWwzb2tqSFE1ei8wNWpPNTlFWVExMUh0VE9pL2xXemwrcHNMS2ZzdWdlc3VFODdkOFA5MWlRNmxFRVlLQy9Lajg5VlpQWC9PbTVDL09xcVUreklqelVmNmRvU0Ria05DcHcxS0JBTll1QzFEdnZRbms1ajd6Q3IvQjMzRnBTZ29FMEZCM1A4SjhFZy9aQk5HSE9hL21zNmtMbkNhcjYxNm5wN3N3MVQrbldsU2hYME81UGNoK0d5akFydWgzZlVlUGY3cDV1V04wc294OWYzMVgzYlVka1ZzeUVrUGtMdXFYdnAxUjJYMkpmOWM5UURMSEkxM1laQzVybDhVMWhVcEl2ZmNCUkw2YkpNZG9qUFVNczY0ZXJDQmpDckkzRUpxYTVwUUtMY2NHVkF5UURNZHNYRFV1emVBQ3c0cXFRSTcxekxvSEp5ZU1NSkthODhZZEJVOERLVDJBSGlqby82WlpabWhZdXl5QUpCdTY2S004WGZkaFJuVmIxc3Q5NUpoQ3dMNmMwejBESGo4M0lzQzJQZjhybWxJdjZzOTFuRVNLL3RWVGtpQmttejVRZFEwUlorWVdiUCtWZXVMclMycEs5S0luaU1xTGFUYjhkK3E5R1MwWkRnbVdOQ1pNVTNsbWtGcy9rekh0OXcxTzFUMmlYUWlwRFVVMU5EQkR1YjBONzY5RHVwN01iRHBxL0kzeEVsSjNJMnhTSDArSDBkZlR5ei9VeUg4U0pJUVlHZmo5b0RldnVvQXExMVdEVUhPUFNiR2t0Q0txU05WQUNxQndxcTkrVFBGQTFqa1VpSERyaHFlS1R1ejk5OVNWU1BXOXRGcFVHZjV6b1o2TTNQQVJ4RDNlOGZFQWJveXVBeExIUVZMdXA2TDZwQUZxS3lQOFR4Y2RBWHhxZ0t1MVdjSGNPSTR3OXp0c1l1UVg3NjQrSkdxdk1ZMEFQcmFQMG10UDFxV1hmNGhac1NLRUV1dU1VVW52NDVFTTVUMUVyeVR4aWwwZUlrOHliVUVmZnU4R0Q5WCtiYkFtUWdacXRTOEZWUFdrWUU2d3FQc25oTzBRTlhLbUluVkViNzVuVURtZnp1L1ljblhQUDZXdVJLSE96V20yTmpoV0NJTkpmTXVKcGdGdG8zN3hja1NTMmFPVlljeEtadGVrWnJvejhBeld5ejUxNDNPbDZka1pab2pOenJhREs3ZTJkZjhjTkt2NS9Za3pXdjh3Y1ZacmpSVUlIQUk4MzUvNlJjeU5tMWNYN1RGQ1NHTTRaMHN2SEtNWkpGT2V3U1gyR21VUVBnYjFkYmNnckVpWUxoekg3dEFqREdEVWpsVFk5RXhKcWNKZ09hVE10M1lIMC9Mck54aE11bWpiRm1kZzgzbUkvQ2J6V3JSNGR4ZDc1cStwSzFGejUrNzBHdG9mWTZER2tWbWtJMDdHL3FKSTNsVkFrckF1Y2lHVjFkY09RdHNKQ1ZuV0RGSi9KOUxmZ05kOU42UkxobHhFeUhUWkw0YzR3L2RVNjFDWnF4cit5S1d1UkZYTzlHemRORFEwdG5IOVF1UEpQRGhId1ZmZHRSMEpUUWRhRTJlU0gxTGxuallvN2NmRlN2VWwveEJJeGFGTkZBcFYrb2YreFFrZUtNb3YydGlDY0hzL3FqaTA2YW1pTDhBQVJNbzc0TEYwOE55QzFTOWRoekNMK0t1Q0FEWlVIMmZHZ2lNR1RZWUl6Y3NkbzFVa3BUTkpJdnpHTWlhVDRWQlIwN2JpVXpNb055anN5aTM4dVlBLzAvSVNNV25LS3RGUVUrLzlFOGpDSkRuR0VESlBNZE05cU1kVXVuSkRYMEpKYU5vU2hmTGNwQmt0N3dtODMzZm1hRVIxMkd5OEhucmVlNTBXTE0rNEF1RnN5Q3JSOEtDaDduN2dKMGx5SEVhUXg1azkyelpvTXFTK3RCM2NIYkQrQUtEd1hQcnRNTE43TGpFY01NWmtiRVV2Y0pSNk1Ga2xHaTc0ZDFjREx5Yk9vT2ZTNGV6UEdENXh6Y3V4Q2FRNDk5Sy9mUEtpdHJEUGRpUHBLeEVjNUgrcStKZ015ZzBLblZ0R3ZVSktFZVpqVWNqeEgrc2NrVldpNGNMYVpRRnlnaGNDSHlUTW8xeFBsZXZTZ1c2NkthLzRpMEJLbHVTcWV4WEhOc0wyT3pKWmVERU1teUhkbENzLzdBRGV5YlI4UUhibVpaVm9PTEh5L3MxZ25ROUo5dGlVbjFQbEd0aTlIRXRUWG5vMlBmWlh5cVp1Mmlud2wvUWJIRDd6b2dpSlAxeDlNQ0tVbDV0Vm91Rkd3NUxYSTBlNkU2MEtqa0I1bXVuekJ5dzJraUFwSGxXUTF2TFhXNk9QVEd2Njh5S0Z6NjUvd25Gb3V1VUdEU0d0a0VJOU1VRXJPeWNhbGpRc1hnbVM3RWkxRTh2MkJOTVc5TnZweXZwbkNvOENUZkhRbkQ3Zis2aTAya3dtOHlMRXBzUG1qSkhBOWt6TGR1UnFWb21HTFExMXQ2S1NiUG4xUk95Mm4vYTNHYkZTTnpoVmllMTFuTk5iWHN0a3IwVVlQdk1pTkVVWFkvR0tXcUpaSlJxK0tDUGxDbUJ0NGh6Nk5TcGQ4L3ZUaUtUdUZrdURJWW54NFNlQ29tVGcyMDlQYWw0K1BHTCtSbHhuWmNRSXUxaFpKUnJPcktqZGpSVzhnT1JIODJ1cGNtZmsvWFI5L2ZnSndPZFR5NjJ2VDc2Z05YNlBrOWxTdHdubWhvYkhHU1BWb2t5TGhuYmFRc1BDamlsTEVsYmYveEZWcmd0UWZnZmt4c2xoUjNVRjB4YWN3TE5MMHJJZ2tDRFRTZGxTM0t6ZDlHVHBKK0tsZEJGOFA4T3Y4VXpnLzJWV2RBQVJPVExUb3JtanV6cXpQZEgrUUwzM1Q2RGZUcEtqQ0dOV01XMUJXbzQyMDV1WDZGVkJFM3cvM285Ui9wcE91M3RxVkRtNzVabmlNWm1VSFNnaXZYSEczcGEyNVkvdHlpclIva0xENGdlUkpKYlR3aEhZek1ONFBDazkwOGloc3RNSFNMcE15ZXNNV1Y4YVNnRWt5RG45S0w1OThoa2ZabnVpL1FyZmJoZkNINUxrbU1uZnR5VHpjN2VIamk2bUVYOTR1RThSTXpqSDBWTnVIeTdKdUt6eWQ0SHM2dHgreGRwbEFick1oVWd5NjJtNWhhcnFpL3FzYTdnY2tGTXEvN1Y4YUpUWjk4VDRUd01aaDZTeGhOOUQxb3A3LytPNTJpMFlhenF3TFVFT1FlWG55ZHdULy8ybjVJQU02VENxRzRWeGhUbEZwdzlKMnpidWhzd1BDZHJWZWhxeVNyUi84c3lTZnlQeU5Vam9hSDAwWXExaTJvSzRYa3pMUzhlZkJoUU9tbnhwb3YwTTRaSUpUVThYWFFsa3ZNU3U4RmJaK1cxdlFWYUo5bC9xNjU1R3VEVmh1akFabXp4SnZIblBNQm5LOVdDZm5qRmEvN1RqUEZIcG43V0h5Tkx1LzgwcTBmNU12ZmMyMENjU1o1QlRnVFBpSkF5UFRjNjlPRGM4UFg2d3ZBenRvZVdaNGpHK2xlTnZNMnJWSytSa1dvK0EzOWh5OS9pWnoyNjI3dDhvK2JiTDJXVk5Samd1UVo2b0QyWFRNNDVqc0t6Smd5OWFla1QyckY0WmlMcXNrSm50VzFsOGN2ZnZpbFVPOHFrdVM2dUEvdTlMcWR6aXJQTHQ4UXlWVmFMOW5SVzF1eU1XRGE4Q0pYM21UK1BzMEw0a29rVGZHWmphOUpib2N5UUROMUlVZUtVODJQcUxubi9MRHVmMkphS0RNKzZ2OTM2TW1ndEo3RFdvQjZrZlFSQjQzMjdaUDVuT2o0b2tzNnhJeHVGTnp4UWZsbUhaZmNWT1MrVXl1WWdvMTJyWm5taXdrU2d6KzRFT3VyeVh4dHFYcUhKL0M5VUhFMldwT09pakV1QnpxVmNxejVSZXNDbXRVNStiVnhmOXFyTlRsbVEwNXdoN0Fyb3o3WEw3QmtYMHFvbXpOc2NjSmMvMlJJT04wQ05Vb2ZRcmlIQ2YxTmM5QkN4TmxQeVZ3OTg5a1RUR05pR29UMWVFOGVkdDJhYXFHUndaQjRiVEdhUGVDRGRPbUxubDhYaEpXU1VhZEtTbjVmTkJnOTdjanNJYUlHNDhwU1BHdC8xUEdqVnRtVmpRK3FkTVJCRGsyVXpLb1h4aHc1TkZReFlSSXpIcW1UQnpjOEllTXF0RWc0M3FzVDErY3d5a2I0UzR2T2dKa2hPOGlGN09OOGJtZHVFWTBabXl5Yi9DYWprak0xZFNGcUhNbEFnRU1jTm4rVjNvVUxoeXdxd3RpZmZqeUNyUjRGSlpNd0VrK3FXd3pGY0h2ZDJWOTI5R2RRWTlmQWVjUGFrSjBEVG13SnIyVUs2YkNiUGEzMEF6QzBrak1tdzhBZjFIMVp3NGNkYm1oL3JLbUZXaXdlSzhtdVBBV2cyOVhmUEtMVlJWWHphbzNrd0JHaGUvaGVobFJFeURwaDY4SWVXaUFvRUFWc1l4ZkVSUU1oelNDWnk1Ym1YQm9McE03b1B0b3R6WUh0ajh1WW16V2w1THBVQjJkVzZncUhCZGovQkpZQ0p3S0ZpSEpNZzVFcFZIMk8yOGkwclgzMUZhTWRKRk1IUlh1aWRUKzZSKzhUTlV1bTdKdFZtM25UWWg5U2dpQ2k5T21kWGUzcCttQlgxVzRSdnBsbFBJeWNVK1RkRjBvOVgzbC9XcS9EU1VHM3pnNE1xdGFVWFRTMTJKUEI2TFNwZEZ0dmRLZ0k1QnBBRFlBZnd6OHRNM3dpalFVZVNZd2ZtZ05YaHZuK211T21kTWJ1Q0xhWlRLZUNqWFRkNElmYUdqVTdySTdNelNET0JuL1pVaEtVSUhxcThpOG1mUWV1ZU1MWDhKOTZEcGsrNkQ2eUptZUhJZ29Ua3hLOEFpcWQzWXhzVTNENEpBQTRHNmozcmp4aFh2Zm1MdThhV2IzNW95ZGx1ZlgxbWp0cWY3MitqNDg3WnMyL0JVMFZlTm1QU3R4WVVkbG8yM1RWQysxVjg1dWxGbG14anRCTk9xaEQ1MHZyYWxxYmNQdlV4SlY0a0NITkJLSkxIWHBwcUNGY0R3NXFTdmYvUXlmUFR5dm01MzR2bGJFb2ZVVEkxbEF5TElJSlB1MEN6MUY4cXlEWnZ3R2FranNVTVBHYVJJZVZrT0dOSlZva0RxTmNkNUlZYzlHcWNuTXZ0OVQ1UmxjTWxrT0pjYU9vaDJZb09Ga2hmSEtPYS9waWZhVkZQNkNZdlFKQTJ4STJRYjhlOUp0UnZTREhhOWY3TjVRZEhZUUU3T0VWYklzZ2REK3NGQlMxdFRXdEpNVjRsU2p3Z3VvZjJ2SjVKNEswbldmaGdGUFQzOGJzZUZpbnBDYWgwSkFnWnMycm16eWVWNFdPdzV0emp2OVNVSnpyei9zNm1tOUJOQnRYN1VpY3pFc25JUnNOdEZmVzdIeXlqZmNYcGIxaVFybis1d2JuTWFlZmUvbmdoaW5SOEtMVU1neHo3RDd5NitVMkVGeEhnQkhTWENQS3pBS3h2bmw2WVlOV0wvWTZPcjlBc2gxVmNGTGdMdCtSRVY0R1NFMy90Y3hkOU1Wa2U2U3BUNkYwbE14azdDaDRUcDE0MkJuaGJYRVVRT1dDWHkxemkrcHNoMVNUTXBVeXk3dFZJOUI5N0cvUHFhc1VXV1dNOUFVbC9jTmtSKzNGUmRjbEtpRElQWEU2blY5eW5MNFlUVkVUOUNnZTNBVkNLZGpVMlZINlNZL1doL2UwbkdUZzZIS3pieWFvRFNWTEtLYU1KN05ZZzlrZXhmU2lRUy8yYm1kQjJRODRGTmswcVBKMnlpbENMVytZTW16SkFocVYrVGNOcUdxeWZFOWRtZG5oSnBPajBSY1gyZURWdFU0dlZFcmF4NFlNYytsMlVmWUdrb2JvU0h4TWduQjBlU0lVUlRqUkFJZ0RHMnpzbHhFOUpzOWFNME1nLytBYlNCSlo2ODcrNXpLZllWbGtsejZWNE94T1h1dE82QjJPd2Q4ZjZlbmhJWmswNm84c1BUcW52SXNXS0RYWWxrSEpwOXVHT3pTTW5NdndmcDV0OGZTT2VhdHU4SWpuNHZYa0o2U2pTaTZ4MFNSN1h1emFUSWl0ZitnY294c1gvVHVEZnRRS0IwU2ZQN1FOTDlqeDZvTVpMUUFjcitpbWc2MXlTL09uVEplM0Y3cnZTVUtEdy9TUFhFb2hEc1BDS3Qrb2VLYzY4WmhSREhYWk41ZmQ4THMrK3dqRlNUeWdhNnlQOHJ1MjlUUm9HOGhqTmxoYzJQb2tsRDFRQWc0TE1wMzB1VW52N1pJT1UvS2VjVlRrbTcvcUVnci9NNElQYWthU2g0d0wwNFBabDRYL1BybG1XbWcyeEprdTJSdG5ITi9RcXVQRndSRDFhZ3Erc0NFZjFkNGt5c0U4dE1MZlUyYjBxVUpYMGxNcVR1QVVZNEsrMzZod0tWZUE0TjMrUFpKUWZrSGxGUEppN2U5RHRzOXNPQTI0SFhFZHFBSm9RblZlVmNaMTNMMTQ3MHBHRzl2NTl4OEkrM3RwV05hejFYUlM4Qm5nZjhRQ3ZJSzRKY2Eyem1zMldMTjcyVnJJNzBqeXRNZDUrTXBha3Ewazd5QzR0WTRSbStEK0YwajUzUmJldUkyVFBSeDJoWVBQaE9SZlpqUHA1ZjdMVGJ6SmtpbElHMkdqRnJTbXZUYy9ZNEdDaUl2N3I0OHdqSFlSaUptby95UXNFWHhpL1praWltVTc5STM1U2phZGNybE9kdkp6WEg0S1BZM1Q0ZFNCSzVZSWdadGVWQ2tEaWJqaVpUdDA4SFBPdmNCUVY1NU5RQmw0R2E3cFdta0ZyNDNTV3JnaEthTjZsMmMwYmVmdnFMdjJiOENYNDFQd2JDcTYwYS9rK256YmJUN3k2K3U2eXA5UWV5SXRvTmNIOUpmemkzZGxrQVNEeUdqRUhucHQzR3ZtTDJ2TkdJeEhQSzEwRkhYc00rbDJjLzRLTzU0d3J6SlBmUHdOZUk4LzRvT3QydTVoWGZvdktEOTdWc1RUV2xaNnRsL2tpM0FrVXpTaEdQMytsWW9aNkI5Uk9TV1dXaUQ2V1Ird3lxYWxKMkdyaFAyWlh6ZmVKdHNpcS81b1U3dCs1N2dZWS85cnpjbjZDYWROVlZ3WWtWL0tVT1pEaUdQbGhmTTdaSTFQbzEwb2Y3QW1HV3Y3M1lQWkJ0WjZaRTI0c2FTWDAzWDhCYXdqNjhvU2xSVlQwRG9UcE9pb1dhKy9hNVBQc0JUYTdpd3dSbXA1UlpPV21UZTN5OEFHT0RnazN6NWdKeGJkdGlrUnNHMGlvOU15VjYwUk5FTmVHNmVRektHVlM2THN1b3JjRmd1dnRrVkg1RnZHVnQ1UkZXMTc2NTc0VWEvZ2d5bFhRYzRzcytEYTZjVGx1T1RXMmx4L2FkTFRVeTE4Ykd4WTlUV1gwVnlOa3A1UmNXTTkzMUdxdThiMlRjNWtCUVdYMFdscTZBcUpBbjNiUmk0NFo5TGRMK2dvaE9TQ2UwcWxobVFpcjVGTVJmVXpJVFpiYXFUaEVocU1vYnhsZ1BsOWR1VGpWNlhsbyt6aTNSbEdSTGhmNU1zQlNScTBqMWVJUXlEb3RuT2UvcWZUN2hqQ0JVdXE0RmVZNzRrYk1WbFcreHlwdHdVKzIvSFJWSmI1NG9WcC81Vzl6RjVmNGF4NTlRZlFyMEVoSCtCemhGaEhtcTVxOCt0K05uN3k0NHBPOVQwa3Bhc2hsQy9mTHdHbDFYZjZqM2ZvenFSYVR1U3N1SnNhK2hzdWFFZnJXYkxsWHpQMDJWYXpWd0YvR0djQURLYlRUV1BiVlA1ZHJQRVBUUGFSWkl1cCs0ZVVIUjJJQ1lGMUFTblJvVjRCdWp6TFpmSkVqZm05R1FqbXlkT1NIOWV4cjVrOUwvcGI3R3hYOEEvVEtrSEliaklMRFdVT20rR285bmNGMFNWeTBxcHRKZEI3WTMwS1JqNXAvUTZQVU1xaXdIQUdYaldsOUNVM09QTE9CaloyNVNUNm9kZG5Oelh5dDk0Y3IwMG8ydTRxUWhWOVJZOTVQeU95Z1BEK1RHNjhDOHhBMkxWNExPSU95SE9oWHlRSmV5dHUwMXFxcG5NTkFyZDVVMUoxRHBlaGdOcmdkMW9jbENINHFYQnU4OFVyZE8vNjlGUEZpSWZvTytqVlpES2x6bFhPWkxtRTg5MkVYbDY2bTJiZlVSQzlaNTcrYTNCZjErbnhVSjY2eEF6Z0FGV082dWNpQ1o3am9LaStVUXp5STZLZjhCV1k3SUN1cHIvNVYydTZkNzdJelpmREpxT3crMEF1aDdYMG9JQUc3cXZRK2szZDUvT1J2Y0pTY2ErRFZvdklPTXJVYjF5akp2YTlMTmFwOTcvT0ZnL3AxR3M1dWRkUzNGZldWcWNwZGNGMUdtbUhtVUtuL0ZGcnBvd24xYjFxZlJicDhNL043TjdIbWoyWlZ6RDhLY2pPb1gvS2k4Q2ZvNjZBY0lXd2l4RFdFYnhvd0F4b0kxQmloRjVRamdNNFFQQU1aNjZrbk1ld2lYVXU5OU5XMzVzZ0N3empONVJPN1duWmVJeWpraVZvbXF0S255eC93UndmOHR1ck90ejBtK3YyYjhDYXJtYjZtM0tGM091dWFVM0xENUZwVWZMS0hBNVNESEs1b1A4cUdLcm5MV3RqYklJSXc0Qm04RHRNcDFDaGExQ01jTldodnAwNEhxdlppT0gxSy83SUIzeWppYytYaCtzZE51bDNUczY5NTMxclVraXZrMHBBeTJGWUZRNFo2RjBldFF2akRJYlNXakErRkJRc0U3V1gxL09uNGlzZ3dpUHJkakxmSHQzT0xoZGRhMURLaTV6a0N4NzB4eHpxczVEbU45RGJnUWlPL2piZUI1QStFaDdEbVBzZktlZlIxNUxVc2ZOTG1LcDR2SU15bGszV0dGUW9kUFhMSWw5WmlaKzVCOWI4ODJlN2FOanJManNjeVppSndHK25tZ3p3bGppbndNdklyd2V3ZzlTLzNTZFFOVWI1WkJ3dWQyL0JDNE1YRU82VktSaXliVWJrcEYyWWFFNFdFVU9tUGhKRUxCVHlGbUNuQVF5bGl3UmlFeURtVjBPQ1FqZWFpR28yR0x0S0hhREtZVnJJOFFlUmZzYjFOLzd3SHBhUEZBeCs4cXVSelJIMmx2MHgxaHJSRXpmN2o3ZHhnZVNwVGx2eDZkamMzdmRKd3N3aWRVSldpTXZGNVd1eWxyQ0p3bFM1WXNXYkpreVpJbFM1WXNXYkpreVpJbFM1WWtoSmU0cTl4WGdINmFrSGtzb1grQldkZVVFQXdzQlBrajlYV1orMlNycko0RmNqcm9LaG9XcCtGNmE0ZzUvWW9SakI1M0p5cGROTlpkbTFLWkt0ZEJ3RHlRMTZtdis5V2d5VlpSL1YyTXlhRytybSsvRjVYdWhZaVdZTEdOUnUrUFNHU1FPZDE5TXFwVmhBSjFySDVnNHdCTEhKOEsxNjBJQlFUTXJUeFhtOHkxOGRCVDVib2RKWWNHNzNXUjgwUjZJY3IxaVBYcGhJVzZndU5ScmtjNXZYK3RtOU9BYWxTR2syRnEzOWhMODRCcVJLOU91WXpLaFBBOTAzaHVpZ2NPa1dwVUY2WW1rMTRWZnRiY1RxWDcwb1Q1TE9zNGxPc2hiOThGYXhPK0FWU1RHeGorOFg2VmJ3RlhRMzhjbFdTSzZBdEFCMklONjEzb0dISjJkU0RtVHBEaDZ4STVkZHFCQXRDN21IN2RLbGJkdFgyb0JRb2pTeEVkaHpWdy9nLzJCZnRlaWVxOURjRCs1MTMwMlNXZGNNQjRBbnFiY0lpY0N3aDFmUTlJYlhnNjJEVFUvV2lvUmNpRS9pblJ0QVVUTWVaRWJPYWZyS3A5anlyWDhhaCtHU2hBNUhVazc4R1lyOXgwMTJFb240SFFQNmhmdW82S21yUEJLa1FETDhVZGU0Y1ArVTBEL1ErTmkvZDY1NjkwbndnNkhXUUNhQnNpZitEWWdsVjRQRlpVK1lxYVV6RTZudnE2cDVtMllDekd6RVg0SEFZUHE3ei94N1FGZWRqTkJjQlJJR1ZobXp4NUJmK3VaeUl1ay9kU1dUMEw2S1JoOGVvWU9TdmNGUmltQW1PeHJMVjA1aitTTkpyaHRBVU9qTzFDMEVNUkxRSFpEdnlMa1BWNHdtZ1VWVFZIZ25VcHlBUXNhd05xZjRUVjkyVVN6UzhQWVNIS05FU3JxWnIvYytxWHZwMXk2ZlBjbjhOR0JhcGxvSVdJdEFCL3dyZDdWY3c5MnlQN2duUEJURU5sUEdnVHFrL1F1SGh0ZEI3M21hQ0ZjZXVwckptQWhDN0JraU14MG9YRmE5RDVheHAvM0JhVmIvcDhKeUhieWFqdGRWYmY5dzRWMWNjaVhBb1VvT1pOck5BdmVIWkpmUDhLVmE1VFVEMExwQXhoTkpac0JIMkJSdS96SkRuTTF6OGZDemJiL3lBc3g5S3BWTHB2UlBrYmlBdms2eWhlcks0M21iWWdPbUN1eW9Vb1QyQ1pjd0FRclVSWWpzbU5mNGErSS9mQ2NMcVpCSVFuK0pXdVg0RytqTEFvWWdWK0Nhb3IrWHZibjVsMVRYVFVjckZ1UlBWQnBpMFlpODM4QWVFTzRNc2d4VXhiTUJHYldZdnlHTXExcUZZQmkwQlhVSjcvYnlwcW9vTURpendPOHZPb3Z4MDdKNGNxMTVPSU5xQTZGMHRQUStRKzhqcGVBejAwN2pWVnVtN0daallnZWovQ2JGZFpTak1BQUIrUFNVUkJWSkRQQWhjRFM3Q1p0NW0rSURacVg1VnJIbXE5aHZJZFZNOUN4STBKdlVHVksvRzhKaUZpSXA2YTdnQnlVYk1rcFdKblh6K09TdmR6R1AxbnhIbm5PU0RIb3N4RGVZTHkvTjh6YlVIMDZkUFpubHlxWEUraTVqbVVCWWhPQjI1QTVGV3FYTkU5dStvOUtFOHdhZVNvcUw5WFZsOEoxanVvM0kxd1BxcFhJZm9Ba3ZzMjU3bStHSlUzWkRzdS9MNVlsVlM0RmlIeTZwNTNVclFXbTNtTHl1cm81ekpqNFNRcVhLK2l2QVJ5SGNvWFViNkE2RUtFMzFEaC9qVko3RXdIeU51T1ZvRGVpSEk1T3dwSDBER2lBT0ZlMElPeG1aOG1MU3I2V0tTT0w4ZXZXaThDdGpDaUlMeVNOMmJjSThDWGdWK3plNFNEQnU5bnlQZVZvMUlEbkVBZ3VEeXVGeUc3K1E0d0JXRWhsaHpEdHZhMUVkbU9CUDBSK1lGeE5IakhZL0lLSWkvSUp4SHJTZm95MGkwZitRT1U4eEhXRUpDRGFQUk93ZVFWQWM4Qjk4ZmtyM0JOQjI0RDNrYmxTQnE4azJqd0hzMk93aElFRjFDRW1udWp5cHpuK2lMS0VxQWRJNmZRNEoxRXZtOGNJdDlHdVI4WW0xVEdSRmg2RitnN0lHZFQ0ZTQ3SFAySWpzV2c1Nkw4Rkx1VTB1RDlOQTNldzhrSk9rSHJnVk93MmI0UlZhYWovUjZVODFGNWhwd2NKL1hlQXRSOEV2Z2J5dTNoM2ljSlZlNlprUS9YZHRTY1E0TjNIQ2F2RU9VbVlEeUcrcmkrREVYUFFmQ2dlaVgrM2ZtUmQvSk9ZQktZbjBYZmg5Q2o0UlBZNmtGMk8yajBIa21EOTFQWWJKTVIvb2JvUlZSV1Qwc2s0a0M1ckpxRzhsVWF2WS95b2lmSUMzZHVwZDU3TGZBV2NCcFZjMFltTEJuMmMvQi93R0djNS81Y1ZGckYzRUxnTEpRVnJQQjBjVjcxbDFCbUEvOWtSK0ZsZTV6T3IxZ1Jvckd1RHVVUjBOTjRaY3U1dlZySlI1bUx5Tm5VZTJ0WlhmY2EyM05Ed0ZTZ25ZYkZOMFZDYWNLcXU3YlR1UGcyVkg4SS9JbFpWeGNsbEgycXV4elJHcUFkN0Jmd1hKMS9ieDNldVNoL2lTbGo1TE5BRTVaOGpjYTZ2VkVIWC9RRXFmY3VCdjZCOGtWbTErejEwR3I0RVdBUStTYXI2djY4NTVycjZ4NUN1QVhJVFNoak1wNWQwZ20yYXdBUXJlUGNhMFlseVMyRW5mLy9nMGJ2WEo2dTJ6djVYM24vWnF6UWd2QXYxdFE5ZjUvcG5venFQS0FWcyt2U1BRY2pHMnMvd0FwK0diQlFYWlN3eFdQbjVLQzZHRkNNTlkzRzJoZUE3dnY3UTBSdUFjWmljbTZMS2F0OENVdG4wN2o0WWRZdUMwVGV5UnRCWGdjOVpVODg0WXE1aFNpamdBWWFGdDhhNVRiZ21mdldZM0ZMNVBLbnhyUVJZYUNVNkEwYXZhdGlMZ1A1SjJDSDNOS2twWVZmaHFYUmk2T2x5N3NBeUVYazErRjg1c3BJMWN0NDBSUEh4NWlFNHlDSnpPeVZrSWZ3R1BWMS85anpsN1hMZ3NCT1lBd1YxYkZIbEJzWDMweURkd0VyNzkrY1VPNWNuUlZ4eDdVeXpsa214ZWoveHBTcHI3dWRCdTlFVnRmRmoxeXQ4aDVnWTNjb0hETnB4c0pKd0VuQVJvNHQ2SDJQd2VxS2JTTWRHbXJyRVJxQlNlUUVya3VTVTJud25rR0Q5MWppelEvQ3grNkRJSHQ3aGFET0JteW9QQlRqMHlLYy8wbVF6U1RxN2N0R25RWk1BdjdHcWlXeC91NnN6Z2ZDc3VpRk1jTkllSXZWaTM4VGN3M29Qd0FiVmtmNGRIWGpqOXRvOEI1SGc3Y3EvbVhMeCtHU2t0Qno3OENzemdrSi9HdHJlTkpubVdSZk9BaGFqMkV6SHVCUzREdDBQeVMxTGtiRXo0aW1seUwxUlR5bnlxbFV1U2JIcWFrTUJZU2pZa1hSMy9iK0M4SmprUjdxWmFwY3Z3VmVRZlZOck9CZlV0cGdWRDBHQklUNGszc3hINkFKNXFOVjg2ZGcyV2NnMW1kUm1ZVEJqbW9JMFNNamdhbkN2WGN3ZEV6a0ZYc3ZadEVFd2k5QnBXc0xjVnhFcFV6UWNtRXpaeUZjVDJYMW96UXNUaGJ4UTZpb09RV2o1NEIrR3RWQ1JHeW9oZ2dyUTg5UlIvampaRFMrdzhjR2Ivd2gvQjZzYnFmejhlVUpYM3N6VUVvT1IwQ1VZOGtFSVNLMUxSeW9wTmM3ZWJySHpxaTJzekNjZ2ZJcDBER0kyRUJ0NFhmS1N2Z09ENHdTcVNiM1g2QW1lVHZQTG5tZlN0ZGZnUk01ejNVQ3E3MS9vMnBSTVJvOEhWaktpaFhoeUdaQzk4YmZLV2c4YjVjSzhBSG96cGdreS9aZXpOOUdtRVhzdGdMQUhKUUtvQUlFVEk1U1dmMHF4aXpjTTN5S2k0U1B0YXZHOTk5dEVmdlN6NTV0WTVmemJwUnFSRzBnR3hCNUg3VmFRQVNOZkVBc1cxaDFSTWVIMzAxTnB0U3g3YVREczB2ZXA2TDZYa1J1UXMzZFFPK2VQRXhselFTd2xvTjFVa1RPZjRHc0I5cEE4Z2gvbUhyMEtsSVVmaWFTbWNXRFJNb0wvaVM1bW9CU1F2YmVZVlg2OEtraGU5L0pxcG9qc2RxV0l4eUJFZ0plUTJRanNDdDh5am81NFlwMGp5L3R4Rjh6a1RHUkM0cGR0eFVaQUY5ZThoam9pUWdYQTM5REF4ZUdMOVI2dkVlbVRtQVU2Tmw5ZkMxanlRbkdoaGhjVWJzYmNERjczazEwNUp5T3BjY2c4bm5nVkpBVHNQUkZxbHduSmZSUHA5S0ZLS2hKZllkOTk0VHZSdVpSYjRQTXBhSHVqL1FjSGxXNmZnRmMyYU9OUVBpMWxIaE8rTHZwL3dsbDAvRkROUDh5UkdkUTVaNEdxbEdEdHRtemJleldSdUJvNEplbytTNk50ZEh4V1N0ZHZmek5XWjBSMFRKYitJRGRRRGdZUW1JS0FKRGVIODRVMzhtenJ4K0hkanlITUFHbGxxRGN2V2R1QytFNWsrUW1OVUV5RVNFam1TU0p3eEJyU3ZnZmEzQWlhZ2ZrVjBBWGhpK0hWOWZrWXBDUHFGK3kxOEdmRW41b0VsbnVIaWhXUExDRGVtOERqWXR2bzhFN2k1QTFBWGlFOEVjbVhpQ3dNS0xkN3JjU2hPbUk4UkFxb09FSnVKZ0xhYWg3a2RqNVJiVDNXTU9IU2R1WVBXODA4YU5jcEVmOXNsMGc0VW0rcWhkTG91Zkx1OHEvQ0hvMHlyL0o5MTBlbzBEbnpTc2pSbGxNT0k5bHhYOWVGZTd6bWU0NmgwUWZBZFh1MFVPY21Mb1FXWVYxQW9yWTB2dW9kak5pOS9uQUJJVGYwT2hkR0tWQUFKcjdxYjZxNkxhZGV6MzhteWFMTlhSZUpNL2dlQTBOR3h3K2oxTE9xMjBYQUtlQzlVdDZ2bVJDZUtKb0VYKzVzV3JCYVZTNmZoUFpGRTFPUmZXeFZMcCtIUEVGSHMyelN6cFJEUy9OcXlZT0JhT1IyTFhDT1FseVJBK0xUcjhpai9BTDMwVjliYXdMM1FyMzRkREwyZVVJc3haaEszQVlNOTJUWThwMDVFeG53SHlxMXowQitnSndLS0xmaWtvekpqd1JGOTdZTTd5T1NyZGZIdk8zc0lrWEdMa3dKbTEyVFQ2aUQyRnhGNGsyTW9QeU84Sk82aytPV3EzczVoOXRad0VqZ0w5azdLUkdwVHo4YjRKNW14QjdYYjBJMy95Z2VRTG9RcW1nMG5Veng4N1o2d0QrZEkrZENyY2J1QXpoemFpZVllQjVGQURoZnNDR1paWkhwUWJrQWFBZDBmbFV1YUtqQkV4M2xhTG1KOEE1V0tadlYxazIyMWJnbTFoU1I5WDhLVEhwUnJyM1RSSUhKVHUrOExmQVc2QkhVK1dPM2grcHJMNFNpRmJRRngvcUFONERjcWx5UjRkaW5IN2RHRVIvUVhkUUFKdUduOEdLMnQwb3l3QWhxUGN4ZS9iZTBEQVYxWjlCdVpmdVljOUFvS1k2NHFjODJoaFp0TnRIK3NtUjNtOHZGZFhIUm5xeHpxamdBZHNMZndQNkRzcXA0U0ZpRHpxczI0QXhvSW10MjUrcjg2TThDaFN5eTNvZzZyMmN0c0JCaURwQVVmcDJaSitZeUFLRW5NM3BudWk1ZTJYMWVRZ1hoWDh4Q1lNaTJQY0lXK1c2RnFVT3VJM3kvRVZVdWw4SHpZTzJ3d2gvUFRjamZKWEJqSjZ3WStzempCbTNGY1VCdkIyekRQeGNuWi9LNnErQVBJbFNUNFhydHdoL1EzRmdjUkV3RHZoMnd1WGpucXlxZlkrcTZodEE3a1p0LzZiUzFZanEyd2dHNUxSd3pCejVpSURjbnJBT2o4ZWl5djAxVkY5RWRSbFZybk5CM2tiMUJHQXFxdFdJTEk0cW85eUVzQnpWcDZsMC9RU1JkMUFtWW5WK0hlRmZLRDhIcnNXaWZFK1ovTUQzMloxek5qQ0xYYzYvVXVGYWpUQ1pzQ1BNNXhBS1VBWW01bE5qM1grb2NIc1J2U2I2Zm5uZm9OTDFPSEF4dTNOZW9kTDFJR0ZEMXVPQnkxQjFJWEl0Y0JBZWo4SGpzWGpSRTZTaStrcUVGMENmb2RMMUs1UVBNWnlLY2dhd2xueGJjbXVKb0ZtRTNUb0I0UXJLUng1RGxYc1Y2QmlVUzRCU2tGdHBySHN1NCtzZDZXdGt0L05sNENSR3Q3MUVoZnR4ak83RzRqVGdmRlF1d09oSzFDcFBWTVhlWVVDOWR6RWlGY0R2Z1JHZ3B3SC9RemlNeGxKTTZLaVlVSkVxbXlMZGY0THhxTHdEK2dJYTJtcy9aK2xIQ0dzdzRvdkpIdjVTM3hjdW83VnhxMnhZdkJwTFRnU3RSemdWdUJuaDByQXk2YWswZUtOM285SFhRRjhnWU1XdTJOVXZ2Z2UwSW16dXdibUkzQVJ5TFZDT1VFY29kSHpVR0ZsWkE3MDJVT3ZyL2dIV3FRZ3ZvbHlBNm5lQnlZaGNpcVhMUUY5QVpPOXlhNk4zQmFLWEUxNVZ1aGJWbjRGK0UzaVlFWVV6UUY0SjMxUFpPMlJhOGNBT3RPc3NSSlloSEk3d1BhQUtZUW41aFYvR2tyWEFIK0xlcjFqK2dwQjhOR0hML1Q3UUFQb0N0c0RlY0RteSsrc2dYcUNVY01DMG53Q2ZCNzJVeHNYTGdOV2dhL2piNXIwOVZlUGlsMUU5RmRVL0FsOUIrQjdLTWFEM0U3TE9qQ3p1ZE4vZ3RRaHJ5T25hdS9MNlhPMFdndVpVbEFkQUQwYjF1eWpWd0RwRVo5SlE1NG1TWGFRbGZNODFrVTNodTVIN0c3YWZXN0VpaE5obkVKNERmd2JSV3BTbEdDWWcxbFFhNnhwUm5nTHBiVnY0WitDbHBQZVJtZTZDcEpZR3d3TmhwcnRnd0dxYmZ0MlltQzQ5SFdaN2N0TzZaK2RlTTZvUEs0RjRDR2RmUC9UbmJXYTZDNktHVjZrd2U3WXRZb1dTK1dyaXRBVmowMjQzZFlTS3VZVlJRK1lzV2JKa3laSWxTNVlzV2JKa3laS1VtQW1lZWpBZmJ4bzNEdUNnMXEzYlpBVXhHMnNLOHZIY2NRV2o3YlpRcWxHWWRUWTJmNkV6cjgzcEN4N3A0VUR3VXpDczJieWdhT3lPWUNocWdwd3Z1WUdTQjFyNkRFNnRjOGp4NDh3cHh4ZVFaY1EvcVhvQW9TRCtPYzc4VG1ldU5jWHpZVWU2NVdOMnVuMWJpeXR5OG5LMzVPVGxidGs0MGZIVmVJVmE1amxHNWVUbGJ1bTAyZjZVYWtOK1o4bE1SZ1oyRnJXWHJFaFh5Q3pwMDJtei9hSDdPWGIvQkhQWjduTTdkdm5jampkOGJzY1BObHc5b2JmUkpnRCtrWTViR0JuWTZSOVo4dDE5TGZkUTRITVZmNHFSZ1oxNTdUdlREN3BOSENVU2xRdjIvS0pjMER0OWY4RG5kdnpNNTNac2I3bXVlTXhReXpJTWVCRmhSZVRuU2VCVjRKUEFUU1luOEk1L1lmRVpmWlRQaUNhMzQwR2YyN0Y5ZmMzRVdIT2RBNHdvSmRJNTVJQlVTWGhETWFCdzd1WUZSWmxhNEVaUlh0ajhURTZ1anUwb0dIbHgzN243emNHa0YwMzh3RVc1eFZuYmNsSGs1MEpuWGN0cHhtNUtnTnRCQzlXU2hxYUZqaWlmRG0wRkxkL1B5ZFd4YlFYTlA4aTBXWUhKN0NmUHdPbHRmU2NuVjhjYXU0azloNVlDVVJ1TC9sRWxaNkJhcEtvUElySWRPTGZUYmlvaGN2STBDZi95a0R0dWMxSEpib3BhRGwzeVhzeHhDZkVRaE5idGtOaE84TjBGaCtTTnpObFNrcCtqMjFJSjR3NlJ1WmF6Y0VKT25xM05jVmRydDJWRVNnZlVkQTQ1RzBhTkw4bXptNUJqVkV1emVQcDVMbWVBZUhmQklYbWp6T1pTc2ZKMmx5L1pPT0JXODJYM2JOb0ozTnprTGdrS2VvdFlQS2dlUHQ5OS9lRTVhMnZDZWVzNnorUVJvOXQzRkJZWHRHNUtkTThFOGxLeEQrdCtCaU5VckdUMXhTdlhNczR4UHBYbnBpRE5ycEtTenBCbG03UzAxUys5VE5jRWxMM3ZUdnc2UE5qWHR4YVhBRXphMUxxcDUxcEIxTUtDejEzeVU5Q3JqTjA0clpDZWorcVBnYWVjZFMxUnc3cm1lWTdSd1Z5MkEyOTJGb3c2SWE5OXgzMWdyZ0xOQlhhaStyOTVsblY5ejBXSERXN0g1d3o4WEVVYUp0UTIzOUt6dnZVMWprTnNjQWNXRlFnakluOStYY1hjMGp0V3A3K21lSkVpbDRUb1BOZXV1VWNwUEFSeXNNQ1ZpbjRGa1VLVXd3aC9CVjlEQ0tIODAxblg4azBBM3h6blNFWUZxbEd1SVByWVFidkNZemxkM0pESzVOdnZkdnhjaGFOVlFyTW0zTGRsZmU5MG44dHhNOExVdG9LV3MxSlpTUEV0Y2hZVEROUWdYRWI0U0hRM20wQ1dsUmMwZnovOElVcU5QWkc1bGRPYzNwWTE4Zkw4eTBOdTRWYkgyeWhUakdwVm1iZTFBYURKNWJoWWhPdFFxWFY2bXgrRjhNZHFvN05rb1JxZGk5SnRzQnNFZlZIZzl2SzYxaGNCbXR3bHZ4UFJjU2lmQmthaC9CT0RoYVd2T3IydGN5R3NoQ1BhZDgxWDRVcFVEMmZ2ZTdnTjVOZDVvZUMxUGQ4ZDM2THlnN0dDVDZJOEdaSzhPbU4xM2lQQ1ZZUS9sdHNSdk9VYldqeTlGOEVVeE9kMnpKZXdYNzN1ZTdwSlZPNHQ4emJmMDYxTWtmZjVqNks4VSs1dHVXUlArVG5rK0VZNnZtM2dHd3FmWWUvSWJRZm9TbXk1QzUzMytscjNET2QwTmpiUW1jQkxaZmRzYXJaWnJBUkN3TFRtZVk2RTNYSmUyODVmb2pJTFpRbkNUY0I3aUh5NzAyWjdZWjFuY3JkQ1lJUXh3T2RGclNpTGFYL04rQk5zeXFzb014QjlFT1J5RkJlUUwycXRiSEk1NWtmZEdKV0pLTWZtV1BtSEtySUt4Q0dpdndQOUVKR1BnQS9vZHZpbXJBTStVQW5iNmFrSE82TUN2MFg1RWRBQ1dxT2lseUM2RUdXZHdOV2hISHJaM2lWQy9vTnlMSmI5a3Q0cDZzR09NRitVRGFrbzBEcDNRWUdFQW45QitJNEtyNnV5SUN3WE54SitZTi8xdHpzOHFjbVZPa2Q2Nk1MaUZ3QWg2VEVYRmtxQXo0dnNqZksrY2FLalRrWHZFaVdFOGtOUnVVN2hVWkNURkhuZTd5NnVBRERvaDhBSElKMlJ1dFlCSHdqaDA2bnF3ZVMxN1Z5dDZOMXE2VFpFRjZub0phQTF3RHVnY3pwdDV1R2VjbW93TUFMbFdFU20yTFJqbFJGbUNqd0djaDlJRzhyTi9na2xNWjZWL0s2U3V3VVdBMTJpZW91ZzN4UFlwS0ozK1dwS1BOMzVkdVlHN01EbkVZN29XWDdqeUpJbkJCWXJCQVc1WHRGTE5YeSs3SFdReXdnRlZrQ1A0ZHpHQ2NXbkFpVW90d09VZXBzMytkeU92d0NuaEhLWUJzUmJWVHNjSXpZSm1xTzZoeDA2aDd2OStZN25FTTRZMGI3amV1RFdSQSt4ZVo1amRGQmxCZWhZUktZNWExdWU3MDdiY24zaHd4MWRPUzhMZXMrbW10TFZwYldib2c2QldXSjlYNUZYVGNoOHVjZVE1MFVBWDQzanp5Z241ZVRwMTNvTThmQzFGODhXT0FtVlg1WjdtNy9hczF2WE9TejFqM1Q4UTRYWi9nVmwxWDBOb3dKQjY1ZDJ1OXhoMEs4UU5zYmN3NmEyNGk4aGxBcmQ3c0NTazBmTzFRcUhBTGRQcUcyNXVXZmFPbmZCVC9MSWVRZGtybnI0M29BUE9RMS9EQjlZNWd1SnNqUmY2eWdMQnBnSCtwR3RTNDdwMlZQN3FvdVhZdVRQaXR5cnNGcnFXcTRDOExrZHJ3QkZJY243NnFUYURYdU1UUDN0SmRNUlBRUGhTV2RCeTBVOXIwYzlMUFczTzE0R21iRmhRZEhFaVV1MmJJZ1NSSFUyeUh0NWVjRWp1b2Y3TGRjVmV3SmQ1aTNRT2Y0RlpkL3RmbTYrR3NlcHFDNUVlVHNuVDAvb2ZnOTBEbmY0OGgxckJMM0p0Mmo4cjV6M2JvN3J0SEtqZS95WkZqb2RlTDY4b0tXaTV5aEFQZHp2YXkvNXJhQm5ycStabUw5M1lTSDhKVklJUHQxRDZwWGh0SVNyZEhaVjV2Ujg0V1FaQVRFYVVSeVpvMG1NRFFNNVhBRjZFS0svZE5ZMlA5OHpyZWpPdHEybzlVTWdMMlJaVjhVVVZvN0t6d3Vjbjg2Y3dSNHlyNEIrVThUY0ZETXVYa1lBbGVjQVcwaTB6d25tUVV0YmZTaHJGSTdhV0ZQNjJaNXBJWkhMUUxac0xteDlQbEg1cVB3cTlZak03U1J3VCsrMEtYWHQ3UWhyUUlzMnRaWW1QaUNZSWFLMnlGQlVFbnBrQ25icUJNQ0FmTlI3cU90YzNMcldNdktGUUdmWGliM3ZhZHoyTUs4cFhCV0NHM3AvRU1JdnF2d0dFTHN4bjR0VGZKeXh6SlU5NTh0aDVkREhBTEhzZXZTZW5Jb2JFREhjMGZOREtzc0lHTkVmQURaQ0p1SGh6V0JJM3hIaENoSGJ3dDdEYVBGZ0diRldBMGpYMXBIMmNIdUlYNWtCOHFyVDIvYngzZ3UyUDZXRTdsR284czF4am5RdTgwVzdQWUptWjEzenk3MEZLS3R0WGVOM09UYXE0TncwdjNReVN6ZkZQU1FuRWo0dEs4Z0w4ZEpWK2JzSUlId3hKdEd3UE5YRmgyNUtselMvRDd6Zi9mdjZtckZGUnZJT3hwS1JXQ2hpalFUQlpyUGk3cC9FWG9EK0V1UU14Zm9LRVQvZG14Y1VqZTJFS2tWL2tlcW04aVJ2OHh2ME9QeTN5VlZTR2xKcklqWVphU3pUWlduSUJvS1ZFeG9QOUgzZ01BMGtxS0xodHlDaDVYS2VXdTkycXEwRDRkU21tcEpiN2NqRFBVY0dFKzlyZmozVjlzcnJObjRJNFNFa3dFZHp4eFhhODNNbjcza0c2QmdBTlJMdkdUU1ZMZDRVNDhWSGtQV0tJcGFPZy9DUTBkL09XWUNLelR6Uk83L3V5djJENW5mTnlCVVNudEtPOUlKN2hwVmJyaThjdHl1UU14bUxrUUpHbFhHZzJQTkgydXdBdnVxU0V3V2RwS3BSNDhyeXVvMGYrbW9jLzBBNWxsSEJxY0RLWG0xdGl2ZjFFVkNmeU1lZ1paYk5ta0NDQnk5d3FBS3FQT1J6T3g1S2RFR0VsMHVqVUN2SmlkTWtySE1YRk9ScHp2VUlYMGFaSEhGUEZaa3loanROVlUzSjFMNlQ0Qk41NUN4VjVWTDE4QjN4WUhYYXpFVkF2aUlwRGVXNitYaCtzZE5tazV0RXVDQ0VsaUxoTzJ1SnRVY3VTeE9mcnN5VW9GM0xJc09SaE11bTQ1ZHMyZVozbHl4VWRJbW9maStFZnMvbmRyUURid0pyTEhoaVlsMUwzd2NoSTdSY1Z6d20wR1d1SlR3VS9rUzRQOUtvRFpjRXorQ0RPSDlEMVFvaUFwQVBzSEZ6Mlhoc29YRkFhMlFsTW9wSVp4RHJ3NjhYdmpuT2tZd00xQUNYZDNUeUtST25vNVdBaHQwR2lRa1AxMFM0dytkMjNCRXQ0WjUvTHlCV2laSVE5amxueEVyb25WUFpzeEozTzZJZko4b25HaHZPUkl5a0hRVEt0OGhaVENqd0o0VERVTjVXdU1Fb2I2cE5td21oR0xrTWNLVmEzNVM2OW5hZnUvaFprSmtidHhhZkNxMS9CTGtNZUg5Q1hYUEtvV00yTEN6K2xMRmtEZUhEYnEraS9CQWpieE95d280ampkeEErQlRyZ0NQb2NaSC9TYW9FNVhYTlAvYlhqRityYXJzSzlBekNHN2FuQXFjYXVORmY0N2k3dkxhbHo2Z1o2OXdGQllFdWVRbjBNOEM3Q0RkSmlOY1FxMFZWTERGY3BFZ2lKNUxKVFhJaTdycUM5a0N1VFEzMDQ5aDhSSUZlSkh4eTkwTkZialZZcnlMYW9pRUpJVElONFRib1hsZ1FuWVhGMjJKNHBuZGxxam9XWkM1bzVic0xEc25ydFFlVXpIMXRHVUJBYmNrY1NHd0dKZ3I2UW5sdGVJbDBNTkZnNEZZUkRoTjR2S3l3NWF1OXg3bytkOG1NZEUrL2k4b3ZWWmlwbUsvNEZwVi9TQ2g0aW9yOElKWDVRVGZHa2pxZ1ZOQzd5dXRhcisrZDduT1hkQTdhcVh6bFVnVFVvcy9vaCtXMW0xOEJYb0ZJYjlJcHh5QXlBNWl2cXRmN1hDVi9jSHFia3g3Vnp0UGM3eUg2R2RDbnkzZTFYdFRiTnMvbmR2UjJBWjAydHAxNWJZd01LRWlwMHQybnA0ZmtkMTJqeVBFaStydU9jYU1yZTl2VStkMGxKM1Q3RkxQN3FvdVBSWm1DYUUxNWJXdGR2QXI5YnNjNUNvZU1NZTNuRUIxYjZKRG1lWTdSdlNlYkc2OHBIV1VGclU4Q095ZnVidjRQaVJEK2puSzBpaHhOWkdXdEorOHVPQ1J2VE03MlkzYVB6WDh0RThQQW1PYUVzd0ZDY0VmOFBSZE51RUtWaUk3Q1VmVjU3VHUzZ2w1SUtMUVJNRmhXbjV2VGUxcjBZUHp0Y2hZb3VTRXJ4cDlET0YyUFQxZXVWUEM3SFJkcTJBVkFxK3pPU1JvT3MybGgwYVQyc1ZzMmRjL3pJcFAxTmNBYVg0MWpGOHJOSXRhWmhCMzVKMGIwSEFDanRqdmlHN2ZxRi9wejhCWEN3eldmMi9FMjZPR2Jxa3VQcE5jOGFyMnI1Q2k3NkpPSzN1bXNhLzEvOGVwUWtiTUIxREozeDN2M3RNZTdZakRoL1FHYjJCS09FVlZaRHIzMkVzTFlBam5FbVBHRWd0YlhnZEVLSzVKYUFWczhFdjRmbVJQUHhtcTBiZHNDeTdMK2t0ZSs4K2JlYWNrUVpUT0ExV2w2SDlYZUNtQlRLMmE4M1ZSVGVqYVE5bGR3aXVmRERvV1ZLSVdnMXdHdlR2QzIvbC9Lc25xd1FMY0QycGs3SXFabjk3Y1hmeDNvMC9kWnV2aHFTbWJwbm9tenV1TXNHdlhJNjdoTkxOdkhSVnRMdnBFZ3kwNEE3ZWtYSXZJTXBFdmpQZ09MMkdmZ2N6bE9BUm1RMEp5Q1BnNFFNbFpNeUI2NzBXOHFISUthbUUzeWJqVHNwZ3dUUjg0TkMwdU9CcjdTL2JzQkxnRGU2cjBQMHhPajVsZGh3V1I2Mkw1dUQ3OFZZWW5QWGV4dW51Y1lyUjZNMysyNFVPQkh3SGF4MlQzSkx0VHBiVm1ENktPb0htSFR6alUrbCtPTE9vZWN6UXVLeG9ZdEUvUkhDT3RDMG5sZnNucGlFUDROWUluMTdaNUw3SUkyQXFpWXU1dXZkWlJCK0V2dmM1Zk1GTFYrRGZvMGdFZ2FIazBCRWVuK2l1ZEZYRHlsaFVJOUlCSUtMTzIyVmRRNTVQamN4ZDhBdVJ2Q1F5MGptcjV2QlpGTG0xeU82N3QvZks2UyszeHV4MXBVbndKR0l2ekFXZGVhZkJIRUN2NE0yS2xLYlpQTGNmMkdCVVVUSVd4NTRIYzVacVBjQUFRdEkzdTkxWXI4RzhEa2RFVTlnL0FHT1lodzE4ZnppNTBRZmdZYlhjV1ZZUU5aZlNhUzNpOC9FaDBFdlNnYkJiN2Q1SExNZjNmQklYa2JyeWtkNVhNNXFsV1pKL0JHZVdGendzRGJFZzRWZ3lYeUE3KzdiSEpZZG1SRGRlbFp4dEo2bEhvQWsyZlo3TUNuRUpJYUdwWXQzdlNXeisxNEMvUXovdnlTTSswQi9UT2cyT3pmSkJUOEtzaDl3Vnp1OWJjNXVzSm1PN0xGRUpwZGRxLy9vMlQxQXJTTmE3MnFzTjBSQWk1SCtLTi9wQ01JMkZGUTVhK2l3WXNuZWJlbHRZaGdTZWgrc1d4ZlV4R1AzKzJvOFVFbjZKMWJDbHAvVk5qdU9BTTRMUmhndmM5ZDR2TzM2MWpRTVFvMW9zYUg2RXhWamU5eE13SGxHNXAvNTNjNk5pSVUyNURIK3k3Ulc5N09SVGJOUFY2Uml6dHQ5bGsrdDhQbmgyTEFvSEs1Q0ZNVW5VYWFjb1hSYjBuVTZFaTcvM2tiNUdablhmT1RmZFhnOUxaOXZORTlmcnFGZVZpRU84Um11OFBuTHVtaWZXZXVodXR1RitFclBaZTZCYk5FQ1gwVitJSGY3YmpHRi9acmVIdDVRZk45L25iSG1RcFQ3WGI1Mk9kMitQeGJHWTB3VGxSdVFQbVhHbWFxWlJKNGxVMk5LWFh0N2I2YTRpcFJlUVpoeVNqYjFqb3JpSVJkb3ZHT0VUTXJtUmxWZVczcnovdzFqck5SWml1aDl5UFBaSVRCR285d3UxcnlySWpPQ25iWmMrMHE1aHliTFpYbFl1c2lGZnNFVzVEM0hTM051LzBUSGFjNXcwcHkrd2EzbzFHUW1ZZ1dBLzluUXViWFpVdWFvelpCT3pYd1pwN2tUalVoRStVcUt6ekdicmxpZzl0Ulo2QkNvVndFbjJKZW1WQzNLV2IveURMNlkxRmJZektaSjl5M1piMS9RZGxSMkszWmloNkdTdEFZOC9LUkhycDBkc3Radm9tbGxSQTYyVUErbG55TW1CWE91bzBmcnE4WlcyVElQMGRNY0VPaXV1TnlKRW83UWVDM3BkN20rTTd0a3pDcGR0dVdkeGNjY3V3b2Uvc0ZXSEljQnBzcTc5bFZscGQ2bXpldHJ4ay93V0IvVFl4SjJWV3VVVE12WklnNUNtSUlCVXpRYklqc21TVW9ISG9hdGYrZkd0dWVZV2xaM2ViZnE0Y3B2cTJsRlVaRFIxbFFhbFNiTGVIZC9MelE2dDU3ZHVWMUd6L2NlRTNwWnpWb3pRWU9VeVFnSnZSWDhSQlVUOHQ1bTlxS3oxTWpwMWpLYUN6V1c0WW5KOVUxdjdmbCtzSnh1N3R5enpFaWUxeVZ5ZTdjOVRvcWRBNWl4UTF6RXpLNjJtQTdKMWREVWVlQm5MV3RmOSs4b09qd0RwdnRRb0hQSWhnc2VYV25OWFpGendXeXlRWHRPL3hiUzZhR2xMMmJzcUJhMjNLeHoxWHlNeEU5UTVWeFltaENyWlhPMnMzLzJYaE42YWhRU000SllVLzdlV2VKdzBaWGNhWFA3VkJmVFhFR29SK3o3TzhNVkpDdi96cTZqWEkzMXBSKzFoTHhnbjVVdnJNMWUycjN2NUNCaVUvMFgwZ3dWeC8xdVIzL3Y3MDdKZ0FRaG9Fb2VtbDExRThIMUxGZ29LSXFBZ01kU0JEQWxvV2gvM240NjkzaDRWWFNNcW52c0VlQUx5TEtpbkpaaWVteTVVK01kdDY1YXc4QUFBQUFmM29CdDdmL0Y2Wmg4SDhBQUFBQVNVVk9SSzVDWUlJPSIvPgo8ZyBpZD0iY29tcG9zaXRpbmctZ3JvdXAtMCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAsIDguMykiPgo8cmVjdCB4PSItMTAiIHk9Ii04LjMiIHdpZHRoPSIxMjAiIGhlaWdodD0iOTkuNiIgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjAiLz4KPGNsaXBQYXRoIGlkPSJjbGlwLTAiPgo8cGF0aCBjbGlwLXJ1bGU9Im5vbnplcm8iIGQ9Ik0gMCAxIEwgMTAwIDEgTCAxMDAgODMgTCAwIDgzIFogTSAwIDEgIi8+CjwvY2xpcFBhdGg+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwLTApIj4KPHJlY3QgeD0iLTEwIiB5PSItOC4zIiB3aWR0aD0iMTIwIiBoZWlnaHQ9Ijk5LjYiIGZpbGw9InJnYigxMDAlLCAxMDAlLCAxMDAlKSIgZmlsbC1vcGFjaXR5PSIxIi8+CjwvZz4KPC9nPgo8bWFzayBpZD0ibWFzay0wIj4KPHVzZSB4bGluazpocmVmPSIjY29tcG9zaXRpbmctZ3JvdXAtMCIvPgo8L21hc2s+CjxtYXNrIGlkPSJtYXNrLTEiPgo8dXNlIHhsaW5rOmhyZWY9IiNjb21wb3NpdGluZy1ncm91cC0wIiBmaWx0ZXI9InVybCgjZmlsdGVyLXJlbW92ZS1jb2xvci1hbmQtaW52ZXJ0LWFscGhhKSIvPgo8L21hc2s+CjxnIGlkPSJjb21wb3NpdGluZy1ncm91cC0xIiBtYXNrPSJ1cmwoI21hc2stMCkiPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMCwgOC4zKSI+Cjx1c2UgeGxpbms6aHJlZj0iI3NvdXJjZS03IiB0cmFuc2Zvcm09Im1hdHJpeCgwLjQ4LCAwLCAwLCAwLjQ4LCAwLCAxKSIvPgo8L2c+CjwvZz4KPGcgaWQ9ImNvbXBvc2l0aW5nLWdyb3VwLTIiIG1hc2s9InVybCgjbWFzay0xKSI+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwLCA4LjMpIj4KPC9nPgo8L2c+CjwvZGVmcz4KPGcgZmlsdGVyPSJ1cmwoI2ZpbHRlci0wKSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEwLCAtOC4zKSI+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMjAiIGhlaWdodD0iOTkuNiIgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiLz4KPC9nPgo8L3N2Zz4K" alt="Universidad Nacional Abierta y a Distancia UNAD" class="unad-logo-img" loading="lazy">
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const PRODUCTOS = [{"codigo":"ART_OPEN_A1","desc":"Artículo Q1 acceso abierto","peso":1000,"cat":"TOP","dim":"GNC","pag":131},{"codigo":"ART_A1","desc":"Artículo Q1 otra modalidad","peso":950,"cat":"TOP","dim":"GNC","pag":131},{"codigo":"ART_OPEN_A2","desc":"Artículo Q2 acceso abierto","peso":600,"cat":"TOP","dim":"GNC","pag":131},{"codigo":"ART_A2","desc":"Artículo Q2 otra modalidad","peso":550,"cat":"TOP","dim":"GNC","pag":131},{"codigo":"ART_OPEN_B","desc":"Artículo Q3 acceso abierto","peso":350,"cat":"A","dim":"GNC","pag":132},{"codigo":"ART_B","desc":"Artículo Q3 otra modalidad","peso":300,"cat":"A","dim":"GNC","pag":132},{"codigo":"ART_OPEN_C","desc":"Artículo Q4 acceso abierto","peso":200,"cat":"A","dim":"GNC","pag":132},{"codigo":"ART_C","desc":"Artículo Q4 otra modalidad","peso":150,"cat":"A","dim":"GNC","pag":133},{"codigo":"ART_OPEN_D","desc":"Artículo D acceso abierto","peso":50,"cat":"B","dim":"GNC","pag":133},{"codigo":"ART_D","desc":"Artículo D otra modalidad","peso":45,"cat":"B","dim":"GNC","pag":133},{"codigo":"N_A1","desc":"Nota científica Q1","peso":40,"cat":"B","dim":"GNC","pag":133},{"codigo":"N_A2","desc":"Nota científica Q2","peso":34,"cat":"B","dim":"GNC","pag":133},{"codigo":"N_B","desc":"Nota científica Q3 / Publindex B","peso":28,"cat":"B","dim":"GNC","pag":134},{"codigo":"N_C","desc":"Nota científica Q4 / Publindex C","peso":22,"cat":"B","dim":"GNC","pag":134},{"codigo":"N_D","desc":"Nota científica D","peso":8,"cat":"B","dim":"GNC","pag":134},{"codigo":"LIB_A1","desc":"Libro de investigación Q1","peso":3000,"cat":"TOP","dim":"GNC","pag":135},{"codigo":"LIB_A","desc":"Libro de investigación Q2","peso":2700,"cat":"TOP","dim":"GNC","pag":136},{"codigo":"LIB_B","desc":"Libro de investigación Q3","peso":2400,"cat":"A","dim":"GNC","pag":137},{"codigo":"LIB_C","desc":"Libro de investigación Q4","peso":150,"cat":"B","dim":"GNC","pag":138},{"codigo":"CAP_LIB_A1","desc":"Capítulo de libro Q1","peso":600,"cat":"TOP","dim":"GNC","pag":139},{"codigo":"CAP_LIB_A","desc":"Capítulo de libro Q2","peso":540,"cat":"TOP","dim":"GNC","pag":140},{"codigo":"CAP_LIB_B","desc":"Capítulo de libro Q3","peso":480,"cat":"A","dim":"GNC","pag":140},{"codigo":"CAP_LIB_C","desc":"Capítulo de libro Q4","peso":30,"cat":"B","dim":"GNC","pag":141},{"codigo":"LIB_FOR1","desc":"Libro de Formación Q1","peso":600,"cat":"B","dim":"GNC","pag":142},{"codigo":"PA1","desc":"Patente de invención A1 (vía PCT con producto)","peso":5000,"cat":"TOP","dim":"GNC","pag":142},{"codigo":"PA2","desc":"Patente de invención A2 (vía PCT con producto)","peso":3500,"cat":"TOP","dim":"GNC","pag":142},{"codigo":"PA3","desc":"Patente de invención A3 (PCT sin producto)","peso":3000,"cat":"A","dim":"GNC","pag":142},{"codigo":"PA4","desc":"Patente de invención A4 (PCT sin producto)","peso":2750,"cat":"A","dim":"GNC","pag":142},{"codigo":"PB1","desc":"Patente solicitada B1","peso":2500,"cat":"B","dim":"GNC","pag":143},{"codigo":"PB2","desc":"Patente solicitada B2","peso":1750,"cat":"B","dim":"GNC","pag":143},{"codigo":"PB3","desc":"Patente solicitada B3","peso":1500,"cat":"B","dim":"GNC","pag":143},{"codigo":"PB4","desc":"Patente solicitada B4","peso":1300,"cat":"B","dim":"GNC","pag":143},{"codigo":"PB5","desc":"Patente solicitada B5","peso":1250,"cat":"B","dim":"GNC","pag":143},{"codigo":"PC","desc":"Patente solicitada C","peso":900,"cat":"B","dim":"GNC","pag":143},{"codigo":"MA1","desc":"Modelo de utilidad A1","peso":3000,"cat":"TOP","dim":"GNC","pag":142},{"codigo":"MA2","desc":"Modelo de utilidad A2","peso":2100,"cat":"TOP","dim":"GNC","pag":142},{"codigo":"MA3","desc":"Modelo de utilidad A3","peso":1800,"cat":"A","dim":"GNC","pag":142},{"codigo":"MA4","desc":"Modelo de utilidad A4","peso":1665,"cat":"A","dim":"GNC","pag":142},{"codigo":"MB1","desc":"Modelo de utilidad B1","peso":1500,"cat":"B","dim":"GNC","pag":143},{"codigo":"MB2","desc":"Modelo de utilidad B2","peso":1050,"cat":"B","dim":"GNC","pag":143},{"codigo":"MB3","desc":"Modelo de utilidad B3","peso":900,"cat":"B","dim":"GNC","pag":143},{"codigo":"MB4","desc":"Modelo de utilidad B4","peso":850,"cat":"B","dim":"GNC","pag":143},{"codigo":"MB5","desc":"Modelo de utilidad B5","peso":750,"cat":"B","dim":"GNC","pag":143},{"codigo":"MC","desc":"Modelo de utilidad C","peso":550,"cat":"B","dim":"GNC","pag":143},{"codigo":"VV_A1","desc":"Variedad vegetal A1","peso":3000,"cat":"TOP","dim":"GNC","pag":144},{"codigo":"VV_A2","desc":"Variedad vegetal A2","peso":2400,"cat":"TOP","dim":"GNC","pag":144},{"codigo":"VV_A3","desc":"Variedad vegetal A3","peso":1500,"cat":"A","dim":"GNC","pag":144},{"codigo":"VV_A4","desc":"Variedad vegetal A4","peso":750,"cat":"A","dim":"GNC","pag":144},{"codigo":"VV_B1","desc":"Variedad vegetal B1 (ciclo corto)","peso":1500,"cat":"B","dim":"GNC","pag":145},{"codigo":"VV_B2","desc":"Variedad vegetal B2 (ciclo corto)","peso":1200,"cat":"B","dim":"GNC","pag":145},{"codigo":"VV_B3","desc":"Variedad vegetal B3 (ciclo corto)","peso":750,"cat":"B","dim":"GNC","pag":145},{"codigo":"VV_B4","desc":"Variedad vegetal B4 (ciclo corto)","peso":300,"cat":"B","dim":"GNC","pag":145},{"codigo":"VA_A","desc":"Nueva raza animal A","peso":3000,"cat":"TOP","dim":"GNC","pag":145},{"codigo":"VA_B","desc":"Poblaciones mejoradas pecuarias B","peso":1500,"cat":"A","dim":"GNC","pag":145},{"codigo":"AAD_A1","desc":"Producto AAD A1 (creación / investigación-creación)","peso":1000,"cat":"TOP","dim":"GNC","pag":146},{"codigo":"AAD_A","desc":"Producto AAD A","peso":800,"cat":"TOP","dim":"GNC","pag":147},{"codigo":"AAD_B","desc":"Producto AAD B","peso":600,"cat":"A","dim":"GNC","pag":146},{"codigo":"AAD_C","desc":"Producto AAD C","peso":400,"cat":"B","dim":"GNC","pag":146},{"codigo":"DI_A","desc":"Diseño Industrial A","peso":350,"cat":"A","dim":"DTI","pag":147},{"codigo":"DI_B","desc":"Diseño Industrial B","peso":175,"cat":"B","dim":"DTI","pag":147},{"codigo":"ECI","desc":"Esquema de circuito integrado","peso":140,"cat":"A","dim":"DTI","pag":147},{"codigo":"SF","desc":"Software con calidad","peso":280,"cat":"B","dim":"DTI","pag":147},{"codigo":"PP","desc":"Planta piloto con calidad","peso":140,"cat":"A","dim":"DTI","pag":148},{"codigo":"PI","desc":"Prototipo industrial con calidad","peso":140,"cat":"A","dim":"DTI","pag":148},{"codigo":"SD","desc":"Signo distintivo del grupo","peso":140,"cat":"A","dim":"DTI","pag":148},{"codigo":"PN","desc":"Producto nutracéutico con calidad","peso":210,"cat":"B","dim":"DTI","pag":148},{"codigo":"CC","desc":"Colección científica con calidad","peso":350,"cat":"B","dim":"DTI","pag":148},{"codigo":"NRC_A","desc":"Nuevo registro científico A","peso":280,"cat":"B","dim":"DTI","pag":148},{"codigo":"NRC_B","desc":"Nuevo registro científico B","peso":175,"cat":"B","dim":"DTI","pag":148},{"codigo":"SE","desc":"Producto con secreto empresarial","peso":1000,"cat":"A","dim":"DTI","pag":149},{"codigo":"EBT_A","desc":"Empresa de base tecnológica A","peso":1000,"cat":"A","dim":"DTI","pag":149},{"codigo":"EBT_B","desc":"Empresa de base tecnológica B","peso":600,"cat":"B","dim":"DTI","pag":149},{"codigo":"ICC_A","desc":"Empresa creativa y cultural A","peso":1000,"cat":"A","dim":"DTI","pag":149},{"codigo":"ICC_B","desc":"Empresa creativa y cultural B","peso":600,"cat":"B","dim":"DTI","pag":149},{"codigo":"IG_A1","desc":"Innovación en gestión empresarial A1","peso":1000,"cat":"A","dim":"DTI","pag":149},{"codigo":"IG_A2","desc":"Innovación en gestión empresarial A2","peso":800,"cat":"A","dim":"DTI","pag":149},{"codigo":"IG_B1","desc":"Innovación en gestión empresarial B1","peso":700,"cat":"B","dim":"DTI","pag":150},{"codigo":"IG_B2","desc":"Innovación en gestión empresarial B2","peso":500,"cat":"B","dim":"DTI","pag":150},{"codigo":"IPP","desc":"Innovación en procedimientos (procesos) y servicios","peso":1000,"cat":"B","dim":"DTI","pag":150},{"codigo":"RNL_B","desc":"Regulación, norma, reglamento o legislación B","peso":1000,"cat":"A","dim":"DTI","pag":150},{"codigo":"RNR","desc":"Normatividad del espectro radioeléctrico","peso":1000,"cat":"A","dim":"DTI","pag":150},{"codigo":"RNT","desc":"Norma técnica con calidad","peso":1000,"cat":"B","dim":"DTI","pag":150},{"codigo":"RNPC","desc":"Guía de práctica clínica con calidad","peso":1000,"cat":"B","dim":"DTI","pag":150},{"codigo":"GMCF","desc":"Guía de Manejo Clínico Forense con calidad","peso":1000,"cat":"B","dim":"DTI","pag":151},{"codigo":"MADV","desc":"Manual/Modelo de atención diferencial a víctimas","peso":1000,"cat":"B","dim":"DTI","pag":151},{"codigo":"PAU","desc":"Protocolo de atención a usuarios con calidad","peso":1000,"cat":"B","dim":"DTI","pag":151},{"codigo":"PVE","desc":"Protocolo de vigilancia epidemiológica con calidad","peso":1000,"cat":"B","dim":"DTI","pag":151},{"codigo":"AL","desc":"Acuerdo de Ley con calidad","peso":1000,"cat":"B","dim":"DTI","pag":151},{"codigo":"RNPL","desc":"Proyecto de Ley con calidad","peso":1000,"cat":"B","dim":"DTI","pag":151},{"codigo":"CT","desc":"Concepto técnico con calidad","peso":150,"cat":"B","dim":"DTI","pag":152},{"codigo":"MR","desc":"Registro de licencia de obras AAD (derechos de autor)","peso":140,"cat":"B","dim":"DTI","pag":152},{"codigo":"FIS","desc":"Procesos ASC para fortalecimiento social","peso":2000,"cat":"ASC","dim":"ASC","pag":152},{"codigo":"GPP_A","desc":"Insumos de política pública A","peso":2000,"cat":"ASC","dim":"ASC","pag":153},{"codigo":"GPP_B","desc":"Insumos de política pública B","peso":1400,"cat":"ASC","dim":"ASC","pag":153},{"codigo":"GPP_C","desc":"Insumos de política pública C","peso":1000,"cat":"ASC","dim":"ASC","pag":153},{"codigo":"FCP_A","desc":"Fortalecimiento cadenas productivas A","peso":2000,"cat":"ASC","dim":"ASC","pag":154},{"codigo":"FCP_B","desc":"Fortalecimiento cadenas productivas B","peso":1000,"cat":"ASC","dim":"ASC","pag":154},{"codigo":"FCP_C","desc":"Fortalecimiento cadenas productivas C","peso":600,"cat":"ASC","dim":"ASC","pag":154},{"codigo":"TCCG_A","desc":"Trabajo conjunto con Centro de Ciencia A","peso":2000,"cat":"ASC","dim":"ASC","pag":155},{"codigo":"TCCG_B","desc":"Trabajo conjunto con Centro de Ciencia B","peso":1400,"cat":"ASC","dim":"ASC","pag":155},{"codigo":"TCCG_C","desc":"Trabajo conjunto con Centro de Ciencia C","peso":800,"cat":"ASC","dim":"ASC","pag":155},{"codigo":"TCCG_D","desc":"Trabajo conjunto con Centro de Ciencia D","peso":200,"cat":"ASC","dim":"ASC","pag":155},{"codigo":"EC_A","desc":"Evento científico A","peso":1000,"cat":"DPC","dim":"DPC","pag":156},{"codigo":"EC_B","desc":"Evento científico B","peso":600,"cat":"DPC","dim":"DPC","pag":156},{"codigo":"RC_A","desc":"Red de conocimiento A (lidera)","peso":1000,"cat":"DPC","dim":"DPC","pag":157},{"codigo":"RC_B","desc":"Red de conocimiento B","peso":600,"cat":"DPC","dim":"DPC","pag":157},{"codigo":"TC_A","desc":"Taller de Creación A","peso":1000,"cat":"DPC","dim":"DPC","pag":157},{"codigo":"TC_B","desc":"Taller de Creación B","peso":800,"cat":"DPC","dim":"DPC","pag":157},{"codigo":"TC_C","desc":"Taller de Creación C","peso":600,"cat":"DPC","dim":"DPC","pag":157},{"codigo":"ECA_A","desc":"Evento artístico/arquitectura/diseño A","peso":800,"cat":"DPC","dim":"DPC","pag":157},{"codigo":"ECA_B","desc":"Evento artístico/arquitectura/diseño B","peso":600,"cat":"DPC","dim":"DPC","pag":157},{"codigo":"WP","desc":"Working paper","peso":1000,"cat":"DPC","dim":"DPC","pag":158},{"codigo":"NSG","desc":"Nueva secuencia genética","peso":1000,"cat":"DPC","dim":"DPC","pag":158},{"codigo":"ERL","desc":"Edición de revista o libro de divulgación","peso":600,"cat":"DPC","dim":"DPC","pag":158},{"codigo":"IFI","desc":"Informe final de investigación","peso":200,"cat":"DPC","dim":"DPC","pag":158},{"codigo":"INF","desc":"Informe técnico","peso":500,"cat":"DPC","dim":"DPC","pag":158},{"codigo":"CON_CT","desc":"Consultoría científico-tecnológica","peso":750,"cat":"DPC","dim":"DPC","pag":158},{"codigo":"CON_AAD","desc":"Consultoría en arte, arquitectura y diseño","peso":750,"cat":"DPC","dim":"DPC","pag":158},{"codigo":"PEE_A1","desc":"Publicación editorial no especializada A1","peso":1000,"cat":"DPC","dim":"DPC","pag":159},{"codigo":"PEE_A2","desc":"Publicación editorial no especializada A2","peso":800,"cat":"DPC","dim":"DPC","pag":159},{"codigo":"PEE_B1","desc":"Publicación editorial no especializada B1","peso":700,"cat":"DPC","dim":"DPC","pag":159},{"codigo":"PEE_B2","desc":"Publicación editorial no especializada B2","peso":500,"cat":"DPC","dim":"DPC","pag":159},{"codigo":"PEE_C1","desc":"Publicación editorial no especializada C1","peso":500,"cat":"DPC","dim":"DPC","pag":159},{"codigo":"PEE_C2","desc":"Publicación editorial no especializada C2","peso":300,"cat":"DPC","dim":"DPC","pag":159},{"codigo":"PCD_A1","desc":"Producción de contenido digital A1","peso":1000,"cat":"DPC","dim":"DPC","pag":160},{"codigo":"PCD_A2","desc":"Producción de contenido digital A2","peso":800,"cat":"DPC","dim":"DPC","pag":160},{"codigo":"PCD_B1","desc":"Producción de contenido digital B1","peso":700,"cat":"DPC","dim":"DPC","pag":160},{"codigo":"PCD_B2","desc":"Producción de contenido digital B2","peso":500,"cat":"DPC","dim":"DPC","pag":160},{"codigo":"PCD_C1","desc":"Producción de contenido digital C1","peso":500,"cat":"DPC","dim":"DPC","pag":160},{"codigo":"PCD_C2","desc":"Producción de contenido digital C2","peso":300,"cat":"DPC","dim":"DPC","pag":160},{"codigo":"TRM_A1","desc":"Estrategia/contenido Transmedia A1","peso":1000,"cat":"DPC","dim":"DPC","pag":160},{"codigo":"TRM_A2","desc":"Estrategia/contenido Transmedia A2","peso":800,"cat":"DPC","dim":"DPC","pag":161},{"codigo":"TRM_B1","desc":"Estrategia/contenido Transmedia B1","peso":700,"cat":"DPC","dim":"DPC","pag":161},{"codigo":"TRM_B2","desc":"Estrategia/contenido Transmedia B2","peso":500,"cat":"DPC","dim":"DPC","pag":161},{"codigo":"TRM_C1","desc":"Estrategia/contenido Transmedia C1","peso":500,"cat":"DPC","dim":"DPC","pag":161},{"codigo":"TRM_C2","desc":"Estrategia/contenido Transmedia C2","peso":300,"cat":"DPC","dim":"DPC","pag":161},{"codigo":"DW_A1","desc":"Desarrollo Web A1","peso":1000,"cat":"DPC","dim":"DPC","pag":162},{"codigo":"DW_A2","desc":"Desarrollo Web A2","peso":800,"cat":"DPC","dim":"DPC","pag":162},{"codigo":"DW_B1","desc":"Desarrollo Web B1","peso":700,"cat":"DPC","dim":"DPC","pag":162},{"codigo":"DW_B2","desc":"Desarrollo Web B2","peso":500,"cat":"DPC","dim":"DPC","pag":162},{"codigo":"DW_C1","desc":"Desarrollo Web C1","peso":500,"cat":"DPC","dim":"DPC","pag":162},{"codigo":"DW_C2","desc":"Desarrollo Web C2","peso":300,"cat":"DPC","dim":"DPC","pag":162},{"codigo":"LIB_FOR2","desc":"Libro de Formación Q2","peso":1000,"cat":"DPC","dim":"DPC","pag":164},{"codigo":"LIB_FOR3","desc":"Libro de Formación Q3","peso":600,"cat":"DPC","dim":"DPC","pag":164},{"codigo":"BOL","desc":"Boletín divulgativo","peso":1000,"cat":"DPC","dim":"DPC","pag":165},{"codigo":"LIB_DIV","desc":"Libro de Divulgación","peso":1000,"cat":"DPC","dim":"DPC","pag":165},{"codigo":"LIB_CRE","desc":"Libro de Creación (piloto, sin puntaje)","peso":0,"cat":"DPC","dim":"DPC","pag":167},{"codigo":"GC","desc":"Generación de contenido","peso":1000,"cat":"DPC","dim":"DPC","pag":166},{"codigo":"MAN_GUI","desc":"Manual / Guía especializada","peso":1000,"cat":"DPC","dim":"DPC","pag":166},{"codigo":"TD_A","desc":"Tesis doctoral dirigida A (con distinción)","peso":1600,"cat":"FRH_A","dim":"FRHCTI","pag":168},{"codigo":"TD_B","desc":"Tesis doctoral dirigida B (aprobada)","peso":800,"cat":"FRH_A","dim":"FRHCTI","pag":168},{"codigo":"AP_A","desc":"Apoyo a creación de programa de doctorado","peso":1000,"cat":"FRH_A","dim":"FRHCTI","pag":168},{"codigo":"AP_C","desc":"Apoyo a creación de cursos de doctorado","peso":500,"cat":"FRH_A","dim":"FRHCTI","pag":168},{"codigo":"TM_A","desc":"Tesis de maestría dirigida A (con distinción)","peso":700,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"TM_B","desc":"Tesis de maestría dirigida B (aprobada)","peso":350,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"TP_A","desc":"Trabajo de pregrado dirigido A (con distinción)","peso":200,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"TP_B","desc":"Trabajo de pregrado dirigido B (aprobado)","peso":100,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PID_A","desc":"Proyecto I+D A (financiación externa internacional)","peso":500,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PID_B","desc":"Proyecto I+D B (financiación externa nacional)","peso":300,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PID_C","desc":"Proyecto I+D C (financiación interna)","peso":100,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PIC_A","desc":"Proyecto investigación-creación A (ext. internac.)","peso":500,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PIC_B","desc":"Proyecto investigación-creación B (ext. nacional)","peso":300,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PIC_C","desc":"Proyecto investigación-creación C (interna)","peso":100,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PF_A","desc":"Proyecto ID+I con formación A","peso":500,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PF_B","desc":"Proyecto ID+I con formación B","peso":400,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PE","desc":"Proyecto de extensión / responsabilidad social","peso":1000,"cat":"FRH_B","dim":"FRHCTI","pag":169},{"codigo":"AP_B","desc":"Apoyo a creación de programas de maestría","peso":800,"cat":"FRH_B","dim":"FRHCTI","pag":169},{"codigo":"AP_D","desc":"Apoyo a creación de cursos de maestría","peso":300,"cat":"FRH_B","dim":"FRHCTI","pag":169},{"codigo":"APO","desc":"Acompañamiento Programa Ondas","peso":300,"cat":"FRH_B","dim":"FRHCTI","pag":169}];
+const PDF_BASE = "https://minciencias.gov.co/sites/default/files/upload/convocatoria/m601pr04g01_modelo_medicion_grupos_investigacion_tecnologica_o_innovacion_y_reconocimiento_investigadores_-_2024_1.pdf";
+const PESO_MAX = Math.max(...PRODUCTOS.map(p => p.peso));
+
+let state = { filter: 'all', search: '', sort: 'peso-desc' };
+
+function normalize(s) {
+  return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function getFiltered() {
+  let result = [...PRODUCTOS];
+  if (state.filter !== 'all') {
+    if (state.filter === 'sin-nivel') {
+      result = result.filter(p => p.dim === 'ASC' || p.dim === 'DPC');
+    } else {
+      const idx = state.filter.indexOf('-');
+      const type = state.filter.slice(0, idx);
+      const value = state.filter.slice(idx + 1);
+      if (type === 'dim') {
+        result = result.filter(p => p.dim === value);
+      } else if (type === 'cat') {
+        // TOP, A, B aplican solo a GNC + DTI. FRH_A y FRH_B son globales (FRHCTI).
+        if (value === 'TOP' || value === 'A' || value === 'B') {
+          result = result.filter(p => p.cat === value && (p.dim === 'GNC' || p.dim === 'DTI'));
+        } else {
+          result = result.filter(p => p.cat === value);
+        }
+      }
+    }
+  }
+  if (state.search.trim()) {
+    const q = normalize(state.search);
+    result = result.filter(p =>
+      normalize(p.codigo).includes(q) ||
+      normalize(p.desc).includes(q) ||
+      normalize(p.dim).includes(q)
+    );
+  }
+  switch (state.sort) {
+    case 'peso-desc': result.sort((a, b) => b.peso - a.peso); break;
+    case 'peso-asc':  result.sort((a, b) => a.peso - b.peso); break;
+    case 'codigo':    result.sort((a, b) => a.codigo.localeCompare(b.codigo)); break;
+    case 'dim':       result.sort((a, b) => a.dim.localeCompare(b.dim) || b.peso - a.peso); break;
+  }
+  return result;
+}
+
+function render() {
+  const filtered = getFiltered();
+  const body = document.getElementById('ranking-body');
+  const count = document.getElementById('results-count');
+
+  if (filtered.length === 0) {
+    body.innerHTML = '<div class="empty">Sin resultados. Probá con otra búsqueda o ajustá los filtros.</div>';
+    count.textContent = 'Sin coincidencias';
+    return;
+  }
+  count.textContent = `Mostrando ${filtered.length} producto${filtered.length === 1 ? '' : 's'}`;
+
+  body.innerHTML = filtered.map((p, i) => {
+    const rank = state.sort.startsWith('peso') ? i + 1 : '·';
+    const barWidth = p.peso > 0 ? (p.peso / PESO_MAX) * 100 : 0;
+    const isTop10 = state.sort === 'peso-desc' && i < 10;
+    const isPiloto = p.peso === 0;
+    return `
+      <div class="row ${isTop10 ? 'top10' : ''} ${isPiloto ? 'piloto' : ''}">
+        <div class="rank-num">${rank}</div>
+        <div class="col-codigo"><span class="codigo">${p.codigo}</span></div>
+        <div class="desc">${p.desc}</div>
+        <div class="col-cat"><span class="cat-badge cat-${p.cat}">${p.cat === 'FRH_A' ? 'FRH-A' : p.cat === 'FRH_B' ? 'FRH-B' : p.cat}</span></div>
+        <div class="peso-vis">
+          <div class="peso-num">${p.peso === 0 ? 'piloto' : p.peso.toLocaleString('es-CO')}</div>
+          ${p.peso > 0 ? `<div class="peso-bar"><div class="peso-bar-fill" style="width:${barWidth}%"></div></div>` : ''}
+        </div>
+        <div class="col-pag"><a class="pag-link" href="${PDF_BASE}#page=${p.pag}" target="_blank" rel="noopener">p.${p.pag}</a></div>
+      </div>
+    `;
+  }).join('');
+}
+
+function updateCounts() {
+  document.getElementById('count-all').textContent = ` (${PRODUCTOS.length})`;
+
+  // Contadores por dimensión
+  ['GNC', 'DTI', 'ASC', 'DPC', 'FRHCTI'].forEach(d => {
+    document.getElementById(`count-${d}`).textContent = ` (${PRODUCTOS.filter(p => p.dim === d).length})`;
+  });
+
+  // Niveles TOP, A, B: solo GNC + DTI
+  ['TOP', 'A', 'B'].forEach(c => {
+    const n = PRODUCTOS.filter(p => p.cat === c && (p.dim === 'GNC' || p.dim === 'DTI')).length;
+    document.getElementById(`count-${c}`).textContent = ` (${n})`;
+  });
+
+  // Niveles FRH-A y FRH-B: solo FRHCTI
+  ['FRH_A', 'FRH_B'].forEach(c => {
+    const n = PRODUCTOS.filter(p => p.cat === c).length;
+    document.getElementById(`count-${c}`).textContent = ` (${n})`;
+  });
+
+  // Sin nivel: ASC + DPC
+  const sinNivel = PRODUCTOS.filter(p => p.dim === 'ASC' || p.dim === 'DPC').length;
+  document.getElementById('count-SIN').textContent = ` (${sinNivel})`;
+}
+
+function filterByDim(dim) {
+  state.filter = 'dim-' + dim;
+  document.querySelectorAll('.chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.filter === 'dim-' + dim);
+  });
+  document.getElementById('productos').scrollIntoView({behavior: 'smooth'});
+  setTimeout(render, 400);
+}
+
+document.getElementById('search').addEventListener('input', e => { state.search = e.target.value; render(); });
+document.getElementById('sort').addEventListener('change', e => { state.sort = e.target.value; render(); });
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    state.filter = chip.dataset.filter;
+    render();
+  });
+});
+
+updateCounts();
+render();
+</script>
+</body>
+</html>
