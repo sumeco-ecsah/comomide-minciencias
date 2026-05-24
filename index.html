@@ -162,6 +162,21 @@
     transition: border-color 0.2s, color 0.2s;
   }
   .nav-links a:hover { border-bottom-color: var(--unad-orange); color: var(--unad-blue); }
+  .nav-btn-productos {
+    background: var(--unad-orange);
+    color: #ffffff !important;
+    padding: 6px 16px !important;
+    border-radius: 6px;
+    font-weight: 700;
+    border-bottom: none !important;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-btn-productos:hover {
+    background: var(--unad-orange-deep);
+    color: #ffffff !important;
+    border-bottom: none !important;
+    transform: translateY(-1px);
+  }
   @media (max-width: 880px) {
     .nav-links { display: none; }
     .topbar-inner { padding: 12px 16px; }
@@ -1782,7 +1797,7 @@
       <a href="#dimensiones">Dimensiones</a>
       <a href="#pesos">Coeficientes</a>
       <a href="#faq">FAQ</a>
-      <a href="productos.html" target="_blank">Productos</a>
+      <a href="productos.html" target="_blank" class="nav-btn-productos">170 productos ↗</a>
       <a href="#investigadores">Investigadores</a>
       <a href="#acerca">SUMECO</a>
     </div>
