@@ -752,7 +752,7 @@
   }
   .row {
     display: grid;
-    grid-template-columns: 60px 130px 1fr 100px 70px 70px 130px 70px;
+    grid-template-columns: 60px 130px 1fr 100px 70px 70px 130px 70px 70px;
     gap: 14px;
     padding: 16px 22px;
     align-items: center;
@@ -774,12 +774,12 @@
   }
   .row.header:hover { background: var(--unad-blue-deep); }
   @media (max-width: 1100px) {
-    .row { grid-template-columns: 60px 130px 1fr 90px 130px 70px; gap: 12px; padding: 14px 18px; }
+    .row { grid-template-columns: 60px 130px 1fr 90px 130px 70px 70px; gap: 12px; padding: 14px 18px; }
     .row .col-pg, .row .col-pr { display: none; }
   }
   @media (max-width: 900px) {
     .row { grid-template-columns: 36px 1fr 80px; gap: 12px; padding: 14px 14px; }
-    .row .col-codigo, .row .col-cat, .row .col-pag, .row .col-pg, .row .col-pr { display: none; }
+    .row .col-codigo, .row .col-cat, .row .col-pag, .row .col-pg, .row .col-pr, .row .col-ficha { display: none; }
   }
   .col-pg-val, .col-pr-val {
     font-family: var(--mono);
@@ -893,6 +893,29 @@
   }
   .pag-link:hover { color: var(--unad-orange); border-color: var(--unad-orange); background: var(--unad-yellow-soft); }
   .pag-link::after { content: " ↗"; }
+
+  .ficha-link {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--unad-blue-deep);
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    text-decoration: none;
+    transition: all 0.12s;
+    white-space: nowrap;
+  }
+  .ficha-link:hover { background: var(--unad-blue-deep); color: #ffffff; border-color: var(--unad-blue-deep); }
+  .ficha-link.pendiente {
+    color: var(--ink-light);
+    background: transparent;
+    border-style: dashed;
+    cursor: default;
+    pointer-events: none;
+  }
   .row.piloto .peso-num { color: var(--ink-light); font-style: italic; font-size: 14px; }
   .row.piloto .peso-bar-fill { background: var(--ink-light); }
 
@@ -1711,6 +1734,76 @@
     color: var(--ink-soft);
     line-height: 1.55;
   }
+  .nav-link-external {
+    color: var(--unad-orange) !important;
+    font-size: 12.5px;
+    letter-spacing: 0.01em;
+  }
+  .nav-link-external:hover { opacity: 0.8; }
+
+  .revistas-panel {
+    background: var(--bg-soft);
+    border: 1px solid var(--rule-soft);
+    border-left: 4px solid var(--unad-orange);
+    border-radius: 8px;
+    margin: 0 auto 28px;
+    max-width: 1200px;
+    padding: 0 24px;
+  }
+  .revistas-panel-inner {
+    padding: 20px 0;
+  }
+  .revistas-panel-title {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .revistas-icon { font-size: 17px; }
+  .revistas-panel-body p {
+    font-family: var(--sans);
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 8px;
+  }
+  .revistas-panel-body p:last-child { margin-bottom: 0; }
+  .revistas-panel-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .revistas-btn {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.12s;
+  }
+  .revistas-btn:hover { opacity: 0.85; }
+  .revistas-btn-primary {
+    background: var(--unad-blue-deep);
+    color: #ffffff;
+  }
+  .revistas-btn-secondary {
+    background: var(--unad-orange);
+    color: #ffffff;
+  }
+  .revistas-wos-note {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--ink-light);
+    letter-spacing: 0.02em;
+  }
 
 </style>
 </head>
@@ -1741,6 +1834,7 @@
       <a href="#productos">Productos</a>
       <a href="#investigadores">Investigadores</a>
       <a href="#acerca">SUMECO</a>
+      <a href="#revistas" class="nav-link-external">¿Cómo verificar el cuartil de una revista?</a>
     </div>
   </div>
 </nav>
@@ -2098,6 +2192,29 @@
     </div>
   </div>
 
+  <!-- PANEL: CONSULTA DE REVISTAS -->
+  <div class="revistas-panel" id="revistas">
+    <div class="revistas-panel-inner">
+      <div class="revistas-panel-title">
+        <span class="revistas-icon">🔍</span>
+        ¿Cómo verificar el cuartil de una revista?
+      </div>
+      <div class="revistas-panel-body">
+        <p>Para Colombia, el cuartil que cuenta es el que aparece en <strong>Publindex</strong>, el índice oficial de Minciencias. Scimago (SJR) y Web of Science (WoS/JCR) son bases de referencia internacional, pero el modelo Minciencias 2024 toma como fuente autoritativa la homologación en Publindex.</p>
+        <p><strong>Ruta recomendada:</strong> busca la revista en Scimago (libre acceso) o en WoS (acceso institucional) para conocer su cuartil internacional. Luego confirma que esté homologada en Publindex: si aparece allí, ese es el cuartil que Minciencias reconoce para el cálculo del peso individual del artículo.</p>
+      </div>
+      <div class="revistas-panel-links">
+        <a href="https://scienti.minciencias.gov.co/publindex/#/revistasHomologadas/buscador" target="_blank" rel="noopener" class="revistas-btn revistas-btn-primary">
+          Publindex · Revistas homologadas
+        </a>
+        <a href="https://www.scimagojr.com/" target="_blank" rel="noopener" class="revistas-btn revistas-btn-secondary">
+          Scimago Journal Ranking (SJR)
+        </a>
+        <span class="revistas-wos-note">Web of Science · acceso solo con suscripción institucional</span>
+      </div>
+    </div>
+  </div>
+
   <div class="controls">
     <div class="search-wrap">
       <input type="text" id="search" class="search" placeholder="Buscar por código, descripción, dimensión o nivel...">
@@ -2141,6 +2258,7 @@
       <div class="col-pr" style="text-align:right">P. relativo</div>
       <div style="text-align:right">Peso individual</div>
       <div class="col-pag" style="text-align:right">PDF</div>
+      <div class="col-ficha" style="text-align:center">Ficha</div>
     </div>
     <div id="ranking-body"></div>
   </div>
@@ -2458,6 +2576,8 @@
           <li><a href="https://minciencias.gov.co/sites/default/files/upload/convocatoria/m601pr04g01_modelo_medicion_grupos_investigacion_tecnologica_o_innovacion_y_reconocimiento_investigadores_-_2024_1.pdf" target="_blank" rel="noopener">Documento conceptual</a></li>
           <li><a href="https://minciencias.gov.co" target="_blank" rel="noopener">Minciencias</a></li>
           <li><a href="https://scienti.minciencias.gov.co" target="_blank" rel="noopener">Plataforma ScienTI</a></li>
+          <li><a href="https://scienti.minciencias.gov.co/publindex/#/revistasHomologadas/buscador" target="_blank" rel="noopener">Publindex · Revistas homologadas</a></li>
+          <li><a href="https://www.scimagojr.com/" target="_blank" rel="noopener">Scimago Journal Ranking</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -2568,6 +2688,7 @@ function render() {
           ${p.peso > 0 ? `<div class="peso-bar"><div class="peso-bar-fill" style="width:${barWidth}%"></div></div>` : ''}
         </div>
         <div class="col-pag"><a class="pag-link" href="${PDF_BASE}#page=${p.pag}" target="_blank" rel="noopener">p.${p.pag}</a></div>
+        <div class="col-ficha" style="text-align:center"><a class="ficha-link" href="fichas/${p.codigo}.pdf" target="_blank" rel="noopener">Ficha</a></div>
       </div>
     `;
   }).join('');
