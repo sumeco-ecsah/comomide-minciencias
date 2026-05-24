@@ -23,18 +23,13 @@
     --ink-light: #8a96a8;
     --rule: #d6dde6;
     --rule-soft: #e8eef5;
-    /* Paleta oficial UNAD según Manual de Identidad Institucional */
-    --unad-blue: #005883;
-    --unad-blue-deep: #003d5c;
-    --unad-blue-light: #3380ab;
-    --unad-orange: #f47920;
-    --unad-orange-deep: #d86610;
-    --unad-yellow: #f0b429;
-    --unad-yellow-soft: #fdf5dd;
-    /* Colores institucionales auxiliares disponibles */
-    --unad-green: #50b748;
-    --unad-magenta: #a54686;
-    --unad-cyan: #43c7f4;
+    --unad-blue: #003a70;
+    --unad-blue-deep: #002347;
+    --unad-blue-light: #1a5599;
+    --unad-orange: #f37020;
+    --unad-orange-deep: #d85a14;
+    --unad-yellow: #fdb913;
+    --unad-yellow-soft: #fef3d0;
     --sumeco-coral: #e8654e;
     --sumeco-blue: #3b8db5;
     --sumeco-yellow: #f3c84a;
@@ -325,6 +320,19 @@
     color: rgba(255, 255, 255, 0.65);
     margin-top: 10px;
     font-weight: 500;
+  }
+
+  /* ============ AUTORÍA ============ */
+  .autoria-bar {
+    text-align: center;
+    padding: 12px 20px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    background: var(--bg-soft);
+    border-bottom: 1px solid var(--rule-soft);
+    letter-spacing: 0.02em;
   }
 
   /* ============ INTRO ============ */
@@ -662,34 +670,6 @@
   }
   select.sort:focus { border-color: var(--unad-orange); }
 
-  .filters-eyebrow {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    color: var(--ink-muted);
-    margin-top: 14px;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    font-weight: 600;
-    line-height: 1.5;
-  }
-  .filters-eyebrow strong { color: var(--unad-blue-deep); font-weight: 700; }
-  .filters-divider {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--unad-orange);
-    background: var(--bg-paper);
-    padding: 10px 16px 8px;
-    text-transform: uppercase;
-    font-weight: 700;
-    border-left: 1px solid var(--rule);
-    border-right: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule-soft);
-  }
-  .filter-chips-nivel {
-    border-top: none;
-  }
   .filter-chips {
     display: flex;
     flex-wrap: wrap;
@@ -752,9 +732,9 @@
   }
   .row {
     display: grid;
-    grid-template-columns: 60px 130px 1fr 100px 70px 70px 130px 70px 70px;
-    gap: 14px;
-    padding: 16px 22px;
+    grid-template-columns: 70px 140px 1fr 110px 150px 80px 70px;
+    gap: 18px;
+    padding: 16px 24px;
     align-items: center;
     border-bottom: 1px solid var(--rule-soft);
     background: var(--bg);
@@ -770,24 +750,12 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
     font-weight: 600;
-    padding: 14px 22px;
+    padding: 14px 24px;
   }
   .row.header:hover { background: var(--unad-blue-deep); }
-  @media (max-width: 1100px) {
-    .row { grid-template-columns: 60px 130px 1fr 90px 130px 70px 70px; gap: 12px; padding: 14px 18px; }
-    .row .col-pg, .row .col-pr { display: none; }
-  }
   @media (max-width: 900px) {
     .row { grid-template-columns: 36px 1fr 80px; gap: 12px; padding: 14px 14px; }
-    .row .col-codigo, .row .col-cat, .row .col-pag, .row .col-pg, .row .col-pr, .row .col-ficha { display: none; }
-  }
-  .col-pg-val, .col-pr-val {
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink-muted);
-    text-align: right;
-    letter-spacing: 0.02em;
+    .row .col-codigo, .row .col-cat, .row .col-pag, .row .col-ficha { display: none; }
   }
   .rank-num {
     font-family: var(--serif);
@@ -843,18 +811,8 @@
   .cat-B     { background: var(--b-bg);     color: var(--b-fg); }
   .cat-ASC   { background: var(--asc-bg);   color: var(--asc-fg); }
   .cat-DPC   { background: var(--dpc-bg);   color: var(--dpc-fg); border: 1px solid var(--rule); }
-  .cat-FRH_A { background: var(--frh-bg);     color: var(--frh-fg); }
-  .cat-FRH_B { background: var(--unad-yellow); color: var(--unad-blue-deep); }
-  .cat-SIN   { background: var(--bg-soft);    color: var(--ink-muted); border: 1px solid var(--rule); }
-  /* Niveles granulares del modelo (subniveles A1/A2/B1/B2/C/C1/C2/D/Q2/Q3/Con Calidad/Piloto) */
-  .cat-A1, .cat-A2 { background: var(--unad-orange); color: #ffffff; }
-  .cat-B1, .cat-B2 { background: var(--unad-yellow); color: var(--unad-blue-deep); }
-  .cat-C, .cat-C1, .cat-C2 { background: var(--bg-soft); color: var(--ink-soft); border: 1px solid var(--rule); }
-  .cat-D { background: var(--bg-soft); color: var(--ink-muted); border: 1px solid var(--rule); }
-  .cat-Q2 { background: var(--unad-orange); color: #ffffff; }
-  .cat-Q3 { background: var(--unad-yellow); color: var(--unad-blue-deep); }
-  .cat-Con-Calidad { background: var(--unad-blue-light); color: #ffffff; }
-  .cat-Piloto { background: var(--bg-soft); color: var(--ink-light); border: 1px dashed var(--rule); font-style: italic; }
+  .cat-FRH_A,
+  .cat-FRH_B { background: var(--frh-bg);   color: var(--frh-fg); }
   .peso-vis {
     display: flex;
     flex-direction: column;
@@ -905,21 +863,43 @@
     background: var(--bg-soft);
     border: 1px solid var(--rule);
     text-decoration: none;
-    transition: all 0.12s;
-    white-space: nowrap;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
   }
-  .ficha-link:hover { background: var(--unad-blue-deep); color: #ffffff; border-color: var(--unad-blue-deep); }
+  .ficha-link:hover {
+    background: var(--unad-blue);
+    color: #ffffff;
+    border-color: var(--unad-blue);
+  }
   .ficha-link.pendiente {
-    color: var(--ink-light);
-    background: transparent;
     border-style: dashed;
-    cursor: default;
+    color: var(--ink-light);
     pointer-events: none;
+    opacity: 0.5;
   }
+
   .row.piloto .peso-num { color: var(--ink-light); font-style: italic; font-size: 14px; }
   .row.piloto .peso-bar-fill { background: var(--ink-light); }
 
   /* ============ ACERCA SUMECO ============ */
+
+  .productos-ext-btn {
+    display: inline-block;
+    padding: 18px 40px;
+    background: var(--unad-blue);
+    color: #ffffff;
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.01em;
+  }
+  .productos-ext-btn:hover {
+    background: var(--unad-blue-deep);
+    transform: translateY(-2px);
+  }
+
   .acerca-section {
     background: linear-gradient(180deg, var(--bg-paper) 0%, var(--bg) 100%);
     padding: 80px 0;
@@ -1445,11 +1425,11 @@
     align-items: center;
     gap: 10px;
     background: #ffffff;
-    padding: 10px 18px;
+    padding: 8px 14px;
     border-radius: 4px;
   }
   .unad-logo-img {
-    height: 72px;
+    height: 32px;
     width: auto;
     display: block;
   }
@@ -1734,76 +1714,6 @@
     color: var(--ink-soft);
     line-height: 1.55;
   }
-  .nav-link-external {
-    color: var(--unad-orange) !important;
-    font-size: 12.5px;
-    letter-spacing: 0.01em;
-  }
-  .nav-link-external:hover { opacity: 0.8; }
-
-  .revistas-panel {
-    background: var(--bg-soft);
-    border: 1px solid var(--rule-soft);
-    border-left: 4px solid var(--unad-orange);
-    border-radius: 8px;
-    margin: 0 auto 28px;
-    max-width: 1200px;
-    padding: 0 24px;
-  }
-  .revistas-panel-inner {
-    padding: 20px 0;
-  }
-  .revistas-panel-title {
-    font-family: var(--sans);
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--unad-blue-deep);
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .revistas-icon { font-size: 17px; }
-  .revistas-panel-body p {
-    font-family: var(--sans);
-    font-size: 13.5px;
-    color: var(--ink-soft);
-    line-height: 1.55;
-    margin: 0 0 8px;
-  }
-  .revistas-panel-body p:last-child { margin-bottom: 0; }
-  .revistas-panel-links {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-    margin-top: 16px;
-  }
-  .revistas-btn {
-    display: inline-block;
-    padding: 8px 18px;
-    border-radius: 6px;
-    font-family: var(--sans);
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: opacity 0.12s;
-  }
-  .revistas-btn:hover { opacity: 0.85; }
-  .revistas-btn-primary {
-    background: var(--unad-blue-deep);
-    color: #ffffff;
-  }
-  .revistas-btn-secondary {
-    background: var(--unad-orange);
-    color: #ffffff;
-  }
-  .revistas-wos-note {
-    font-family: var(--mono);
-    font-size: 11.5px;
-    color: var(--ink-light);
-    letter-spacing: 0.02em;
-  }
 
 </style>
 </head>
@@ -1831,10 +1741,9 @@
       <a href="#dimensiones">Dimensiones</a>
       <a href="#pesos">Coeficientes</a>
       <a href="#faq">FAQ</a>
-      <a href="#productos">Productos</a>
+      <a href="productos.html" target="_blank">Productos</a>
       <a href="#investigadores">Investigadores</a>
       <a href="#acerca">SUMECO</a>
-      <a href="#revistas" class="nav-link-external">¿Cómo verificar el cuartil de una revista?</a>
     </div>
   </div>
 </nav>
@@ -1876,13 +1785,17 @@
   </div>
 </header>
 
+<div class="autoria-bar">
+  Ángel Saúl Díaz-Téllez · Jennifer Mejía-Ríos · Grupo SUMECO · ECSAH · UNAD
+</div>
+
 <!-- INTRO -->
 <section class="intro">
   <div class="intro-inner">
     <div class="intro-grid">
       <div class="section-label">¿Qué es esto?</div>
       <div class="intro-text">
-        <p>El modelo de medición Minciencias, aplicado en la <span class="highlight">Convocatoria 957 de 2024</span>, organiza la producción científica colombiana en cinco dimensiones de producción y dos indicadores complementarios del grupo (cohesión y cooperación), con un total de <strong>ciento setenta productos reconocidos</strong>. Dentro de cada dimensión, los productos se ubican en niveles de calidad (TOP, A, B, según corresponda, con subniveles propios en ASC, DPC y FRHCTI). El documento conceptual oficial tiene doscientas cincuenta y dos páginas.</p>
+        <p>El modelo de medición Minciencias, aplicado en la <span class="highlight">Convocatoria 957 de 2024</span>, organiza la producción científica colombiana en cinco dimensiones de producción y dos indicadores complementarios del grupo (cohesión y cooperación), con un total de <strong>ciento sesenta y nueve productos reconocidos</strong>. Dentro de cada dimensión, los productos se ubican en niveles de calidad (TOP, A o B según corresponda). El documento conceptual oficial tiene doscientas cincuenta y dos páginas.</p>
         <p><span class="ink-strong">Cronología de la convocatoria.</span> La Convocatoria 957 fue publicada por Minciencias en 2024. Operó sobre una ventana de observación de cinco años (enero de 2019 a diciembre de 2023). Los resultados preliminares se publicaron en marzo de 2025 y los resultados finales el 5 de diciembre de 2025. El modelo seguirá vigente hasta que Minciencias publique una nueva convocatoria.</p>
         <p>Esta herramienta consolida esa información en un solo lugar consultable: buscar productos por nombre, filtrar por dimensión o categoría, comparar pesos individuales, y saltar directamente a la página exacta del documento conceptual donde aparece cada producto.</p>
         <p>Es un aporte abierto del grupo de investigación <strong>SUMECO · Sujeto, Mente y Comunidad</strong>, Categoría A de Minciencias, adscrito a la Escuela de Ciencias Sociales, Artes y Humanidades de la <strong>Universidad Nacional Abierta y a Distancia, UDR La Tebaida</strong>, Zona Occidente.</p>
@@ -2180,9 +2093,6 @@
 </section>
 
 <!-- PRODUCTOS / RANKING -->
-</section>
-
-<!-- PRODUCTOS / RANKING -->
 <section class="section" id="productos">
   <div class="section-head">
     <div class="section-label">04 · Ranking completo</div>
@@ -2191,76 +2101,9 @@
       <p class="section-desc">Pesos individuales calculados con la fórmula oficial del documento conceptual de la Convocatoria 957 de 2024: peso global del subtipo A1 multiplicado por el peso relativo del producto.</p>
     </div>
   </div>
-
-  <!-- PANEL: CONSULTA DE REVISTAS -->
-  <div class="revistas-panel" id="revistas">
-    <div class="revistas-panel-inner">
-      <div class="revistas-panel-title">
-        <span class="revistas-icon">🔍</span>
-        ¿Cómo verificar el cuartil de una revista?
-      </div>
-      <div class="revistas-panel-body">
-        <p>Para Colombia, el cuartil que cuenta es el que aparece en <strong>Publindex</strong>, el índice oficial de Minciencias. Scimago (SJR) y Web of Science (WoS/JCR) son bases de referencia internacional, pero el modelo Minciencias 2024 toma como fuente autoritativa la homologación en Publindex.</p>
-        <p><strong>Ruta recomendada:</strong> busca la revista en Scimago (libre acceso) o en WoS (acceso institucional) para conocer su cuartil internacional. Luego confirma que esté homologada en Publindex: si aparece allí, ese es el cuartil que Minciencias reconoce para el cálculo del peso individual del artículo.</p>
-      </div>
-      <div class="revistas-panel-links">
-        <a href="https://scienti.minciencias.gov.co/publindex/#/revistasHomologadas/buscador" target="_blank" rel="noopener" class="revistas-btn revistas-btn-primary">
-          Publindex · Revistas homologadas
-        </a>
-        <a href="https://www.scimagojr.com/" target="_blank" rel="noopener" class="revistas-btn revistas-btn-secondary">
-          Scimago Journal Ranking (SJR)
-        </a>
-        <span class="revistas-wos-note">Web of Science · acceso solo con suscripción institucional</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="controls">
-    <div class="search-wrap">
-      <input type="text" id="search" class="search" placeholder="Buscar por código, descripción, dimensión o nivel...">
-    </div>
-    <div class="sort-wrap">
-      <label for="sort">Ordenar</label>
-      <select id="sort" class="sort">
-        <option value="peso-desc">Mayor peso primero</option>
-        <option value="peso-asc">Menor peso primero</option>
-        <option value="codigo">Código alfabético</option>
-        <option value="dim">Por dimensión</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="filters-eyebrow">
-    Filtrar por <strong>dimensión</strong> · el nivel de calidad de cada producto aparece en su fila
-  </div>
-
-  <div class="filter-chips" id="filters">
-    <button class="chip active" data-filter="all">Todos<span class="chip-count" id="count-all"></span></button>
-    <button class="chip" data-filter="dim-GNC">GNC<span class="chip-count" id="count-GNC"></span></button>
-    <button class="chip" data-filter="dim-DTI">DTI<span class="chip-count" id="count-DTI"></span></button>
-    <button class="chip" data-filter="dim-ASC">ASC<span class="chip-count" id="count-ASC"></span></button>
-    <button class="chip" data-filter="dim-DPC">DPC<span class="chip-count" id="count-DPC"></span></button>
-    <button class="chip" data-filter="dim-FRHCTI">FRHCTI<span class="chip-count" id="count-FRHCTI"></span></button>
-  </div>
-
-  <div class="results-meta">
-    <span id="results-count">Mostrando 170 productos</span>
-    <span>Click en la página para ir al PDF →</span>
-  </div>
-
-  <div class="ranking">
-    <div class="row header">
-      <div>Puesto</div>
-      <div class="col-codigo">Código</div>
-      <div>Descripción</div>
-      <div class="col-cat">Nivel</div>
-      <div class="col-pg" style="text-align:right">P. global</div>
-      <div class="col-pr" style="text-align:right">P. relativo</div>
-      <div style="text-align:right">Peso individual</div>
-      <div class="col-pag" style="text-align:right">PDF</div>
-      <div class="col-ficha" style="text-align:center">Ficha</div>
-    </div>
-    <div id="ranking-body"></div>
+  <div style="text-align:center; padding: 40px 0;">
+    <a href="productos.html" target="_blank" class="productos-ext-btn">Abrir ranking de 170 productos ↗</a>
+    <p style="margin-top:16px; color:var(--ink-muted); font-size:14px;">Se abre en una pestaña nueva con buscador, filtros por dimensión y nivel de calidad, y fichas PDF.</p>
   </div>
 </section>
 
@@ -2576,8 +2419,6 @@
           <li><a href="https://minciencias.gov.co/sites/default/files/upload/convocatoria/m601pr04g01_modelo_medicion_grupos_investigacion_tecnologica_o_innovacion_y_reconocimiento_investigadores_-_2024_1.pdf" target="_blank" rel="noopener">Documento conceptual</a></li>
           <li><a href="https://minciencias.gov.co" target="_blank" rel="noopener">Minciencias</a></li>
           <li><a href="https://scienti.minciencias.gov.co" target="_blank" rel="noopener">Plataforma ScienTI</a></li>
-          <li><a href="https://scienti.minciencias.gov.co/publindex/#/revistasHomologadas/buscador" target="_blank" rel="noopener">Publindex · Revistas homologadas</a></li>
-          <li><a href="https://www.scimagojr.com/" target="_blank" rel="noopener">Scimago Journal Ranking</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -2600,131 +2441,16 @@
     <div class="footer-bottom">
       <div>© 2026 · Díaz-Téllez & Mejía-Ríos · SUMECO · Convocatoria 957 de 2024 · Documento M601PR04G01 v.02</div>
       <div class="unad-credit">
-        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgzIiB2aWV3Qm94PSIwIDAgMTAwIDgzIj4KPGRlZnM+CjxmaWx0ZXIgaWQ9ImZpbHRlci1yZW1vdmUtY29sb3ItYW5kLWludmVydC1hbHBoYSIgeD0iMCUiIHk9IjAlIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIj4KPGZlQ29sb3JNYXRyaXggY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIiB2YWx1ZXM9IjAgMCAwIDAgMSAwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIC0xIDEiLz4KPC9maWx0ZXI+CjxmaWx0ZXIgaWQ9ImZpbHRlci0wIiB4PSIwJSIgeT0iMCUiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgo8ZmVJbWFnZSB4bGluazpocmVmPSIjY29tcG9zaXRpbmctZ3JvdXAtMSIgcmVzdWx0PSJzb3VyY2UiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMjAiIGhlaWdodD0iOTkuNiIvPgo8ZmVJbWFnZSB4bGluazpocmVmPSIjY29tcG9zaXRpbmctZ3JvdXAtMiIgcmVzdWx0PSJkZXN0aW5hdGlvbiIgeD0iMCIgeT0iMCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSI5OS42Ii8+CjxmZUNvbXBvc2l0ZSBpbj0ic291cmNlIiBpbjI9ImRlc3RpbmF0aW9uIiBvcGVyYXRvcj0iYXJpdGhtZXRpYyIgazE9IjAiIGsyPSIxIiBrMz0iMSIgazQ9IjAiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiIvPgo8L2ZpbHRlcj4KPGltYWdlIGlkPSJzb3VyY2UtNyIgeD0iMCIgeT0iMCIgd2lkdGg9IjIwOSIgaGVpZ2h0PSIxNzEiIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBTkVBQUFDckNBWUFBQUQ0ZzNsSUFBQUFCbUpMUjBRQS93RC9BUCtndmFlVEFBQWdBRWxFUVZSNG5PeWRlWHljWmRXd3IzUFBKR202Sm1rbXk3U0ZWa0VFRkVRV1h6YlpxU1ZKRjZBZ0tBaWkxWlkyTTJsWkJXVVFVZlprMm9KYVAyVjVRYVVGQ2sxU0JGR3hLQ3BZWlZONTJRcTBtV21UdEVuM0pEUHpuTytQbWJTWnpKS1pTZEtrZGE3Zkw1VGszczZ6bk9mZXpuME9aTW1TcFYvSVVBdVFDRitONDBzbzN3UytBSXdBMW9QVVc0RWM3OFQ3bXpZUHNYaFpzdXhoMkNuUnV3c095UnRsMi9aejBLOGt5Tklxb2hlVzE3YitjWjhLbGlWTEFzeFFDOUNia2JhdFAwbWlRQURGcWxMdnJ5azdjcDhKbFNWTEVvYVZFdmxjamxNRXJrZ2g2eGpWVU8xZ3k1TWxTeW9NS3lVUzRjbzBzcC9kdExCbzBxQUpreVZMaXRnSHVrS2ZxL0FnTmJtZk1ob0tHalgvS2ZVMmIwcTFyQ3JIcERGTEUwTG1HR0I5U25WN01FM3RqcU9NU3FteHlkYmRZL05mbStMNXNDUGwxckprU2NDQUtaSFA1Zmdpb25lQmZFSFVRaEZDb3BiUDVYaGVqTzJhOHRxTi8rcXpFdEhjZE5ZNkRKTFhWeDcxWVB6dHhkWCtOcm5lQ0dXSVlsbEtYdnZPSFQ1WHlVL3RBZldVUE5DeUkrVkdzMlRweFlBTTU1cmNqcThqL0I3a0N6SDFDMTlTRGYydHlWVnlUbC8xQ1BKQk91MnE2UHRKMHozWS9XMk9KMEJxRWNwNkpZOUdkRkVvbHo5dnVIckMrSFRhelpLbEovMVdJcjlyL1BFQ1B3VnNTYktORXRIbEg4OHZkdlpSM1ZNcE55eXNLNjlyL1dkUzJkb2RIb1JaeWZJb0hHWHNYWStrM0c2V0xMM290eElwNXZ1a05pd3NzTnZsdW1RWnluYTFQQWE4bVVxN0FqY0lhS0owM3lKbk1jcWlWT3BDT00vbmNweVNVdDRzV1hyUkx5VnFudWNZalhCVzZpVjBackpVV1ViQUZwSlp3SWZKNjVIYnltdGJsaWZORXVxYWlqQWlkZGtrcVd4WnNpU2lYMG9VekxjbUFqbXBsNUJKT2lkNS90SWx6ZTlqeXprZTlNZkF6cWpTOElhcXpuRFdOWCt2ejZaVXBxUXVGNEIrSXIzOFdiS0U2ZGZxbklSeU9wUlFPa1VDTENQWVZ5Ym52YjVXWU43Nm1vbUxiS0dPSThUR2FOVCtVWG5keGc5VGxrMmtReE9QOXVJVjJKVjY1aXhaOXRJdkpTcHIycmplUDhIUkFqaFN5Uy93ajJUem1ONU1xdDJ3RzFpYmlXeEM2QithUmtjcllpVmRwTWlTSlJIOUdzN0pDa0lxK2xDcStSWDlSWC9hUzRmU2dzMXJnSGRUekw0ckVPQlhneWxQbGdPWGZxL09kV253aDZUMnNxNHBMMmg5cUwvdHBZcDRDRnFXbVF0OUR4OUJienBvYWF0djBJWEtja0RTYnlXYVV0ZmVib0ptcXNBYmlYUHBDeUhwbkNXZVZGN29nV1BpNGsyL1ErWExRQ0tMaEJCd3M3T3V0VzRmaXBYbEFHUEF6aFBwSEhMOCtjVlhJREliT0J3SUN2SUdxbytXZVZ1ZVNHY3VOTkMwdUl2TEE4Z0NZQ3FLRXlOYlVGNHlsaXd0Vzd6cHJhR1NLOHVCUVVJbCtwZUgzTUt0SmFlajFtY1F5Y1dTZDNQeXJPY2RkN1Z1MzVjQ0RpVk5ydUxEeEpnelFJdXdkSE5JNWZlVEZyZWtPcy9LOGw5Q1hDVnFxaW1kSWFxTFFRL3FsYlFWMFZ2TGExdnJockpuR1d3K25sL3N0T1hJVDBXcGpFM1ZwKzA1TXJmazdwYU4rMTZ5TE1PUkdDWHl1WXEvaWNoUDQ2WHRSWC9zckd1ZE40aHlEUmxOQzRzbWlXVjdHWmlZT0pkK0ZBeHlVbll4SWd2MFdsand1Y2NmanNqOTlEbFhrcm4rR3NkRmd5alhrQ0dXN1g5SnFrQUFjckRkTGcvdUU0R3lESHVpbEVqVVhFdUtaanlxZkdkUUpCcENtdHdsSndPbnBaajlYTDlyL1BHREtVK1cvWU1vSlZMaDNEVEtIdDE4cmFQM0daMzltL1N1SDhWTUhTeFJzdXcvN0ZFaURRL2gwbEtLWUVEN09oKzBYeUZRbmw2QkErdjZzMlRHSGlVS3I3YkoxclFLQjIxdEF5L1MwS0ZZN2VrVmtBUHErck5rUmkrTEJldWxOTW8ybFM3ZDlPRkFDalBrV1B3cHZRS3labkFFeWJJL0ViMndBQ21idjRpSzkwRGJLM0x1Ym4yV1ZJMVdsYmZMQzV0L043Z1NaZGtmaUZLaThycldGeU9INGZyaXBTMkZ6ZDdCRVdub2tHVUUxSklyZ000K3N1NFdyTXYzdFMxZ2x1RkpqQUZxZVVIcmZKUWZBb0Y0QlFRZXo4blZpaU05ZEEyNmRFUEFoTVhOTHlPY1EySi9kaDlheUZubDNzMnY3a3U1c2d4ZkVtNnFycTl4SEdKWHZVUkZqaFlsMXhKOTI2QlBsTmR1Zm1WZkNqaFVySytabUcrbjh5SlZ6a0J4cU5Bc3lPOTNoc1l1UDNUSmUzMzFWRm15Wk1tU0pVdVdMRm15Wk5rL0VDcHF6aDVxSWJCWnphenlKamtabXlHblh6R0NVWVdENTVSUlFybW9qRXFyakdYOWhXZVhiQmhRT1daZFBaNHUrNWtabHhmZFFzUGltT1Y2Ly9JeVJ5aW42d2VaVnF0Rzc1ODBveTJqNStwN1l2eW5MWnZXWk5wMmIwU2xUUXhCQlorRzVDT3g4NTd6bjYzdmlnZXJ2M1hiRWV1M0F5Rmt2N0JZQ1p3LzRQV09LM0lRQ2czaTlVbjZaNFB0NWsxbXp6dUpGUThNbkJQOWtEa0k0UTVnSkRBT3lFK3BuTEFWbFhiZ24wQ01FbGs1WGRNRm1aT3BXTVl5T3lCRkw3UzkyN1l4b1Q5dHh5Q2drVjFOTVFvVytJOGV2N1ZwSlg5VDFlZE1qajdockdyN09KT3E3VUMzNllvQUJRTWljQ29JVzlISVYwQ2luVFFPR0NHMTJIdDlFSDdKK293a2tTYTdnZTRRTFYyUitoUGZSK1d6N001NUJMaUFnZHFzWHJYa244QW5BWmc5MjBhSDgvTVJGOG9YeDhtOUNaRWI2SkpWUEZlN0pYbkZNcU0vWWlsNlBoa3EwYjVBd3grY2MwWGtYQTNLUGI2bnhyOG9ZdDFkTnJQdE55S3BQNXZvNzZqSFkxaTd2UWdyZUN3d0ZlRXFZT3dBeWZ3eUtqOUhySmZJOTMvQWloVnBlWDBjTUtybWpFUkhIZzE2RmpBSFNEZFFXQXNpUDBHbGdmek9mOGYwS0xPdUhrL0FmaDl3ZWZKcTVGWWE2anhwdHAwZWxlNUhRQy9yOFJmRk1pZXd1dmJ2ZlJYMTFUdEhhckN6aGZDSEoyTXNZeDJkeVpCdXc4cnhad204MEorMk0wWGdGVFhtMnhObXRLVGtpekQ1WUdUNmZDZVdlUmlrUC9PbVZwU3JhUFN1NmtjZGc4T3hjM0p3NW50UWJpQWx6MGY2QkFIYnQvcitnZ09WN3F0Qmw1RDRIaXNxRjlKWWwzb2tqSFE1ei8wNWpPNTlFWVExMUh0VE9pL2xXemwrcHNMS2ZzdWdlc3VFODdkOFA5MWlRNmxFRVlLQy9Lajg5VlpQWC9PbTVDL09xcVUreklqelVmNmRvU0Ria05DcHcxS0JBTll1QzFEdnZRbms1ajd6Q3IvQjMzRnBTZ29FMEZCM1A4SjhFZy9aQk5HSE9hL21zNmtMbkNhcjYxNm5wN3N3MVQrbldsU2hYME81UGNoK0d5akFydWgzZlVlUGY3cDV1V04wc294OWYzMVgzYlVka1ZzeUVrUGtMdXFYdnAxUjJYMkpmOWM5UURMSEkxM1laQzVybDhVMWhVcEl2ZmNCUkw2YkpNZG9qUFVNczY0ZXJDQmpDckkzRUpxYTVwUUtMY2NHVkF5UURNZHNYRFV1emVBQ3c0cXFRSTcxekxvSEp5ZU1NSkthODhZZEJVOERLVDJBSGlqby82WlpabWhZdXl5QUpCdTY2S004WGZkaFJuVmIxc3Q5NUpoQ3dMNmMwejBESGo4M0lzQzJQZjhybWxJdjZzOTFuRVNLL3RWVGtpQmttejVRZFEwUlorWVdiUCtWZXVMclMycEs5S0luaU1xTGFUYjhkK3E5R1MwWkRnbVdOQ1pNVTNsbWtGcy9rekh0OXcxTzFUMmlYUWlwRFVVMU5EQkR1YjBONzY5RHVwN01iRHBxL0kzeEVsSjNJMnhTSDArSDBkZlR5ei9VeUg4U0pJUVlHZmo5b0RldnVvQXExMVdEVUhPUFNiR2t0Q0txU05WQUNxQndxcTkrVFBGQTFqa1VpSERyaHFlS1R1ejk5OVNWU1BXOXRGcFVHZjV6b1o2TTNQQVJ4RDNlOGZFQWJveXVBeExIUVZMdXA2TDZwQUZxS3lQOFR4Y2RBWHhxZ0t1MVdjSGNPSTR3OXp0c1l1UVg3NjQrSkdxdk1ZMEFQcmFQMG10UDFxV1hmNGhac1NLRUV1dU1VVW52NDVFTTVUMUVyeVR4aWwwZUlrOHliVUVmZnU4R0Q5WCtiYkFtUWdacXRTOEZWUFdrWUU2d3FQc25oTzBRTlhLbUluVkViNzVuVURtZnp1L1ljblhQUDZXdVJLSE96V20yTmpoV0NJTkpmTXVKcGdGdG8zN3hja1NTMmFPVlljeEtadGVrWnJvejhBeld5ejUxNDNPbDZka1pab2pOenJhREs3ZTJkZjhjTkt2NS9Za3pXdjh3Y1ZacmpSVUlIQUk4MzUvNlJjeU5tMWNYN1RGQ1NHTTRaMHN2SEtNWkpGT2V3U1gyR21VUVBnYjFkYmNnckVpWUxoekg3dEFqREdEVWpsVFk5RXhKcWNKZ09hVE10M1lIMC9Mck54aE11bWpiRm1kZzgzbUkvQ2J6V3JSNGR4ZDc1cStwSzFGejUrNzBHdG9mWTZER2tWbWtJMDdHL3FKSTNsVkFrckF1Y2lHVjFkY09RdHNKQ1ZuV0RGSi9KOUxmZ05kOU42UkxobHhFeUhUWkw0YzR3L2RVNjFDWnF4cit5S1d1UkZYTzlHemRORFEwdG5IOVF1UEpQRGhId1ZmZHRSMEpUUWRhRTJlU0gxTGxuallvN2NmRlN2VWwveEJJeGFGTkZBcFYrb2YreFFrZUtNb3YydGlDY0hzL3FqaTA2YW1pTDhBQVJNbzc0TEYwOE55QzFTOWRoekNMK0t1Q0FEWlVIMmZHZ2lNR1RZWUl6Y3NkbzFVa3BUTkpJdnpHTWlhVDRWQlIwN2JpVXpNb055anN5aTM4dVlBLzAvSVNNV25LS3RGUVUrLzlFOGpDSkRuR0VESlBNZE05cU1kVXVuSkRYMEpKYU5vU2hmTGNwQmt0N3dtODMzZm1hRVIxMkd5OEhucmVlNTBXTE0rNEF1RnN5Q3JSOEtDaDduN2dKMGx5SEVhUXg1azkyelpvTXFTK3RCM2NIYkQrQUtEd1hQcnRNTE43TGpFY01NWmtiRVV2Y0pSNk1Ga2xHaTc0ZDFjREx5Yk9vT2ZTNGV6UEdENXh6Y3V4Q2FRNDk5Sy9mUEtpdHJEUGRpUHBLeEVjNUgrcStKZ015ZzBLblZ0R3ZVSktFZVpqVWNqeEgrc2NrVldpNGNMYVpRRnlnaGNDSHlUTW8xeFBsZXZTZ1c2NkthLzRpMEJLbHVTcWV4WEhOc0wyT3pKWmVERU1teUhkbENzLzdBRGV5YlI4UUhibVpaVm9PTEh5L3MxZ25ROUo5dGlVbjFQbEd0aTlIRXRUWG5vMlBmWlh5cVp1Mmlud2wvUWJIRDd6b2dpSlAxeDlNQ0tVbDV0Vm91Rkd3NUxYSTBlNkU2MEtqa0I1bXVuekJ5dzJraUFwSGxXUTF2TFhXNk9QVEd2Njh5S0Z6NjUvd25Gb3V1VUdEU0d0a0VJOU1VRXJPeWNhbGpRc1hnbVM3RWkxRTh2MkJOTVc5TnZweXZwbkNvOENUZkhRbkQ3Zis2aTAya3dtOHlMRXBzUG1qSkhBOWt6TGR1UnFWb21HTFExMXQ2S1NiUG4xUk95Mm4vYTNHYkZTTnpoVmllMTFuTk5iWHN0a3IwVVlQdk1pTkVVWFkvR0tXcUpaSlJxK0tDUGxDbUJ0NGh6Nk5TcGQ4L3ZUaUtUdUZrdURJWW54NFNlQ29tVGcyMDlQYWw0K1BHTCtSbHhuWmNRSXUxaFpKUnJPcktqZGpSVzhnT1JIODJ1cGNtZmsvWFI5L2ZnSndPZFR5NjJ2VDc2Z05YNlBrOWxTdHdubWhvYkhHU1BWb2t5TGhuYmFRc1BDamlsTEVsYmYveEZWcmd0UWZnZmt4c2xoUjNVRjB4YWN3TE5MMHJJZ2tDRFRTZGxTM0t6ZDlHVHBKK0tsZEJGOFA4T3Y4VXpnLzJWV2RBQVJPVExUb3JtanV6cXpQZEgrUUwzM1Q2RGZUcEtqQ0dOV01XMUJXbzQyMDV1WDZGVkJFM3cvM285Ui9wcE91M3RxVkRtNzVabmlNWm1VSFNnaXZYSEczcGEyNVkvdHlpclIva0xENGdlUkpKYlR3aEhZek1ONFBDazkwOGloc3RNSFNMcE15ZXNNV1Y4YVNnRWt5RG45S0w1OThoa2ZabnVpL1FyZmJoZkNINUxrbU1uZnR5VHpjN2VIamk2bUVYOTR1RThSTXpqSDBWTnVIeTdKdUt6eWQ0SHM2dHgreGRwbEFick1oVWd5NjJtNWhhcnFpL3FzYTdnY2tGTXEvN1Y4YUpUWjk4VDRUd01aaDZTeGhOOUQxb3A3LytPNTJpMFlhenF3TFVFT1FlWG55ZHdULy8ybjVJQU02VENxRzRWeGhUbEZwdzlKMnpidWhzd1BDZHJWZWhxeVNyUi84c3lTZnlQeU5Vam9hSDAwWXExaTJvSzRYa3pMUzhlZkJoUU9tbnhwb3YwTTRaSUpUVThYWFFsa3ZNU3U4RmJaK1cxdlFWYUo5bC9xNjU1R3VEVmh1akFabXp4SnZIblBNQm5LOVdDZm5qRmEvN1RqUEZIcG43V0h5Tkx1LzgwcTBmNU12ZmMyMENjU1o1QlRnVFBpSkF5UFRjNjlPRGM4UFg2d3ZBenRvZVdaNGpHK2xlTnZNMnJWSytSa1dvK0EzOWh5OS9pWnoyNjI3dDhvK2JiTDJXVk5Samd1UVo2b0QyWFRNNDVqc0t6Smd5OWFla1QyckY0WmlMcXNrSm50VzFsOGN2ZnZpbFVPOHFrdVM2dUEvdTlMcWR6aXJQTHQ4UXlWVmFMOW5SVzF1eU1XRGE4Q0pYM21UK1BzMEw0a29rVGZHWmphOUpib2N5UUROMUlVZUtVODJQcUxubi9MRHVmMkphS0RNKzZ2OTM2TW1ndEo3RFdvQjZrZlFSQjQzMjdaUDVuT2o0b2tzNnhJeHVGTnp4UWZsbUhaZmNWT1MrVXl1WWdvMTJyWm5taXdrU2d6KzRFT3VyeVh4dHFYcUhKL0M5VUhFMldwT09pakV1QnpxVmNxejVSZXNDbXRVNStiVnhmOXFyTlRsbVEwNXdoN0Fyb3o3WEw3QmtYMHFvbXpOc2NjSmMvMlJJT04wQ05Vb2ZRcmlIQ2YxTmM5QkN4TmxQeVZ3OTg5a1RUR05pR29UMWVFOGVkdDJhYXFHUndaQjRiVEdhUGVDRGRPbUxubDhYaEpXU1VhZEtTbjVmTkJnOTdjanNJYUlHNDhwU1BHdC8xUEdqVnRtVmpRK3FkTVJCRGsyVXpLb1h4aHc1TkZReFlSSXpIcW1UQnpjOEllTXF0RWc0M3FzVDErY3d5a2I0UzR2T2dKa2hPOGlGN09OOGJtZHVFWTBabXl5Yi9DYWprak0xZFNGcUhNbEFnRU1jTm4rVjNvVUxoeXdxd3RpZmZqeUNyUjRGSlpNd0VrK3FXd3pGY0h2ZDJWOTI5R2RRWTlmQWVjUGFrSjBEVG13SnIyVUs2YkNiUGEzMEF6QzBrak1tdzhBZjFIMVp3NGNkYm1oL3JLbUZXaXdlSzhtdVBBV2cyOVhmUEtMVlJWWHphbzNrd0JHaGUvaGVobFJFeURwaDY4SWVXaUFvRUFWc1l4ZkVSUU1oelNDWnk1Ym1YQm9McE03b1B0b3R6WUh0ajh1WW16V2w1THBVQjJkVzZncUhCZGovQkpZQ0p3S0ZpSEpNZzVFcFZIMk8yOGkwclgzMUZhTWRKRk1IUlh1aWRUKzZSKzhUTlV1bTdKdFZtM25UWWg5U2dpQ2k5T21kWGUzcCttQlgxVzRSdnBsbFBJeWNVK1RkRjBvOVgzbC9XcS9EU1VHM3pnNE1xdGFVWFRTMTJKUEI2TFNwZEZ0dmRLZ0k1QnBBRFlBZnd6OHRNM3dpalFVZVNZd2ZtZ05YaHZuK211T21kTWJ1Q0xhWlRLZUNqWFRkNElmYUdqVTdySTdNelNET0JuL1pVaEtVSUhxcThpOG1mUWV1ZU1MWDhKOTZEcGsrNkQ2eUptZUhJZ29Ua3hLOEFpcWQzWXhzVTNENEpBQTRHNmozcmp4aFh2Zm1MdThhV2IzNW95ZGx1ZlgxbWp0cWY3MitqNDg3WnMyL0JVMFZlTm1QU3R4WVVkbG8yM1RWQysxVjg1dWxGbG14anRCTk9xaEQ1MHZyYWxxYmNQdlV4SlY0a0NITkJLSkxIWHBwcUNGY0R3NXFTdmYvUXlmUFR5dm01MzR2bGJFb2ZVVEkxbEF5TElJSlB1MEN6MUY4cXlEWnZ3R2FranNVTVBHYVJJZVZrT0dOSlZva0RxTmNkNUlZYzlHcWNuTXZ0OVQ1UmxjTWxrT0pjYU9vaDJZb09Ga2hmSEtPYS9waWZhVkZQNkNZdlFKQTJ4STJRYjhlOUp0UnZTREhhOWY3TjVRZEhZUUU3T0VWYklzZ2REK3NGQlMxdFRXdEpNVjRsU2p3Z3VvZjJ2SjVKNEswbldmaGdGUFQzOGJzZUZpbnBDYWgwSkFnWnMycm16eWVWNFdPdzV0emp2OVNVSnpyei9zNm1tOUJOQnRYN1VpY3pFc25JUnNOdEZmVzdIeXlqZmNYcGIxaVFybis1d2JuTWFlZmUvbmdoaW5SOEtMVU1neHo3RDd5NitVMkVGeEhnQkhTWENQS3pBS3h2bmw2WVlOV0wvWTZPcjlBc2gxVmNGTGdMdCtSRVY0R1NFMy90Y3hkOU1Wa2U2U3BUNkYwbE14azdDaDRUcDE0MkJuaGJYRVVRT1dDWHkxemkrcHNoMVNUTXBVeXk3dFZJOUI5N0cvUHFhc1VXV1dNOUFVbC9jTmtSKzNGUmRjbEtpRElQWEU2blY5eW5MNFlUVkVUOUNnZTNBVkNLZGpVMlZINlNZL1doL2UwbkdUZzZIS3pieWFvRFNWTEtLYU1KN05ZZzlrZXhmU2lRUy8yYm1kQjJRODRGTmswcVBKMnlpbENMVytZTW16SkFocVYrVGNOcUdxeWZFOWRtZG5oSnBPajBSY1gyZURWdFU0dlZFcmF4NFlNYytsMlVmWUdrb2JvU0h4TWduQjBlU0lVUlRqUkFJZ0RHMnpzbHhFOUpzOWFNME1nLytBYlNCSlo2ODcrNXpLZllWbGtsejZWNE94T1h1dE82QjJPd2Q4ZjZlbmhJWmswNm84c1BUcW52SXNXS0RYWWxrSEpwOXVHT3pTTW5NdndmcDV0OGZTT2VhdHU4SWpuNHZYa0o2U2pTaTZ4MFNSN1h1emFUSWl0ZitnY294c1gvVHVEZnRRS0IwU2ZQN1FOTDlqeDZvTVpMUUFjcitpbWc2MXlTL09uVEplM0Y3cnZTVUtEdy9TUFhFb2hEc1BDS3Qrb2VLYzY4WmhSREhYWk41ZmQ4THMrK3dqRlNUeWdhNnlQOHJ1MjlUUm9HOGhqTmxoYzJQb2tsRDFRQWc0TE1wMzB1VW52N1pJT1UvS2VjVlRrbTcvcUVnci9NNElQYWthU2g0d0wwNFBabDRYL1BybG1XbWcyeEprdTJSdG5ITi9RcXVQRndSRDFhZ3Erc0NFZjFkNGt5c0U4dE1MZlUyYjBxVUpYMGxNcVR1QVVZNEsrMzZod0tWZUE0TjMrUFpKUWZrSGxGUEppN2U5RHRzOXNPQTI0SFhFZHFBSm9RblZlVmNaMTNMMTQ3MHBHRzl2NTl4OEkrM3RwV05hejFYUlM4Qm5nZjhRQ3ZJSzRKY2Eyem1zMldMTjcyVnJJNzBqeXRNZDUrTXBha3Ewazd5QzR0WTRSbStEK0YwajUzUmJldUkyVFBSeDJoWVBQaE9SZlpqUHA1ZjdMVGJ6SmtpbElHMkdqRnJTbXZUYy9ZNEdDaUl2N3I0OHdqSFlSaUptby95UXNFWHhpL1praWltVTc5STM1U2phZGNybE9kdkp6WEg0S1BZM1Q0ZFNCSzVZSWdadGVWQ2tEaWJqaVpUdDA4SFBPdmNCUVY1NU5RQmw0R2E3cFdta0ZyNDNTV3JnaEthTjZsMmMwYmVmdnFMdjJiOENYNDFQd2JDcTYwYS9rK256YmJUN3k2K3U2eXA5UWV5SXRvTmNIOUpmemkzZGxrQVNEeUdqRUhucHQzR3ZtTDJ2TkdJeEhQSzEwRkhYc00rbDJjLzRLTzU0d3J6SlBmUHdOZUk4LzRvT3QydTVoWGZvdktEOTdWc1RUV2xaNnRsL2tpM0FrVXpTaEdQMytsWW9aNkI5Uk9TV1dXaUQ2V1Ird3lxYWxKMkdyaFAyWlh6ZmVKdHNpcS81b1U3dCs1N2dZWS85cnpjbjZDYWROVlZ3WWtWL0tVT1pEaUdQbGhmTTdaSTFQbzEwb2Y3QW1HV3Y3M1lQWkJ0WjZaRTI0c2FTWDAzWDhCYXdqNjhvU2xSVlQwRG9UcE9pb1dhKy9hNVBQc0JUYTdpd3dSbXA1UlpPV21UZTN5OEFHT0RnazN6NWdKeGJkdGlrUnNHMGlvOU15VjYwUk5FTmVHNmVRektHVlM2THN1b3JjRmd1dnRrVkg1RnZHVnQ1UkZXMTc2NTc0VWEvZ2d5bFhRYzRzcytEYTZjVGx1T1RXMmx4L2FkTFRVeTE4Ykd4WTlUV1gwVnlOa3A1UmNXTTkzMUdxdThiMlRjNWtCUVdYMFdscTZBcUpBbjNiUmk0NFo5TGRMK2dvaE9TQ2UwcWxobVFpcjVGTVJmVXpJVFpiYXFUaEVocU1vYnhsZ1BsOWR1VGpWNlhsbyt6aTNSbEdSTGhmNU1zQlNScTBqMWVJUXlEb3RuT2UvcWZUN2hqQ0JVdXE0RmVZNzRrYk1WbFcreHlwdHdVKzIvSFJWSmI1NG9WcC81Vzl6RjVmNGF4NTlRZlFyMEVoSCtCemhGaEhtcTVxOCt0K05uN3k0NHBPOVQwa3Bhc2hsQy9mTHdHbDFYZjZqM2ZvenFSYVR1U3N1SnNhK2hzdWFFZnJXYkxsWHpQMDJWYXpWd0YvR0djQURLYlRUV1BiVlA1ZHJQRVBUUGFSWkl1cCs0ZVVIUjJJQ1lGMUFTblJvVjRCdWp6TFpmSkVqZm05R1FqbXlkT1NIOWV4cjVrOUwvcGI3R3hYOEEvVEtrSEliaklMRFdVT20rR285bmNGMFNWeTBxcHRKZEI3WTMwS1JqNXAvUTZQVU1xaXdIQUdYaldsOUNVM09QTE9CaloyNVNUNm9kZG5Oelh5dDk0Y3IwMG8ydTRxUWhWOVJZOTVQeU95Z1BEK1RHNjhDOHhBMkxWNExPSU95SE9oWHlRSmV5dHUwMXFxcG5NTkFyZDVVMUoxRHBlaGdOcmdkMW9jbENINHFYQnU4OFVyZE8vNjlGUEZpSWZvTytqVlpES2x6bFhPWkxtRTg5MkVYbDY2bTJiZlVSQzlaNTcrYTNCZjErbnhVSjY2eEF6Z0FGV082dWNpQ1o3am9LaStVUXp5STZLZjhCV1k3SUN1cHIvNVYydTZkNzdJelpmREpxT3crMEF1aDdYMG9JQUc3cXZRK2szZDUvT1J2Y0pTY2ErRFZvdklPTXJVYjF5akp2YTlMTmFwOTcvT0ZnL3AxR3M1dWRkUzNGZldWcWNwZGNGMUdtbUhtVUtuL0ZGcnBvd24xYjFxZlJicDhNL043TjdIbWoyWlZ6RDhLY2pPb1gvS2k4Q2ZvNjZBY0lXd2l4RFdFYnhvd0F4b0kxQmloRjVRamdNNFFQQU1aNjZrbk1ld2lYVXU5OU5XMzVzZ0N3empONVJPN1duWmVJeWpraVZvbXF0S255eC93UndmOHR1ck90ejBtK3YyYjhDYXJtYjZtM0tGM091dWFVM0xENUZwVWZMS0hBNVNESEs1b1A4cUdLcm5MV3RqYklJSXc0Qm04RHRNcDFDaGExQ01jTldodnAwNEhxdlppT0gxSy83SUIzeWppYytYaCtzZE51bDNUczY5NTMxclVraXZrMHBBeTJGWUZRNFo2RjBldFF2akRJYlNXakErRkJRc0U3V1gxL09uNGlzZ3dpUHJkakxmSHQzT0xoZGRhMURLaTV6a0N4NzB4eHpxczVEbU45RGJnUWlPL2piZUI1QStFaDdEbVBzZktlZlIxNUxVc2ZOTG1LcDR2SU15bGszV0dGUW9kUFhMSWw5WmlaKzVCOWI4ODJlN2FOanJManNjeVppSndHK25tZ3p3bGppbndNdklyd2V3ZzlTLzNTZFFOVWI1WkJ3dWQyL0JDNE1YRU82VktSaXliVWJrcEYyWWFFNFdFVU9tUGhKRUxCVHlGbUNuQVF5bGl3UmlFeURtVjBPQ1FqZWFpR28yR0x0S0hhREtZVnJJOFFlUmZzYjFOLzd3SHBhUEZBeCs4cXVSelJIMmx2MHgxaHJSRXpmN2o3ZHhnZVNwVGx2eDZkamMzdmRKd3N3aWRVSldpTXZGNVd1eWxyQ0p3bFM1WXNXYkpreVpJbFM1WXNXYkpreVpJbFM1WWtoSmU0cTl4WGdINmFrSGtzb1grQldkZVVFQXdzQlBrajlYV1orMlNycko0RmNqcm9LaG9XcCtGNmE0ZzUvWW9SakI1M0p5cGROTlpkbTFLWkt0ZEJ3RHlRMTZtdis5V2d5VlpSL1YyTXlhRytybSsvRjVYdWhZaVdZTEdOUnUrUFNHU1FPZDE5TXFwVmhBSjFySDVnNHdCTEhKOEsxNjBJQlFUTXJUeFhtOHkxOGRCVDVib2RKWWNHNzNXUjgwUjZJY3IxaVBYcGhJVzZndU5ScmtjNXZYK3RtOU9BYWxTR2syRnEzOWhMODRCcVJLOU91WXpLaFBBOTAzaHVpZ2NPa1dwVUY2WW1rMTRWZnRiY1RxWDcwb1Q1TE9zNGxPc2hiOThGYXhPK0FWU1RHeGorOFg2VmJ3RlhRMzhjbFdTSzZBdEFCMklONjEzb0dISjJkU0RtVHBEaDZ4STVkZHFCQXRDN21IN2RLbGJkdFgyb0JRb2pTeEVkaHpWdy9nLzJCZnRlaWVxOURjRCs1MTMwMlNXZGNNQjRBbnFiY0lpY0N3aDFmUTlJYlhnNjJEVFUvV2lvUmNpRS9pblJ0QVVUTWVaRWJPYWZyS3A5anlyWDhhaCtHU2hBNUhVazc4R1lyOXgwMTJFb240SFFQNmhmdW82S21yUEJLa1FETDhVZGU0Y1ArVTBEL1ErTmkvZDY1NjkwbndnNkhXUUNhQnNpZitEWWdsVjRQRlpVK1lxYVV6RTZudnE2cDVtMllDekd6RVg0SEFZUHE3ei94N1FGZWRqTkJjQlJJR1ZobXp4NUJmK3VaeUl1ay9kU1dUMEw2S1JoOGVvWU9TdmNGUmltQW1PeHJMVjA1aitTTkpyaHRBVU9qTzFDMEVNUkxRSFpEdnlMa1BWNHdtZ1VWVFZIZ25VcHlBUXNhd05xZjRUVjkyVVN6UzhQWVNIS05FU3JxWnIvYytxWHZwMXk2ZlBjbjhOR0JhcGxvSVdJdEFCL3dyZDdWY3c5MnlQN2duUEJURU5sUEdnVHFrL1F1SGh0ZEI3M21hQ0ZjZXVwckptQWhDN0JraU14MG9YRmE5RDVheHAvM0JhVmIvcDhKeUhieWFqdGRWYmY5dzRWMWNjaVhBb1VvT1pOck5BdmVIWkpmUDhLVmE1VFVEMExwQXhoTkpac0JIMkJSdS96SkRuTTF6OGZDemJiL3lBc3g5S3BWTHB2UlBrYmlBdms2eWhlcks0M21iWWdPbUN1eW9Vb1QyQ1pjd0FRclVSWWpzbU5mNGErSS9mQ2NMcVpCSVFuK0pXdVg0RytqTEFvWWdWK0Nhb3IrWHZibjVsMVRYVFVjckZ1UlBWQnBpMFlpODM4QWVFTzRNc2d4VXhiTUJHYldZdnlHTXExcUZZQmkwQlhVSjcvYnlwcW9vTURpendPOHZPb3Z4MDdKNGNxMTVPSU5xQTZGMHRQUStRKzhqcGVBejAwN2pWVnVtN0daallnZWovQ2JGZFpTak1BQUIrUFNVUkJWSkRQQWhjRFM3Q1p0NW0rSURacVg1VnJIbXE5aHZJZFZNOUN4STBKdlVHVksvRzhKaUZpSXA2YTdnQnlVYk1rcFdKblh6K09TdmR6R1AxbnhIbm5PU0RIb3N4RGVZTHkvTjh6YlVIMDZkUFpubHlxWEUraTVqbVVCWWhPQjI1QTVGV3FYTkU5dStvOUtFOHdhZVNvcUw5WFZsOEoxanVvM0kxd1BxcFhJZm9Ba3ZzMjU3bStHSlUzWkRzdS9MNVlsVlM0RmlIeTZwNTNVclFXbTNtTHl1cm81ekpqNFNRcVhLK2l2QVJ5SGNvWFViNkE2RUtFMzFEaC9qVko3RXdIeU51T1ZvRGVpSEk1T3dwSDBER2lBT0ZlMElPeG1aOG1MU3I2V0tTT0w4ZXZXaThDdGpDaUlMeVNOMmJjSThDWGdWK3plNFNEQnU5bnlQZVZvMUlEbkVBZ3VEeXVGeUc3K1E0d0JXRWhsaHpEdHZhMUVkbU9CUDBSK1lGeE5IakhZL0lLSWkvSUp4SHJTZm95MGkwZitRT1U4eEhXRUpDRGFQUk93ZVFWQWM4Qjk4ZmtyM0JOQjI0RDNrYmxTQnE4azJqd0hzMk93aElFRjFDRW1udWp5cHpuK2lMS0VxQWRJNmZRNEoxRXZtOGNJdDlHdVI4WW0xVEdSRmg2RitnN0lHZFQ0ZTQ3SFAySWpzV2c1Nkw4Rkx1VTB1RDlOQTNldzhrSk9rSHJnVk93MmI0UlZhYWovUjZVODFGNWhwd2NKL1hlQXRSOEV2Z2J5dTNoM2ljSlZlNlprUS9YZHRTY1E0TjNIQ2F2RU9VbVlEeUcrcmkrREVYUFFmQ2dlaVgrM2ZtUmQvSk9ZQktZbjBYZmg5Q2o0UlBZNmtGMk8yajBIa21EOTFQWWJKTVIvb2JvUlZSV1Qwc2s0a0M1ckpxRzhsVWF2WS95b2lmSUMzZHVwZDU3TGZBV2NCcFZjMFltTEJuMmMvQi93R0djNS81Y1ZGckYzRUxnTEpRVnJQQjBjVjcxbDFCbUEvOWtSK0ZsZTV6T3IxZ1Jvckd1RHVVUjBOTjRaY3U1dlZySlI1bUx5Tm5VZTJ0WlhmY2EyM05Ed0ZTZ25ZYkZOMFZDYWNLcXU3YlR1UGcyVkg4SS9JbFpWeGNsbEgycXV4elJHcUFkN0Jmd1hKMS9ieDNldVNoL2lTbGo1TE5BRTVaOGpjYTZ2VkVIWC9RRXFmY3VCdjZCOGtWbTErejEwR3I0RVdBUStTYXI2djY4NTVycjZ4NUN1QVhJVFNoak1wNWQwZ20yYXdBUXJlUGNhMFlseVMyRW5mLy9nMGJ2WEo2dTJ6djVYM24vWnF6UWd2QXYxdFE5ZjUvcG5venFQS0FWcyt2U1BRY2pHMnMvd0FwK0diQlFYWlN3eFdQbjVLQzZHRkNNTlkzRzJoZUE3dnY3UTBSdUFjWmljbTZMS2F0OENVdG4wN2o0WWRZdUMwVGV5UnRCWGdjOVpVODg0WXE1aFNpamdBWWFGdDhhNVRiZ21mdldZM0ZMNVBLbnhyUVJZYUNVNkEwYXZhdGlMZ1A1SjJDSDNOS2twWVZmaHFYUmk2T2x5N3NBeUVYazErRjg1c3BJMWN0NDBSUEh4NWlFNHlDSnpPeVZrSWZ3R1BWMS85anpsN1hMZ3NCT1lBd1YxYkZIbEJzWDMweURkd0VyNzkrY1VPNWNuUlZ4eDdVeXpsa214ZWoveHBTcHI3dWRCdTlFVnRmRmoxeXQ4aDVnWTNjb0hETnB4c0pKd0VuQVJvNHQ2SDJQd2VxS2JTTWRHbXJyRVJxQlNlUUVya3VTVTJud25rR0Q5MWppelEvQ3grNkRJSHQ3aGFET0JteW9QQlRqMHlLYy8wbVF6U1RxN2N0R25RWk1BdjdHcWlXeC91NnN6Z2ZDc3VpRk1jTkllSXZWaTM4VGN3M29Qd0FiVmtmNGRIWGpqOXRvOEI1SGc3Y3EvbVhMeCtHU2t0Qno3OENzemdrSi9HdHJlTkpubVdSZk9BaGFqMkV6SHVCUzREdDBQeVMxTGtiRXo0aW1seUwxUlR5bnlxbFV1U2JIcWFrTUJZU2pZa1hSMy9iK0M4SmprUjdxWmFwY3Z3VmVRZlZOck9CZlV0cGdWRDBHQklUNGszc3hINkFKNXFOVjg2ZGcyV2NnMW1kUm1ZVEJqbW9JMFNNamdhbkN2WGN3ZEV6a0ZYc3ZadEVFd2k5QnBXc0xjVnhFcFV6UWNtRXpaeUZjVDJYMW96UXNUaGJ4UTZpb09RV2o1NEIrR3RWQ1JHeW9oZ2dyUTg5UlIvampaRFMrdzhjR2Ivd2gvQjZzYnFmejhlVUpYM3N6VUVvT1IwQ1VZOGtFSVNLMUxSeW9wTmM3ZWJySHpxaTJzekNjZ2ZJcDBER0kyRUJ0NFhmS1N2Z09ENHdTcVNiM1g2QW1lVHZQTG5tZlN0ZGZnUk01ejNVQ3E3MS9vMnBSTVJvOEhWaktpaFhoeUdaQzk4YmZLV2c4YjVjSzhBSG96cGdreS9aZXpOOUdtRVhzdGdMQUhKUUtvQUlFVEk1U1dmMHF4aXpjTTN5S2k0U1B0YXZHOTk5dEVmdlN6NTV0WTVmemJwUnFSRzBnR3hCNUg3VmFRQVNOZkVBc1cxaDFSTWVIMzAxTnB0U3g3YVREczB2ZXA2TDZYa1J1UXMzZFFPK2VQRXhselFTd2xvTjFVa1RPZjRHc0I5cEE4Z2gvbUhyMEtsSVVmaWFTbWNXRFJNb0wvaVM1bW9CU1F2YmVZVlg2OEtraGU5L0pxcG9qc2RxV0l4eUJFZ0plUTJRanNDdDh5am81NFlwMGp5L3R4Rjh6a1RHUkM0cGR0eFVaQUY5ZThoam9pUWdYQTM5REF4ZUdMOVI2dkVlbVRtQVU2Tmw5ZkMxanlRbkdoaGhjVWJzYmNERjczazEwNUp5T3BjY2c4bm5nVkpBVHNQUkZxbHduSmZSUHA5S0ZLS2hKZllkOTk0VHZSdVpSYjRQTXBhSHVqL1FjSGxXNmZnRmMyYU9OUVBpMWxIaE8rTHZwL3dsbDAvRkROUDh5UkdkUTVaNEdxbEdEdHRtemJleldSdUJvNEplbytTNk50ZEh4V1N0ZHZmek5XWjBSMFRKYitJRGRRRGdZUW1JS0FKRGVIODRVMzhtenJ4K0hkanlITUFHbGxxRGN2V2R1QytFNWsrUW1OVUV5RVNFam1TU0p3eEJyU3ZnZmEzQWlhZ2ZrVjBBWGhpK0hWOWZrWXBDUHFGK3kxOEdmRW41b0VsbnVIaWhXUExDRGVtOERqWXR2bzhFN2k1QTFBWGlFOEVjbVhpQ3dNS0xkN3JjU2hPbUk4UkFxb09FSnVKZ0xhYWg3a2RqNVJiVDNXTU9IU2R1WVBXODA4YU5jcEVmOXNsMGc0VW0rcWhkTG91Zkx1OHEvQ0hvMHlyL0o5MTBlbzBEbnpTc2pSbGxNT0k5bHhYOWVGZTd6bWU0NmgwUWZBZFh1MFVPY21Mb1FXWVYxQW9yWTB2dW9kak5pOS9uQUJJVGYwT2hkR0tWQUFKcjdxYjZxNkxhZGV6MzhteWFMTlhSZUpNL2dlQTBOR3h3K2oxTE9xMjBYQUtlQzlVdDZ2bVJDZUtKb0VYKzVzV3JCYVZTNmZoUFpGRTFPUmZXeFZMcCtIUEVGSHMyelN6cFJEUy9OcXlZT0JhT1IyTFhDT1FseVJBK0xUcjhpai9BTDMwVjliYXdMM1FyMzRkREwyZVVJc3haaEszQVlNOTJUWThwMDVFeG53SHlxMXowQitnSndLS0xmaWtvekpqd1JGOTdZTTd5T1NyZGZIdk8zc0lrWEdMa3dKbTEyVFQ2aUQyRnhGNGsyTW9QeU84Sk82aytPV3EzczVoOXRad0VqZ0w5azdLUkdwVHo4YjRKNW14QjdYYjBJMy95Z2VRTG9RcW1nMG5Veng4N1o2d0QrZEkrZENyY2J1QXpoemFpZVllQjVGQURoZnNDR1paWkhwUWJrQWFBZDBmbFV1YUtqQkV4M2xhTG1KOEE1V0tadlYxazIyMWJnbTFoU1I5WDhLVEhwUnJyM1RSSUhKVHUrOExmQVc2QkhVK1dPM2grcHJMNFNpRmJRRngvcUFONERjcWx5UjRkaW5IN2RHRVIvUVhkUUFKdUduOEdLMnQwb3l3QWhxUGN4ZS9iZTBEQVYxWjlCdVpmdVljOUFvS1k2NHFjODJoaFp0TnRIK3NtUjNtOHZGZFhIUm5xeHpxamdBZHNMZndQNkRzcXA0U0ZpRHpxczI0QXhvSW10MjUrcjg2TThDaFN5eTNvZzZyMmN0c0JCaURwQVVmcDJaSitZeUFLRW5NM3BudWk1ZTJYMWVRZ1hoWDh4Q1lNaTJQY0lXK1c2RnFVT3VJM3kvRVZVdWw4SHpZTzJ3d2gvUFRjamZKWEJqSjZ3WStzempCbTNGY1VCdkIyekRQeGNuWi9LNnErQVBJbFNUNFhydHdoL1EzRmdjUkV3RHZoMnd1WGpucXlxZlkrcTZodEE3a1p0LzZiUzFZanEyd2dHNUxSd3pCejVpSURjbnJBT2o4ZWl5djAxVkY5RWRSbFZybk5CM2tiMUJHQXFxdFdJTEk0cW85eUVzQnpWcDZsMC9RU1JkMUFtWW5WK0hlRmZLRDhIcnNXaWZFK1ovTUQzMloxek5qQ0xYYzYvVXVGYWpUQ1pzQ1BNNXhBS1VBWW01bE5qM1grb2NIc1J2U2I2Zm5uZm9OTDFPSEF4dTNOZW9kTDFJR0ZEMXVPQnkxQjFJWEl0Y0JBZWo4SGpzWGpSRTZTaStrcUVGMENmb2RMMUs1UVBNWnlLY2dhd2xueGJjbXVKb0ZtRTNUb0I0UXJLUng1RGxYc1Y2QmlVUzRCU2tGdHBySHN1NCtzZDZXdGt0L05sNENSR3Q3MUVoZnR4ak83RzRqVGdmRlF1d09oSzFDcFBWTVhlWVVDOWR6RWlGY0R2Z1JHZ3B3SC9RemlNeGxKTTZLaVlVSkVxbXlMZGY0THhxTHdEK2dJYTJtcy9aK2xIQ0dzdzRvdkpIdjVTM3hjdW83VnhxMnhZdkJwTFRnU3RSemdWdUJuaDByQXk2YWswZUtOM285SFhRRjhnWU1XdTJOVXZ2Z2UwSW16dXdibUkzQVJ5TFZDT1VFY29kSHpVR0ZsWkE3MDJVT3ZyL2dIV3FRZ3ZvbHlBNm5lQnlZaGNpcVhMUUY5QVpPOXlhNk4zQmFLWEUxNVZ1aGJWbjRGK0UzaVlFWVV6UUY0SjMxUFpPMlJhOGNBT3RPc3NSSlloSEk3d1BhQUtZUW41aFYvR2tyWEFIK0xlcjFqK2dwQjhOR0hML1Q3UUFQb0N0c0RlY0RteSsrc2dYcUNVY01DMG53Q2ZCNzJVeHNYTGdOV2dhL2piNXIwOVZlUGlsMUU5RmRVL0FsOUIrQjdLTWFEM0U3TE9qQ3p1ZE4vZ3RRaHJ5T25hdS9MNlhPMFdndVpVbEFkQUQwYjF1eWpWd0RwRVo5SlE1NG1TWGFRbGZNODFrVTNodTVIN0c3YWZXN0VpaE5obkVKNERmd2JSV3BTbEdDWWcxbFFhNnhwUm5nTHBiVnY0WitDbHBQZVJtZTZDcEpZR3d3TmhwcnRnd0dxYmZ0MlltQzQ5SFdaN2N0TzZaK2RlTTZvUEs0RjRDR2RmUC9UbmJXYTZDNktHVjZrd2U3WXRZb1dTK1dyaXRBVmowMjQzZFlTS3VZVlJRK1lzV2JKa3laSWxTNVlzV2JKa3laS1VtQW1lZWpBZmJ4bzNEdUNnMXEzYlpBVXhHMnNLOHZIY2NRV2o3YlpRcWxHWWRUWTJmNkV6cjgzcEN4N3A0VUR3VXpDczJieWdhT3lPWUNocWdwd3Z1WUdTQjFyNkRFNnRjOGp4NDh3cHh4ZVFaY1EvcVhvQW9TRCtPYzc4VG1ldU5jWHpZVWU2NVdOMnVuMWJpeXR5OG5LMzVPVGxidGs0MGZIVmVJVmE1amxHNWVUbGJ1bTAyZjZVYWtOK1o4bE1SZ1oyRnJXWHJFaFh5Q3pwMDJtei9hSDdPWGIvQkhQWjduTTdkdm5jampkOGJzY1BObHc5b2JmUkpnRCtrWTViR0JuWTZSOVo4dDE5TGZkUTRITVZmNHFSZ1oxNTdUdlREN3BOSENVU2xRdjIvS0pjMER0OWY4RG5kdnpNNTNac2I3bXVlTXhReXpJTWVCRmhSZVRuU2VCVjRKUEFUU1luOEk1L1lmRVpmWlRQaUNhMzQwR2YyN0Y5ZmMzRVdIT2RBNHdvSmRJNTVJQlVTWGhETWFCdzd1WUZSWmxhNEVaUlh0ajhURTZ1anUwb0dIbHgzN243emNHa0YwMzh3RVc1eFZuYmNsSGs1MEpuWGN0cHhtNUtnTnRCQzlXU2hxYUZqaWlmRG0wRkxkL1B5ZFd4YlFYTlA4aTBXWUhKN0NmUHdPbHRmU2NuVjhjYXU0azloNVlDVVJ1TC9sRWxaNkJhcEtvUElySWRPTGZUYmlvaGN2STBDZi95a0R0dWMxSEpib3BhRGwzeVhzeHhDZkVRaE5idGtOaE84TjBGaCtTTnpObFNrcCtqMjFJSjR3NlJ1WmF6Y0VKT25xM05jVmRydDJWRVNnZlVkQTQ1RzBhTkw4bXptNUJqVkV1emVQcDVMbWVBZUhmQklYbWp6T1pTc2ZKMmx5L1pPT0JXODJYM2JOb0ozTnprTGdrS2VvdFlQS2dlUHQ5OS9lRTVhMnZDZWVzNnorUVJvOXQzRkJZWHRHNUtkTThFOGxLeEQrdCtCaU5VckdUMXhTdlhNczR4UHBYbnBpRE5ycEtTenBCbG03UzAxUys5VE5jRWxMM3ZUdnc2UE5qWHR4YVhBRXphMUxxcDUxcEIxTUtDejEzeVU5Q3JqTjA0clpDZWorcVBnYWVjZFMxUnc3cm1lWTdSd1Z5MkEyOTJGb3c2SWE5OXgzMWdyZ0xOQlhhaStyOTVsblY5ejBXSERXN0g1d3o4WEVVYUp0UTIzOUt6dnZVMWprTnNjQWNXRlFnakluOStYY1hjMGp0V3A3K21lSkVpbDRUb1BOZXV1VWNwUEFSeXNNQ1ZpbjRGa1VLVXd3aC9CVjlEQ0tIODAxblg4azBBM3h6blNFWUZxbEd1SVByWVFidkNZemxkM0pESzVOdnZkdnhjaGFOVlFyTW0zTGRsZmU5MG44dHhNOExVdG9LV3MxSlpTUEV0Y2hZVEROUWdYRWI0U0hRM20wQ1dsUmMwZnovOElVcU5QWkc1bGRPYzNwWTE4Zkw4eTBOdTRWYkgyeWhUakdwVm1iZTFBYURKNWJoWWhPdFFxWFY2bXgrRjhNZHFvN05rb1JxZGk5SnRzQnNFZlZIZzl2SzYxaGNCbXR3bHZ4UFJjU2lmQmthaC9CT0RoYVd2T3IydGN5R3NoQ1BhZDgxWDRVcFVEMmZ2ZTdnTjVOZDVvZUMxUGQ4ZDM2THlnN0dDVDZJOEdaSzhPbU4xM2lQQ1ZZUS9sdHNSdk9VYldqeTlGOEVVeE9kMnpKZXdYNzN1ZTdwSlZPNHQ4emJmMDYxTWtmZjVqNks4VSs1dHVXUlArVG5rK0VZNnZtM2dHd3FmWWUvSWJRZm9TbXk1QzUzMytscjNET2QwTmpiUW1jQkxaZmRzYXJaWnJBUkN3TFRtZVk2RTNYSmUyODVmb2pJTFpRbkNUY0I3aUh5NzAyWjdZWjFuY3JkQ1lJUXh3T2RGclNpTGFYL04rQk5zeXFzb014QjlFT1J5RkJlUUwycXRiSEk1NWtmZEdKV0pLTWZtV1BtSEtySUt4Q0dpdndQOUVKR1BnQS9vZHZpbXJBTStVQW5iNmFrSE82TUN2MFg1RWRBQ1dxT2lseUM2RUdXZHdOV2hISHJaM2lWQy9vTnlMSmI5a3Q0cDZzR09NRitVRGFrbzBEcDNRWUdFQW45QitJNEtyNnV5SUN3WE54SitZTi8xdHpzOHFjbVZPa2Q2Nk1MaUZ3QWg2VEVYRmtxQXo0dnNqZksrY2FLalRrWHZFaVdFOGtOUnVVN2hVWkNURkhuZTd5NnVBRERvaDhBSElKMlJ1dFlCSHdqaDA2bnF3ZVMxN1Z5dDZOMXE2VFpFRjZub0phQTF3RHVnY3pwdDV1R2VjbW93TUFMbFdFU20yTFJqbFJGbUNqd0djaDlJRzhyTi9na2xNWjZWL0s2U3V3VVdBMTJpZW91ZzN4UFlwS0ozK1dwS1BOMzVkdVlHN01EbkVZN29XWDdqeUpJbkJCWXJCQVc1WHRGTE5YeSs3SFdReXdnRlZrQ1A0ZHpHQ2NXbkFpVW90d09VZXBzMytkeU92d0NuaEhLWUJzUmJWVHNjSXpZSm1xTzZoeDA2aDd2OStZN25FTTRZMGI3amV1RFdSQSt4ZVo1amRGQmxCZWhZUktZNWExdWU3MDdiY24zaHd4MWRPUzhMZXMrbW10TFZwYldib2c2QldXSjlYNUZYVGNoOHVjZVE1MFVBWDQzanp5Z241ZVRwMTNvTThmQzFGODhXT0FtVlg1WjdtNy9hczF2WE9TejFqM1Q4UTRYWi9nVmwxWDBOb3dKQjY1ZDJ1OXhoMEs4UU5zYmN3NmEyNGk4aGxBcmQ3c0NTazBmTzFRcUhBTGRQcUcyNXVXZmFPbmZCVC9MSWVRZGtybnI0M29BUE9RMS9EQjlZNWd1SnNqUmY2eWdMQnBnSCtwR3RTNDdwMlZQN3FvdVhZdVRQaXR5cnNGcnFXcTRDOExrZHJ3QkZJY243NnFUYURYdU1UUDN0SmRNUlBRUGhTV2RCeTBVOXIwYzlMUFczTzE0R21iRmhRZEhFaVV1MmJJZ1NSSFUyeUh0NWVjRWp1b2Y3TGRjVmV3SmQ1aTNRT2Y0RlpkL3RmbTYrR3NlcHFDNUVlVHNuVDAvb2ZnOTBEbmY0OGgxckJMM0p0Mmo4cjV6M2JvN3J0SEtqZS95WkZqb2RlTDY4b0tXaTV5aEFQZHp2YXkvNXJhQm5ycStabUw5M1lTSDhKVklJUHQxRDZwWGh0SVNyZEhaVjV2Ujg0V1FaQVRFYVVSeVpvMG1NRFFNNVhBRjZFS0svZE5ZMlA5OHpyZWpPdHEybzlVTWdMMlJaVjhVVVZvN0t6d3Vjbjg2Y3dSNHlyNEIrVThUY0ZETXVYa1lBbGVjQVcwaTB6d25tUVV0YmZTaHJGSTdhV0ZQNjJaNXBJWkhMUUxac0xteDlQbEg1cVB3cTlZak03U1J3VCsrMEtYWHQ3UWhyUUlzMnRaWW1QaUNZSWFLMnlGQlVFbnBrQ25icUJNQ0FmTlI3cU90YzNMcldNdktGUUdmWGliM3ZhZHoyTUs4cFhCV0NHM3AvRU1JdnF2d0dFTHN4bjR0VGZKeXh6SlU5NTh0aDVkREhBTEhzZXZTZW5Jb2JFREhjMGZOREtzc0lHTkVmQURaQ0p1SGh6V0JJM3hIaENoSGJ3dDdEYVBGZ0diRldBMGpYMXBIMmNIdUlYNWtCOHFyVDIvYngzZ3UyUDZXRTdsR284czF4am5RdTgwVzdQWUptWjEzenk3MEZLS3R0WGVOM09UYXE0TncwdjNReVN6ZkZQU1FuRWo0dEs4Z0w4ZEpWK2JzSUlId3hKdEd3UE5YRmgyNUtselMvRDd6Zi9mdjZtckZGUnZJT3hwS1JXQ2hpalFUQlpyUGk3cC9FWG9EK0V1UU14Zm9LRVQvZG14Y1VqZTJFS2tWL2tlcW04aVJ2OHh2ME9QeTN5VlZTR2xKcklqWVphU3pUWlduSUJvS1ZFeG9QOUgzZ01BMGtxS0xodHlDaDVYS2VXdTkycXEwRDRkU21tcEpiN2NqRFBVY0dFKzlyZmozVjlzcnJObjRJNFNFa3dFZHp4eFhhODNNbjcza0c2QmdBTlJMdkdUU1ZMZDRVNDhWSGtQV0tJcGFPZy9DUTBkL09XWUNLelR6Uk83L3V5djJENW5mTnlCVVNudEtPOUlKN2hwVmJyaThjdHl1UU14bUxrUUpHbFhHZzJQTkgydXdBdnVxU0V3V2RwS3BSNDhyeXVvMGYrbW9jLzBBNWxsSEJxY0RLWG0xdGl2ZjFFVkNmeU1lZ1paYk5ta0NDQnk5d3FBS3FQT1J6T3g1S2RFR0VsMHVqVUN2SmlkTWtySE1YRk9ScHp2VUlYMGFaSEhGUEZaa3loanROVlUzSjFMNlQ0Qk41NUN4VjVWTDE4QjN4WUhYYXpFVkF2aUlwRGVXNitYaCtzZE5tazV0RXVDQ0VsaUxoTzJ1SnRVY3VTeE9mcnN5VW9GM0xJc09SaE11bTQ1ZHMyZVozbHl4VWRJbW9maStFZnMvbmRyUURid0pyTEhoaVlsMUwzd2NoSTdSY1Z6d20wR1d1SlR3VS9rUzRQOUtvRFpjRXorQ0RPSDlEMVFvaUFwQVBzSEZ6Mlhoc29YRkFhMlFsTW9wSVp4RHJ3NjhYdmpuT2tZd00xQUNYZDNUeUtST25vNVdBaHQwR2lRa1AxMFM0dytkMjNCRXQ0WjUvTHlCV2laSVE5amxueEVyb25WUFpzeEozTzZJZko4b25HaHZPUkl5a0hRVEt0OGhaVENqd0o0VERVTjVXdU1Fb2I2cE5td21oR0xrTWNLVmEzNVM2OW5hZnUvaFprSmtidHhhZkNxMS9CTGtNZUg5Q1hYUEtvV00yTEN6K2xMRmtEZUhEYnEraS9CQWpieE95d280ampkeEErQlRyZ0NQb2NaSC9TYW9FNVhYTlAvYlhqRityYXJzSzlBekNHN2FuQXFjYXVORmY0N2k3dkxhbHo2Z1o2OXdGQllFdWVRbjBNOEM3Q0RkSmlOY1FxMFZWTERGY3BFZ2lKNUxKVFhJaTdycUM5a0N1VFEzMDQ5aDhSSUZlSkh4eTkwTkZialZZcnlMYW9pRUpJVElONFRib1hsZ1FuWVhGMjJKNHBuZGxxam9XWkM1bzVic0xEc25ydFFlVXpIMXRHVUJBYmNrY1NHd0dKZ3I2UW5sdGVJbDBNTkZnNEZZUkRoTjR2S3l3NWF1OXg3bytkOG1NZEUrL2k4b3ZWWmlwbUsvNEZwVi9TQ2g0aW9yOElKWDVRVGZHa2pxZ1ZOQzd5dXRhcisrZDduT1hkQTdhcVh6bFVnVFVvcy9vaCtXMW0xOEJYb0ZJYjlJcHh5QXlBNWl2cXRmN1hDVi9jSHFia3g3Vnp0UGM3eUg2R2RDbnkzZTFYdFRiTnMvbmR2UjJBWjAydHAxNWJZd01LRWlwMHQybnA0ZmtkMTJqeVBFaStydU9jYU1yZTl2VStkMGxKM1Q3RkxQN3FvdVBSWm1DYUUxNWJXdGR2QXI5YnNjNUNvZU1NZTNuRUIxYjZKRG1lWTdSdlNlYkc2OHBIV1VGclU4Q095ZnVidjRQaVJEK2puSzBpaHhOWkdXdEorOHVPQ1J2VE03MlkzYVB6WDh0RThQQW1PYUVzd0ZDY0VmOFBSZE51RUtWaUk3Q1VmVjU3VHUzZ2w1SUtMUVJNRmhXbjV2VGUxcjBZUHp0Y2hZb3VTRXJ4cDlET0YyUFQxZXVWUEM3SFJkcTJBVkFxK3pPU1JvT3MybGgwYVQyc1ZzMmRjL3pJcFAxTmNBYVg0MWpGOHJOSXRhWmhCMzVKMGIwSEFDanRqdmlHN2ZxRi9wejhCWEN3eldmMi9FMjZPR2Jxa3VQcE5jOGFyMnI1Q2k3NkpPSzN1bXNhLzEvOGVwUWtiTUIxREozeDN2M3RNZTdZakRoL1FHYjJCS09FVlZaRHIzMkVzTFlBam5FbVBHRWd0YlhnZEVLSzVKYUFWczhFdjRmbVJQUHhtcTBiZHNDeTdMK2t0ZSs4K2JlYWNrUVpUT0ExV2w2SDlYZUNtQlRLMmE4M1ZSVGVqYVE5bGR3aXVmRERvV1ZLSVdnMXdHdlR2QzIvbC9Lc25xd1FMY0QycGs3SXFabjk3Y1hmeDNvMC9kWnV2aHFTbWJwbm9tenV1TXNHdlhJNjdoTkxOdkhSVnRMdnBFZ3kwNEE3ZWtYSXZJTXBFdmpQZ09MMkdmZ2N6bE9BUm1RMEp5Q1BnNFFNbFpNeUI2NzBXOHFISUthbUUzeWJqVHNwZ3dUUjg0TkMwdU9CcjdTL2JzQkxnRGU2cjBQMHhPajVsZGh3V1I2Mkw1dUQ3OFZZWW5QWGV4dW51Y1lyUjZNMysyNFVPQkh3SGF4MlQzSkx0VHBiVm1ENktPb0htSFR6alUrbCtPTE9vZWN6UXVLeG9ZdEUvUkhDT3RDMG5sZnNucGlFUDROWUluMTdaNUw3SUkyQXFpWXU1dXZkWlJCK0V2dmM1Zk1GTFYrRGZvMGdFZ2FIazBCRWVuK2l1ZEZYRHlsaFVJOUlCSUtMTzIyVmRRNTVQamN4ZDhBdVJ2Q1F5MGptcjV2QlpGTG0xeU82N3QvZks2UyszeHV4MXBVbndKR0l2ekFXZGVhZkJIRUN2NE0yS2xLYlpQTGNmMkdCVVVUSVd4NTRIYzVacVBjQUFRdEkzdTkxWXI4RzhEa2RFVTlnL0FHT1lodzE4ZnppNTBRZmdZYlhjV1ZZUU5aZlNhUzNpOC9FaDBFdlNnYkJiN2Q1SExNZjNmQklYa2JyeWtkNVhNNXFsV1pKL0JHZVdGendzRGJFZzRWZ3lYeUE3KzdiSEpZZG1SRGRlbFp4dEo2bEhvQWsyZlo3TUNuRUpJYUdwWXQzdlNXeisxNEMvUXovdnlTTSswQi9UT2cyT3pmSkJUOEtzaDl3Vnp1OWJjNXVzSm1PN0xGRUpwZGRxLy9vMlQxQXJTTmE3MnFzTjBSQWk1SCtLTi9wQ01JMkZGUTVhK2l3WXNuZWJlbHRZaGdTZWgrc1d4ZlV4R1AzKzJvOFVFbjZKMWJDbHAvVk5qdU9BTTRMUmhndmM5ZDR2TzM2MWpRTVFvMW9zYUg2RXhWamU5eE13SGxHNXAvNTNjNk5pSVUyNURIK3k3Ulc5N09SVGJOUFY2Uml6dHQ5bGsrdDhQbmgyTEFvSEs1Q0ZNVW5VYWFjb1hSYjBuVTZFaTcvM2tiNUdablhmT1RmZFhnOUxaOXZORTlmcnFGZVZpRU84Um11OFBuTHVtaWZXZXVodXR1RitFclBaZTZCYk5FQ1gwVitJSGY3YmpHRi9acmVIdDVRZk45L25iSG1RcFQ3WGI1Mk9kMitQeGJHWTB3VGxSdVFQbVhHbWFxWlJKNGxVMk5LWFh0N2I2YTRpcFJlUVpoeVNqYjFqb3JpSVJkb3ZHT0VUTXJtUmxWZVczcnovdzFqck5SWml1aDl5UFBaSVRCR285d3UxcnlySWpPQ25iWmMrMHE1aHliTFpYbFl1c2lGZnNFVzVEM0hTM051LzBUSGFjNXcwcHkrd2EzbzFHUW1ZZ1dBLzluUXViWFpVdWFvelpCT3pYd1pwN2tUalVoRStVcUt6ekdicmxpZzl0Ulo2QkNvVndFbjJKZW1WQzNLV2IveURMNlkxRmJZektaSjl5M1piMS9RZGxSMkszWmloNkdTdEFZOC9LUkhycDBkc3Radm9tbGxSQTYyVUErbG55TW1CWE91bzBmcnE4WlcyVElQMGRNY0VPaXV1TnlKRW83UWVDM3BkN20rTTd0a3pDcGR0dVdkeGNjY3V3b2Uvc0ZXSEljQnBzcTc5bFZscGQ2bXpldHJ4ay93V0IvVFl4SjJWV3VVVE12WklnNUNtSUlCVXpRYklqc21TVW9ISG9hdGYrZkd0dWVZV2xaM2ViZnE0Y3B2cTJsRlVaRFIxbFFhbFNiTGVIZC9MelE2dDU3ZHVWMUd6L2NlRTNwWnpWb3pRWU9VeVFnSnZSWDhSQlVUOHQ1bTlxS3oxTWpwMWpLYUN6V1c0WW5KOVUxdjdmbCtzSnh1N3R5enpFaWUxeVZ5ZTdjOVRvcWRBNWl4UTF6RXpLNjJtQTdKMWREVWVlQm5MV3RmOSs4b09qd0RwdnRRb0hQSWhnc2VYV25OWFpGendXeXlRWHRPL3hiUzZhR2xMMmJzcUJhMjNLeHoxWHlNeEU5UTVWeFltaENyWlhPMnMzLzJYaE42YWhRU000SllVLzdlV2VKdzBaWGNhWFA3VkJmVFhFR29SK3o3TzhNVkpDdi96cTZqWEkzMXBSKzFoTHhnbjVVdnJNMWUycjN2NUNCaVUvMFgwZ3dWeC8xdVIzL3Y3MDdKZ0FRaG9Fb2VtbDExRThIMUxGZ29LSXFBZ01kU0JEQWxvV2gvM240NjkzaDRWWFNNcW52c0VlQUx5TEtpbkpaaWVteTVVK01kdDY1YXc4QUFBQUFmM29CdDdmL0Y2Wmg4SDhBQUFBQVNVVk9SSzVDWUlJPSIvPgo8ZyBpZD0iY29tcG9zaXRpbmctZ3JvdXAtMCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAsIDguMykiPgo8cmVjdCB4PSItMTAiIHk9Ii04LjMiIHdpZHRoPSIxMjAiIGhlaWdodD0iOTkuNiIgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjAiLz4KPGNsaXBQYXRoIGlkPSJjbGlwLTAiPgo8cGF0aCBjbGlwLXJ1bGU9Im5vbnplcm8iIGQ9Ik0gMCAxIEwgMTAwIDEgTCAxMDAgODMgTCAwIDgzIFogTSAwIDEgIi8+CjwvY2xpcFBhdGg+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwLTApIj4KPHJlY3QgeD0iLTEwIiB5PSItOC4zIiB3aWR0aD0iMTIwIiBoZWlnaHQ9Ijk5LjYiIGZpbGw9InJnYigxMDAlLCAxMDAlLCAxMDAlKSIgZmlsbC1vcGFjaXR5PSIxIi8+CjwvZz4KPC9nPgo8bWFzayBpZD0ibWFzay0wIj4KPHVzZSB4bGluazpocmVmPSIjY29tcG9zaXRpbmctZ3JvdXAtMCIvPgo8L21hc2s+CjxtYXNrIGlkPSJtYXNrLTEiPgo8dXNlIHhsaW5rOmhyZWY9IiNjb21wb3NpdGluZy1ncm91cC0wIiBmaWx0ZXI9InVybCgjZmlsdGVyLXJlbW92ZS1jb2xvci1hbmQtaW52ZXJ0LWFscGhhKSIvPgo8L21hc2s+CjxnIGlkPSJjb21wb3NpdGluZy1ncm91cC0xIiBtYXNrPSJ1cmwoI21hc2stMCkiPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMCwgOC4zKSI+Cjx1c2UgeGxpbms6aHJlZj0iI3NvdXJjZS03IiB0cmFuc2Zvcm09Im1hdHJpeCgwLjQ4LCAwLCAwLCAwLjQ4LCAwLCAxKSIvPgo8L2c+CjwvZz4KPGcgaWQ9ImNvbXBvc2l0aW5nLWdyb3VwLTIiIG1hc2s9InVybCgjbWFzay0xKSI+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwLCA4LjMpIj4KPC9nPgo8L2c+CjwvZGVmcz4KPGcgZmlsdGVyPSJ1cmwoI2ZpbHRlci0wKSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEwLCAtOC4zKSI+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMjAiIGhlaWdodD0iOTkuNiIgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiLz4KPC9nPgo8L3N2Zz4K" alt="Universidad Nacional Abierta y a Distancia UNAD" class="unad-logo-img" loading="lazy">
+        <img src="data:image/png;base64,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" alt="Logo UNAD" class="unad-logo-img">
       </div>
     </div>
   </div>
 </footer>
 
 <script>
-const PRODUCTOS = [{"codigo": "ART_OPEN_A1", "desc": "Artículo A1 (Q1) publicado en revista de acceso abierto.", "peso": 1000, "pg": 100, "pr": 10, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 131}, {"codigo": "ART_A1", "desc": "Artículo A1 (Q1) en otra modalidad.", "peso": 950, "pg": 100, "pr": 9.5, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 131}, {"codigo": "ART_OPEN_A2", "desc": "Artículo A2 (Q2) publicado en revista de acceso abierto.", "peso": 600, "pg": 100, "pr": 6, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 131}, {"codigo": "ART_A2", "desc": "Artículo A2 (Q2) en otra modalidad.", "peso": 550, "pg": 100, "pr": 5.5, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 131}, {"codigo": "LIB_A1", "desc": "Libro resultado de investigación A1 (Q1).", "peso": 3000, "pg": 300, "pr": 10, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 135}, {"codigo": "LIB_A", "desc": "Libro resultado de investigación A (Q2).", "peso": 2700, "pg": 300, "pr": 9, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 136}, {"codigo": "CAP_LIB_A1", "desc": "Capítulo en libro resultado de investigación A1 (Q1).", "peso": 600, "pg": 60, "pr": 10, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 139}, {"codigo": "CAP_LIB_A", "desc": "Capítulo en libro resultado de investigación A (Q2).", "peso": 540, "pg": 60, "pr": 9, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 140}, {"codigo": "PA1", "desc": "Patente de invención A1.", "peso": 5000, "pg": 500, "pr": 10, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 142}, {"codigo": "PA2", "desc": "Patente de invención A2.", "peso": 3500, "pg": 500, "pr": 7, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 142}, {"codigo": "MA1", "desc": "Producto tecnológico con Patente de modelo de utilidad A1.", "peso": 3000, "pg": 500, "pr": 6, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 142}, {"codigo": "MA2", "desc": "Producto tecnológico con Patente de modelo de utilidad A2.", "peso": 2100, "pg": 500, "pr": 4.2, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 142}, {"codigo": "VV_A1", "desc": "Variedad vegetal A1.", "peso": 3000, "pg": 300, "pr": 10, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 144}, {"codigo": "VV_A2", "desc": "Variedad vegetal A2.", "peso": 2400, "pg": 300, "pr": 8, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 144}, {"codigo": "VA_A", "desc": "Nuevas razas animales A.", "peso": 3000, "pg": 300, "pr": 10, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 145}, {"codigo": "AAD_A1", "desc": "Producto resultado de creación o investigación-creación A1.", "peso": 1000, "pg": 100, "pr": 10, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 146}, {"codigo": "AAD_A", "desc": "Producto resultado de creación o investigación-creación A.", "peso": 800, "pg": 100, "pr": 8, "cat": "TOP", "nivel": "TOP", "dim": "GNC", "pag": 147}, {"codigo": "ART_OPEN_B", "desc": "Artículo de investigación B (Q3) publicado en revista de acceso abierto.", "peso": 350, "pg": 100, "pr": 3.5, "cat": "A", "nivel": "A", "dim": "GNC", "pag": 132}, {"codigo": "ART_B", "desc": "Artículo de investigación B (Q3) otras modalidades.", "peso": 300, "pg": 100, "pr": 3, "cat": "A", "nivel": "A", "dim": "GNC", "pag": 133}, {"codigo": "ART_OPEN_C", "desc": "Artículo de investigación C (Q4) publicado en revista de acceso abierto.", "peso": 200, "pg": 100, "pr": 2, "cat": "A", "nivel": "A", "dim": "GNC", "pag": 133}, {"codigo": "ART_C", "desc": "Artículo de investigación C (Q4) otras modalidades.", "peso": 150, "pg": 100, "pr": 1.5, "cat": "A", "nivel": "A", "dim": "GNC", "pag": 133}, {"codigo": "LIB_B", "desc": "Libro resultado de investigación B.", "peso": 2400, "pg": 300, "pr": 8, "cat": "A", "nivel": "A", "dim": "GNC", "pag": 137}, {"codigo": "CAP_LIB_B", "desc": "Capítulo en libro resultado de investigación B.", "peso": 480, "pg": 60, "pr": 8, "cat": "A", "nivel": "A", "dim": "GNC", "pag": 138}, {"codigo": "PA3", "desc": "Patente de invención A3.", "peso": 3000, "pg": 500, "pr": 6, "cat": "A", "nivel": "A", "dim": "GNC", "pag": 142}, {"codigo": "PA4", "desc": "Patente de invención A4.", "peso": 2750, "pg": 500, "pr": 5.5, "cat": "A", "nivel": "A", "dim": "GNC", "pag": 142}, {"codigo": "MA3", "desc": "Producto tecnológico con Patente de modelo de utilidad A3.", "peso": 1800, "pg": 500, "pr": 3.6, "cat": "A", "nivel": "A", "dim": "GNC", "pag": 142}, {"codigo": "MA4", "desc": "Producto tecnológico con Patente de modelo de utilidad A4.", "peso": 1665, "pg": 500, "pr": 3.33, "cat": "A", "nivel": "A", "dim": "GNC", "pag": 142}, {"codigo": "VV_A3", "desc": "Variedades vegetales A3.", "peso": 1500, "pg": 300, "pr": 5, "cat": "A", "nivel": "A", "dim": "GNC", "pag": 144}, {"codigo": "VV_A4", "desc": "Variedades vegetales A4.", "peso": 750, "pg": 300, "pr": 2.5, "cat": "A", "nivel": "A", "dim": "GNC", "pag": 144}, {"codigo": "VA_B", "desc": "Poblaciones mejoradas de razas pecuarias B.", "peso": 1500, "pg": 300, "pr": 5, "cat": "A", "nivel": "A", "dim": "GNC", "pag": 145}, {"codigo": "AAD_B", "desc": "Producto resultado de creación o investigación-creación B.", "peso": 600, "pg": 100, "pr": 6, "cat": "A", "nivel": "A", "dim": "GNC", "pag": 146}, {"codigo": "ART_OPEN_D", "desc": "Artículo de investigación D publicado en revista de acceso abierto.", "peso": 50, "pg": 5, "pr": 10, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 133}, {"codigo": "ART_D", "desc": "Artículo de investigación D.", "peso": 45, "pg": 5, "pr": 9, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 134}, {"codigo": "N_A1", "desc": "Nota científica A1.", "peso": 40, "pg": 4, "pr": 10, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 135}, {"codigo": "N_A2", "desc": "Nota científica A2.", "peso": 34, "pg": 4, "pr": 8.5, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 136}, {"codigo": "N_B", "desc": "Nota científica B.", "peso": 28, "pg": 4, "pr": 7, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 137}, {"codigo": "N_C", "desc": "Nota científica C.", "peso": 22, "pg": 4, "pr": 5.5, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 138}, {"codigo": "N_D", "desc": "Nota científica D.", "peso": 8, "pg": 4, "pr": 2, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 134}, {"codigo": "LIB_C", "desc": "Libro resultado de investigación C.", "peso": 150, "pg": 15, "pr": 10, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 138}, {"codigo": "CAP_LIB_C", "desc": "Capítulo en libro resultado de investigación C.", "peso": 30, "pg": 3, "pr": 10, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 141}, {"codigo": "LIB_FOR1", "desc": "Libro de Formación ubicado en el cuartil 1 (Q1).", "peso": 600, "pg": 60, "pr": 10, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 142}, {"codigo": "PB1", "desc": "Patente de invención B1.", "peso": 2500, "pg": 500, "pr": 5, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 143}, {"codigo": "PB2", "desc": "Patente de invención B2.", "peso": 1750, "pg": 500, "pr": 3.5, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 143}, {"codigo": "PB3", "desc": "Patente de invención B3.", "peso": 1500, "pg": 500, "pr": 3, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 143}, {"codigo": "PB4", "desc": "Patente de invención B4.", "peso": 1300, "pg": 500, "pr": 2.6, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 143}, {"codigo": "PB5", "desc": "Patente de invención B5.", "peso": 1250, "pg": 500, "pr": 2.5, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 143}, {"codigo": "PC", "desc": "Patente de invención C.", "peso": 900, "pg": 500, "pr": 1.8, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 143}, {"codigo": "MB1", "desc": "Patente de modelo de utilidad B1.", "peso": 1500, "pg": 500, "pr": 3, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 143}, {"codigo": "MB2", "desc": "Patente de modelo de utilidad B2.", "peso": 1050, "pg": 500, "pr": 2.1, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 143}, {"codigo": "MB3", "desc": "Patente de modelo de utilidad B3.", "peso": 900, "pg": 500, "pr": 1.8, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 143}, {"codigo": "MB4", "desc": "Patente de modelo de utilidad B4.", "peso": 850, "pg": 500, "pr": 1.7, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 143}, {"codigo": "MB5", "desc": "Patente de modelo de utilidad B5.", "peso": 750, "pg": 500, "pr": 1.5, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 143}, {"codigo": "MC", "desc": "Patente de modelo de utilidad C.", "peso": 550, "pg": 500, "pr": 1.1, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 143}, {"codigo": "VV_B1", "desc": "Variedades vegetales B1.", "peso": 1500, "pg": 300, "pr": 5, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 145}, {"codigo": "VV_B2", "desc": "Variedades vegetales B2.", "peso": 1200, "pg": 300, "pr": 4, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 145}, {"codigo": "VV_B3", "desc": "Variedades vegetales B3.", "peso": 750, "pg": 300, "pr": 2.5, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 145}, {"codigo": "VV_B4", "desc": "Variedades vegetales B4.", "peso": 300, "pg": 300, "pr": 1, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 145}, {"codigo": "AAD_C", "desc": "Producto resultado de creación o investigación-creación C.", "peso": 400, "pg": 100, "pr": 4, "cat": "B", "nivel": "B", "dim": "GNC", "pag": 146}, {"codigo": "RNL_A", "desc": "Número de Regulaciones, normas, reglamentos o legislaciones vinculados al Grupo con Calidad A.", "peso": 1000, "pg": 100, "pr": 10, "cat": "TOP", "nivel": "TOP", "dim": "DTI", "pag": 150}, {"codigo": "DI_A", "desc": "Diseño Industrial A.", "peso": 350, "pg": 35, "pr": 10, "cat": "A", "nivel": "A", "dim": "DTI", "pag": 147}, {"codigo": "ECI", "desc": "Esquemas de circuito integrado.", "peso": 140, "pg": 35, "pr": 4, "cat": "A", "nivel": "A", "dim": "DTI", "pag": 147}, {"codigo": "PP", "desc": "Plantas piloto con Calidad.", "peso": 140, "pg": 35, "pr": 4, "cat": "A", "nivel": "A", "dim": "DTI", "pag": 148}, {"codigo": "PI", "desc": "Prototipos industriales con Calidad.", "peso": 140, "pg": 35, "pr": 4, "cat": "A", "nivel": "A", "dim": "DTI", "pag": 148}, {"codigo": "SD", "desc": "Signos distintivos del Grupo.", "peso": 140, "pg": 35, "pr": 4, "cat": "A", "nivel": "A", "dim": "DTI", "pag": 148}, {"codigo": "SE", "desc": "Producto tecnológico con Secreto empresarial.", "peso": 500, "pg": 100, "pr": 5, "cat": "A", "nivel": "A", "dim": "DTI", "pag": 149}, {"codigo": "EBT_A", "desc": "Empresa de base tecnológica A.", "peso": 1000, "pg": 100, "pr": 10, "cat": "A", "nivel": "A", "dim": "DTI", "pag": 149}, {"codigo": "ICC_A", "desc": "Empresa creativa y cultural A.", "peso": 1000, "pg": 100, "pr": 10, "cat": "A", "nivel": "A", "dim": "DTI", "pag": 149}, {"codigo": "IG_A1", "desc": "Innovaciones en la gestión empresarial A1.", "peso": 1000, "pg": 100, "pr": 10, "cat": "A", "nivel": "A", "dim": "DTI", "pag": 149}, {"codigo": "IG_A2", "desc": "Innovaciones en la gestión empresarial A2.", "peso": 600, "pg": 100, "pr": 6, "cat": "A", "nivel": "A", "dim": "DTI", "pag": 149}, {"codigo": "RNL_B", "desc": "Regulaciones, normas, reglamentos o legislaciones B.", "peso": 800, "pg": 100, "pr": 8, "cat": "A", "nivel": "A", "dim": "DTI", "pag": 150}, {"codigo": "RNR", "desc": "Normatividades del espectro radioeléctrico.", "peso": 800, "pg": 100, "pr": 8, "cat": "A", "nivel": "A", "dim": "DTI", "pag": 150}, {"codigo": "DI_B", "desc": "Diseños Industriales B.", "peso": 175, "pg": 35, "pr": 5, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 147}, {"codigo": "SF", "desc": "Softwares con Calidad.", "peso": 280, "pg": 35, "pr": 8, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 147}, {"codigo": "PN", "desc": "Productos nutracéuticos con Calidad.", "peso": 210, "pg": 35, "pr": 6, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 148}, {"codigo": "CC", "desc": "Colecciones científicas.", "peso": 350, "pg": 35, "pr": 10, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 148}, {"codigo": "NRC_A", "desc": "Nuevos registros científicos A.", "peso": 280, "pg": 35, "pr": 8, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 148}, {"codigo": "NRC_B", "desc": "Nuevos registros científicos B.", "peso": 175, "pg": 35, "pr": 5, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 149}, {"codigo": "EBT_B", "desc": "Empresas de base tecnológica B.", "peso": 800, "pg": 100, "pr": 8, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 149}, {"codigo": "ICC_B", "desc": "Empresas creativas y culturales B.", "peso": 400, "pg": 100, "pr": 4, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 149}, {"codigo": "IG_B1", "desc": "Innovaciones en la gestión empresarial B1.", "peso": 500, "pg": 100, "pr": 5, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 150}, {"codigo": "IG_B2", "desc": "Innovaciones en la gestión empresarial B2.", "peso": 300, "pg": 100, "pr": 3, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 150}, {"codigo": "IPP", "desc": "Innovaciones en procedimientos (procesos) y servicios con Calidad.", "peso": 500, "pg": 100, "pr": 5, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 150}, {"codigo": "RNT", "desc": "Normas técnicas con Calidad.", "peso": 700, "pg": 100, "pr": 7, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 150}, {"codigo": "RNPC", "desc": "Guías de práctica clínica con Calidad.", "peso": 700, "pg": 100, "pr": 7, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 150}, {"codigo": "GMCF", "desc": "Guías de Manejo Clínico Forense con Calidad.", "peso": 700, "pg": 100, "pr": 7, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 151}, {"codigo": "MADV", "desc": "Manuales y Modelos de atención diferencial a víctimas con Calidad.", "peso": 700, "pg": 100, "pr": 7, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 151}, {"codigo": "PAU", "desc": "Protocolos de atención a usuarios/víctimas (pacientes) con Calidad.", "peso": 700, "pg": 100, "pr": 7, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 151}, {"codigo": "PVE", "desc": "Protocolos de vigilancia epidemiológica con Calidad.", "peso": 700, "pg": 100, "pr": 7, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 151}, {"codigo": "AL", "desc": "Acuerdo de Ley con Calidad.", "peso": 800, "pg": 100, "pr": 8, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 151}, {"codigo": "RNPL", "desc": "Proyectos de Ley con Calidad.", "peso": 600, "pg": 100, "pr": 6, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 151}, {"codigo": "CT", "desc": "Conceptos técnicos con Calidad.", "peso": 150, "pg": 15, "pr": 10, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 152}, {"codigo": "MR", "desc": "Registros de Acuerdos de licencia para explotación de obras de Investigación + Creación en Artes, Arquitectura y Diseño protegidas por derechos de autor con Calidad.", "peso": 140, "pg": 14, "pr": 10, "cat": "B", "nivel": "B", "dim": "DTI", "pag": 152}, {"codigo": "FIS", "desc": "Procesos de apropiación social del conocimiento para el fortalecimiento o solución de asuntos de interés social.", "peso": 2000, "pg": 200, "pr": 10, "cat": "ASC", "nivel": "Con Calidad", "dim": "ASC", "pag": 152}, {"codigo": "GPP_A", "desc": "Procesos de ASC para la generación de insumos de política pública y normatividad con Calidad A.", "peso": 2000, "pg": 200, "pr": 10, "cat": "ASC", "nivel": "A", "dim": "ASC", "pag": 153}, {"codigo": "GPP_B", "desc": "Procesos de ASC para la generación de insumos de política pública y normatividad con Calidad B.", "peso": 1400, "pg": 200, "pr": 7, "cat": "ASC", "nivel": "B", "dim": "ASC", "pag": 153}, {"codigo": "GPP_C", "desc": "Procesos de ASC para la generación de insumos de política pública y normatividad con Calidad C.", "peso": 1000, "pg": 200, "pr": 5, "cat": "ASC", "nivel": "C", "dim": "ASC", "pag": 153}, {"codigo": "FCP_A", "desc": "Procesos de ASC para el fortalecimiento de cadenas productivas con Calidad A.", "peso": 2000, "pg": 200, "pr": 10, "cat": "ASC", "nivel": "A", "dim": "ASC", "pag": 154}, {"codigo": "FCP_B", "desc": "Procesos de ASC para el fortalecimiento de cadenas productivas con Calidad B.", "peso": 1000, "pg": 200, "pr": 5, "cat": "ASC", "nivel": "B", "dim": "ASC", "pag": 154}, {"codigo": "FCP_C", "desc": "Procesos de ASC para el fortalecimiento de cadenas productivas con Calidad C.", "peso": 600, "pg": 200, "pr": 3, "cat": "ASC", "nivel": "C", "dim": "ASC", "pag": 154}, {"codigo": "TCCG_A", "desc": "Procesos de ASC resultado del trabajo conjunto entre Centro de Ciencia y grupo de investigación con Calidad A.", "peso": 2000, "pg": 200, "pr": 10, "cat": "ASC", "nivel": "A", "dim": "ASC", "pag": 155}, {"codigo": "TCCG_B", "desc": "Procesos de ASC resultado del trabajo conjunto entre Centro de Ciencia y grupo de investigación con Calidad B.", "peso": 1400, "pg": 200, "pr": 7, "cat": "ASC", "nivel": "B", "dim": "ASC", "pag": 155}, {"codigo": "TCCG_C", "desc": "Procesos de ASC resultado del trabajo conjunto entre Centro de Ciencia y grupo de investigación con Calidad C.", "peso": 800, "pg": 200, "pr": 4, "cat": "ASC", "nivel": "C", "dim": "ASC", "pag": 155}, {"codigo": "TCCG_D", "desc": "Procesos de ASC resultado del trabajo conjunto entre Centro de Ciencia y grupo de investigación con Calidad D.", "peso": 200, "pg": 200, "pr": 1, "cat": "ASC", "nivel": "D", "dim": "ASC", "pag": 155}, {"codigo": "EC_A", "desc": "Eventos científicos con componente de apropiación con Calidad A.", "peso": 1000, "pg": 100, "pr": 10, "cat": "DPC", "nivel": "A", "dim": "DPC", "pag": 156}, {"codigo": "EC_B", "desc": "Eventos científicos con componente de apropiación con Calidad B.", "peso": 600, "pg": 100, "pr": 6, "cat": "DPC", "nivel": "B", "dim": "DPC", "pag": 156}, {"codigo": "RC_A", "desc": "Participaciones en redes de conocimiento con Calidad A.", "peso": 1000, "pg": 100, "pr": 10, "cat": "DPC", "nivel": "A", "dim": "DPC", "pag": 157}, {"codigo": "RC_B", "desc": "Participaciones en redes de conocimiento con Calidad B.", "peso": 600, "pg": 100, "pr": 6, "cat": "DPC", "nivel": "B", "dim": "DPC", "pag": 157}, {"codigo": "TC_A", "desc": "Talleres de Creación con Calidad A.", "peso": 1000, "pg": 100, "pr": 10, "cat": "DPC", "nivel": "A", "dim": "DPC", "pag": 157}, {"codigo": "TC_B", "desc": "Talleres de Creación con Calidad B.", "peso": 800, "pg": 100, "pr": 8, "cat": "DPC", "nivel": "B", "dim": "DPC", "pag": 157}, {"codigo": "TC_C", "desc": "Talleres de Creación con Calidad C.", "peso": 600, "pg": 100, "pr": 6, "cat": "DPC", "nivel": "C", "dim": "DPC", "pag": 157}, {"codigo": "ECA_A", "desc": "Eventos artísticos, de arquitectura o de diseño con componentes de apropiación Calidad A.", "peso": 800, "pg": 100, "pr": 8, "cat": "DPC", "nivel": "A", "dim": "DPC", "pag": 157}, {"codigo": "ECA_B", "desc": "Eventos artísticos, de arquitectura o de diseño con componentes de apropiación Calidad B.", "peso": 600, "pg": 100, "pr": 6, "cat": "DPC", "nivel": "B", "dim": "DPC", "pag": 157}, {"codigo": "WP", "desc": "Documentos de trabajo (working papers) con Calidad.", "peso": 1000, "pg": 100, "pr": 10, "cat": "DPC", "nivel": "Con Calidad", "dim": "DPC", "pag": 158}, {"codigo": "NSG", "desc": "Nuevas secuencias genéticas con Calidad.", "peso": 1000, "pg": 100, "pr": 10, "cat": "DPC", "nivel": "Con Calidad", "dim": "DPC", "pag": 158}, {"codigo": "ERL", "desc": "Ediciones de revista o libro de divulgación científica con Calidad.", "peso": 600, "pg": 100, "pr": 6, "cat": "DPC", "nivel": "Con Calidad", "dim": "DPC", "pag": 158}, {"codigo": "IFI", "desc": "Informes finales de investigación con Calidad.", "peso": 1000, "pg": 100, "pr": 10, "cat": "DPC", "nivel": "Con Calidad", "dim": "DPC", "pag": 158}, {"codigo": "INF", "desc": "Informes técnicos con Calidad.", "peso": 200, "pg": 100, "pr": 2, "cat": "DPC", "nivel": "Con Calidad", "dim": "DPC", "pag": 158}, {"codigo": "CON_CT", "desc": "Consultorías científico-tecnológicas vinculadas al Grupo con Calidad.", "peso": 750, "pg": 100, "pr": 7.5, "cat": "DPC", "nivel": "Con Calidad", "dim": "DPC", "pag": 158}, {"codigo": "CON_AAD", "desc": "Consultorías en arte, arquitectura y diseño con Calidad.", "peso": 750, "pg": 100, "pr": 7.5, "cat": "DPC", "nivel": "Con Calidad", "dim": "DPC", "pag": 158}, {"codigo": "PEE_A1", "desc": "Publicaciones editoriales no especializadas con Calidad A1.", "peso": 1000, "pg": 100, "pr": 10, "cat": "DPC", "nivel": "A1", "dim": "DPC", "pag": 159}, {"codigo": "PEE_A2", "desc": "Publicaciones editoriales no especializadas con Calidad A2.", "peso": 800, "pg": 100, "pr": 8, "cat": "DPC", "nivel": "A2", "dim": "DPC", "pag": 159}, {"codigo": "PEE_B1", "desc": "Publicaciones editoriales no especializadas con Calidad B1.", "peso": 700, "pg": 100, "pr": 7, "cat": "DPC", "nivel": "B1", "dim": "DPC", "pag": 159}, {"codigo": "PEE_B2", "desc": "Publicaciones editoriales no especializadas con Calidad B2.", "peso": 500, "pg": 100, "pr": 5, "cat": "DPC", "nivel": "B2", "dim": "DPC", "pag": 159}, {"codigo": "PEE_C1", "desc": "Publicaciones editoriales no especializadas con Calidad C1.", "peso": 500, "pg": 100, "pr": 5, "cat": "DPC", "nivel": "C1", "dim": "DPC", "pag": 159}, {"codigo": "PEE_C2", "desc": "Publicaciones editoriales no especializadas con Calidad C2.", "peso": 300, "pg": 100, "pr": 3, "cat": "DPC", "nivel": "C2", "dim": "DPC", "pag": 159}, {"codigo": "PCD_A1", "desc": "Producciones de contenido digital con Calidad A1.", "peso": 1000, "pg": 100, "pr": 10, "cat": "DPC", "nivel": "A1", "dim": "DPC", "pag": 160}, {"codigo": "PCD_A2", "desc": "Producciones de contenido digital con Calidad A2.", "peso": 800, "pg": 100, "pr": 8, "cat": "DPC", "nivel": "A2", "dim": "DPC", "pag": 160}, {"codigo": "PCD_B1", "desc": "Producciones de contenido digital con Calidad B1.", "peso": 700, "pg": 100, "pr": 7, "cat": "DPC", "nivel": "B1", "dim": "DPC", "pag": 160}, {"codigo": "PCD_B2", "desc": "Producciones de contenido digital con Calidad B2.", "peso": 500, "pg": 100, "pr": 5, "cat": "DPC", "nivel": "B2", "dim": "DPC", "pag": 160}, {"codigo": "PCD_C1", "desc": "Producciones de contenido digital con Calidad C1.", "peso": 500, "pg": 100, "pr": 5, "cat": "DPC", "nivel": "C1", "dim": "DPC", "pag": 160}, {"codigo": "PCD_C2", "desc": "Producciones de contenido digital con Calidad C2.", "peso": 300, "pg": 100, "pr": 3, "cat": "DPC", "nivel": "C2", "dim": "DPC", "pag": 160}, {"codigo": "TRM_A1", "desc": "Producción de estrategias y contenidos Transmedia con Calidad A1.", "peso": 1000, "pg": 100, "pr": 10, "cat": "DPC", "nivel": "A1", "dim": "DPC", "pag": 160}, {"codigo": "TRM_A2", "desc": "Producción de estrategias y contenidos Transmedia con Calidad A2.", "peso": 800, "pg": 100, "pr": 8, "cat": "DPC", "nivel": "A2", "dim": "DPC", "pag": 161}, {"codigo": "TRM_B1", "desc": "Producción de estrategias y contenidos Transmedia con Calidad B1.", "peso": 700, "pg": 100, "pr": 7, "cat": "DPC", "nivel": "B1", "dim": "DPC", "pag": 161}, {"codigo": "TRM_B2", "desc": "Producción de estrategias y contenidos Transmedia con Calidad B2.", "peso": 500, "pg": 100, "pr": 5, "cat": "DPC", "nivel": "B2", "dim": "DPC", "pag": 161}, {"codigo": "TRM_C1", "desc": "Producción de estrategias y contenidos Transmedia con Calidad C1.", "peso": 500, "pg": 100, "pr": 5, "cat": "DPC", "nivel": "C1", "dim": "DPC", "pag": 161}, {"codigo": "TRM_C2", "desc": "Producción de estrategias y contenidos Transmedia con Calidad C2.", "peso": 300, "pg": 100, "pr": 3, "cat": "DPC", "nivel": "C2", "dim": "DPC", "pag": 161}, {"codigo": "DW_A1", "desc": "Desarrollos Web con Calidad A1.", "peso": 1000, "pg": 100, "pr": 10, "cat": "DPC", "nivel": "A1", "dim": "DPC", "pag": 162}, {"codigo": "DW_A2", "desc": "Desarrollos Web con Calidad A2.", "peso": 800, "pg": 100, "pr": 8, "cat": "DPC", "nivel": "A2", "dim": "DPC", "pag": 162}, {"codigo": "DW_B1", "desc": "Desarrollos Web con Calidad B1.", "peso": 700, "pg": 100, "pr": 7, "cat": "DPC", "nivel": "B1", "dim": "DPC", "pag": 162}, {"codigo": "DW_B2", "desc": "Desarrollos Web con Calidad B2.", "peso": 500, "pg": 100, "pr": 5, "cat": "DPC", "nivel": "B2", "dim": "DPC", "pag": 162}, {"codigo": "DW_C1", "desc": "Desarrollos Web con Calidad C1.", "peso": 500, "pg": 100, "pr": 5, "cat": "DPC", "nivel": "C1", "dim": "DPC", "pag": 162}, {"codigo": "DW_C2", "desc": "Desarrollos Web con Calidad C2.", "peso": 300, "pg": 100, "pr": 3, "cat": "DPC", "nivel": "C2", "dim": "DPC", "pag": 162}, {"codigo": "LIB_FOR2", "desc": "Libros de Formación ubicados en el cuartil 2 (Q2).", "peso": 1000, "pg": 100, "pr": 10, "cat": "DPC", "nivel": "Q2", "dim": "DPC", "pag": 164}, {"codigo": "LIB_FOR3", "desc": "Libros de Formación ubicados en el cuartil 3 (Q3).", "peso": 800, "pg": 100, "pr": 8, "cat": "DPC", "nivel": "Q3", "dim": "DPC", "pag": 164}, {"codigo": "BOL", "desc": "Boletines divulgativos de resultado de investigación con Calidad.", "peso": 300, "pg": 100, "pr": 3, "cat": "DPC", "nivel": "Con Calidad", "dim": "DPC", "pag": 165}, {"codigo": "LIB_DIV", "desc": "Libros de Divulgación de investigación o Compilación de Divulgación con Calidad.", "peso": 1000, "pg": 100, "pr": 10, "cat": "DPC", "nivel": "Con Calidad", "dim": "DPC", "pag": 165}, {"codigo": "GC", "desc": "Generaciones de Contenidos con Calidad.", "peso": 400, "pg": 100, "pr": 4, "cat": "DPC", "nivel": "Con Calidad", "dim": "DPC", "pag": 166}, {"codigo": "MAN_GUI", "desc": "Manuales y Guías Especializadas con Calidad.", "peso": 200, "pg": 100, "pr": 2, "cat": "DPC", "nivel": "Con Calidad", "dim": "DPC", "pag": 166}, {"codigo": "LIB_CRE", "desc": "Libros de Creación (Piloto). Sin puntuación.", "peso": 0, "pg": null, "pr": null, "cat": "Piloto", "nivel": "Piloto", "dim": "DPC", "pag": 167}, {"codigo": "TD_A", "desc": "Direcciones de Tesis de doctorado con Calidad A.", "peso": 1600, "pg": 160, "pr": 10, "cat": "FRH_A", "nivel": "A", "dim": "FRHCTI", "pag": 168}, {"codigo": "TD_B", "desc": "Direcciones de Tesis de doctorado con Calidad B.", "peso": 800, "pg": 160, "pr": 5, "cat": "FRH_A", "nivel": "A", "dim": "FRHCTI", "pag": 168}, {"codigo": "AP_A", "desc": "Apoyos a la Creación de Programas de Doctorado con Calidad.", "peso": 1000, "pg": 100, "pr": 10, "cat": "FRH_A", "nivel": "A", "dim": "FRHCTI", "pag": 168}, {"codigo": "AP_C", "desc": "Apoyos a la Creación de Cursos de Programas de Doctorado con Calidad.", "peso": 500, "pg": 100, "pr": 5, "cat": "FRH_A", "nivel": "A", "dim": "FRHCTI", "pag": 168}, {"codigo": "TM_A", "desc": "Direcciones de Trabajo de grado de maestría con Calidad A.", "peso": 700, "pg": 70, "pr": 10, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 168}, {"codigo": "TM_B", "desc": "Direcciones de Trabajo de grado de maestría con Calidad B.", "peso": 350, "pg": 70, "pr": 5, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 168}, {"codigo": "TP_A", "desc": "Direcciones de Trabajo de pregrado con Calidad A.", "peso": 200, "pg": 20, "pr": 10, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 168}, {"codigo": "TP_B", "desc": "Direcciones de Trabajo de pregrado con Calidad B.", "peso": 100, "pg": 20, "pr": 5, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 168}, {"codigo": "PID_A", "desc": "Proyectos de Investigación y Desarrollo con Calidad A.", "peso": 500, "pg": 50, "pr": 10, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 168}, {"codigo": "PID_B", "desc": "Proyectos de Investigación y Desarrollo con Calidad B.", "peso": 300, "pg": 50, "pr": 6, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 168}, {"codigo": "PID_C", "desc": "Proyectos de Investigación y Desarrollo con Calidad C.", "peso": 100, "pg": 50, "pr": 2, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 168}, {"codigo": "PIC_A", "desc": "Proyectos de Investigación-Creación con Calidad A.", "peso": 500, "pg": 50, "pr": 10, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 168}, {"codigo": "PIC_B", "desc": "Proyectos de Investigación-Creación con Calidad B.", "peso": 300, "pg": 50, "pr": 6, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 168}, {"codigo": "PIC_C", "desc": "Proyectos de Investigación-Creación con Calidad C.", "peso": 100, "pg": 50, "pr": 2, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 168}, {"codigo": "PF_A", "desc": "Proyectos ID+I con formación con Calidad A.", "peso": 500, "pg": 50, "pr": 10, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 168}, {"codigo": "PF_B", "desc": "Proyectos ID+I con formación con Calidad B.", "peso": 400, "pg": 50, "pr": 8, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 168}, {"codigo": "PE", "desc": "Proyectos de extensión y de responsabilidad social en CTeI con Calidad.", "peso": 1000, "pg": 100, "pr": 10, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 169}, {"codigo": "AP_B", "desc": "Apoyos a la Creación de Programas de Maestría con Calidad.", "peso": 800, "pg": 100, "pr": 8, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 169}, {"codigo": "AP_D", "desc": "Apoyos a la Creación de Cursos de Programas de Maestría con Calidad.", "peso": 300, "pg": 100, "pr": 3, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 169}, {"codigo": "APO", "desc": "Acompañamientos y asesorías de línea temática del Programa Ondas con Calidad.", "peso": 300, "pg": 30, "pr": 10, "cat": "FRH_B", "nivel": "B", "dim": "FRHCTI", "pag": 169}];
-const PDF_BASE = "https://minciencias.gov.co/sites/default/files/upload/convocatoria/m601pr04g01_modelo_medicion_grupos_investigacion_tecnologica_o_innovacion_y_reconocimiento_investigadores_-_2024_1.pdf";
-const PESO_MAX = Math.max(...PRODUCTOS.map(p => p.peso));
-
-let state = { filter: 'all', search: '', sort: 'peso-desc' };
-
-function normalize(s) {
-  return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-}
-
-function getFiltered() {
-  let result = [...PRODUCTOS];
-  if (state.filter !== 'all') {
-    const idx = state.filter.indexOf('-');
-    const type = state.filter.slice(0, idx);
-    const value = state.filter.slice(idx + 1);
-    if (type === 'dim') {
-      result = result.filter(p => p.dim === value);
-    }
-  }
-  if (state.search.trim()) {
-    const q = normalize(state.search);
-    result = result.filter(p =>
-      normalize(p.codigo).includes(q) ||
-      normalize(p.desc).includes(q) ||
-      normalize(p.dim).includes(q) ||
-      (p.nivel && normalize(p.nivel).includes(q))
-    );
-  }
-  switch (state.sort) {
-    case 'peso-desc': result.sort((a, b) => b.peso - a.peso); break;
-    case 'peso-asc':
-      // Piloto (peso 0) siempre al final
-      result.sort((a, b) => {
-        if (a.peso === 0 && b.peso !== 0) return 1;
-        if (b.peso === 0 && a.peso !== 0) return -1;
-        return a.peso - b.peso;
-      });
-      break;
-    case 'codigo':    result.sort((a, b) => a.codigo.localeCompare(b.codigo)); break;
-    case 'dim':       result.sort((a, b) => a.dim.localeCompare(b.dim) || b.peso - a.peso); break;
-  }
-  return result;
-}
-
-function render() {
-  const filtered = getFiltered();
-  const body = document.getElementById('ranking-body');
-  const count = document.getElementById('results-count');
-
-  if (filtered.length === 0) {
-    body.innerHTML = '<div class="empty">Sin resultados. Probá con otra búsqueda o ajustá los filtros.</div>';
-    count.textContent = 'Sin coincidencias';
-    return;
-  }
-  count.textContent = `Mostrando ${filtered.length} producto${filtered.length === 1 ? '' : 's'}`;
-
-  body.innerHTML = filtered.map((p, i) => {
-    const rank = state.sort.startsWith('peso') ? i + 1 : '·';
-    const barWidth = p.peso > 0 ? (p.peso / PESO_MAX) * 100 : 0;
-    const isTop10 = state.sort === 'peso-desc' && i < 10;
-    const isPiloto = p.peso === 0;
-    // Nivel real para el badge: TOP, A, B, A1, A2, B1, B2, C, C1, C2, D, Con Calidad, Q2, Q3, Piloto
-    const nivelLabel = p.nivel;
-    // Clase CSS del badge: "Con Calidad" lleva guion en el nombre de la clase
-    const nivelClass = p.nivel ? p.nivel.replace(/\s+/g, '-') : 'SIN';
-    const pgVal = (p.pg !== null && p.pg !== undefined) ? p.pg.toLocaleString('es-CO') : '—';
-    const prVal = (p.pr !== null && p.pr !== undefined) ? p.pr.toLocaleString('es-CO') : '—';
-    return `
-      <div class="row ${isTop10 ? 'top10' : ''} ${isPiloto ? 'piloto' : ''}">
-        <div class="rank-num">${rank}</div>
-        <div class="col-codigo"><span class="codigo">${p.codigo}</span></div>
-        <div class="desc">${p.desc}</div>
-        <div class="col-cat"><span class="cat-badge cat-${nivelClass}">${nivelLabel}</span></div>
-        <div class="col-pg col-pg-val">${pgVal}</div>
-        <div class="col-pr col-pr-val">${prVal}</div>
-        <div class="peso-vis">
-          <div class="peso-num">${p.peso === 0 ? 'piloto' : p.peso.toLocaleString('es-CO')}</div>
-          ${p.peso > 0 ? `<div class="peso-bar"><div class="peso-bar-fill" style="width:${barWidth}%"></div></div>` : ''}
-        </div>
-        <div class="col-pag"><a class="pag-link" href="${PDF_BASE}#page=${p.pag}" target="_blank" rel="noopener">p.${p.pag}</a></div>
-        <div class="col-ficha" style="text-align:center"><a class="ficha-link" href="fichas/${p.codigo}.pdf" target="_blank" rel="noopener">Ficha</a></div>
-      </div>
-    `;
-  }).join('');
-}
-
-function updateCounts() {
-  document.getElementById('count-all').textContent = ` (${PRODUCTOS.length})`;
-
-  // Contadores por dimensión
-  ['GNC', 'DTI', 'ASC', 'DPC', 'FRHCTI'].forEach(d => {
-    document.getElementById(`count-${d}`).textContent = ` (${PRODUCTOS.filter(p => p.dim === d).length})`;
-  });
-}
-
 function filterByDim(dim) {
-  state.filter = 'dim-' + dim;
-  document.querySelectorAll('.chip').forEach(c => {
-    c.classList.toggle('active', c.dataset.filter === 'dim-' + dim);
-  });
-  document.getElementById('productos').scrollIntoView({behavior: 'smooth'});
-  setTimeout(render, 400);
+  window.open('productos.html?dim=' + dim, '_blank');
 }
-
-document.getElementById('search').addEventListener('input', e => { state.search = e.target.value; render(); });
-document.getElementById('sort').addEventListener('change', e => { state.sort = e.target.value; render(); });
-document.querySelectorAll('.chip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-    state.filter = chip.dataset.filter;
-    render();
-  });
-});
-
-updateCounts();
-render();
 </script>
 </body>
 </html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ranking completo de los 170 productos del modelo de medición Minciencias 2024-2026. Herramienta del grupo SUMECO, UNAD.">
+<title>Productos · Cómo Mide Minciencias · SUMECO · UNAD</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,900;1,8..60,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-paper: #fafbfc;
+    --bg-soft: #f1f4f8;
+    --ink: #0d1b2a;
+    --ink-soft: #1e2a3a;
+    --ink-muted: #5a6a7e;
+    --ink-light: #8a96a8;
+    --rule: #d6dde6;
+    --rule-soft: #e8eef5;
+    --unad-blue: #003a70;
+    --unad-blue-deep: #002347;
+    --unad-blue-light: #1a5599;
+    --unad-orange: #f37020;
+    --unad-orange-deep: #d85a14;
+    --unad-yellow: #fdb913;
+    --unad-yellow-soft: #fef3d0;
+    --sumeco-coral: #e8654e;
+    --sumeco-blue: #3b8db5;
+    --sumeco-yellow: #f3c84a;
+    --accent: var(--unad-orange);
+    --success: #1e7a3e;
+    --top-bg: var(--unad-blue);
+    --top-fg: #ffffff;
+    --a-bg: var(--unad-orange);
+    --a-fg: #ffffff;
+    --b-bg: var(--unad-yellow);
+    --b-fg: var(--unad-blue-deep);
+    --sans: 'Source Sans 3', system-ui, sans-serif;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg-paper);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--unad-blue-deep);
+    padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 52px;
+    border-bottom: 3px solid var(--unad-orange);
+  }
+  .topbar-brand {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .topbar-brand span { opacity: 0.6; font-weight: 400; }
+  .topbar-back {
+    display: inline-block;
+    padding: 6px 16px;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--unad-blue-deep);
+    background: var(--unad-yellow);
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .topbar-back:hover { background: #ffffff; transform: translateY(-1px); }
+
+  .page-header {
+    max-width: 1200px; margin: 0 auto; padding: 48px 24px 24px;
+  }
+  .page-header h1 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .page-header h1 em { color: var(--unad-orange); font-style: normal; }
+  .page-header p {
+    font-size: 15px;
+    color: var(--ink-muted);
+    max-width: 700px;
+  }
+
+  .main-content { max-width: 1200px; margin: 0 auto; padding: 0 24px 60px; }
+
+  .guia-uso {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--unad-orange);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .guia-uso h3 {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    margin-bottom: 8px;
+  }
+  .guia-uso p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 6px;
+  }
+  .guia-uso p:last-child { margin-bottom: 0; }
+
+  .controls {
+    display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;
+  }
+  .search-wrap { flex: 1; min-width: 220px; }
+  .search {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    font-family: var(--sans);
+    font-size: 15px;
+    background: var(--bg);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search:focus { border-color: var(--unad-blue); }
+  .sort-wrap {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sort-wrap label { font-size: 13px; color: var(--ink-muted); font-weight: 600; }
+  .sort {
+    padding: 10px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    font-family: var(--sans);
+    font-size: 14px;
+    background: var(--bg);
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .filter-chips {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+  }
+  .chip {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--rule);
+    background: var(--bg);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .chip:hover { border-color: var(--unad-blue); color: var(--unad-blue); }
+  .chip.active { background: var(--unad-blue); color: #fff; border-color: var(--unad-blue); }
+  .chip-count { font-weight: 400; opacity: 0.7; }
+
+  .results-meta {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; color: var(--ink-light);
+    padding: 8px 0; margin-bottom: 8px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  .ranking { display: flex; flex-direction: column; }
+  .row {
+    display: grid;
+    grid-template-columns: 70px 140px 1fr 110px 150px 80px 70px;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--rule-soft);
+    transition: background 0.1s;
+  }
+  .row:hover { background: var(--bg-soft); }
+  .row.header {
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
+    background: var(--bg-soft);
+    border-radius: 6px 6px 0 0;
+    position: sticky; top: 55px; z-index: 10;
+  }
+  .row.top10 { background: var(--unad-yellow-soft); }
+  .row.top10:hover { background: #fde9a8; }
+
+  .rank-num {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink-light);
+    text-align: center;
+  }
+  .row.top10 .rank-num { color: var(--unad-orange-deep); }
+  .row.top10 .rank-num::after { content: " ★"; color: var(--unad-yellow); font-size: 12px; }
+
+  .codigo {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--unad-blue);
+    background: var(--bg-soft);
+    padding: 2px 7px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .desc { font-size: 14px; color: var(--ink-soft); }
+
+  .cat-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .cat-TOP { background: var(--top-bg); color: var(--top-fg); }
+  .cat-A { background: var(--a-bg); color: var(--a-fg); }
+  .cat-B { background: var(--b-bg); color: var(--b-fg); }
+  .cat-FRH_A { background: var(--sumeco-coral); color: #fff; }
+  .cat-FRH_B { background: #f5d0c5; color: var(--sumeco-coral); }
+  .cat-ASC { background: var(--unad-blue-light); color: #fff; }
+  .cat-DPC { background: var(--dpc-bg, #f1f4f8); color: var(--unad-blue); }
+
+  .peso-vis { text-align: right; }
+  .peso-num {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .peso-bar {
+    height: 4px;
+    background: var(--rule-soft);
+    border-radius: 2px;
+    margin-top: 3px;
+    overflow: hidden;
+  }
+  .peso-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--unad-blue), var(--unad-orange));
+  }
+
+  .pag-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--unad-blue);
+    text-decoration: none;
+    transition: color 0.15s;
+    text-align: right;
+    font-weight: 600;
+    padding: 4px 6px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+  }
+  .pag-link:hover { color: var(--unad-orange); border-color: var(--unad-orange); background: var(--unad-yellow-soft); }
+  .pag-link::after { content: " ↗"; }
+
+  .ficha-link {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--unad-blue-deep);
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .ficha-link:hover {
+    background: var(--unad-blue);
+    color: #ffffff;
+    border-color: var(--unad-blue);
+  }
+  .ficha-link.pendiente {
+    border-style: dashed;
+    color: var(--ink-light);
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .row.piloto .peso-num { color: var(--ink-light); font-style: italic; font-size: 14px; }
+  .row.piloto .peso-bar-fill { background: var(--ink-light); }
+
+  .empty {
+    text-align: center;
+    padding: 40px;
+    color: var(--ink-light);
+    font-size: 15px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: var(--ink-light);
+    border-top: 1px solid var(--rule-soft);
+    margin-top: 40px;
+  }
+  .footer a { color: var(--unad-blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 1100px) {
+    .row { grid-template-columns: 50px 1fr 100px 140px 70px 60px; }
+    .row .col-codigo { display: none; }
+  }
+  @media (max-width: 900px) {
+    .row { grid-template-columns: 40px 1fr 100px; }
+    .row .col-codigo, .row .col-cat, .row .col-pag, .row .col-ficha { display: none; }
+    .row.header { display: none; }
+    .desc { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a href="index.html" class="topbar-brand">Cómo Mide Minciencias <span>· SUMECO · UNAD</span></a>
+  <a href="index.html" class="topbar-back">← Volver a la herramienta</a>
+</nav>
+
+<div class="page-header">
+  <h1>170 productos, del que <em>más pesa</em> al que menos.</h1>
+  <p>Pesos individuales calculados con la fórmula oficial del documento conceptual de la Convocatoria 957 de 2024: peso global del subtipo A1 multiplicado por el peso relativo del producto.</p>
+  <p style="margin-top:8px; font-size:13px; color:var(--ink-light);">Ángel Saúl Díaz-Téllez · Jennifer Mejía-Ríos · Grupo SUMECO · ECSAH · UNAD</p>
+</div>
+
+<div class="main-content">
+  <div class="guia-uso">
+    <h3>¿Cómo funciona esta tabla?</h3>
+    <p>Esta tabla presenta los <strong>170 productos</strong> que el modelo de medición de Minciencias (Convocatoria 957 de 2024) reconoce para la clasificación de grupos de investigación en Colombia. Cada producto tiene un <strong>peso individual</strong> calculado con la fórmula oficial del documento conceptual, que determina cuánto aporta al indicador del grupo.</p>
+    <p>Puede usar el <strong>buscador</strong> para encontrar un producto por código o nombre, los <strong>filtros por dimensión</strong> (GNC, DTI, ASC, DPC, FRHCTI) para ver solo los productos de una categoría, y el <strong>selector de orden</strong> para reorganizar la tabla. La columna <strong>PDF</strong> enlaza a la página exacta del documento conceptual oficial donde aparece cada producto, y la columna <strong>Ficha</strong> abre un resumen en PDF del producto (las fichas se están publicando progresivamente).</p>
+  </div>
+  <div class="controls">
+    <div class="search-wrap">
+      <input type="text" id="search" class="search" placeholder="Buscar por código, descripción o palabra clave...">
+    </div>
+    <div class="sort-wrap">
+      <label for="sort">Ordenar</label>
+      <select id="sort" class="sort">
+        <option value="peso-desc">Mayor peso primero</option>
+        <option value="peso-asc">Menor peso primero</option>
+        <option value="codigo">Código alfabético</option>
+        <option value="dim">Por dimensión</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="filter-chips" id="filters">
+    <button class="chip active" data-filter="all">Todos<span class="chip-count" id="count-all"></span></button>
+    <button class="chip" data-filter="dim-GNC">GNC<span class="chip-count" id="count-GNC"></span></button>
+    <button class="chip" data-filter="dim-DTI">DTI<span class="chip-count" id="count-DTI"></span></button>
+    <button class="chip" data-filter="dim-ASC">ASC<span class="chip-count" id="count-ASC"></span></button>
+    <button class="chip" data-filter="dim-DPC">DPC<span class="chip-count" id="count-DPC"></span></button>
+    <button class="chip" data-filter="dim-FRHCTI">FRHCTI<span class="chip-count" id="count-FRHCTI"></span></button>
+  </div>
+
+  <div class="results-meta">
+    <span id="results-count">Mostrando 170 productos</span>
+    <span>Click en la página para ir al PDF →</span>
+  </div>
+
+  <div class="ranking">
+    <div class="row header">
+      <div>Puesto</div>
+      <div class="col-codigo">Código</div>
+      <div>Descripción</div>
+      <div class="col-cat">Categoría</div>
+      <div style="text-align:right">Peso</div>
+      <div class="col-pag" style="text-align:right">PDF</div>
+      <div class="col-ficha" style="text-align:center">Ficha</div>
+    </div>
+    <div id="ranking-body"></div>
+  </div>
+
+  <div style="text-align:center; padding: 30px 0 10px;">
+    <a href="index.html" class="topbar-back" style="font-size:15px; padding:10px 28px;">← Volver a la herramienta</a>
+  </div>
+
+  <div class="footer">
+    <div style="margin-bottom:8px;"><strong>Ángel Saúl Díaz-Téllez</strong> · <strong>Jennifer Mejía-Ríos</strong></div>
+    Grupo de investigación <a href="index.html">SUMECO</a> (Sujeto, Mente y Comunidad) · ECSAH · Universidad Nacional Abierta y a Distancia · 2026
+  </div>
+</div>
+
+<script>
+const PRODUCTOS = [{"codigo":"ART_OPEN_A1","desc":"Artículo Q1 acceso abierto","peso":1000,"cat":"TOP","dim":"GNC","pag":131},{"codigo":"ART_A1","desc":"Artículo Q1 otra modalidad","peso":950,"cat":"TOP","dim":"GNC","pag":131},{"codigo":"ART_OPEN_A2","desc":"Artículo Q2 acceso abierto","peso":600,"cat":"TOP","dim":"GNC","pag":131},{"codigo":"ART_A2","desc":"Artículo Q2 otra modalidad","peso":550,"cat":"TOP","dim":"GNC","pag":131},{"codigo":"ART_OPEN_B","desc":"Artículo Q3 acceso abierto","peso":350,"cat":"A","dim":"GNC","pag":132},{"codigo":"ART_B","desc":"Artículo Q3 otra modalidad","peso":300,"cat":"A","dim":"GNC","pag":132},{"codigo":"ART_OPEN_C","desc":"Artículo Q4 acceso abierto","peso":200,"cat":"A","dim":"GNC","pag":132},{"codigo":"ART_C","desc":"Artículo Q4 otra modalidad","peso":150,"cat":"A","dim":"GNC","pag":133},{"codigo":"ART_OPEN_D","desc":"Artículo D acceso abierto","peso":50,"cat":"B","dim":"GNC","pag":133},{"codigo":"ART_D","desc":"Artículo D otra modalidad","peso":45,"cat":"B","dim":"GNC","pag":133},{"codigo":"N_A1","desc":"Nota científica Q1","peso":40,"cat":"B","dim":"GNC","pag":133},{"codigo":"N_A2","desc":"Nota científica Q2","peso":34,"cat":"B","dim":"GNC","pag":133},{"codigo":"N_B","desc":"Nota científica Q3 / Publindex B","peso":28,"cat":"B","dim":"GNC","pag":134},{"codigo":"N_C","desc":"Nota científica Q4 / Publindex C","peso":22,"cat":"B","dim":"GNC","pag":134},{"codigo":"N_D","desc":"Nota científica D","peso":8,"cat":"B","dim":"GNC","pag":134},{"codigo":"LIB_A1","desc":"Libro de investigación Q1","peso":3000,"cat":"TOP","dim":"GNC","pag":135},{"codigo":"LIB_A","desc":"Libro de investigación Q2","peso":2700,"cat":"TOP","dim":"GNC","pag":136},{"codigo":"LIB_B","desc":"Libro de investigación Q3","peso":2400,"cat":"A","dim":"GNC","pag":137},{"codigo":"LIB_C","desc":"Libro de investigación Q4","peso":150,"cat":"B","dim":"GNC","pag":138},{"codigo":"CAP_LIB_A1","desc":"Capítulo de libro Q1","peso":600,"cat":"TOP","dim":"GNC","pag":139},{"codigo":"CAP_LIB_A","desc":"Capítulo de libro Q2","peso":540,"cat":"TOP","dim":"GNC","pag":140},{"codigo":"CAP_LIB_B","desc":"Capítulo de libro Q3","peso":480,"cat":"A","dim":"GNC","pag":140},{"codigo":"CAP_LIB_C","desc":"Capítulo de libro Q4","peso":30,"cat":"B","dim":"GNC","pag":141},{"codigo":"LIB_FOR1","desc":"Libro de Formación Q1","peso":600,"cat":"B","dim":"GNC","pag":142},{"codigo":"PA1","desc":"Patente de invención A1 (vía PCT con producto)","peso":5000,"cat":"TOP","dim":"GNC","pag":142},{"codigo":"PA2","desc":"Patente de invención A2 (vía PCT con producto)","peso":3500,"cat":"TOP","dim":"GNC","pag":142},{"codigo":"PA3","desc":"Patente de invención A3 (PCT sin producto)","peso":3000,"cat":"A","dim":"GNC","pag":142},{"codigo":"PA4","desc":"Patente de invención A4 (PCT sin producto)","peso":2750,"cat":"A","dim":"GNC","pag":142},{"codigo":"PB1","desc":"Patente solicitada B1","peso":2500,"cat":"B","dim":"GNC","pag":143},{"codigo":"PB2","desc":"Patente solicitada B2","peso":1750,"cat":"B","dim":"GNC","pag":143},{"codigo":"PB3","desc":"Patente solicitada B3","peso":1500,"cat":"B","dim":"GNC","pag":143},{"codigo":"PB4","desc":"Patente solicitada B4","peso":1300,"cat":"B","dim":"GNC","pag":143},{"codigo":"PB5","desc":"Patente solicitada B5","peso":1250,"cat":"B","dim":"GNC","pag":143},{"codigo":"PC","desc":"Patente solicitada C","peso":900,"cat":"B","dim":"GNC","pag":143},{"codigo":"MA1","desc":"Modelo de utilidad A1","peso":3000,"cat":"TOP","dim":"GNC","pag":142},{"codigo":"MA2","desc":"Modelo de utilidad A2","peso":2100,"cat":"TOP","dim":"GNC","pag":142},{"codigo":"MA3","desc":"Modelo de utilidad A3","peso":1800,"cat":"A","dim":"GNC","pag":142},{"codigo":"MA4","desc":"Modelo de utilidad A4","peso":1665,"cat":"A","dim":"GNC","pag":142},{"codigo":"MB1","desc":"Modelo de utilidad B1","peso":1500,"cat":"B","dim":"GNC","pag":143},{"codigo":"MB2","desc":"Modelo de utilidad B2","peso":1050,"cat":"B","dim":"GNC","pag":143},{"codigo":"MB3","desc":"Modelo de utilidad B3","peso":900,"cat":"B","dim":"GNC","pag":143},{"codigo":"MB4","desc":"Modelo de utilidad B4","peso":850,"cat":"B","dim":"GNC","pag":143},{"codigo":"MB5","desc":"Modelo de utilidad B5","peso":750,"cat":"B","dim":"GNC","pag":143},{"codigo":"MC","desc":"Modelo de utilidad C","peso":550,"cat":"B","dim":"GNC","pag":143},{"codigo":"VV_A1","desc":"Variedad vegetal A1","peso":3000,"cat":"TOP","dim":"GNC","pag":144},{"codigo":"VV_A2","desc":"Variedad vegetal A2","peso":2400,"cat":"TOP","dim":"GNC","pag":144},{"codigo":"VV_A3","desc":"Variedad vegetal A3","peso":1500,"cat":"A","dim":"GNC","pag":144},{"codigo":"VV_A4","desc":"Variedad vegetal A4","peso":750,"cat":"A","dim":"GNC","pag":144},{"codigo":"VV_B1","desc":"Variedad vegetal B1 (ciclo corto)","peso":1500,"cat":"B","dim":"GNC","pag":145},{"codigo":"VV_B2","desc":"Variedad vegetal B2 (ciclo corto)","peso":1200,"cat":"B","dim":"GNC","pag":145},{"codigo":"VV_B3","desc":"Variedad vegetal B3 (ciclo corto)","peso":750,"cat":"B","dim":"GNC","pag":145},{"codigo":"VV_B4","desc":"Variedad vegetal B4 (ciclo corto)","peso":300,"cat":"B","dim":"GNC","pag":145},{"codigo":"VA_A","desc":"Nueva raza animal A","peso":3000,"cat":"TOP","dim":"GNC","pag":145},{"codigo":"VA_B","desc":"Poblaciones mejoradas pecuarias B","peso":1500,"cat":"A","dim":"GNC","pag":145},{"codigo":"AAD_A1","desc":"Producto AAD A1 (creación / investigación-creación)","peso":1000,"cat":"TOP","dim":"GNC","pag":146},{"codigo":"AAD_A","desc":"Producto AAD A","peso":800,"cat":"TOP","dim":"GNC","pag":147},{"codigo":"AAD_B","desc":"Producto AAD B","peso":600,"cat":"A","dim":"GNC","pag":146},{"codigo":"AAD_C","desc":"Producto AAD C","peso":400,"cat":"B","dim":"GNC","pag":146},{"codigo":"DI_A","desc":"Diseño Industrial A","peso":350,"cat":"A","dim":"DTI","pag":147},{"codigo":"DI_B","desc":"Diseño Industrial B","peso":175,"cat":"B","dim":"DTI","pag":147},{"codigo":"ECI","desc":"Esquema de circuito integrado","peso":140,"cat":"A","dim":"DTI","pag":147},{"codigo":"SF","desc":"Software con calidad","peso":280,"cat":"B","dim":"DTI","pag":147},{"codigo":"PP","desc":"Planta piloto con calidad","peso":140,"cat":"A","dim":"DTI","pag":148},{"codigo":"PI","desc":"Prototipo industrial con calidad","peso":140,"cat":"A","dim":"DTI","pag":148},{"codigo":"SD","desc":"Signo distintivo del grupo","peso":140,"cat":"A","dim":"DTI","pag":148},{"codigo":"PN","desc":"Producto nutracéutico con calidad","peso":210,"cat":"B","dim":"DTI","pag":148},{"codigo":"CC","desc":"Colección científica con calidad","peso":350,"cat":"B","dim":"DTI","pag":148},{"codigo":"NRC_A","desc":"Nuevo registro científico A","peso":280,"cat":"B","dim":"DTI","pag":148},{"codigo":"NRC_B","desc":"Nuevo registro científico B","peso":175,"cat":"B","dim":"DTI","pag":148},{"codigo":"SE","desc":"Producto con secreto empresarial","peso":1000,"cat":"A","dim":"DTI","pag":149},{"codigo":"EBT_A","desc":"Empresa de base tecnológica A","peso":1000,"cat":"A","dim":"DTI","pag":149},{"codigo":"EBT_B","desc":"Empresa de base tecnológica B","peso":600,"cat":"B","dim":"DTI","pag":149},{"codigo":"ICC_A","desc":"Empresa creativa y cultural A","peso":1000,"cat":"A","dim":"DTI","pag":149},{"codigo":"ICC_B","desc":"Empresa creativa y cultural B","peso":600,"cat":"B","dim":"DTI","pag":149},{"codigo":"IG_A1","desc":"Innovación en gestión empresarial A1","peso":1000,"cat":"A","dim":"DTI","pag":149},{"codigo":"IG_A2","desc":"Innovación en gestión empresarial A2","peso":800,"cat":"A","dim":"DTI","pag":149},{"codigo":"IG_B1","desc":"Innovación en gestión empresarial B1","peso":700,"cat":"B","dim":"DTI","pag":150},{"codigo":"IG_B2","desc":"Innovación en gestión empresarial B2","peso":500,"cat":"B","dim":"DTI","pag":150},{"codigo":"IPP","desc":"Innovación en procedimientos (procesos) y servicios","peso":1000,"cat":"B","dim":"DTI","pag":150},{"codigo":"RNL_A","desc":"Regulación, norma, reglamento o legislación A","peso":1000,"cat":"TOP","dim":"DTI","pag":150},{"codigo":"RNL_B","desc":"Regulación, norma, reglamento o legislación B","peso":1000,"cat":"A","dim":"DTI","pag":150},{"codigo":"RNR","desc":"Normatividad del espectro radioeléctrico","peso":1000,"cat":"A","dim":"DTI","pag":150},{"codigo":"RNT","desc":"Norma técnica con calidad","peso":1000,"cat":"B","dim":"DTI","pag":150},{"codigo":"RNPC","desc":"Guía de práctica clínica con calidad","peso":1000,"cat":"B","dim":"DTI","pag":150},{"codigo":"GMCF","desc":"Guía de Manejo Clínico Forense con calidad","peso":1000,"cat":"B","dim":"DTI","pag":151},{"codigo":"MADV","desc":"Manual/Modelo de atención diferencial a víctimas","peso":1000,"cat":"B","dim":"DTI","pag":151},{"codigo":"PAU","desc":"Protocolo de atención a usuarios con calidad","peso":1000,"cat":"B","dim":"DTI","pag":151},{"codigo":"PVE","desc":"Protocolo de vigilancia epidemiológica con calidad","peso":1000,"cat":"B","dim":"DTI","pag":151},{"codigo":"AL","desc":"Acuerdo de Ley con calidad","peso":1000,"cat":"B","dim":"DTI","pag":151},{"codigo":"RNPL","desc":"Proyecto de Ley con calidad","peso":1000,"cat":"B","dim":"DTI","pag":151},{"codigo":"CT","desc":"Concepto técnico con calidad","peso":150,"cat":"B","dim":"DTI","pag":152},{"codigo":"MR","desc":"Registro de licencia de obras AAD (derechos de autor)","peso":140,"cat":"B","dim":"DTI","pag":152},{"codigo":"FIS","desc":"Procesos ASC para fortalecimiento social","peso":2000,"cat":"ASC","dim":"ASC","pag":152},{"codigo":"GPP_A","desc":"Insumos de política pública A","peso":2000,"cat":"ASC","dim":"ASC","pag":153},{"codigo":"GPP_B","desc":"Insumos de política pública B","peso":1400,"cat":"ASC","dim":"ASC","pag":153},{"codigo":"GPP_C","desc":"Insumos de política pública C","peso":1000,"cat":"ASC","dim":"ASC","pag":153},{"codigo":"FCP_A","desc":"Fortalecimiento cadenas productivas A","peso":2000,"cat":"ASC","dim":"ASC","pag":154},{"codigo":"FCP_B","desc":"Fortalecimiento cadenas productivas B","peso":1000,"cat":"ASC","dim":"ASC","pag":154},{"codigo":"FCP_C","desc":"Fortalecimiento cadenas productivas C","peso":600,"cat":"ASC","dim":"ASC","pag":154},{"codigo":"TCCG_A","desc":"Trabajo conjunto con Centro de Ciencia A","peso":2000,"cat":"ASC","dim":"ASC","pag":155},{"codigo":"TCCG_B","desc":"Trabajo conjunto con Centro de Ciencia B","peso":1400,"cat":"ASC","dim":"ASC","pag":155},{"codigo":"TCCG_C","desc":"Trabajo conjunto con Centro de Ciencia C","peso":800,"cat":"ASC","dim":"ASC","pag":155},{"codigo":"TCCG_D","desc":"Trabajo conjunto con Centro de Ciencia D","peso":200,"cat":"ASC","dim":"ASC","pag":155},{"codigo":"EC_A","desc":"Evento científico A","peso":1000,"cat":"DPC","dim":"DPC","pag":156},{"codigo":"EC_B","desc":"Evento científico B","peso":600,"cat":"DPC","dim":"DPC","pag":156},{"codigo":"RC_A","desc":"Red de conocimiento A (lidera)","peso":1000,"cat":"DPC","dim":"DPC","pag":157},{"codigo":"RC_B","desc":"Red de conocimiento B","peso":600,"cat":"DPC","dim":"DPC","pag":157},{"codigo":"TC_A","desc":"Taller de Creación A","peso":1000,"cat":"DPC","dim":"DPC","pag":157},{"codigo":"TC_B","desc":"Taller de Creación B","peso":800,"cat":"DPC","dim":"DPC","pag":157},{"codigo":"TC_C","desc":"Taller de Creación C","peso":600,"cat":"DPC","dim":"DPC","pag":157},{"codigo":"ECA_A","desc":"Evento artístico/arquitectura/diseño A","peso":800,"cat":"DPC","dim":"DPC","pag":157},{"codigo":"ECA_B","desc":"Evento artístico/arquitectura/diseño B","peso":600,"cat":"DPC","dim":"DPC","pag":157},{"codigo":"WP","desc":"Working paper","peso":1000,"cat":"DPC","dim":"DPC","pag":158},{"codigo":"NSG","desc":"Nueva secuencia genética","peso":1000,"cat":"DPC","dim":"DPC","pag":158},{"codigo":"ERL","desc":"Edición de revista o libro de divulgación","peso":600,"cat":"DPC","dim":"DPC","pag":158},{"codigo":"IFI","desc":"Informe final de investigación","peso":200,"cat":"DPC","dim":"DPC","pag":158},{"codigo":"INF","desc":"Informe técnico","peso":500,"cat":"DPC","dim":"DPC","pag":158},{"codigo":"CON_CT","desc":"Consultoría científico-tecnológica","peso":750,"cat":"DPC","dim":"DPC","pag":158},{"codigo":"CON_AAD","desc":"Consultoría en arte, arquitectura y diseño","peso":750,"cat":"DPC","dim":"DPC","pag":158},{"codigo":"PEE_A1","desc":"Publicación editorial no especializada A1","peso":1000,"cat":"DPC","dim":"DPC","pag":159},{"codigo":"PEE_A2","desc":"Publicación editorial no especializada A2","peso":800,"cat":"DPC","dim":"DPC","pag":159},{"codigo":"PEE_B1","desc":"Publicación editorial no especializada B1","peso":700,"cat":"DPC","dim":"DPC","pag":159},{"codigo":"PEE_B2","desc":"Publicación editorial no especializada B2","peso":500,"cat":"DPC","dim":"DPC","pag":159},{"codigo":"PEE_C1","desc":"Publicación editorial no especializada C1","peso":500,"cat":"DPC","dim":"DPC","pag":159},{"codigo":"PEE_C2","desc":"Publicación editorial no especializada C2","peso":300,"cat":"DPC","dim":"DPC","pag":159},{"codigo":"PCD_A1","desc":"Producción de contenido digital A1","peso":1000,"cat":"DPC","dim":"DPC","pag":160},{"codigo":"PCD_A2","desc":"Producción de contenido digital A2","peso":800,"cat":"DPC","dim":"DPC","pag":160},{"codigo":"PCD_B1","desc":"Producción de contenido digital B1","peso":700,"cat":"DPC","dim":"DPC","pag":160},{"codigo":"PCD_B2","desc":"Producción de contenido digital B2","peso":500,"cat":"DPC","dim":"DPC","pag":160},{"codigo":"PCD_C1","desc":"Producción de contenido digital C1","peso":500,"cat":"DPC","dim":"DPC","pag":160},{"codigo":"PCD_C2","desc":"Producción de contenido digital C2","peso":300,"cat":"DPC","dim":"DPC","pag":160},{"codigo":"TRM_A1","desc":"Estrategia/contenido Transmedia A1","peso":1000,"cat":"DPC","dim":"DPC","pag":160},{"codigo":"TRM_A2","desc":"Estrategia/contenido Transmedia A2","peso":800,"cat":"DPC","dim":"DPC","pag":161},{"codigo":"TRM_B1","desc":"Estrategia/contenido Transmedia B1","peso":700,"cat":"DPC","dim":"DPC","pag":161},{"codigo":"TRM_B2","desc":"Estrategia/contenido Transmedia B2","peso":500,"cat":"DPC","dim":"DPC","pag":161},{"codigo":"TRM_C1","desc":"Estrategia/contenido Transmedia C1","peso":500,"cat":"DPC","dim":"DPC","pag":161},{"codigo":"TRM_C2","desc":"Estrategia/contenido Transmedia C2","peso":300,"cat":"DPC","dim":"DPC","pag":161},{"codigo":"DW_A1","desc":"Desarrollo Web A1","peso":1000,"cat":"DPC","dim":"DPC","pag":162},{"codigo":"DW_A2","desc":"Desarrollo Web A2","peso":800,"cat":"DPC","dim":"DPC","pag":162},{"codigo":"DW_B1","desc":"Desarrollo Web B1","peso":700,"cat":"DPC","dim":"DPC","pag":162},{"codigo":"DW_B2","desc":"Desarrollo Web B2","peso":500,"cat":"DPC","dim":"DPC","pag":162},{"codigo":"DW_C1","desc":"Desarrollo Web C1","peso":500,"cat":"DPC","dim":"DPC","pag":162},{"codigo":"DW_C2","desc":"Desarrollo Web C2","peso":300,"cat":"DPC","dim":"DPC","pag":162},{"codigo":"LIB_FOR2","desc":"Libro de Formación Q2","peso":1000,"cat":"DPC","dim":"DPC","pag":164},{"codigo":"LIB_FOR3","desc":"Libro de Formación Q3","peso":600,"cat":"DPC","dim":"DPC","pag":164},{"codigo":"BOL","desc":"Boletín divulgativo","peso":1000,"cat":"DPC","dim":"DPC","pag":165},{"codigo":"LIB_DIV","desc":"Libro de Divulgación","peso":1000,"cat":"DPC","dim":"DPC","pag":165},{"codigo":"LIB_CRE","desc":"Libro de Creación (piloto, sin puntaje)","peso":0,"cat":"DPC","dim":"DPC","pag":167},{"codigo":"GC","desc":"Generación de contenido","peso":1000,"cat":"DPC","dim":"DPC","pag":166},{"codigo":"MAN_GUI","desc":"Manual / Guía especializada","peso":1000,"cat":"DPC","dim":"DPC","pag":166},{"codigo":"TD_A","desc":"Tesis doctoral dirigida A (con distinción)","peso":1600,"cat":"FRH_A","dim":"FRHCTI","pag":168},{"codigo":"TD_B","desc":"Tesis doctoral dirigida B (aprobada)","peso":800,"cat":"FRH_A","dim":"FRHCTI","pag":168},{"codigo":"AP_A","desc":"Apoyo a creación de programa de doctorado","peso":1000,"cat":"FRH_A","dim":"FRHCTI","pag":168},{"codigo":"AP_C","desc":"Apoyo a creación de cursos de doctorado","peso":500,"cat":"FRH_A","dim":"FRHCTI","pag":168},{"codigo":"TM_A","desc":"Tesis de maestría dirigida A (con distinción)","peso":700,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"TM_B","desc":"Tesis de maestría dirigida B (aprobada)","peso":350,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"TP_A","desc":"Trabajo de pregrado dirigido A (con distinción)","peso":200,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"TP_B","desc":"Trabajo de pregrado dirigido B (aprobado)","peso":100,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PID_A","desc":"Proyecto I+D A (financiación externa internacional)","peso":500,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PID_B","desc":"Proyecto I+D B (financiación externa nacional)","peso":300,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PID_C","desc":"Proyecto I+D C (financiación interna)","peso":100,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PIC_A","desc":"Proyecto investigación-creación A (ext. internac.)","peso":500,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PIC_B","desc":"Proyecto investigación-creación B (ext. nacional)","peso":300,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PIC_C","desc":"Proyecto investigación-creación C (interna)","peso":100,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PF_A","desc":"Proyecto ID+I con formación A","peso":500,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PF_B","desc":"Proyecto ID+I con formación B","peso":400,"cat":"FRH_B","dim":"FRHCTI","pag":168},{"codigo":"PE","desc":"Proyecto de extensión / responsabilidad social","peso":1000,"cat":"FRH_B","dim":"FRHCTI","pag":169},{"codigo":"AP_B","desc":"Apoyo a creación de programas de maestría","peso":800,"cat":"FRH_B","dim":"FRHCTI","pag":169},{"codigo":"AP_D","desc":"Apoyo a creación de cursos de maestría","peso":300,"cat":"FRH_B","dim":"FRHCTI","pag":169},{"codigo":"APO","desc":"Acompañamiento Programa Ondas","peso":300,"cat":"FRH_B","dim":"FRHCTI","pag":169}];
+const PDF_BASE = "https://minciencias.gov.co/sites/default/files/upload/convocatoria/m601pr04g01_modelo_medicion_grupos_investigacion_tecnologica_o_innovacion_y_reconocimiento_investigadores_-_2024_1.pdf";
+const PESO_MAX = Math.max(...PRODUCTOS.map(p => p.peso));
+
+let state = { filter: 'all', search: '', sort: 'peso-desc' };
+
+function normalize(s) {
+  return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function getFiltered() {
+  let result = [...PRODUCTOS];
+  if (state.filter !== 'all') {
+    const [type, value] = state.filter.split('-');
+    if (type === 'dim') result = result.filter(p => p.dim === value);
+    else if (type === 'cat') result = result.filter(p => p.cat === value);
+  }
+  if (state.search.trim()) {
+    const q = normalize(state.search);
+    result = result.filter(p =>
+      normalize(p.codigo).includes(q) ||
+      normalize(p.desc).includes(q) ||
+      normalize(p.dim).includes(q)
+    );
+  }
+  switch (state.sort) {
+    case 'peso-desc': result.sort((a, b) => b.peso - a.peso); break;
+    case 'peso-asc':  result.sort((a, b) => a.peso - b.peso); break;
+    case 'codigo':    result.sort((a, b) => a.codigo.localeCompare(b.codigo)); break;
+    case 'dim':       result.sort((a, b) => a.dim.localeCompare(b.dim) || b.peso - a.peso); break;
+  }
+  return result;
+}
+
+function render() {
+  const filtered = getFiltered();
+  const body = document.getElementById('ranking-body');
+  const count = document.getElementById('results-count');
+
+  if (filtered.length === 0) {
+    body.innerHTML = '<div class="empty">Sin resultados. Probá con otra búsqueda o ajustá los filtros.</div>';
+    count.textContent = 'Sin coincidencias';
+    return;
+  }
+  count.textContent = `Mostrando ${filtered.length} producto${filtered.length === 1 ? '' : 's'}`;
+
+  body.innerHTML = filtered.map((p, i) => {
+    const rank = state.sort.startsWith('peso') ? i + 1 : '·';
+    const barWidth = p.peso > 0 ? (p.peso / PESO_MAX) * 100 : 0;
+    const isTop10 = state.sort === 'peso-desc' && i < 10;
+    const isPiloto = p.peso === 0;
+    return `
+      <div class="row ${isTop10 ? 'top10' : ''} ${isPiloto ? 'piloto' : ''}">
+        <div class="rank-num">${rank}</div>
+        <div class="col-codigo"><span class="codigo">${p.codigo}</span></div>
+        <div class="desc">${p.desc}</div>
+        <div class="col-cat"><span class="cat-badge cat-${p.cat}">${p.cat.replace('_', ' ')}</span></div>
+        <div class="peso-vis">
+          <div class="peso-num">${p.peso === 0 ? 'piloto' : p.peso.toLocaleString('es-CO')}</div>
+          ${p.peso > 0 ? `<div class="peso-bar"><div class="peso-bar-fill" style="width:${barWidth}%"></div></div>` : ''}
+        </div>
+        <div class="col-pag"><a class="pag-link" href="${PDF_BASE}#page=${p.pag}" target="_blank" rel="noopener">p.${p.pag}</a></div>
+        <div class="col-ficha" style="text-align:center"><a class="ficha-link" href="fichas/${p.codigo}.pdf" target="_blank" rel="noopener">Ficha</a></div>
+      </div>
+    `;
+  }).join('');
+}
+
+function updateCounts() {
+  document.getElementById('count-all').textContent = ` (${PRODUCTOS.length})`;
+  ['GNC', 'DTI', 'ASC', 'DPC', 'FRHCTI'].forEach(d => {
+    document.getElementById(`count-${d}`).textContent = ` (${PRODUCTOS.filter(p => p.dim === d).length})`;
+  });
+}
+
+// Leer filtro de URL (desde las cards de dimensión de index.html)
+const params = new URLSearchParams(window.location.search);
+const dimParam = params.get('dim');
+if (dimParam && ['GNC','DTI','ASC','DPC','FRHCTI'].includes(dimParam)) {
+  state.filter = 'dim-' + dimParam;
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.chip').forEach(c => {
+      c.classList.toggle('active', c.dataset.filter === 'dim-' + dimParam);
+    });
+  });
+}
+
+document.getElementById('search').addEventListener('input', e => { state.search = e.target.value; render(); });
+document.getElementById('sort').addEventListener('change', e => { state.sort = e.target.value; render(); });
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    state.filter = chip.dataset.filter;
+    render();
+  });
+});
+
+updateCounts();
+render();
+</script>
+</body>
+</html>
