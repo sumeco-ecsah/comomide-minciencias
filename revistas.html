@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cómo verificar el cuartil de una revista científica para el modelo de medición Minciencias 2024-2026. Guía de Publindex, Scimago y Web of Science.">
+<meta property="og:title" content="Verificar revistas · Cómo Mide Minciencias · SUMECO · UNAD">
+<meta property="og:description" content="Guía para verificar el cuartil de revistas científicas en Publindex, Scimago y Web of Science según el modelo Minciencias.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<title>Verificar revistas · Cómo Mide Minciencias · SUMECO · UNAD</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,900;1,8..60,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-paper: #fafbfc;
+    --bg-soft: #f1f4f8;
+    --ink: #0d1b2a;
+    --ink-soft: #1e2a3a;
+    --ink-muted: #5a6a7e;
+    --ink-light: #8a96a8;
+    --rule: #d6dde6;
+    --rule-soft: #e8eef5;
+    --unad-blue: #003a70;
+    --unad-blue-deep: #002347;
+    --unad-orange: #f37020;
+    --unad-orange-deep: #d85a14;
+    --unad-yellow: #fdb913;
+    --unad-yellow-soft: #fef3d0;
+    --sans: 'Source Sans 3', system-ui, sans-serif;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg-paper);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--unad-blue-deep);
+    padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 52px;
+    border-bottom: 3px solid var(--unad-orange);
+  }
+  .topbar-brand {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .topbar-brand span { opacity: 0.6; font-weight: 400; }
+  .topbar-back {
+    display: inline-block;
+    padding: 6px 16px;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--unad-blue-deep);
+    background: var(--unad-yellow);
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .topbar-back:hover { background: #ffffff; transform: translateY(-1px); }
+
+  .page-header {
+    max-width: 800px; margin: 0 auto; padding: 48px 24px 16px;
+  }
+  .page-header h1 {
+    font-family: var(--serif);
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .page-header p {
+    font-size: 15px;
+    color: var(--ink-muted);
+  }
+  .page-header .autoria {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--ink-light);
+  }
+
+  .main-content { max-width: 800px; margin: 0 auto; padding: 0 24px 60px; }
+
+  .bloque {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 28px 28px;
+    margin-bottom: 24px;
+  }
+  .bloque h2 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    margin-bottom: 12px;
+  }
+  .bloque h3 {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+    margin-top: 18px;
+  }
+  .bloque p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .bloque p:last-child { margin-bottom: 0; }
+
+  .aviso {
+    background: var(--unad-yellow-soft);
+    border-left: 4px solid var(--unad-orange);
+    padding: 14px 18px;
+    border-radius: 4px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-top: 16px;
+  }
+
+  .paso-num {
+    display: inline-block;
+    width: 28px; height: 28px;
+    background: var(--unad-blue);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 28px;
+    border-radius: 50%;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+  .paso {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  .paso-content { flex: 1; }
+  .paso-content p { margin-bottom: 4px; }
+
+  .enlaces-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  @media (max-width: 600px) {
+    .enlaces-grid { grid-template-columns: 1fr; }
+  }
+
+  .enlace-card {
+    display: block;
+    padding: 20px;
+    border: 2px solid var(--rule);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+  .enlace-card:hover {
+    border-color: var(--unad-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,35,71,0.1);
+  }
+  .enlace-card-title {
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--unad-blue-deep);
+    margin-bottom: 6px;
+  }
+  .enlace-card-desc {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.45;
+  }
+  .enlace-card-tag {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .tag-oficial { background: var(--unad-blue); color: #fff; }
+  .tag-libre { background: var(--unad-orange); color: #fff; }
+  .tag-institucional { background: var(--bg-soft); color: var(--ink-muted); border: 1px solid var(--rule); }
+
+  .cuartil-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 13.5px;
+  }
+  .cuartil-table th {
+    background: var(--unad-blue-deep);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .cuartil-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--rule-soft);
+    color: var(--ink-soft);
+  }
+  .cuartil-table tr:hover { background: var(--bg-soft); }
+  .cuartil-table .codigo {
+    font-family: var(--mono);
+    font-weight: 600;
+    color: var(--unad-blue);
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: var(--ink-light);
+    border-top: 1px solid var(--rule-soft);
+    margin-top: 20px;
+  }
+  .footer a { color: var(--unad-blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a href="index.html" class="topbar-brand">Cómo Mide Minciencias <span>· SUMECO · UNAD</span></a>
+  <a href="index.html" class="topbar-back">← Volver a la herramienta</a>
+</nav>
+
+<div class="page-header">
+  <h1>¿Cómo verificar el cuartil de una revista?</h1>
+  <p>Guía práctica para identificar la clasificación de revistas científicas según el modelo de medición Minciencias 2024-2026.</p>
+  <p class="autoria">Ángel Saúl Díaz-Téllez · Jennifer Mejía-Ríos · Grupo SUMECO · ECSAH · UNAD</p>
+</div>
+
+<div class="main-content">
+
+  <div class="bloque">
+    <h2>Lo esencial</h2>
+    <p>Para el modelo de medición de Minciencias (Convocatoria 957 de 2024), el cuartil que determina la clasificación de un artículo (A1, A2, B, C o D) proviene de la posición de la revista en bases bibliográficas reconocidas. En Colombia, la fuente autoritativa es <strong>Publindex</strong>, el índice oficial de Minciencias que homologa las revistas con base en su posición en Scopus (SJR) y Web of Science (JCR).</p>
+    <p>Scimago Journal Ranking (SJR) y Web of Science (WoS/JCR) son las bases de referencia internacional. Pero para efectos del modelo colombiano, lo que cuenta es la homologación que aparece en Publindex.</p>
+    <div class="aviso">Para decisiones de publicación, consulte siempre la clasificación vigente en Publindex. Las bases internacionales actualizan cuartiles anualmente y pueden diferir de la homologación colombiana.</div>
+  </div>
+
+  <div class="bloque">
+    <h2>Ruta recomendada de verificación</h2>
+
+    <div class="paso">
+      <span class="paso-num">1</span>
+      <div class="paso-content">
+        <p><strong>Buscar en Scimago (acceso libre)</strong></p>
+        <p>Ingrese a <a href="https://www.scimagojr.com/" target="_blank" rel="noopener">scimagojr.com</a>, busque la revista por nombre o ISSN. Identifique el cuartil (Q1, Q2, Q3, Q4) en el área temática más favorable para la revista. Este dato le da el panorama internacional.</p>
+      </div>
+    </div>
+
+    <div class="paso">
+      <span class="paso-num">2</span>
+      <div class="paso-content">
+        <p><strong>Verificar en Web of Science (acceso institucional)</strong></p>
+        <p>Si su institución tiene suscripción, ingrese al Journal Citation Reports (JCR) de Web of Science. Compare el cuartil con el de Scimago. Algunas revistas están solo en una de las dos bases.</p>
+      </div>
+    </div>
+
+    <div class="paso">
+      <span class="paso-num">3</span>
+      <div class="paso-content">
+        <p><strong>Confirmar en Publindex (fuente oficial)</strong></p>
+        <p>Ingrese al <a href="https://scienti.minciencias.gov.co/publindex/#/revistasHomologadas/buscador" target="_blank" rel="noopener">buscador de revistas homologadas de Publindex</a>. Si la revista aparece, la categoría asignada ahí (A1, A2, B, C) es la que Minciencias reconoce. Si no aparece en Publindex, el artículo podría clasificar como categoría D o no ser reconocido, dependiendo de la base donde esté indexada.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <h2>Equivalencia de cuartiles y códigos del modelo</h2>
+    <p>La siguiente tabla muestra la relación entre el cuartil de la revista y la clasificación del artículo en el modelo Minciencias. Cada nivel tiene dos variantes: acceso abierto (OPEN) y otra modalidad de acceso (PAY en los PDFs de la herramienta).</p>
+
+    <table class="cuartil-table">
+      <thead>
+        <tr>
+          <th>Cuartil</th>
+          <th>Código acceso abierto</th>
+          <th>Código otra modalidad</th>
+          <th>Nivel</th>
+          <th>Peso (abierto)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Q1</strong></td>
+          <td class="codigo">ART_OPEN_A1</td>
+          <td class="codigo">ART_A1</td>
+          <td>TOP</td>
+          <td>1.000</td>
+        </tr>
+        <tr>
+          <td><strong>Q2</strong></td>
+          <td class="codigo">ART_OPEN_A2</td>
+          <td class="codigo">ART_A2</td>
+          <td>TOP</td>
+          <td>600</td>
+        </tr>
+        <tr>
+          <td><strong>Q3</strong></td>
+          <td class="codigo">ART_OPEN_B</td>
+          <td class="codigo">ART_B</td>
+          <td>A</td>
+          <td>350</td>
+        </tr>
+        <tr>
+          <td><strong>Q4</strong></td>
+          <td class="codigo">ART_OPEN_C</td>
+          <td class="codigo">ART_C</td>
+          <td>A</td>
+          <td>200</td>
+        </tr>
+        <tr>
+          <td><strong>Regional/Nacional</strong></td>
+          <td class="codigo">ART_OPEN_D</td>
+          <td class="codigo">ART_D</td>
+          <td>B</td>
+          <td>50</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="aviso">Los artículos en acceso abierto reciben mayor peso que los de otra modalidad en el mismo cuartil. Por ejemplo, un artículo Q1 en acceso abierto (ART_OPEN_A1) pesa 1.000 puntos, mientras que el mismo cuartil en otra modalidad (ART_A1) pesa 950.</div>
+  </div>
+
+  <div class="bloque">
+    <h2>Accesos directos</h2>
+    <div class="enlaces-grid">
+      <a href="https://scienti.minciencias.gov.co/publindex/#/revistasHomologadas/buscador" target="_blank" rel="noopener" class="enlace-card">
+        <div class="enlace-card-title">Publindex</div>
+        <div class="enlace-card-desc">Buscador oficial de revistas homologadas por Minciencias. La clasificación que aparece aquí es la que cuenta para el modelo.</div>
+        <span class="enlace-card-tag tag-oficial">Fuente oficial</span>
+      </a>
+      <a href="https://www.scimagojr.com/" target="_blank" rel="noopener" class="enlace-card">
+        <div class="enlace-card-title">Scimago (SJR)</div>
+        <div class="enlace-card-desc">Ranking internacional de revistas basado en Scopus. Acceso libre, sin necesidad de suscripción.</div>
+        <span class="enlace-card-tag tag-libre">Acceso libre</span>
+      </a>
+      <a href="https://jcr.clarivate.com/" target="_blank" rel="noopener" class="enlace-card">
+        <div class="enlace-card-title">Web of Science (JCR)</div>
+        <div class="enlace-card-desc">Journal Citation Reports de Clarivate. Requiere suscripción institucional para acceder.</div>
+        <span class="enlace-card-tag tag-institucional">Acceso institucional</span>
+      </a>
+      <a href="productos.html?dim=GNC" target="_blank" class="enlace-card">
+        <div class="enlace-card-title">Productos GNC</div>
+        <div class="enlace-card-desc">Ver todos los artículos y productos de Generación de Nuevo Conocimiento con sus pesos y fichas.</div>
+        <span class="enlace-card-tag tag-libre">En esta herramienta</span>
+      </a>
+    </div>
+  </div>
+
+  <div style="text-align:center; padding: 30px 0 10px;">
+    <a href="index.html" class="topbar-back" style="font-size:15px; padding:10px 28px;">← Volver a la herramienta</a>
+  </div>
+
+  <div class="footer">
+    <div style="margin-bottom:8px;"><strong>Ángel Saúl Díaz-Téllez</strong> · <strong>Jennifer Mejía-Ríos</strong></div>
+    Grupo de investigación <a href="index.html">SUMECO</a> (Sujeto, Mente y Comunidad) · ECSAH · Universidad Nacional Abierta y a Distancia · 2026
+    <div style="margin-top:8px; font-size:11px; color:var(--ink-light);"><a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" style="color:var(--unad-blue); text-decoration:none;">CC BY 4.0</a> · Herramienta informativa de libre consulta. No constituye fuente normativa.</div>
+  </div>
+</div>
+
+</body>
+</html>
