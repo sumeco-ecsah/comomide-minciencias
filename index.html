@@ -1347,8 +1347,27 @@
     border-radius: 4px;
     border-left: 4px solid var(--unad-blue);
     display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .dev-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--rule);
+    flex-shrink: 0;
+  }
+  .dev-info {
+    flex: 1;
+    display: flex;
     flex-direction: column;
     gap: 8px;
+  }
+  @media (max-width: 600px) {
+    .dev-card { flex-direction: column; align-items: center; text-align: center; }
+    .dev-photo { width: 80px; height: 80px; }
   }
   .dev-card.dev-2 { border-left-color: var(--unad-orange); }
   .dev-role {
@@ -2473,16 +2492,22 @@
 
       <div class="devs-grid">
         <div class="dev-card">
+          <img src="img/asdt.jpeg" alt="Ángel Saúl Díaz-Téllez" class="dev-photo">
+          <div class="dev-info">
           <div class="dev-role">Investigador principal · Líder SUMECO</div>
           <div class="dev-name">Ángel Saúl Díaz-Téllez</div>
           <div class="dev-bio">Comunicador Social. Magíster en Semiótica. Doctor en Ciencias de la Educación. Investigador Asociado de Minciencias. Líder del grupo SUMECO. Comisionado de Conaces, Sala de Ciencias Sociales, Periodismo e Información.</div>
           <div class="dev-meta">CvLAC · <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000555754" target="_blank" rel="noopener">Ver hoja de vida</a></div>
+          </div>
         </div>
         <div class="dev-card dev-2">
+          <img src="img/jmr.jpeg" alt="Jennifer Mejía-Ríos" class="dev-photo">
+          <div class="dev-info">
           <div class="dev-role">Investigadora · Grupo SUMECO</div>
           <div class="dev-name">Jennifer Mejía-Ríos</div>
-          <div class="dev-bio">Psicóloga. Especialista en Gestión de Proyectos de Desarrollo. Magíster en Neuropsicología y Educación. Doctora en Pensamiento Complejo. Investigadora Junior e integrante del grupo SUMECO, adscrita a la Escuela de Ciencias Sociales, Artes y Humanidades de la Universidad Nacional Abierta y a Distancia.</div>
+          <div class="dev-bio">Psicóloga. Especialista en Gestión de Proyectos de Desarrollo. Magíster en Neuropsicología y Educación. Doctora en Pensamiento Complejo. Investigadora del grupo SUMECO, adscrita a la Escuela de Ciencias Sociales, Artes y Humanidades de la Universidad Nacional Abierta y a Distancia.</div>
           <div class="dev-meta">CvLAC · <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001706150" target="_blank" rel="noopener">Ver hoja de vida</a></div>
+          </div>
         </div>
       </div>
     </div>
