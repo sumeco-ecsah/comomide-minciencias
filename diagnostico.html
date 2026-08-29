@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Autodiagnóstico orientativo de categoría de investigador o integrante (Junior, Asociado, Sénior, Emérito y estudiantes/integrantes) según el modelo de medición Minciencias 2024. Herramienta del grupo SUMECO, UNAD.">
+<meta property="og:title" content="Autodiagnóstico de investigador · Cómo Mide Minciencias">
+<meta property="og:description" content="Estima tu categoría de investigador o integrante y qué te falta para el siguiente nivel, según los requisitos del modelo Minciencias. Herramienta SUMECO, UNAD.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sumeco-ecsah.github.io/comomide-minciencias/diagnostico.html">
+<meta property="og:image" content="https://sumeco-ecsah.github.io/comomide-minciencias/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sumeco-ecsah.github.io/comomide-minciencias/og-image.png">
+<meta name="twitter:title" content="Autodiagnóstico de investigador · SUMECO · UNAD">
+<meta name="twitter:description" content="¿Qué categoría de investigador podrías alcanzar? Diagnóstico orientativo según el modelo Minciencias. Grupo SUMECO, UNAD.">
+<title>Autodiagnóstico · Cómo Mide Minciencias · SUMECO · UNAD</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzAwM2E3MCIvPjxyZWN0IHg9IjYiIHk9IjE4IiB3aWR0aD0iNSIgaGVpZ2h0PSI4IiByeD0iMS41IiBmaWxsPSIjZmRiOTEzIi8+PHJlY3QgeD0iMTMuNSIgeT0iMTIiIHdpZHRoPSI1IiBoZWlnaHQ9IjE0IiByeD0iMS41IiBmaWxsPSIjZjM3MDIwIi8+PHJlY3QgeD0iMjEiIHk9IjciIHdpZHRoPSI1IiBoZWlnaHQ9IjE5IiByeD0iMS41IiBmaWxsPSIjZmZmZmZmIi8+PC9zdmc+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fff;--bg-paper:#fafbfc;--bg-soft:#f1f4f8;--ink:#0d1b2a;--ink-soft:#1e2a3a;--ink-muted:#5a6a7e;--ink-light:#8a96a8;
+    --rule:#d6dde6;--rule-soft:#e8eef5;--unad-blue:#003a70;--unad-blue-deep:#002347;--unad-blue-light:#1a5599;
+    --unad-orange:#f37020;--unad-orange-deep:#d85a14;--unad-yellow:#fdb913;--unad-yellow-soft:#fef3d0;--sumeco-coral:#e8654e;
+    --success:#1e7a3e;--success-soft:#e3f2e8;
+    --sans:'Source Sans 3',system-ui,sans-serif;--serif:'Source Serif 4',Georgia,serif;--mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--bg-soft);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .topbar{position:sticky;top:0;z-index:100;background:var(--unad-blue-deep);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px;border-bottom:3px solid var(--unad-orange);}
+  .topbar-brand{font-family:var(--serif);font-weight:700;font-size:15px;color:#fff;text-decoration:none;display:flex;align-items:center;gap:8px;}
+  .topbar-brand span{opacity:.6;font-weight:400;}
+  .topbar-back{display:inline-block;padding:6px 16px;font-family:var(--sans);font-size:13px;color:var(--unad-blue-deep);background:var(--unad-yellow);text-decoration:none;font-weight:700;border-radius:5px;transition:background .15s,transform .15s;}
+  .topbar-back:hover{background:#fff;transform:translateY(-1px);}
+  .page-header{max-width:1000px;margin:0 auto;padding:48px 24px 20px;}
+  .page-header h1{font-family:var(--serif);font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--unad-blue-deep);line-height:1.15;margin-bottom:8px;}
+  .page-header h1 em{color:var(--unad-orange);font-style:normal;}
+  .page-header p{font-size:15px;color:var(--ink-muted);max-width:760px;}
+  .page-header .authors{margin-top:8px;font-size:13px;color:var(--ink-light);}
+  .main-content{max-width:1000px;margin:0 auto;padding:0 24px 60px;}
+  a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--unad-yellow);outline-offset:2px;border-radius:4px;}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition-duration:.001ms !important;}}
+
+  .diag{max-width:880px;margin:0 auto;background:var(--bg);border:1px solid var(--rule);border-radius:8px;overflow:hidden;box-shadow:0 8px 30px rgba(0,35,71,.07);}
+  .diag-head{background:linear-gradient(135deg,var(--unad-blue-deep),var(--unad-blue));color:#fff;padding:24px 28px;}
+  .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--unad-yellow);font-weight:700;}
+  .diag-head h3{font-family:var(--serif);font-size:24px;font-weight:700;margin-top:6px;letter-spacing:-.01em;}
+  .diag-head p{font-size:13.5px;color:rgba(255,255,255,.82);margin-top:6px;max-width:700px;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+  @media(max-width:760px){.grid{grid-template-columns:1fr;}}
+  .form{padding:20px 26px;border-right:1px solid var(--rule);}
+  @media(max-width:760px){.form{border-right:none;border-bottom:1px solid var(--rule);}}
+  fieldset{border:none;margin-bottom:18px;}
+  legend{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--unad-blue);font-weight:700;padding-bottom:8px;border-bottom:2px solid var(--unad-orange);width:100%;margin-bottom:12px;}
+  .field{margin-bottom:11px;}
+  .field label{display:block;font-size:13px;color:var(--ink-soft);font-weight:600;margin-bottom:4px;}
+  .field .hint{font-weight:400;color:var(--ink-light);font-size:11.5px;}
+  select,input[type=number]{width:100%;font-family:var(--sans);font-size:14px;padding:8px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--bg);color:var(--ink);}
+  input[type=number]{font-family:var(--mono);}
+  .check{display:flex;align-items:flex-start;gap:9px;margin-bottom:9px;font-size:12.8px;color:var(--ink-soft);}
+  .check input{margin-top:2px;width:16px;height:16px;flex-shrink:0;}
+  .cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+  .cols .field label{font-size:11.5px;}
+  .result{padding:20px 26px;background:var(--bg-paper);}
+  .chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px;}
+  .chip{flex:1;min-width:60px;text-align:center;padding:9px 5px;border-radius:6px;border:1px solid var(--rule);background:var(--bg);font-size:10.5px;font-weight:700;color:var(--ink-light);text-transform:uppercase;letter-spacing:.03em;transition:.2s;}
+  .chip.on{background:var(--success-soft);border-color:var(--success);color:var(--success);}
+  .verdict{font-family:var(--serif);font-size:15px;line-height:1.45;color:var(--ink-soft);background:var(--unad-yellow-soft);border-left:4px solid var(--unad-orange);padding:14px 16px;border-radius:5px;margin-bottom:16px;}
+  .verdict b{color:var(--unad-blue-deep);}
+  .verdict .big{display:block;font-size:21px;font-weight:700;color:var(--unad-blue-deep);margin-bottom:3px;}
+  .verdict .idtag{font-family:var(--mono);font-size:12px;background:var(--unad-blue);color:#fff;padding:1px 8px;border-radius:4px;margin-left:6px;vertical-align:middle;}
+  .proj-title{font-family:var(--sans);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--unad-blue);margin:0 0 8px;}
+  .proj{list-style:none;margin-bottom:16px;}
+  .proj li{font-size:13px;color:var(--ink-soft);padding:7px 0 7px 26px;position:relative;border-bottom:1px dashed var(--rule-soft);}
+  .proj li::before{content:"\2192";position:absolute;left:4px;color:var(--unad-orange);font-weight:700;}
+  details{border:1px solid var(--rule);border-radius:6px;margin-bottom:8px;background:var(--bg);}
+  summary{cursor:pointer;padding:10px 14px;font-size:13px;font-weight:700;color:var(--unad-blue-deep);display:flex;justify-content:space-between;align-items:center;gap:8px;list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary .st{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap;}
+  .st.met{background:var(--success-soft);color:var(--success);}
+  .st.no{background:#fde8e4;color:var(--sumeco-coral);}
+  .cond{list-style:none;padding:0 14px 12px;}
+  .cond li{font-size:12.5px;color:var(--ink-soft);padding:5px 0 5px 24px;position:relative;line-height:1.4;}
+  .cond li::before{content:"\2717";position:absolute;left:4px;color:var(--sumeco-coral);font-weight:700;}
+  .cond li.ok::before{content:"\2713";color:var(--success);}
+  .disclaimer{font-size:11.5px;color:var(--ink-muted);line-height:1.5;padding:14px 26px 20px;border-top:1px solid var(--rule);}
+  .foot{text-align:center;padding:26px 16px;font-size:12px;color:var(--ink-muted);}
+  .foot a{color:var(--unad-blue);text-decoration:none;font-weight:600;}
+</style>
+</head>
+<body>
+<nav class="topbar">
+  <a href="index.html" class="topbar-brand">Cómo Mide Minciencias <span>· SUMECO · UNAD</span></a>
+  <a href="index.html" class="topbar-back">← Volver a la herramienta</a>
+</nav>
+
+<div class="page-header">
+  <h1>Autodiagnóstico: ¿qué <em>categoría</em> podrías alcanzar?</h1>
+  <p>Estima tu categoría actual de investigador o integrante y qué te faltaría para el siguiente nivel, según los requisitos del modelo de medición de Minciencias (Convocatoria 957 de 2024).</p>
+  <p class="authors">Ángel Saúl Díaz-Téllez · Jennifer Mejía-Ríos · Grupo SUMECO · ECSAH · UNAD</p>
+</div>
+
+<div class="main-content">
+  <div class="diag">
+    <div class="diag-head">
+      <div class="eyebrow">Autodiagnóstico orientativo</div>
+      <h3>¿Qué tipo de investigador o integrante serías?</h3>
+      <p>Ingresa tu formación, producción y dirección de trabajos de grado. El resultado se calcula en vivo con los requisitos oficiales del modelo. Es orientativo, no una clasificación oficial.</p>
+    </div>
+    <div class="grid">
+      <div class="form">
+        <fieldset>
+          <legend>Formación y situación</legend>
+          <div class="field">
+            <label>Máxima formación finalizada</label>
+            <select id="formacion">
+              <option value="ninguna">Ninguna aún</option>
+              <option value="pregrado">Pregrado</option>
+              <option value="especializacion">Especialización</option>
+              <option value="maestria">Maestría</option>
+              <option value="especialidad_clinica">Especialidad clínica</option>
+              <option value="doctorado">Doctorado</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>¿Estudias actualmente? <span class="hint">(para categoría de estudiante)</span></label>
+            <select id="estudia">
+              <option value="no">No estoy estudiando</option>
+              <option value="pregrado">Pregrado</option>
+              <option value="especializacion">Especialización</option>
+              <option value="maestria_espclinica">Maestría o especialidad clínica</option>
+              <option value="doctorado">Doctorado</option>
+            </select>
+          </div>
+          <div class="field"><label>Años desde que iniciaste esos estudios <span class="hint">(ED &le;8, EM &le;4)</span></label><input type="number" id="aniosEstudio" min="0" value="0"></div>
+          <div class="field"><label>Edad <span class="hint">(para Emérito)</span></label><input type="number" id="edad" min="0" value="0"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Vínculo y dirección (trayectoria)</legend>
+          <label class="check"><input type="checkbox" id="vinc"> Estoy vinculado(a) a un grupo de investigación</label>
+          <label class="check"><input type="checkbox" id="proyecto"> Participo en un proyecto del grupo</label>
+          <label class="check"><input type="checkbox" id="docReciente"> Terminé mi doctorado hace 3 años o menos</label>
+          <label class="check"><input type="checkbox" id="vincCol" checked> Vinculado(a) a una institución colombiana</label>
+          <label class="check"><input type="checkbox" id="dirEver"> He dirigido/finalizado &ge;1 tesis de doctorado o de maestría</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Producción (GNC / DTI)</legend>
+          <div class="field"><label>Productos GNC/DTI en toda tu trayectoria</label><input type="number" id="gncTotal" min="0" value="0"></div>
+          <div class="field"><label>De esos, ¿cuántos son tipo A o superior?</label><input type="number" id="tipoAtotal" min="0" value="0"></div>
+          <div class="field"><label>Productos GNC/DTI en los últimos 5 años</label><input type="number" id="gnc5" min="0" value="0"></div>
+          <div class="field"><label>Productos tipo A en los últimos 10 años</label><input type="number" id="tipoA10" min="0" value="0"></div>
+          <div class="field"><label>Productos TOP o A en los últimos 10 años</label><input type="number" id="topA10" min="0" value="0"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Dirección de trabajos de grado</legend>
+          <label style="font-size:12px;color:var(--ink-muted);display:block;margin-bottom:6px;">En los últimos 5 años:</label>
+          <div class="cols">
+            <div class="field"><label>Doctorado</label><input type="number" id="dir5doc" min="0" value="0"></div>
+            <div class="field"><label>Maestría</label><input type="number" id="dir5mae" min="0" value="0"></div>
+            <div class="field"><label>Pregrado</label><input type="number" id="dir5pre" min="0" value="0"></div>
+          </div>
+          <label style="font-size:12px;color:var(--ink-muted);display:block;margin:8px 0 6px;">En los últimos 10 años:</label>
+          <div class="cols">
+            <div class="field"><label>Doctorado</label><input type="number" id="dir10doc" min="0" value="0"></div>
+            <div class="field"><label>Maestría</label><input type="number" id="dir10mae" min="0" value="0"></div>
+            <div></div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="result">
+        <div class="chips" id="chips"></div>
+        <div class="verdict" id="verdict"></div>
+        <p class="proj-title" id="projTitle"></p>
+        <ul class="proj" id="proj"></ul>
+        <div id="breakdown"></div>
+      </div>
+    </div>
+    <p class="disclaimer"><b>Diagnóstico orientativo, no oficial.</b> La clasificación real la realiza Minciencias con verificación documental y criterios adicionales (por ejemplo, el Emérito exige estar en el 25% superior del área y evaluación de un comité de expertos). Úsalo para planear tu trayectoria, no como resultado definitivo.</p>
+  </div>
+</div>
+
+<div class="foot">
+  Herramienta SUMECO · 2026 · <a href="index.html">Volver a Cómo Mide Minciencias</a>
+</div>
+
+<script>
+  var $=function(id){return document.getElementById(id);};
+  var ids=['formacion','estudia','aniosEstudio','edad','vinc','proyecto','docReciente','vincCol','dirEver','gncTotal','tipoAtotal','gnc5','tipoA10','topA10','dir5doc','dir5mae','dir5pre','dir10doc','dir10mae'];
+  function val(id){var e=$(id);return e.type==='checkbox'?e.checked:(e.type==='number'?(parseInt(e.value,10)||0):e.value);}
+  function c(label,ok){return {label:label,ok:ok};}
+
+  function data(){
+    var f=val('formacion');
+    return {
+      f:f, doctorado:f==='doctorado', maestriaMas:['maestria','especialidad_clinica','doctorado'].indexOf(f)>=0,
+      pregOrEsp:['pregrado','especializacion'].indexOf(f)>=0,
+      estudia:val('estudia'), aniosEstudio:val('aniosEstudio'), edad:val('edad'),
+      vinc:val('vinc'), proyecto:val('proyecto'), docReciente:val('docReciente'), vincCol:val('vincCol'), dirEver:val('dirEver'),
+      gncTotal:val('gncTotal'), tipoAtotal:val('tipoAtotal'), gnc5:val('gnc5'), tipoA10:val('tipoA10'), topA10:val('topA10'),
+      dir5doc:val('dir5doc'), dir5mae:val('dir5mae'), dir5pre:val('dir5pre'), dir10doc:val('dir10doc'), dir10mae:val('dir10mae')
+    };
+  }
+
+  function levels(d){
+    var jrI = d.docReciente && d.vinc && d.proyecto;
+    var jrForm = d.doctorado || d.maestriaMas || (d.pregOrEsp && d.gncTotal>=7);
+    var jrProd = d.tipoAtotal>=1 && d.gnc5>=4;
+    var junior={met:jrI||(jrForm&&jrProd),conds:[
+      c('Ruta A — Doctorado ≤3 años + vinculado a grupo + en un proyecto', jrI),
+      c('Ruta B — Formación: posgrado, o pregrado con 7 productos GNC/DTI (tienes '+d.gncTotal+')', jrForm),
+      c('Ruta B — 1 producto tipo A en la trayectoria (tienes '+d.tipoAtotal+')', d.tipoAtotal>=1),
+      c('Ruta B — 4 productos GNC/DTI en los últimos 5 años (tienes '+d.gnc5+')', d.gnc5>=4)
+    ]};
+    var aForm=d.doctorado||d.maestriaMas||d.tipoAtotal>=7;
+    var asociado={met:aForm && d.tipoA10>=3 && d.gnc5>=4 && (d.dir5doc>=1||d.dir5mae>=2||d.dir5pre>=8),conds:[
+      c('Formación: maestría/doctorado/esp. clínica, o 7 productos tipo A en la trayectoria', aForm),
+      c('Producción: 3 productos tipo A en los últimos 10 años (tienes '+d.tipoA10+')', d.tipoA10>=3),
+      c('Producción: 4 productos GNC/DTI adicionales en los últimos 5 años (tienes '+d.gnc5+')', d.gnc5>=4),
+      c('Dirección (5 años): 1 tesis doctoral, o 2 maestrías, u 8 pregrados', d.dir5doc>=1||d.dir5mae>=2||d.dir5pre>=8)
+    ]};
+    var sForm=d.doctorado||d.tipoAtotal>=15;
+    var senior={met:sForm && d.topA10>=10 && (d.dir10mae>=4||d.dir10doc>=1),conds:[
+      c('Formación: doctorado, o 15 productos tipo A en la trayectoria', sForm),
+      c('Producción: 10 productos TOP o A en los últimos 10 años (tienes '+d.topA10+')', d.topA10>=10),
+      c('Dirección (10 años): 4 maestrías o 1 tesis doctoral', d.dir10mae>=4||d.dir10doc>=1)
+    ]};
+    var eForm=d.doctorado||d.tipoAtotal>=15;
+    var emerito={met:eForm && d.tipoAtotal>=1 && d.dirEver && d.edad>=65 && d.vincCol,conds:[
+      c('Formación: doctorado, o 15 productos tipo A en la trayectoria', eForm),
+      c('Producción: tener productos tipo TOP o A (tienes '+d.tipoAtotal+' tipo A+)', d.tipoAtotal>=1),
+      c('Dirección: tesis de doctorado o maestría finalizadas', d.dirEver),
+      c('Edad 65 años o más (tienes '+d.edad+')', d.edad>=65),
+      c('Vinculado a institución colombiana', d.vincCol),
+      c('Estar en el 25% superior del área — lo evalúa un comité de Minciencias', false)
+    ]};
+    return {Junior:junior,Asociado:asociado,'Sénior':senior,'Emérito':emerito};
+  }
+
+  function integrante(d){
+    if(d.estudia==='doctorado' && d.aniosEstudio<=8) return {cat:'Estudiante de doctorado',id:'ED'};
+    if(d.estudia==='maestria_espclinica' && d.aniosEstudio<=4) return {cat:'Estudiante de maestría o especialidad clínica',id:'EM'};
+    if(d.estudia==='pregrado') return {cat:'Estudiante de pregrado',id:'EP'};
+    if(d.vinc){
+      if(d.f==='doctorado') return {cat:'Integrante vinculado con doctorado',id:'IV_D'};
+      if(d.f==='maestria'||d.f==='especialidad_clinica') return {cat:'Integrante vinculado con maestría/esp. clínica',id:'IV_M'};
+      if(d.f==='especializacion') return {cat:'Integrante vinculado con especialización',id:'IV_E'};
+      if(d.f==='pregrado') return {cat:'Integrante vinculado con pregrado',id:'IV_P'};
+      return {cat:'Integrante vinculado',id:'IV'};
+    }
+    return {cat:null,id:null};
+  }
+
+  function render(){
+    var d=data(); var L=levels(d); var order=['Junior','Asociado','Sénior'];
+    var chips=$('chips');chips.innerHTML='';
+    ['Junior','Asociado','Sénior','Emérito'].forEach(function(k){var s=document.createElement('div');s.className='chip'+(L[k].met?' on':'');s.textContent=k;chips.appendChild(s);});
+    var highest=null;order.forEach(function(k){if(L[k].met)highest=k;});
+    var v=$('verdict');var idMap={Junior:'IJ',Asociado:'I','Sénior':'IS','Emérito':'IE'};
+    if(highest){
+      v.innerHTML='<span class="big">Investigador '+highest+'<span class="idtag">'+idMap[highest]+'</span></span>Según lo ingresado, cumplirías los requisitos de <b>Investigador '+highest+'</b>.'+(L['Emérito'].met?' Además reúnes condiciones para <b>Emérito</b> (sujeto a comité).':'');
+    } else {
+      var integ=integrante(d);
+      if(integ.id){v.innerHTML='<span class="big">'+integ.cat+'<span class="idtag">'+integ.id+'</span></span>Aún no alcanzas un nivel de <b>investigador reconocido</b>. Tu categoría como integrante del grupo sería esta. Abajo ves qué te falta para <b>Investigador Junior</b>.';}
+      else {v.innerHTML='<span class="big">Sin categoría aún</span>Para figurar como integrante, vincúlate a un grupo de investigación. Abajo ves la ruta hacia <b>Investigador Junior</b>.';}
+    }
+    var nextIdx=highest?order.indexOf(highest)+1:0;var next=order[nextIdx]||(highest==='Sénior'?'Emérito':null);
+    var pt=$('projTitle'),pl=$('proj');pl.innerHTML='';
+    if(next){
+      var missing=L[next].conds.filter(function(x){return !x.ok;});
+      if(missing.length){pt.textContent='Para alcanzar '+next+', te falta:';missing.forEach(function(x){var li=document.createElement('li');li.textContent=x.label;pl.appendChild(li);});}
+      else{pt.textContent='¡Ya cumples '+next+'!';}
+    } else {pt.textContent='Reúnes el nivel más alto de la escala.';}
+    var bd=$('breakdown');bd.innerHTML='';
+    ['Junior','Asociado','Sénior','Emérito'].forEach(function(k){
+      var det=document.createElement('details');
+      det.innerHTML='<summary>Investigador '+k+' <span class="st '+(L[k].met?'met':'no')+'">'+(L[k].met?'CUMPLE':'no cumple')+'</span></summary><ul class="cond">'+L[k].conds.map(function(x){return '<li class="'+(x.ok?'ok':'')+'">'+x.label+'</li>';}).join('')+'</ul>';
+      bd.appendChild(det);
+    });
+  }
+  ids.forEach(function(id){$(id).addEventListener('input',render);$(id).addEventListener('change',render);});
+  render();
+</script>
+</body>
+</html>

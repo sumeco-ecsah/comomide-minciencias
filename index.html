@@ -7,8 +7,13 @@
 <meta property="og:title" content="Cómo Mide Minciencias · Herramienta SUMECO · UNAD">
 <meta property="og:description" content="Herramienta abierta para consultar los 170 productos, 5 dimensiones y criterios del modelo de medición de grupos de investigación Minciencias 2024-2026.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://sumeco-ecsah.github.io/comomide-minciencias/">
+<meta property="og:image" content="https://sumeco-ecsah.github.io/comomide-minciencias/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_CO">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sumeco-ecsah.github.io/comomide-minciencias/og-image.png">
 <meta name="twitter:title" content="Cómo Mide Minciencias · SUMECO · UNAD">
 <meta name="twitter:description" content="170 productos, 5 dimensiones, coeficientes y clasificación de investigadores del modelo Minciencias. Grupo SUMECO, UNAD.">
 <meta name="author" content="Ángel Saúl Díaz-Téllez · Jennifer Mejía-Ríos · Grupo SUMECO · UNAD">
@@ -2036,6 +2041,21 @@
   }
   .intro-text a.text-link:hover { color: var(--unad-orange); }
 
+  /* ============ BOTÓN DIAGNÓSTICO (nav) ============ */
+  .nav-btn-diag {
+    background: var(--sumeco-coral);
+    color: #ffffff !important;
+    padding: 6px 16px !important;
+    border-radius: 6px;
+    font-weight: 700;
+    border-bottom: none !important;
+    transition: background 0.2s, transform 0.15s;
+    font-size: 12.5px;
+  }
+  .nav-btn-diag:hover { background: #d4503a; color: #ffffff !important; border-bottom: none !important; transform: translateY(-1px); }
+  .nav-links a.nav-btn-diag.active { border-bottom: none !important; }
+  @media (max-width: 880px) { .nav-btn-diag { text-align: center; margin-top: 6px; } }
+
 </style>
 </head>
 <body>
@@ -2069,6 +2089,7 @@
       <a href="#faq">FAQ</a>
       <a href="productos.html" target="_blank" class="nav-btn-productos">170 productos ↗</a>
       <a href="revistas.html" target="_blank" class="nav-btn-revistas">Verificar revistas ↗</a>
+      <a href="diagnostico.html" target="_blank" class="nav-btn-diag">Diagnóstico ↗</a>
       <a href="#investigadores">Investigadores</a>
       <a href="#acerca">SUMECO</a>
       <a href="#desarrolladores">Desarrolladores</a>
@@ -2661,11 +2682,26 @@
   </div>
 </section>
 
+<!-- AUTODIAGNÓSTICO -->
+<section class="section" id="diagnostico">
+  <div class="section-head">
+    <div class="section-label">06 · Autodiagnóstico</div>
+    <div>
+      <h2 class="section-title">¿Qué <em>categoría</em> podrías alcanzar?</h2>
+      <p class="section-desc">Estima tu categoría actual de investigador o integrante y qué te faltaría para el siguiente nivel, según los requisitos oficiales del modelo Minciencias.</p>
+    </div>
+  </div>
+  <div style="text-align:center; padding: 40px 0;">
+    <a href="diagnostico.html" target="_blank" class="productos-ext-btn">Abrir el autodiagnóstico ↗</a>
+    <p style="margin-top:16px; color:var(--ink-muted); font-size:14px;">Se abre en una pestaña nueva. Ingresa tu formación, producción y dirección de trabajos de grado; el resultado es orientativo, no oficial.</p>
+  </div>
+</section>
+
 <!-- ACERCA SUMECO -->
 <section class="acerca-section" id="acerca">
   <div class="acerca-inner">
     <div class="section-head">
-      <div class="section-label">06 · Sobre el grupo</div>
+      <div class="section-label">07 · Sobre el grupo</div>
       <div>
         <h2 class="section-title">Grupo <em>SUMECO</em>.</h2>
         <p class="section-desc">Sujeto, Mente y Comunidad. Categoría A de Minciencias, adscrito a la Escuela de Ciencias Sociales, Artes y Humanidades de la Universidad Nacional Abierta y a Distancia.</p>
@@ -2732,7 +2768,7 @@
           <div class="dev-info">
           <div class="dev-role">Investigador principal · Líder SUMECO</div>
           <div class="dev-name">Ángel Saúl Díaz-Téllez</div>
-          <div class="dev-bio">Comunicador Social. Magíster en Semiótica. Doctor en Ciencias de la Educación. Investigador Asociado de Minciencias. Líder del grupo SUMECO. Comisionado de Conaces, Sala de Ciencias Sociales, Periodismo e Información. Docente Doctorado en Cliodinámica de la UNAD</div>
+          <div class="dev-bio">Comunicador Social. Magíster en Semiótica. Doctor en Ciencias de la Educación. Investigador Asociado de Minciencias. Líder del grupo SUMECO. Comisionado de Conaces, Sala de Ciencias Sociales, Periodismo e Información.</div>
           <div class="dev-meta">CvLAC · <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000555754" target="_blank" rel="noopener">Ver hoja de vida</a></div>
           </div>
         </div>
@@ -2741,7 +2777,7 @@
           <div class="dev-info">
           <div class="dev-role">Investigadora · Grupo SUMECO</div>
           <div class="dev-name">Jennifer Mejía-Ríos</div>
-          <div class="dev-bio">Psicóloga. Especialista en Gestión de Proyectos de Desarrollo. Magíster en Neuropsicología y Educación. Doctora en Pensamiento Complejo. Investigadora -Junior- del grupo SUMECO, adscrita a la Escuela de Ciencias Sociales, Artes y Humanidades en el Doctorado en Cliodinámica y el programa de Psicología de la Universidad Nacional Abierta y a Distancia.</div>
+          <div class="dev-bio">Psicóloga. Especialista en Gestión de Proyectos de Desarrollo. Magíster en Neuropsicología y Educación. Doctora en Pensamiento Complejo. Investigadora del grupo SUMECO, adscrita a la Escuela de Ciencias Sociales, Artes y Humanidades de la Universidad Nacional Abierta y a Distancia.</div>
           <div class="dev-meta">CvLAC · <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001706150" target="_blank" rel="noopener">Ver hoja de vida</a></div>
           </div>
         </div>
@@ -2799,6 +2835,7 @@
     </div>
     <div class="footer-bottom">
       <div>© 2026 · Díaz-Téllez & Mejía-Ríos · SUMECO · Convocatoria 957 de 2024 · Documento M601PR04G01 v.02</div>
+      <div style="margin-top:4px; font-size:11px; color:rgba(255,255,255,.55);">Última actualización: agosto de 2026</div>
       <div style="margin-top:6px; font-size:11px;"><a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" style="color:var(--unad-yellow); text-decoration:none;">CC BY 4.0</a> · Herramienta informativa de libre consulta. No constituye fuente normativa.</div>
     </div>
   </div>
