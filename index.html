@@ -1800,7 +1800,7 @@
     line-height: 1.55;
   }
 
-  /* ============ MEJORAS UX Â· tanda 1 (2026-08) ============ */
+  /* ============ MEJORAS UX · tanda 1 (2026-08) ============ */
 
   /* Enlace de salto (accesibilidad de teclado) */
   .skip-link {
@@ -1828,7 +1828,7 @@
     border-radius: 4px;
   }
 
-  /* BotÃ³n hamburguesa (mÃ³vil) */
+  /* Botón hamburguesa (móvil) */
   .nav-toggle {
     display: none;
     background: none;
@@ -1841,7 +1841,7 @@
   }
   .nav-toggle:hover { border-color: var(--unad-orange); color: var(--unad-orange); }
 
-  /* Estado activo del menÃº (scroll-spy) */
+  /* Estado activo del menú (scroll-spy) */
   .nav-links a.active {
     color: var(--unad-blue);
     border-bottom-color: var(--unad-orange);
@@ -1877,7 +1877,7 @@
     }
   }
 
-  /* FAQ acordeÃ³n */
+  /* FAQ acordeón */
   details.faq-card { cursor: pointer; }
   summary.faq-q {
     display: flex;
@@ -1906,7 +1906,7 @@
   }
   details.faq-card[open] summary.faq-q::after { content: "\2013"; }
 
-  /* BotÃ³n volver arriba */
+  /* Botón volver arriba */
   .to-top {
     position: fixed;
     right: 20px;
@@ -1942,6 +1942,100 @@
     }
   }
 
+  /* ============ CÓMO CITAR ============ */
+  .cite-box {
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--unad-orange);
+    background: var(--bg-paper);
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin-top: 22px;
+  }
+  .cite-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .cite-label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--unad-blue);
+    font-weight: 700;
+  }
+  .cite-copy {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--unad-blue);
+    border: none;
+    border-radius: 5px;
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    flex-shrink: 0;
+  }
+  .cite-copy:hover { background: var(--unad-blue-deep); transform: translateY(-1px); }
+  .cite-copy.copied { background: var(--success); }
+  .cite-text {
+    font-family: var(--serif);
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    overflow-wrap: anywhere;
+  }
+  .cite-text em { font-style: italic; }
+  .cite-note {
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 10px;
+  }
+  /* Variante para el pie (fondo oscuro) */
+  .cite-box.on-dark {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-left: 4px solid var(--unad-yellow);
+    margin: 0 0 26px;
+  }
+  .cite-box.on-dark .cite-label { color: var(--unad-yellow); }
+  .cite-box.on-dark .cite-text { color: rgba(255, 255, 255, 0.9); }
+  .cite-box.on-dark .cite-note { color: rgba(255, 255, 255, 0.6); }
+  .cite-box.on-dark .cite-copy { background: var(--unad-yellow); color: var(--unad-blue-deep); }
+  .cite-box.on-dark .cite-copy:hover { background: #ffd34d; }
+  .cite-box.on-dark .cite-copy.copied { background: var(--success); color: #fff; }
+
+  /* ============ ENLACES CvLAC / GrupLAC ============ */
+  .autoria-bar a {
+    color: var(--unad-blue);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.18s, color 0.18s;
+    font-weight: 600;
+  }
+  .autoria-bar a:hover { border-bottom-color: var(--unad-orange); color: var(--unad-blue-deep); }
+  .acerca-meta-item a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--unad-orange);
+    text-underline-offset: 2px;
+    transition: color 0.18s;
+  }
+  .acerca-meta-item a:hover { color: var(--unad-orange); }
+  .intro-text a.text-link {
+    color: var(--unad-blue);
+    text-decoration: underline;
+    text-decoration-color: var(--unad-orange);
+    text-underline-offset: 2px;
+    font-weight: 700;
+  }
+  .intro-text a.text-link:hover { color: var(--unad-orange); }
+
 </style>
 </head>
 <body>
@@ -1965,7 +2059,7 @@
         <div class="logo-sub">Herramienta SUMECO · 2026</div>
       </div>
     </a>
-    <button class="nav-toggle" aria-label="Abrir menÃº de navegaciÃ³n" aria-expanded="false" aria-controls="navLinks">
+    <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
     <div class="nav-links" id="navLinks">
@@ -2020,7 +2114,7 @@
 </header>
 
 <div class="autoria-bar">
-  Ángel Saúl Díaz-Téllez · Jennifer Mejía-Ríos · Grupo SUMECO · ECSAH · UNAD
+  <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000555754" target="_blank" rel="noopener">Ángel Saúl Díaz-Téllez</a> · <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001706150" target="_blank" rel="noopener">Jennifer Mejía-Ríos</a> · <a href="https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000007065" target="_blank" rel="noopener">Grupo SUMECO</a> · ECSAH · UNAD
 </div>
 
 <section class="sobre-section" id="sobre">
@@ -2029,6 +2123,14 @@
     <p class="sobre-text">Esta es una <strong>herramienta informativa y de consulta</strong> creada por el grupo de investigación SUMECO (Sujeto, Mente y Comunidad) de la Escuela de Ciencias Sociales, Artes y Humanidades de la UNAD. Su propósito es facilitar la comprensión del modelo de medición de grupos de investigación e investigadores definido por Minciencias en el documento conceptual de la Convocatoria 957 de 2024.</p>
     <p class="sobre-text">La herramienta no reemplaza el documento oficial ni constituye una fuente normativa. Organiza, visualiza y explica los 170 productos, las cinco dimensiones, los coeficientes de cálculo y los requisitos de clasificación de investigadores, a partir de la información pública disponible en el documento conceptual del modelo. Los datos pueden actualizarse conforme Minciencias publique ajustes o nuevas convocatorias.</p>
     <p class="sobre-aviso">Carácter exclusivamente informativo y pedagógico. Para decisiones oficiales consulte siempre el <a href="https://minciencias.gov.co/sites/default/files/upload/convocatoria/m601pr04g01_modelo_medicion_grupos_investigacion_tecnologica_o_innovacion_y_reconocimiento_investigadores_-_2024_1.pdf" target="_blank" rel="noopener">documento conceptual de Minciencias</a>.</p>
+    <div class="cite-box">
+      <div class="cite-head">
+        <span class="cite-label">Cómo citar esta herramienta · APA 7</span>
+        <button class="cite-copy" type="button" aria-label="Copiar la cita en formato APA">Copiar cita</button>
+      </div>
+      <p class="cite-text">Díaz-Téllez, Á. S., &amp; Mejía-Ríos, J. (2026). <em>Cómo mide Minciencias: herramienta para consultar el modelo de medición de grupos e investigadores del SNCTeI (Convocatoria 957 de 2024)</em> [Herramienta web]. Grupo de Investigación SUMECO, Universidad Nacional Abierta y a Distancia. https://sumeco-ecsah.github.io/comomide-minciencias/</p>
+      <p class="cite-note">Si tu normativa exige fecha de consulta, añade: «Recuperado el [día de mes de año], de la URL».</p>
+    </div>
   </div>
 </section>
 
@@ -2041,7 +2143,7 @@
         <p>El modelo de medición Minciencias, aplicado en la <span class="highlight">Convocatoria 957 de 2024</span>, organiza la producción científica colombiana en cinco dimensiones de producción y dos indicadores complementarios del grupo (cohesión y cooperación), con un total de <strong>ciento setenta productos</strong>: ciento sesenta y nueve con coeficiente de medición asignado y uno —el Libro de Creación— en fase de pilotaje, aún sin puntaje. Dentro de cada dimensión, los productos se ubican en niveles de calidad (TOP, A o B según corresponda). El documento conceptual oficial tiene doscientas cincuenta y dos páginas.</p>
         <p><span class="ink-strong">Cronología de la convocatoria.</span> La Convocatoria 957 fue publicada por Minciencias en 2024. Operó sobre una ventana de observación de cinco años (enero de 2019 a diciembre de 2023). Los resultados preliminares se publicaron en marzo de 2025 y los resultados finales el 5 de diciembre de 2025. El modelo seguirá vigente hasta que Minciencias publique una nueva convocatoria.</p>
         <p>Esta herramienta consolida esa información en un solo lugar consultable: buscar productos por nombre, filtrar por dimensión o categoría, comparar pesos individuales, y saltar directamente a la página exacta del documento conceptual donde aparece cada producto.</p>
-        <p>Es un aporte abierto del grupo de investigación <strong>SUMECO · Sujeto, Mente y Comunidad</strong>, Categoría A de Minciencias, adscrito a la Escuela de Ciencias Sociales, Artes y Humanidades de la <strong>Universidad Nacional Abierta y a Distancia, UDR La Tebaida</strong>, Zona Occidente.</p>
+        <p>Es un aporte abierto del grupo de investigación <strong><a class="text-link" href="https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000007065" target="_blank" rel="noopener">SUMECO · Sujeto, Mente y Comunidad</a></strong>, Categoría A de Minciencias, adscrito a la Escuela de Ciencias Sociales, Artes y Humanidades de la <strong>Universidad Nacional Abierta y a Distancia, UDR La Tebaida</strong>, Zona Occidente.</p>
         <p>La herramienta es de <span class="highlight">libre consulta y uso para cualquier grupo de investigación de la UNAD</span> y demás instituciones del Sistema Nacional de Ciencia, Tecnología e Innovación. Se ofrece sin restricciones de acceso, sin registro, sin publicidad.</p>
       </div>
     </div>
@@ -2581,7 +2683,7 @@
         <p><span class="ink-strong">Visión 2035.</span> Ser un referente académico y científico en ciencias sociales, artes y humanidades, reconocido por la producción de conocimiento multidisciplinar y transdisciplinar, con impacto local, regional y nacional mediante la incidencia en políticas públicas, prácticas institucionales y procesos comunitarios.</p>
         <div class="acerca-meta">
           <div class="acerca-meta-item">Categoría<strong>A · Minciencias</strong></div>
-          <div class="acerca-meta-item">Código GrupLAC<strong>COL0053302</strong></div>
+          <div class="acerca-meta-item">Código GrupLAC<strong><a href="https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000007065" target="_blank" rel="noopener">COL0053302 ↗</a></strong></div>
           <div class="acerca-meta-item">Creación<strong>11 enero 2008</strong></div>
           <div class="acerca-meta-item">Sede<strong>UDR La Tebaida · Quindío</strong></div>
           <div class="acerca-meta-item">Escuela<strong>ECSAH</strong></div>
@@ -2687,6 +2789,14 @@
         </ul>
       </div>
     </div>
+    <div class="cite-box on-dark" id="citar">
+      <div class="cite-head">
+        <span class="cite-label">Cómo citar esta herramienta · APA 7</span>
+        <button class="cite-copy" type="button" aria-label="Copiar la cita en formato APA">Copiar cita</button>
+      </div>
+      <p class="cite-text">Díaz-Téllez, Á. S., &amp; Mejía-Ríos, J. (2026). <em>Cómo mide Minciencias: herramienta para consultar el modelo de medición de grupos e investigadores del SNCTeI (Convocatoria 957 de 2024)</em> [Herramienta web]. Grupo de Investigación SUMECO, Universidad Nacional Abierta y a Distancia. https://sumeco-ecsah.github.io/comomide-minciencias/</p>
+      <p class="cite-note">Si tu normativa exige fecha de consulta, añade: «Recuperado el [día de mes de año], de la URL».</p>
+    </div>
     <div class="footer-bottom">
       <div>© 2026 · Díaz-Téllez & Mejía-Ríos · SUMECO · Convocatoria 957 de 2024 · Documento M601PR04G01 v.02</div>
       <div style="margin-top:6px; font-size:11px;"><a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" style="color:var(--unad-yellow); text-decoration:none;">CC BY 4.0</a> · Herramienta informativa de libre consulta. No constituye fuente normativa.</div>
@@ -2750,6 +2860,44 @@ function filterByDim(dim) {
       window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
     });
   }
+})();
+(function(){
+  function fallbackCopy(text, done){
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    } catch (e) {}
+  }
+  document.querySelectorAll('.cite-copy').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var box = btn.closest('.cite-box');
+      var el = box ? box.querySelector('.cite-text') : null;
+      var cite = el ? el.textContent.replace(/\s+/g, ' ').trim() : '';
+      if (!cite) return;
+      var done = function(){
+        var prev = btn.getAttribute('data-label') || btn.textContent;
+        btn.setAttribute('data-label', prev);
+        btn.textContent = '¡Copiado!';
+        btn.classList.add('copied');
+        setTimeout(function(){
+          btn.textContent = btn.getAttribute('data-label');
+          btn.classList.remove('copied');
+        }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(cite).then(done, function(){ fallbackCopy(cite, done); });
+      } else {
+        fallbackCopy(cite, done);
+      }
+    });
+  });
 })();
 </script>
 </body>
