@@ -91,6 +91,12 @@
   .disclaimer{font-size:11.5px;color:var(--ink-muted);line-height:1.5;padding:14px 26px 20px;border-top:1px solid var(--rule);}
   .foot{text-align:center;padding:26px 16px;font-size:12px;color:var(--ink-muted);}
   .foot a{color:var(--unad-blue);text-decoration:none;font-weight:600;}
+  .proj-intro{font-size:13px;color:var(--ink-soft);margin-bottom:14px;line-height:1.5;}
+  .proj-intro b{color:var(--unad-blue-deep);}
+  .proj-block{margin-bottom:14px;}
+  .proj-head{font-family:var(--sans);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--unad-blue);margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+  .proj-head .pid{font-family:var(--mono);font-size:10px;background:var(--unad-blue);color:#fff;padding:1px 7px;border-radius:4px;}
+  .proj-block .proj{margin-bottom:0;}
 </style>
 </head>
 <body>
@@ -100,7 +106,7 @@
 </nav>
 
 <div class="page-header">
-  <h1>Autodiagnóstico: ¿qué <em>categoría</em> podrías alcanzar?</h1>
+  <h1>Autodiagnóstico como <em>investigador</em></h1>
   <p>Estima tu categoría actual de investigador o integrante y qué te faltaría para el siguiente nivel, según los requisitos del modelo de medición de Minciencias (Convocatoria 957 de 2024).</p>
   <p class="authors">Ángel Saúl Díaz-Téllez · Jennifer Mejía-Ríos · Grupo SUMECO · ECSAH · UNAD</p>
 </div>
@@ -179,8 +185,7 @@
       <div class="result">
         <div class="chips" id="chips"></div>
         <div class="verdict" id="verdict"></div>
-        <p class="proj-title" id="projTitle"></p>
-        <ul class="proj" id="proj"></ul>
+        <div id="projection"></div>
         <div id="breakdown"></div>
       </div>
     </div>
@@ -272,13 +277,22 @@
       if(integ.id){v.innerHTML='<span class="big">'+integ.cat+'<span class="idtag">'+integ.id+'</span></span>Aún no alcanzas un nivel de <b>investigador reconocido</b>. Tu categoría como integrante del grupo sería esta. Abajo ves qué te falta para <b>Investigador Junior</b>.';}
       else {v.innerHTML='<span class="big">Sin categoría aún</span>Para figurar como integrante, vincúlate a un grupo de investigación. Abajo ves la ruta hacia <b>Investigador Junior</b>.';}
     }
-    var nextIdx=highest?order.indexOf(highest)+1:0;var next=order[nextIdx]||(highest==='Sénior'?'Emérito':null);
-    var pt=$('projTitle'),pl=$('proj');pl.innerHTML='';
-    if(next){
-      var missing=L[next].conds.filter(function(x){return !x.ok;});
-      if(missing.length){pt.textContent='Para alcanzar '+next+', te falta:';missing.forEach(function(x){var li=document.createElement('li');li.textContent=x.label;pl.appendChild(li);});}
-      else{pt.textContent='¡Ya cumples '+next+'!';}
-    } else {pt.textContent='Reúnes el nivel más alto de la escala.';}
+    var ladderFull=['Junior','Asociado','Sénior','Emérito'];
+    var idMap2={Junior:'IJ',Asociado:'I','Sénior':'IS','Emérito':'IE'};
+    var startIdx=highest?ladderFull.indexOf(highest)+1:0;
+    var pend=ladderFull.slice(startIdx).filter(function(k){return !L[k].met;});
+    var pr=$('projection');
+    if(!pend.length){
+      pr.innerHTML='<p class="proj-title">Reúnes todos los niveles de la escala.</p>';
+    } else {
+      var intro=highest?('Ya cumples <b>Investigador '+highest+'</b>. Esto es lo que te falta para cada nivel superior:'):'Aún no alcanzas un nivel de investigador reconocido. Esto es lo que te faltaría para cada uno:';
+      var html='<p class="proj-intro">'+intro+'</p>';
+      pend.forEach(function(k){
+        var missing=L[k].conds.filter(function(x){return !x.ok;});
+        html+='<div class="proj-block"><div class="proj-head">Para Investigador '+k+' <span class="pid">'+idMap2[k]+'</span></div><ul class="proj">'+missing.map(function(x){return '<li>'+x.label+'</li>';}).join('')+'</ul></div>';
+      });
+      pr.innerHTML=html;
+    }
     var bd=$('breakdown');bd.innerHTML='';
     ['Junior','Asociado','Sénior','Emérito'].forEach(function(k){
       var det=document.createElement('details');
