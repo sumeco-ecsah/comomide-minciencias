@@ -59,6 +59,7 @@
   legend{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--unad-blue);font-weight:700;padding-bottom:8px;border-bottom:2px solid var(--unad-orange);width:100%;margin-bottom:12px;}
   .field{margin-bottom:11px;}
   .field label{display:block;font-size:13px;color:var(--ink-soft);font-weight:600;margin-bottom:4px;}
+  .field .ayuda{font-size:11.5px;color:var(--ink-muted);line-height:1.45;margin-top:5px;}
   .field .hint{font-weight:400;color:var(--ink-light);font-size:11.5px;}
   select,input[type=number]{width:100%;font-family:var(--sans);font-size:14px;padding:8px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--bg);color:var(--ink);}
   input[type=number]{font-family:var(--mono);}
@@ -143,7 +144,7 @@
               <option value="doctorado">Doctorado</option>
             </select>
           </div>
-          <div class="field"><label>Años desde que iniciaste esos estudios <span class="hint">(ED &le;8, EM &le;4)</span></label><input type="number" id="aniosEstudio" min="0" value="0"></div>
+          <div class="field" id="aniosWrap" hidden><label for="aniosEstudio">¿Hace cuántos años empezaste esos estudios?</label><input type="number" id="aniosEstudio" min="0" value="0"><p class="ayuda" id="aniosAyuda"></p></div>
           <div class="field"><label>Edad <span class="hint">(para Emérito)</span></label><input type="number" id="edad" min="0" value="0"></div>
         </fieldset>
 
@@ -265,7 +266,13 @@
   }
 
   function render(){
-    var d=data(); var L=levels(d); var order=['Junior','Asociado','Sénior'];
+    var d=data();
+    var esDoc=d.estudia==='doctorado', esMae=d.estudia==='maestria_espclinica';
+    $('aniosWrap').hidden=!(esDoc||esMae);
+    $('aniosAyuda').textContent=esDoc
+      ?'Ejemplo: si empezaste el doctorado en 2021 y hoy es 2026, escribe 5. Cuentas como estudiante de doctorado hasta 8 años después de iniciarlo.'
+      :'Ejemplo: si empezaste la maestría en 2024 y hoy es 2026, escribe 2. Cuentas como estudiante de maestría o especialidad clínica hasta 4 años después de iniciarla.';
+    var L=levels(d); var order=['Junior','Asociado','Sénior'];
     var chips=$('chips');chips.innerHTML='';
     ['Junior','Asociado','Sénior','Emérito'].forEach(function(k){var s=document.createElement('div');s.className='chip'+(L[k].met?' on':'');s.textContent=k;chips.appendChild(s);});
     var highest=null;order.forEach(function(k){if(L[k].met)highest=k;});
