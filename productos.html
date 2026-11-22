@@ -9,354 +9,504 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CO">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="170 productos · Cómo Mide Minciencias">
+<meta name="twitter:title" content="170 productos · Cómo mide Minciencias">
 <meta name="twitter:description" content="Ranking de productos del modelo Minciencias con pesos, filtros por dimensión y fichas PDF. Grupo SUMECO, UNAD.">
-<title>Productos · Cómo Mide Minciencias · SUMECO · UNAD</title>
+<title>Productos · Cómo mide Minciencias · SUMECO · UNAD</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,900;1,8..60,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --bg: #ffffff;
-    --bg-paper: #fafbfc;
-    --bg-soft: #f1f4f8;
-    --ink: #0d1b2a;
-    --ink-soft: #1e2a3a;
-    --ink-muted: #5a6a7e;
-    --ink-light: #8a96a8;
-    --rule: #d6dde6;
-    --rule-soft: #e8eef5;
-    --unad-blue: #003a70;
-    --unad-blue-deep: #002347;
-    --unad-blue-light: #1a5599;
-    --unad-orange: #f37020;
-    --unad-orange-deep: #d85a14;
-    --unad-yellow: #fdb913;
-    --unad-yellow-soft: #fef3d0;
-    --sumeco-coral: #e8654e;
-    --sumeco-blue: #3b8db5;
-    --sumeco-yellow: #f3c84a;
-    --accent: var(--unad-orange);
-    --success: #1e7a3e;
-    --top-bg: var(--unad-blue);
-    --top-fg: #ffffff;
-    --a-bg: var(--unad-orange);
-    --a-fg: #ffffff;
-    --b-bg: var(--unad-yellow);
-    --b-fg: var(--unad-blue-deep);
-    --sans: 'Source Sans 3', system-ui, sans-serif;
-    --serif: 'Source Serif 4', Georgia, serif;
-    --mono: 'JetBrains Mono', monospace;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; }
-  body {
-    font-family: var(--sans);
-    background: var(--bg-paper);
-    color: var(--ink);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-  }
 
-  .topbar {
-    position: sticky; top: 0; z-index: 100;
-    background: var(--unad-blue-deep);
-    padding: 0 24px;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 52px;
-    border-bottom: 3px solid var(--unad-orange);
-  }
-  .topbar-brand {
-    font-family: var(--serif);
-    font-weight: 700;
-    font-size: 15px;
-    color: #ffffff;
-    text-decoration: none;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .topbar-brand span { opacity: 0.6; font-weight: 400; }
-  .topbar-back {
-    display: inline-block;
-    padding: 6px 16px;
-    font-family: var(--sans);
-    font-size: 13px;
-    color: var(--unad-blue-deep);
-    background: var(--unad-yellow);
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 5px;
-    transition: background 0.15s, transform 0.15s;
-  }
-  .topbar-back:hover { background: #ffffff; transform: translateY(-1px); }
+:root{
+  --azul:#005883;            --amarillo:#F0B429;        --naranja:#F47920;         --naranja-claro:#F9B98A;
+  --gris-oscuro:#333333;
+  --gris:#808080;
+  --gris-claro:#B3B3B3;
+  --tinta:#111111;
+  --tinta-suave:#3A3A3A;
+  --papel:#FFFFFF;
+  --papel-2:#F2F2EF;
+  --linea:#111111;
 
-  .page-header {
-    max-width: 1200px; margin: 0 auto; padding: 48px 24px 24px;
-  }
-  .page-header h1 {
-    font-family: var(--serif);
-    font-size: clamp(28px, 4vw, 42px);
-    font-weight: 700;
-    color: var(--unad-blue-deep);
-    line-height: 1.15;
-    margin-bottom: 8px;
-  }
-  .page-header h1 em { color: var(--unad-orange); font-style: normal; }
-  .page-header p {
-    font-size: 15px;
-    color: var(--ink-muted);
-    max-width: 700px;
-  }
+  --sans:'Libre Franklin','Franklin Gothic Book','Franklin Gothic Medium',Arial,sans-serif;
+  --ancho:1240px;
+  --margen:40px;
 
-  .main-content { max-width: 1200px; margin: 0 auto; padding: 0 24px 60px; }
+    --serif:var(--sans);
+  --unad-blue-deep:var(--tinta);
+  --unad-yellow:var(--amarillo);
+  --ink-muted:var(--tinta-suave);
+}
 
-  .guia-uso {
-    background: var(--bg);
-    border: 1px solid var(--rule);
-    border-left: 4px solid var(--unad-orange);
-    border-radius: 6px;
-    padding: 20px 24px;
-    margin-bottom: 24px;
-  }
-  .guia-uso h3 {
-    font-family: var(--serif);
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--unad-blue-deep);
-    margin-bottom: 8px;
-  }
-  .guia-uso p {
-    font-size: 14px;
-    color: var(--ink-soft);
-    line-height: 1.6;
-    margin-bottom: 6px;
-  }
-  .guia-uso p:last-child { margin-bottom: 0; }
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--papel);color:var(--tinta);
+  font-family:var(--sans);font-size:18px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--tinta);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--azul)}
+strong{font-weight:700}
+h1,h2,h3,h4{margin:0;line-height:1.05}
+h1 em,h2 em,h3 em,h4 em,.inv-name em,.linea-name em{font-style:normal}
+:focus-visible{outline:3px solid var(--azul);outline-offset:3px}
 
-  .controls {
-    display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;
-  }
-  .search-wrap { flex: 1; min-width: 220px; }
-  .search {
-    width: 100%;
-    padding: 10px 14px;
-    border: 1px solid var(--rule);
-    border-radius: 6px;
-    font-family: var(--sans);
-    font-size: 15px;
-    background: var(--bg);
-    color: var(--ink);
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .search:focus { border-color: var(--unad-blue); }
-  .sort-wrap {
-    display: flex; align-items: center; gap: 8px;
-  }
-  .sort-wrap label { font-size: 13px; color: var(--ink-muted); font-weight: 600; }
-  .sort {
-    padding: 10px 12px;
-    border: 1px solid var(--rule);
-    border-radius: 6px;
-    font-family: var(--sans);
-    font-size: 14px;
-    background: var(--bg);
-    color: var(--ink);
-    cursor: pointer;
-  }
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--tinta);color:#fff;padding:12px 18px;z-index:100;font-weight:700}
+.skip-link:focus{left:12px;top:12px;color:#fff}
 
-  .filter-chips {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
-  }
-  .chip {
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1px solid var(--rule);
-    background: var(--bg);
-    font-family: var(--sans);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink-muted);
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .chip:hover { border-color: var(--unad-blue); color: var(--unad-blue); }
-  .chip.active { background: var(--unad-blue); color: #fff; border-color: var(--unad-blue); }
-  .chip-count { font-weight: 400; opacity: 0.7; }
+.franja-escuelas{display:flex;height:8px}
+.franja-escuelas span{flex:1}
+.top-strip{border-bottom:1px solid var(--linea);font-size:13px;font-weight:600;letter-spacing:.02em}
+.top-strip-inner{max-width:var(--ancho);margin:0 auto;padding:10px var(--margen);display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px}
 
-  .results-meta {
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 13px; color: var(--ink-light);
-    padding: 8px 0; margin-bottom: 8px;
-    border-bottom: 1px solid var(--rule-soft);
-  }
+.topbar{position:sticky;top:0;z-index:50;background:var(--papel);border-bottom:2px solid var(--linea)}
+.topbar-inner{max-width:var(--ancho);margin:0 auto;padding:12px var(--margen);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
+.logo-img{width:44px;height:44px;object-fit:contain}
+.logo-title{font-weight:900;font-size:16px;text-transform:uppercase;letter-spacing:.01em;line-height:1.1}
+.logo-sub{font-size:12px;font-weight:500;color:var(--tinta-suave)}
+.nav-links{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.nav-herramientas{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
+.nav-herramientas a{display:inline-flex;align-items:center;min-height:40px;padding:6px 14px;border:2px solid var(--tinta);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;background:var(--papel)}
+.nav-herramientas a:first-child{background:var(--amarillo)}
+.nav-herramientas a:hover,.nav-herramientas a[aria-current="page"]{background:var(--tinta);color:#fff}
+.nav-secciones{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:2px 22px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.nav-secciones a{text-decoration:none;padding:4px 0;border-bottom:3px solid transparent}
+.nav-secciones a:hover{color:var(--tinta);border-bottom-color:var(--amarillo)}
+.nav-secciones a.active{border-bottom-color:var(--azul)}
+.nav-toggle{display:none;background:none;border:2px solid var(--tinta);width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer;color:var(--tinta)}
 
-  .ranking { display: flex; flex-direction: column; }
-  .row {
-    display: grid;
-    grid-template-columns: 70px 140px 1fr 110px 150px 80px 70px;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--rule-soft);
-    transition: background 0.1s;
-  }
-  .row:hover { background: var(--bg-soft); }
-  .row.header {
-    font-weight: 700;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--ink-muted);
-    background: var(--bg-soft);
-    border-radius: 6px 6px 0 0;
-    position: sticky; top: 55px; z-index: 10;
-  }
-  .row.top10 { background: var(--unad-yellow-soft); }
-  .row.top10:hover { background: #fde9a8; }
+.hero{display:flex;flex-wrap:wrap;border-bottom:2px solid var(--linea)}
+.hero-main{flex:999 1 620px;min-width:0;padding:72px var(--margen) 64px;display:flex;flex-direction:column;justify-content:space-between;gap:48px;max-width:calc(var(--ancho)*.68)}
+.eyebrow{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.title{font-size:clamp(48px,7.4vw,104px);font-weight:900;line-height:.92;letter-spacing:-.035em;text-transform:uppercase}
+.lede{margin:0;max-width:640px;font-size:20px;line-height:1.55}
+.hero-cifra{flex:1 1 340px;min-width:0;background:var(--amarillo);padding:56px var(--margen) 48px;display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+.hero-cifra-num{font-size:clamp(120px,15vw,190px);font-weight:900;line-height:.78;letter-spacing:-.06em}
+.hero-cifra-frase{margin:0;font-size:25px;font-weight:800;line-height:1.2}
+.hero-cifra-lista{list-style:none;margin:20px 0 0;padding:0;border-top:2px solid var(--tinta)}
+.hero-cifra-lista li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid var(--tinta);font-size:16px}
+.hero-cifra-lista strong{font-weight:900;font-variant-numeric:tabular-nums}
 
-  .rank-num {
-    font-family: var(--mono);
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--ink-light);
-    text-align: center;
-  }
-  .row.top10 .rank-num { color: var(--unad-orange-deep); }
-  .row.top10 .rank-num::after { content: " ★"; color: var(--unad-yellow); font-size: 12px; }
+.autoria-bar{max-width:var(--ancho);margin:0 auto;padding:14px var(--margen);font-size:14px;font-weight:600}
 
-  .codigo {
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--unad-blue);
-    background: var(--bg-soft);
-    padding: 2px 7px;
-    border-radius: 4px;
-    display: inline-block;
-  }
+.sobre-section,.intro,.section,.investigadores-section,.acerca-section{border-top:2px solid var(--linea)}
+.sobre-inner,.intro-inner,.section,.investigadores-inner,.acerca-inner{max-width:var(--ancho);margin:0 auto;padding:96px var(--margen)}
+.investigadores-section .section,.acerca-section .section{padding:0}
 
-  .desc { font-size: 14px; color: var(--ink-soft); }
+.section-head{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:24px 56px;margin-bottom:56px;align-items:start}
+.section-label{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;border-top:4px solid var(--tinta);padding-top:10px}
+.section-title{font-size:clamp(38px,5.4vw,72px);font-weight:900;line-height:.94;letter-spacing:-.03em;text-transform:uppercase;margin-bottom:24px}
+.section-desc{margin:0;max-width:720px;font-size:19px;line-height:1.6}
 
-  .cat-badge {
-    display: inline-block;
-    padding: 2px 10px;
-    border-radius: 10px;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  .cat-TOP { background: var(--top-bg); color: var(--top-fg); }
-  .cat-A { background: var(--a-bg); color: var(--a-fg); }
-  .cat-B { background: var(--b-bg); color: var(--b-fg); }
-  .cat-FRH_A { background: var(--sumeco-coral); color: #fff; }
-  .cat-FRH_B { background: #f5d0c5; color: var(--sumeco-coral); }
-  .cat-ASC { background: var(--unad-blue-light); color: #fff; }
-  .cat-DPC { background: var(--dpc-bg, #f1f4f8); color: var(--unad-blue); }
+.sobre-section{background:var(--papel-2)}
+.sobre-inner{display:grid;grid-template-columns:minmax(0,1fr);max-width:var(--ancho)}
+.sobre-title{font-size:clamp(30px,3.6vw,44px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:24px}
+.sobre-text{margin:0 0 16px;max-width:820px}
+.sobre-aviso{margin:8px 0 32px;max-width:820px;font-weight:700;border-left:6px solid var(--amarillo);padding-left:16px}
 
-  .peso-vis { text-align: right; }
-  .peso-num {
-    font-family: var(--mono);
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--ink);
-  }
-  .peso-bar {
-    height: 4px;
-    background: var(--rule-soft);
-    border-radius: 2px;
-    margin-top: 3px;
-    overflow: hidden;
-  }
-  .peso-bar-fill {
-    height: 100%;
-    border-radius: 2px;
-    background: linear-gradient(90deg, var(--unad-blue), var(--unad-orange));
-  }
+.cite-box{background:var(--papel);border:2px solid var(--tinta);padding:24px 28px;max-width:900px}
+.cite-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.cite-label{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.cite-copy{font:inherit;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;background:var(--tinta);color:#fff;border:2px solid var(--tinta);padding:10px 16px;min-height:44px;cursor:pointer}
+.cite-copy:hover{background:var(--azul);border-color:var(--azul)}
+.cite-copy.copied{background:var(--amarillo);color:var(--tinta);border-color:var(--tinta)}
+.cite-text{margin:0 0 8px;font-size:16px;line-height:1.6;overflow-wrap:anywhere}
+.cite-text em{font-style:italic}
+.cite-note{margin:0;font-size:14px;color:var(--tinta-suave)}
 
-  .pag-link {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--unad-blue);
-    text-decoration: none;
-    transition: color 0.15s;
-    text-align: right;
-    font-weight: 600;
-    padding: 4px 6px;
-    border: 1px solid transparent;
-    border-radius: 3px;
-  }
-  .pag-link:hover { color: var(--unad-orange); border-color: var(--unad-orange); background: var(--unad-yellow-soft); }
-  .pag-link::after { content: " ↗"; }
+.intro-grid{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:24px 56px}
+.intro-text p{margin:0 0 20px;max-width:820px;font-size:19px}
+.intro-text p:first-child{font-size:23px;line-height:1.5;font-weight:500}
+.highlight{background:var(--amarillo);padding:0 4px}
+.ink-strong{font-weight:800}
+.text-link{text-decoration:underline}
 
-  .ficha-link {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 5px;
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--unad-blue-deep);
-    background: var(--bg-soft);
-    border: 1px solid var(--rule);
-    text-decoration: none;
-    transition: background 0.15s, color 0.15s, border-color 0.15s;
-  }
-  .ficha-link:hover {
-    background: var(--unad-blue);
-    color: #ffffff;
-    border-color: var(--unad-blue);
-  }
-  .ficha-link.pendiente {
-    border-style: dashed;
-    color: var(--ink-light);
-    pointer-events: none;
-    opacity: 0.5;
-  }
+.dim-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px}
+.dim-shared{grid-column:span 8;background:var(--azul);color:#fff;padding:28px;display:flex;flex-direction:column;gap:24px}
+.dim-shared-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.dim-shared-label{font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;max-width:320px}
+.dim-shared-num{font-size:clamp(80px,9vw,120px);font-weight:900;line-height:.8;letter-spacing:-.05em}
+.dim-shared-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.dim-card{font:inherit;text-align:left;cursor:pointer;border:0;padding:24px;display:flex;flex-direction:column;gap:12px;color:var(--tinta);min-height:240px;transition:transform .15s ease}
+.dim-card:hover{transform:translateY(-3px)}
+.dim-card:focus-visible{outline:3px solid var(--tinta);outline-offset:3px}
+.dim-shared .dim-card{background:rgba(255,255,255,.1);color:#fff;border:2px solid rgba(255,255,255,.55);min-height:0}
+.dim-shared .dim-card:focus-visible{outline-color:#fff}
+.dim-card-num{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.dim-card-title{font-size:22px;font-weight:900;text-transform:uppercase;line-height:1.08;letter-spacing:-.01em}
+.dim-card-desc{margin:0;font-size:15px;line-height:1.5;flex:1}
+.dim-card-stats{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;border-top:2px solid currentColor;padding-top:10px}
+.dim-card-count{font-size:34px;font-weight:900;line-height:1;letter-spacing:-.03em}
+.dim-card-count .of{font-size:14px;font-weight:600;margin-left:4px;letter-spacing:0}
+.dim-card-weight{font-size:13px;font-weight:600;text-align:right}
+.dim-card-weight strong{display:block;font-size:44px;font-weight:900;line-height:.9;letter-spacing:-.04em}
+.dim-card-ver{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+.dim-3{grid-column:span 4;background:var(--amarillo)}
+.dim-5{grid-column:span 7;background:var(--naranja)}
+.dim-4{grid-column:span 5;background:var(--gris-claro)}
+.dim-3 .dim-card-weight strong{font-size:72px}
+.dim-5 .dim-card-weight strong{font-size:64px}
+.dim-4 .dim-card-weight strong{font-size:52px}
+.dim-nota{margin:20px 0 0;font-size:15px;color:var(--tinta-suave)}
 
-  .row.piloto .peso-num { color: var(--ink-light); font-style: italic; font-size: 14px; }
-  .row.piloto .peso-bar-fill { background: var(--ink-light); }
+.coef-table{border-top:4px solid var(--tinta);border-bottom:4px solid var(--tinta)}
+.coef-row{display:grid;grid-template-columns:minmax(0,1fr) 72px 84px minmax(0,220px);gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid #CFCFCF;font-variant-numeric:tabular-nums}
+.coef-row.header{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--tinta)}
+.coef-row.group-header{padding-top:28px;border-bottom:2px solid var(--tinta)}
+.coef-group-name{font-size:20px;font-weight:900;text-transform:uppercase;line-height:1.15;letter-spacing:-.01em}
+.coef-group-total,.coef-group-pct{font-size:22px;font-weight:900;text-align:right}
+.coef-row.group-header.complementarios .coef-group-name{color:var(--tinta-suave)}
+.coef-name{font-size:16px;line-height:1.45}
+.coef-value,.coef-pct{text-align:right;font-weight:700}
+.coef-bar-track{height:14px;background:var(--papel-2);border:1px solid var(--tinta)}
+.coef-bar-fill{height:100%;background:var(--azul)}
+.coef-row.total{border-bottom:0;padding:18px 0}
+.coef-row.total .coef-name,.coef-row.total .coef-value,.coef-row.total .coef-pct{font-size:22px;font-weight:900;text-transform:uppercase}
 
-  .empty {
-    text-align: center;
-    padding: 40px;
-    color: var(--ink-light);
-    font-size: 15px;
-  }
+.level-tag{display:inline-block;min-width:38px;text-align:center;font-size:12px;font-weight:900;letter-spacing:.04em;padding:3px 7px;margin-right:6px;border:2px solid var(--tinta);vertical-align:1px;background:var(--papel)}
+.level-top{background:var(--azul);color:#fff;border-color:var(--azul)}
+.level-a{background:var(--amarillo)}
+.level-b{background:var(--gris-claro)}
+.level-asc{background:var(--amarillo)}
+.level-dpc{background:var(--gris-claro)}
+.level-frha{background:var(--naranja)}
+.level-frhb{background:var(--naranja-claro)}
+.level-comp{background:var(--gris-oscuro);color:#fff;border-color:var(--gris-oscuro)}
 
-  .footer {
-    text-align: center;
-    padding: 24px;
-    font-size: 12px;
-    color: var(--ink-light);
-    border-top: 1px solid var(--rule-soft);
-    margin-top: 40px;
-  }
-  .footer a { color: var(--unad-blue); text-decoration: none; }
-  .footer a:hover { text-decoration: underline; }
+.nota-niveles{margin-top:72px;background:var(--papel-2);padding:48px var(--margen);margin-left:calc(-1 * var(--margen));margin-right:calc(-1 * var(--margen))}
+.nota-eyebrow,.lectura-eyebrow,.lineas-eyebrow{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+.nota-title{font-size:clamp(26px,3vw,38px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;margin-bottom:32px;max-width:900px}
+.nota-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.nota-card{border-top:4px solid var(--tinta);padding-top:14px}
+.nota-card-tag{margin-bottom:12px}
+.nota-card-title{font-size:18px;font-weight:900;text-transform:uppercase;margin-bottom:8px}
+.nota-card-body{font-size:15px;line-height:1.55}
 
-  @media (max-width: 1100px) {
-    .row { grid-template-columns: 50px 1fr 100px 140px 70px 60px; }
-    .row .col-codigo { display: none; }
-  }
-  @media (max-width: 900px) {
-    .row { grid-template-columns: 40px 1fr 100px; }
-    .row .col-codigo, .row .col-cat, .row .col-pag, .row .col-ficha { display: none; }
-    .row.header { display: none; }
-    .desc { font-size: 13px; }
-  }
+.lectura-block{margin-top:72px}
+.lectura-title{font-size:clamp(34px,4.6vw,60px);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.95;margin-bottom:20px;max-width:900px}
+.lectura-text{max-width:820px;margin:0 0 32px;font-size:19px}
+.ejemplos-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.ejemplo-card{padding:24px;border:2px solid var(--tinta);display:flex;flex-direction:column;gap:10px}
+.ejemplo-card:nth-child(1){background:var(--gris-claro)}
+.ejemplo-card:nth-child(2){background:var(--amarillo)}
+.ejemplo-card:nth-child(3){background:var(--naranja)}
+.ejemplo-num{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.ejemplo-title{font-size:22px;font-weight:900;text-transform:uppercase;line-height:1.05}
+.ejemplo-body{font-size:16px;line-height:1.5}
+.ejemplo-body strong{font-weight:900}
+.lectura-disclaimer{margin:20px 0 0;font-size:14px;color:var(--tinta-suave);max-width:900px}
+
+.faq-grid{border-top:4px solid var(--tinta)}
+.faq-card{border-bottom:2px solid var(--tinta)}
+.faq-q{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 0;font-size:21px;font-weight:800;line-height:1.3}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{content:"+";flex-shrink:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:2px solid var(--tinta);font-size:24px;font-weight:700}
+.faq-card[open] .faq-q::after{content:"−";background:var(--amarillo)}
+.faq-q:hover{color:var(--azul)}
+.faq-a{padding:0 64px 26px 0;font-size:17px;line-height:1.65;max-width:900px}
+
+.productos-ext-btn{display:inline-flex;align-items:center;min-height:56px;padding:16px 28px;background:var(--tinta);color:#fff;text-decoration:none;font-weight:900;font-size:18px;text-transform:uppercase;letter-spacing:.02em;border:2px solid var(--tinta)}
+.productos-ext-btn:hover{background:var(--amarillo);color:var(--tinta)}
+
+.inv-group-divider{display:flex;align-items:baseline;gap:16px;border-top:4px solid var(--tinta);padding-top:14px;margin:64px 0 24px}
+.inv-group-divider:first-of-type{margin-top:0}
+.inv-group-eyebrow{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;background:var(--tinta);color:#fff;padding:4px 10px}
+.inv-group-divider h3{font-size:clamp(24px,2.6vw,34px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em}
+.inv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:6px}
+.inv-card{border:2px solid var(--tinta);padding:24px;display:flex;flex-direction:column;gap:14px;background:var(--papel)}
+.inv-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin:-24px -24px 0;padding:20px 24px;border-bottom:2px solid var(--tinta)}
+.inv-tier{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.inv-name{font-size:24px;font-weight:900;text-transform:uppercase;line-height:1;letter-spacing:-.01em}
+.inv-badge{font-size:30px;font-weight:900;line-height:1;letter-spacing:-.03em}
+.tier-1 .inv-head{background:var(--azul);color:#fff}
+.tier-2 .inv-head{background:var(--naranja)}
+.tier-3 .inv-head{background:var(--amarillo)}
+.tier-4 .inv-head{background:var(--gris-claro)}
+.tier-formacion .inv-head{background:var(--papel-2)}
+.tier-vinculado .inv-head{background:var(--papel)}
+.inv-summary{margin:0;font-size:16px;font-weight:600;line-height:1.45}
+.inv-reqs{margin:0;padding-left:18px;font-size:15px;line-height:1.5}
+.inv-reqs li{margin-bottom:8px}
+.inv-note{margin:auto 0 0;font-size:13px;color:var(--tinta-suave);border-top:1px solid #CFCFCF;padding-top:10px}
+
+.acerca-card{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:40px;border-top:4px solid var(--tinta);padding-top:32px}
+.acerca-logo img{width:100%;max-width:220px;height:auto}
+.acerca-body h3{font-size:clamp(28px,3.4vw,44px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:16px}
+.acerca-tagline{font-size:21px;font-weight:600;line-height:1.45;margin:0 0 24px}
+.acerca-body p{max-width:820px}
+.acerca-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:32px}
+.acerca-meta-item{background:var(--papel-2);padding:16px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.acerca-meta-item strong{display:block;margin-top:6px;font-size:18px;font-weight:900;text-transform:none;letter-spacing:0}
+.acerca-meta-item:first-child{background:var(--amarillo)}
+
+.lineas-block{margin-top:80px}
+.lineas-title{font-size:clamp(30px,4vw,52px);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.95;margin-bottom:16px;max-width:900px}
+.lineas-desc{max-width:760px;margin:0 0 32px}
+.lineas-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.linea-card{border:2px solid var(--tinta);padding:20px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.linea-card:nth-child(1){background:var(--azul);color:#fff;border-color:var(--azul)}
+.linea-card:nth-child(2){background:var(--amarillo)}
+.linea-card:nth-child(3){background:var(--naranja)}
+.linea-card:nth-child(4){background:var(--gris-claro)}
+.linea-card:nth-child(5){background:var(--papel-2)}
+.linea-num{font-size:56px;font-weight:900;line-height:.8;letter-spacing:-.05em}
+.linea-name{font-size:17px;font-weight:800;line-height:1.25;text-transform:uppercase}
+
+#desarrolladores{margin-top:80px!important}
+#desarrolladores > h3{font-family:var(--sans)!important;font-size:clamp(28px,3vw,40px)!important;font-weight:900!important;text-transform:uppercase;letter-spacing:-.02em;color:var(--tinta)!important;border-top:4px solid var(--tinta);padding-top:14px}
+#desarrolladores > p{font-family:var(--sans)!important;font-style:normal!important;font-size:17px!important;color:var(--tinta-suave)!important;margin:10px 0 24px!important}
+.devs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.dev-card{display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px;border:2px solid var(--tinta);padding:20px;align-items:start}
+.dev-photo{width:120px;height:120px;object-fit:cover;border:2px solid var(--tinta)}
+.dev-role{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.dev-name{font-size:22px;font-weight:900;text-transform:uppercase;line-height:1.05;margin-bottom:10px}
+.dev-bio{font-size:15px;line-height:1.55;margin-bottom:10px}
+.dev-meta{font-size:14px;font-weight:700}
+
+footer{background:var(--azul);color:#fff}
+footer a{color:#fff}
+footer a:hover{color:var(--amarillo)}
+.footer-inner{max-width:var(--ancho);margin:0 auto;padding:80px var(--margen) 40px}
+.footer-cierre{font-size:clamp(44px,6.6vw,92px);font-weight:900;line-height:.92;letter-spacing:-.035em;text-transform:uppercase;margin:0 0 64px;max-width:900px}
+.footer-grid{display:grid;grid-template-columns:minmax(0,2fr) repeat(3,minmax(0,1fr));gap:40px;border-top:2px solid #fff;padding-top:32px}
+.footer-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.footer-logo img{width:48px;height:48px;object-fit:contain;background:#fff;padding:3px}
+.footer-brand-text{font-weight:900;text-transform:uppercase;font-size:17px}
+.footer-brand-sub{font-size:13px}
+.footer-text{font-size:15px;line-height:1.6;margin:0;max-width:480px}
+.footer-col h4{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;color:var(--amarillo)}
+.footer-col ul{list-style:none;margin:0;padding:0}
+.footer-col li{margin-bottom:8px;font-size:15px}
+.cite-box.on-dark{background:transparent;border-color:#fff;color:#fff;margin-top:56px;max-width:none}
+.cite-box.on-dark .cite-note{color:rgba(255,255,255,.85)}
+.cite-box.on-dark .cite-copy{background:#fff;color:var(--tinta);border-color:#fff}
+.cite-box.on-dark .cite-copy:hover{background:var(--amarillo);border-color:var(--amarillo)}
+.footer-bottom{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.5);font-size:13px}
+.footer-bottom a{color:var(--amarillo)!important}
+
+.to-top{position:fixed;right:20px;bottom:20px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:var(--amarillo);color:var(--tinta);border:2px solid var(--tinta);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s;z-index:60}
+.to-top.show{opacity:1;pointer-events:auto}
+
+.fade-in{animation:entra .6s ease both}
+.fade-in.d1{animation-delay:.08s}
+.fade-in.d2{animation-delay:.16s}
+@keyframes entra{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.fade-in{animation:none}.dim-card{transition:none}}
+
+@media (max-width:1100px){
+  .nav-toggle{display:inline-flex}
+  .nav-links{display:none;position:absolute;left:0;right:0;top:100%;background:var(--papel);border-bottom:2px solid var(--linea);padding:16px var(--margen) 20px;align-items:stretch;gap:16px;max-height:calc(100vh - 80px);overflow-y:auto}
+  .nav-links.open{display:flex}
+  .nav-herramientas{flex-direction:column;align-items:stretch;order:2}
+  .nav-herramientas a{justify-content:center;min-height:48px}
+  .nav-secciones{flex-direction:column;align-items:stretch;gap:0;order:1}
+  .nav-secciones a{padding:12px 0;border-bottom:1px solid #DDD}
+  .topbar{position:sticky}
+  .topbar-inner{position:relative}
+  .nota-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lineas-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:860px){
+  :root{--margen:20px}
+  body{font-size:17px}
+  .section-head,.intro-grid,.acerca-card{grid-template-columns:minmax(0,1fr)}
+  .sobre-inner,.intro-inner,.section,.investigadores-inner,.acerca-inner{padding-top:64px;padding-bottom:64px}
+  .hero-main{padding-top:48px}
+  .dim-shared,.dim-3,.dim-4,.dim-5{grid-column:1 / -1}
+  .dim-shared-cards{grid-template-columns:minmax(0,1fr)}
+  .coef-row{grid-template-columns:minmax(0,1fr) 52px 64px}
+  .coef-row .col-bar{display:none}
+  .ejemplos-grid,.devs-grid,.footer-grid{grid-template-columns:minmax(0,1fr)}
+  .acerca-meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lineas-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .faq-a{padding-right:0}
+}
+@media (max-width:520px){
+  .nota-grid,.lineas-grid,.acerca-meta{grid-template-columns:minmax(0,1fr)}
+  .dev-card{grid-template-columns:minmax(0,1fr)}
+  .top-strip .right-strip{display:none}
+}
+
+html,body{overflow-x:clip}
+.section{border-top:0;position:relative}
+.section::before{content:"";position:absolute;top:0;left:50%;width:100vw;transform:translateX(-50%);border-top:2px solid var(--linea)}
+.investigadores-section .section::before,.acerca-section .section::before{display:none}
+.footer-bottom div{color:#fff!important}
+.topbar-inner{max-width:1440px}
+.nav-secciones{gap:2px 18px}
+@media (min-width:1101px){.nav-secciones{flex-wrap:nowrap;white-space:nowrap}}
+@media (min-width:1101px) and (max-width:1300px){.nav-secciones{font-size:12px;gap:2px 12px}.logo-sub{display:none}}
+.footer-bottom a{color:#fff!important;text-decoration:underline!important}
+.top-strip-inner{max-width:1440px}
+:root{
+  --azul:#005883;--amarillo:#F0B429;--naranja:#F47920;--naranja-claro:#F9B98A;
+  --gris-oscuro:#333333;--gris:#808080;--gris-claro:#B3B3B3;
+  --tinta:#111111;--tinta-suave:#3A3A3A;--papel:#FFFFFF;--papel-2:#F2F2EF;--linea:#111111;
+  --sans:'Libre Franklin','Franklin Gothic Book',Arial,sans-serif;
+  --ancho:1240px;--margen:40px;
+    --ink-light:var(--tinta-suave);--ink-muted:var(--tinta-suave);--unad-blue:var(--azul);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:var(--tinta);text-underline-offset:3px}
+a:hover{color:var(--azul)}
+h1,h2,h3,h4{margin:0;line-height:1.05}
+h1 em,h2 em,h3 em{font-style:normal}
+:focus-visible{outline:3px solid var(--azul);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+
+
+.page-header{max-width:var(--ancho);margin:0 auto;padding:72px var(--margen) 56px;border-bottom:2px solid var(--linea)}
+.page-header h1{font-size:clamp(40px,6.4vw,88px);font-weight:900;line-height:.92;letter-spacing:-.035em;text-transform:uppercase;max-width:1100px;margin-bottom:28px}
+.page-header p{margin:0 0 8px;max-width:760px;font-size:19px}
+.page-header .autoria,.page-header .authors{font-size:14px!important;font-weight:700;margin-top:16px!important;color:var(--tinta)!important}
+.page-header{position:relative}
+.page-header::after{content:"";position:absolute;left:50%;bottom:-2px;width:100vw;transform:translateX(-50%);border-bottom:2px solid var(--linea)}
+
+.main-content{max-width:var(--ancho);margin:0 auto;padding:56px var(--margen) 72px}
+
+
+@media (max-width:860px){
+  :root{--margen:20px}
+  .page-header{padding-top:48px;padding-bottom:40px}
+  .main-content{padding-top:40px}
+}
+
+.guia-uso{background:var(--papel-2);padding:28px 32px;margin-bottom:40px;border-left:8px solid var(--amarillo)}
+.guia-uso h3{font-size:22px;font-weight:900;text-transform:uppercase;margin-bottom:12px}
+.guia-uso p{margin:0 0 12px;max-width:900px;font-size:16px}
+.guia-uso p:last-child{margin-bottom:0}
+
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-bottom:16px}
+.search-wrap{flex:1;min-width:240px}
+.search{width:100%;font:inherit;font-size:17px;min-height:52px;padding:12px 16px;border:2px solid var(--tinta);background:var(--papel);color:var(--tinta);border-radius:0}
+.search::placeholder{color:#5c5c5c}
+.search:focus{outline:3px solid var(--azul);outline-offset:2px}
+.sort-wrap{display:flex;flex-direction:column;gap:4px}
+.sort-wrap label{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.sort{font:inherit;font-size:16px;font-weight:600;min-height:52px;padding:10px 14px;border:2px solid var(--tinta);background:var(--papel);color:var(--tinta);border-radius:0}
+
+.filter-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.chip{font:inherit;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;min-height:44px;padding:8px 16px;border:2px solid var(--tinta);background:var(--papel);color:var(--tinta);cursor:pointer;border-radius:0}
+.chip:hover{background:var(--papel-2)}
+.chip.active{background:var(--tinta);color:#fff}
+.chip-count{font-weight:500;margin-left:2px}
+
+.results-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding-bottom:10px;border-bottom:4px solid var(--tinta)}
+
+.ranking{display:flex;flex-direction:column}
+.row{display:grid;grid-template-columns:64px 150px minmax(0,1fr) 110px 160px 72px 72px;align-items:center;gap:10px;padding:12px 8px;border-bottom:1px solid #CFCFCF}
+.row:hover{background:var(--papel-2)}
+.row.header{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--tinta);background:var(--papel)!important}
+.row.top10{background:#FCF0D2}
+.row.top10:hover{background:#F9E6B5}
+.rank-num{font-size:22px;font-weight:900;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.row.top10 .rank-num::after{content:"";display:inline-block;width:10px;height:10px;margin-left:6px;background:var(--amarillo);border:2px solid var(--tinta);vertical-align:2px}
+.codigo{font-family:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;font-size:13px;font-weight:600;background:var(--papel-2);padding:3px 6px;border:1px solid #CFCFCF;overflow-wrap:anywhere}
+.desc{font-size:15px;line-height:1.4}
+.cat-badge{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.04em;padding:3px 8px;border:2px solid var(--tinta);text-transform:uppercase;white-space:nowrap}
+.cat-TOP{background:var(--azul);color:#fff;border-color:var(--azul)}
+.cat-A{background:var(--amarillo)}
+.cat-B{background:var(--gris-claro)}
+.cat-ASC{background:var(--amarillo)}
+.cat-DPC{background:var(--papel)}
+.cat-FRH_A{background:var(--naranja)}
+.cat-FRH_B{background:var(--naranja-claro)}
+.peso-vis{text-align:right}
+.peso-num{font-size:18px;font-weight:900;font-variant-numeric:tabular-nums}
+.peso-bar{height:8px;background:var(--papel-2);border:1px solid var(--tinta);margin-top:4px}
+.peso-bar-fill{height:100%;background:var(--azul)}
+.pag-link,.ficha-link{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:4px 8px;font-size:13px;font-weight:800;text-decoration:none;border:2px solid var(--tinta);background:var(--papel);white-space:nowrap}
+.pag-link:hover,.ficha-link:hover{background:var(--tinta);color:#fff}
+.pag-link::after{content:" ↗"}
+.ficha-link.pendiente{border-style:dashed;color:#6b6b6b;border-color:#8a8a8a;cursor:not-allowed;background:transparent}
+.ficha-link.pendiente:hover{background:transparent;color:#6b6b6b}
+.row.piloto .peso-num{font-size:14px;font-weight:700;text-transform:uppercase;color:var(--tinta-suave)}
+.empty{padding:48px 16px;text-align:center;font-size:18px;font-weight:700;background:var(--papel-2)}
+.col-pag,.col-ficha{text-align:center}
+
+@media (max-width:1100px){
+  .row{grid-template-columns:52px minmax(0,1fr) 100px 140px 72px 72px}
+  .row .col-codigo{display:none}
+}
+@media (max-width:760px){
+  .row{grid-template-columns:40px minmax(0,1fr) 92px;row-gap:8px}
+  .row.header{display:none}
+  .row .col-cat{display:none}
+  .row .col-pag,.row .col-ficha{grid-column:auto;text-align:left}
+  .row .col-pag{grid-column:2}
+  .row .col-ficha{grid-column:3;text-align:right}
+  .rank-num{font-size:18px}
+}
+
+.dim-info{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 40px;align-items:end;padding:28px;margin-bottom:28px;border:2px solid var(--tinta);background:var(--papel-2)}
+.dim-info[data-dim="GNC"],.dim-info[data-dim="DTI"]{background:var(--azul);color:#fff;border-color:var(--azul)}
+.dim-info[data-dim="ASC"]{background:var(--amarillo)}
+.dim-info[data-dim="FRHCTI"]{background:var(--naranja)}
+.dim-info[data-dim="DPC"]{background:var(--gris-claro)}
+.dim-info-sigla{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.dim-info-nombre{font-size:clamp(28px,3.6vw,46px);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.95;margin:0 0 14px}
+.dim-info-desc{margin:0;max-width:760px;font-size:17px;line-height:1.5}
+.dim-info-nota{margin:10px 0 0;max-width:760px;font-size:15px;font-weight:600}
+.dim-info-cifras{display:flex;gap:28px;text-align:right}
+.dim-info-num{display:block;font-size:clamp(48px,5vw,72px);font-weight:900;line-height:.85;letter-spacing:-.05em}
+.dim-info-lbl{display:block;margin-top:6px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+@media (max-width:760px){.dim-info{grid-template-columns:minmax(0,1fr);padding:22px}.dim-info-cifras{text-align:left}}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-<nav class="topbar">
-  <a href="index.html" class="topbar-brand">Cómo Mide Minciencias <span>· SUMECO · UNAD</span></a>
-  <a href="index.html" class="topbar-back">← Volver a la herramienta</a>
+<div class="franja-escuelas" aria-hidden="true"><span style="background:#005883"></span><span style="background:#F0B429"></span><span style="background:#F47920"></span><span style="background:#50B748"></span><span style="background:#A54686"></span><span style="background:#43C7F4"></span></div>
+<div class="top-strip">
+  <div class="top-strip-inner">
+    <span>Universidad Nacional Abierta y a Distancia · UNAD</span>
+    <span class="right-strip">Escuela de Ciencias Sociales, Artes y Humanidades · UDR La Tebaida · Zona Occidente</span>
+  </div>
+</div>
+
+<nav class="topbar" aria-label="Navegación principal">
+  <div class="topbar-inner">
+    <a href="index.html" class="logo-wrap">
+      <img src="data:image/jpeg;base64,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" alt="Logo SUMECO" class="logo-img">
+      <div class="logo-text">
+        <div class="logo-title">Cómo mide Minciencias</div>
+        <div class="logo-sub">Herramienta SUMECO · 2026</div>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-herramientas">
+        <a href="productos.html" aria-current="page">170 productos</a>
+        <a href="revistas.html">Verificar revistas</a>
+        <a href="diagnostico.html">Autodiagnóstico</a>
+      </div>
+      <div class="nav-secciones">
+        <a href="index.html#sobre">La herramienta</a>
+        <a href="index.html#dimensiones">Dimensiones</a>
+        <a href="index.html#pesos">Coeficientes</a>
+        <a href="index.html#faq">Preguntas</a>
+        <a href="index.html#investigadores">Investigadores</a>
+        <a href="index.html#acerca">SUMECO</a>
+        <a href="index.html#desarrolladores">Desarrolladores</a>
+      </div>
+    </div>
+  </div>
 </nav>
 
-<div class="page-header">
-  <h1>170 productos, del que <em>más pesa</em> al que menos.</h1>
+<div class="page-header" id="contenido">
+  <h1>170 productos, del que <em>más pesa</em> al que menos</h1>
   <p>Pesos individuales calculados con la fórmula oficial del documento conceptual de la Convocatoria 957 de 2024: peso global del subtipo A1 multiplicado por el peso relativo del producto.</p>
   <p style="margin-top:8px; font-size:13px; color:var(--ink-light);">Ángel Saúl Díaz-Téllez · Jennifer Mejía-Ríos · Grupo SUMECO · ECSAH · UNAD</p>
 </div>
@@ -364,12 +514,12 @@
 <div class="main-content">
   <div class="guia-uso">
     <h3>¿Cómo funciona esta tabla?</h3>
-    <p>Esta tabla presenta los <strong>170 productos</strong> que el modelo de medición de Minciencias (Convocatoria 957 de 2024) reconoce para la clasificación de grupos de investigación en Colombia. Cada producto tiene un <strong>peso individual</strong> calculado con la fórmula oficial del documento conceptual, que determina cuánto aporta al indicador del grupo.</p>
-    <p>Puede usar el <strong>buscador</strong> para encontrar un producto por código o nombre, los <strong>filtros por dimensión</strong> (GNC, DTI, ASC, DPC, FRHCTI) para ver solo los productos de una categoría, y el <strong>selector de orden</strong> para reorganizar la tabla. La columna <strong>PDF</strong> enlaza a la página exacta del documento conceptual oficial donde aparece cada producto, y la columna <strong>Ficha</strong> abre un resumen en PDF del producto (las fichas se están publicando progresivamente).</p>
+    <p>Aquí están los <strong>170 productos</strong> que el modelo de Minciencias (Convocatoria 957 de 2024) reconoce para clasificar grupos de investigación. Cada uno tiene un peso, calculado con la fórmula oficial del documento conceptual, y ese peso dice cuánto aporta al indicador del grupo.</p>
+    <p>Puede usar el <strong>buscador</strong> para encontrar un producto por código o nombre, los <strong>filtros por dimensión</strong> (GNC, DTI, ASC, DPC, FRHCTI) para ver solo los productos de una categoría, y el <strong>selector de orden</strong> para cambiar el orden. La columna <strong>PDF</strong> enlaza a la página exacta del documento conceptual oficial donde aparece cada producto, y la columna <strong>Ficha</strong> abre un resumen en PDF del producto (las fichas se van publicando poco a poco; las que aún no están aparecen con borde punteado).</p>
   </div>
   <div class="controls">
     <div class="search-wrap">
-      <input type="text" id="search" class="search" placeholder="Buscar por código, descripción o palabra clave...">
+      <label for="search" class="sr-only">Buscar productos</label><input type="search" id="search" class="search" placeholder="Buscar por código, descripción o palabra clave...">
     </div>
     <div class="sort-wrap">
       <label for="sort">Ordenar</label>
@@ -382,18 +532,31 @@
     </div>
   </div>
 
-  <div class="filter-chips" id="filters">
+  <div class="filter-chips" id="filters" role="group" aria-label="Filtrar por dimensión">
     <button class="chip active" data-filter="all">Todos<span class="chip-count" id="count-all"></span></button>
-    <button class="chip" data-filter="dim-GNC">GNC<span class="chip-count" id="count-GNC"></span></button>
-    <button class="chip" data-filter="dim-DTI">DTI<span class="chip-count" id="count-DTI"></span></button>
-    <button class="chip" data-filter="dim-ASC">ASC<span class="chip-count" id="count-ASC"></span></button>
-    <button class="chip" data-filter="dim-DPC">DPC<span class="chip-count" id="count-DPC"></span></button>
-    <button class="chip" data-filter="dim-FRHCTI">FRHCTI<span class="chip-count" id="count-FRHCTI"></span></button>
+    <button class="chip" data-filter="dim-GNC" title="Generación de Nuevo Conocimiento">GNC<span class="chip-count" id="count-GNC"></span></button>
+    <button class="chip" data-filter="dim-DTI" title="Desarrollo Tecnológico e Innovación">DTI<span class="chip-count" id="count-DTI"></span></button>
+    <button class="chip" data-filter="dim-ASC" title="Apropiación Social del Conocimiento">ASC<span class="chip-count" id="count-ASC"></span></button>
+    <button class="chip" data-filter="dim-DPC" title="Divulgación Pública de la Ciencia">DPC<span class="chip-count" id="count-DPC"></span></button>
+    <button class="chip" data-filter="dim-FRHCTI" title="Formación del Recurso Humano en CTeI">FRHCTI<span class="chip-count" id="count-FRHCTI"></span></button>
+  </div>
+
+<div class="dim-info" id="dim-info" data-dim="all" aria-live="polite">
+    <div>
+      <div class="dim-info-sigla" id="dim-info-sigla">Todas las dimensiones</div>
+      <h2 class="dim-info-nombre" id="dim-info-nombre">Los 170 productos del modelo</h2>
+      <p class="dim-info-desc" id="dim-info-desc">Elija una dimensión para ver de qué trata, cuánto pesa en el indicador del grupo y qué productos la componen.</p>
+      <p class="dim-info-nota" id="dim-info-nota" hidden></p>
+    </div>
+    <div class="dim-info-cifras">
+      <div><span class="dim-info-num" id="dim-info-prod">170</span><span class="dim-info-lbl">productos</span></div>
+      <div><span class="dim-info-num" id="dim-info-peso">100%</span><span class="dim-info-lbl" id="dim-info-peso-lbl">del indicador</span></div>
+    </div>
   </div>
 
   <div class="results-meta">
     <span id="results-count">Mostrando 170 productos</span>
-    <span>Click en la página para ir al PDF →</span>
+    <span>La columna PDF abre la página exacta del documento</span>
   </div>
 
   <div class="ranking">
@@ -408,18 +571,81 @@
     </div>
     <div id="ranking-body"></div>
   </div>
-
-  <div style="text-align:center; padding: 30px 0 10px;">
-    <a href="index.html" class="topbar-back" style="font-size:15px; padding:10px 28px;">← Volver a la herramienta</a>
-  </div>
-
-  <div class="footer">
-    <div style="margin-bottom:8px;"><strong>Ángel Saúl Díaz-Téllez</strong> · <strong>Jennifer Mejía-Ríos</strong></div>
-    Grupo de investigación <a href="index.html">SUMECO</a> (Sujeto, Mente y Comunidad) · ECSAH · Universidad Nacional Abierta y a Distancia · 2026
-    <div style="margin-top:8px; font-size:11px; color:var(--ink-light);"><a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" style="color:var(--unad-blue); text-decoration:none;">CC BY 4.0</a> · Herramienta informativa de libre consulta. No constituye fuente normativa.</div>
-  </div>
 </div>
 
+<footer>
+  <div class="footer-inner">
+    <p class="footer-cierre">Medir no es lo mismo que comprender</p>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-row">
+          <div class="footer-logo"><img src="data:image/jpeg;base64,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" alt="Logo SUMECO"></div>
+          <div>
+            <div class="footer-brand-text">Cómo mide Minciencias</div>
+            <div class="footer-brand-sub">Herramienta SUMECO · 2026</div>
+          </div>
+        </div>
+        <p class="footer-text">Aporte abierto del grupo de investigación SUMECO para entender el modelo de medición de la investigación colombiana. De libre consulta y uso para cualquier grupo de investigación de la UNAD y demás instituciones del SNCTeI. Se actualiza con cada convocatoria oficial.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Fuente oficial</h4>
+        <ul>
+          <li><a href="https://minciencias.gov.co/sites/default/files/upload/convocatoria/m601pr04g01_modelo_medicion_grupos_investigacion_tecnologica_o_innovacion_y_reconocimiento_investigadores_-_2024_1.pdf" target="_blank" rel="noopener">Documento conceptual</a></li>
+          <li><a href="https://minciencias.gov.co" target="_blank" rel="noopener">Minciencias</a></li>
+          <li><a href="https://scienti.minciencias.gov.co" target="_blank" rel="noopener">Plataforma ScienTI</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>SUMECO</h4>
+        <ul>
+          <li><a href="https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000007065" target="_blank" rel="noopener">GrupLAC del grupo</a></li>
+          <li><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000555754" target="_blank" rel="noopener">CvLAC líder</a></li>
+          <li><a href="https://academia.unad.edu.co/investigacion-y-productividad-ecsah/grupos-de-investigacion" target="_blank" rel="noopener">Grupos ECSAH</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>UNAD</h4>
+        <ul>
+          <li><a href="https://www.unad.edu.co" target="_blank" rel="noopener">UNAD</a></li>
+          <li><a href="https://academia.unad.edu.co" target="_blank" rel="noopener">Académica</a></li>
+          <li><a href="https://investigaciones.unad.edu.co" target="_blank" rel="noopener">Investigaciones</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="cite-box on-dark" id="citar">
+      <div class="cite-head">
+        <span class="cite-label">Cómo citar esta herramienta · APA 7</span>
+        <button class="cite-copy" type="button" aria-label="Copiar la cita en formato APA">Copiar cita</button>
+      </div>
+      <p class="cite-text">Díaz-Téllez, Á. S., &amp; Mejía-Ríos, J. (2026). <em>Cómo mide Minciencias: herramienta para consultar el modelo de medición de grupos e investigadores del SNCTeI (Convocatoria 957 de 2024)</em> [Herramienta web]. Grupo de Investigación SUMECO, Universidad Nacional Abierta y a Distancia. https://sumeco-ecsah.github.io/comomide-minciencias/</p>
+      <p class="cite-note">Si su norma de citación exige fecha de consulta, añada: «Recuperado el [día de mes de año], de la URL».</p>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 · Díaz-Téllez & Mejía-Ríos · SUMECO · Convocatoria 957 de 2024 · Documento M601PR04G01 v.02</div>
+      <div style="margin-top:4px; font-size:11px; color:rgba(255,255,255,.55);">Última actualización: noviembre de 2026</div>
+      <div style="margin-top:6px; font-size:11px;"><a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" style="color:var(--unad-yellow); text-decoration:none;">CC BY 4.0</a> · Herramienta informativa de libre consulta. No constituye fuente normativa.</div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var toggle=document.querySelector('.nav-toggle'), links=document.getElementById('navLinks');
+  if(toggle&&links){
+    toggle.addEventListener('click',function(){var o=links.classList.toggle('open');toggle.setAttribute('aria-expanded',o?'true':'false');});
+    links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){links.classList.remove('open');toggle.setAttribute('aria-expanded','false');});});
+  }
+  document.querySelectorAll('.cite-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var el=btn.closest('.cite-box').querySelector('.cite-text');
+      var cita=el?el.textContent.replace(/\s+/g,' ').trim():'';
+      if(!cita)return;
+      var listo=function(){var prev=btn.getAttribute('data-label')||btn.textContent;btn.setAttribute('data-label',prev);btn.textContent='¡Copiado!';btn.classList.add('copied');setTimeout(function(){btn.textContent=btn.getAttribute('data-label');btn.classList.remove('copied');},2000);};
+      var respaldo=function(){try{var t=document.createElement('textarea');t.value=cita;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);listo();}catch(e){}};
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(cita).then(listo,respaldo);}else{respaldo();}
+    });
+  });
+})();
+</script>
 <script>
 const PRODUCTOS = [{"codigo":"ART_OPEN_A1","desc":"Artículo Q1 acceso abierto","peso":1000,"cat":"TOP","dim":"GNC","pag":131,"fichaOk":true},{"codigo":"ART_A1","desc":"Artículo Q1 otra modalidad","peso":950,"cat":"TOP","dim":"GNC","pag":131,"fichaOk":true},{"codigo":"ART_OPEN_A2","desc":"Artículo Q2 acceso abierto","peso":600,"cat":"TOP","dim":"GNC","pag":131,"fichaOk":true},{"codigo":"ART_A2","desc":"Artículo Q2 otra modalidad","peso":550,"cat":"TOP","dim":"GNC","pag":131,"fichaOk":true},{"codigo":"ART_OPEN_B","desc":"Artículo Q3 acceso abierto","peso":350,"cat":"A","dim":"GNC","pag":132,"fichaOk":true},{"codigo":"ART_B","desc":"Artículo Q3 otra modalidad","peso":300,"cat":"A","dim":"GNC","pag":132,"fichaOk":true},{"codigo":"ART_OPEN_C","desc":"Artículo Q4 acceso abierto","peso":200,"cat":"A","dim":"GNC","pag":132,"fichaOk":true},{"codigo":"ART_C","desc":"Artículo Q4 otra modalidad","peso":150,"cat":"A","dim":"GNC","pag":133,"fichaOk":true},{"codigo":"ART_OPEN_D","desc":"Artículo D acceso abierto","peso":50,"cat":"B","dim":"GNC","pag":133,"fichaOk":true},{"codigo":"ART_D","desc":"Artículo D otra modalidad","peso":45,"cat":"B","dim":"GNC","pag":133,"fichaOk":true},{"codigo":"N_A1","desc":"Nota científica Q1","peso":40,"cat":"B","dim":"GNC","pag":133,"fichaOk":true},{"codigo":"N_A2","desc":"Nota científica Q2","peso":34,"cat":"B","dim":"GNC","pag":133,"fichaOk":true},{"codigo":"N_B","desc":"Nota científica Q3 / Publindex B","peso":28,"cat":"B","dim":"GNC","pag":134,"fichaOk":true},{"codigo":"N_C","desc":"Nota científica Q4 / Publindex C","peso":22,"cat":"B","dim":"GNC","pag":134,"fichaOk":true},{"codigo":"N_D","desc":"Nota científica D","peso":8,"cat":"B","dim":"GNC","pag":134,"fichaOk":true},{"codigo":"LIB_A1","desc":"Libro de investigación Q1","peso":3000,"cat":"TOP","dim":"GNC","pag":135,"fichaOk":true},{"codigo":"LIB_A","desc":"Libro de investigación Q2","peso":2700,"cat":"TOP","dim":"GNC","pag":136,"fichaOk":true},{"codigo":"LIB_B","desc":"Libro de investigación Q3","peso":2400,"cat":"A","dim":"GNC","pag":137,"fichaOk":true},{"codigo":"LIB_C","desc":"Libro de investigación Q4","peso":150,"cat":"B","dim":"GNC","pag":138,"fichaOk":true},{"codigo":"CAP_LIB_A1","desc":"Capítulo de libro Q1","peso":600,"cat":"TOP","dim":"GNC","pag":139,"fichaOk":true},{"codigo":"CAP_LIB_A","desc":"Capítulo de libro Q2","peso":540,"cat":"TOP","dim":"GNC","pag":140,"fichaOk":true},{"codigo":"CAP_LIB_B","desc":"Capítulo de libro Q3","peso":480,"cat":"A","dim":"GNC","pag":140,"fichaOk":true},{"codigo":"CAP_LIB_C","desc":"Capítulo de libro Q4","peso":30,"cat":"B","dim":"GNC","pag":141,"fichaOk":true},{"codigo":"LIB_FOR1","desc":"Libro de Formación Q1","peso":600,"cat":"B","dim":"GNC","pag":142,"fichaOk":true},{"codigo":"PA1","desc":"Patente de invención A1 (vía PCT con producto)","peso":5000,"cat":"TOP","dim":"GNC","pag":142,"fichaOk":true},{"codigo":"PA2","desc":"Patente de invención A2 (vía PCT con producto)","peso":3500,"cat":"TOP","dim":"GNC","pag":142,"fichaOk":true},{"codigo":"PA3","desc":"Patente de invención A3 (PCT sin producto)","peso":3000,"cat":"A","dim":"GNC","pag":142,"fichaOk":true},{"codigo":"PA4","desc":"Patente de invención A4 (PCT sin producto)","peso":2750,"cat":"A","dim":"GNC","pag":142,"fichaOk":true},{"codigo":"PB1","desc":"Patente solicitada B1","peso":2500,"cat":"B","dim":"GNC","pag":143,"fichaOk":true},{"codigo":"PB2","desc":"Patente solicitada B2","peso":1750,"cat":"B","dim":"GNC","pag":143,"fichaOk":true},{"codigo":"PB3","desc":"Patente solicitada B3","peso":1500,"cat":"B","dim":"GNC","pag":143,"fichaOk":true},{"codigo":"PB4","desc":"Patente solicitada B4","peso":1300,"cat":"B","dim":"GNC","pag":143,"fichaOk":true},{"codigo":"PB5","desc":"Patente solicitada B5","peso":1250,"cat":"B","dim":"GNC","pag":143,"fichaOk":true},{"codigo":"PC","desc":"Patente solicitada C","peso":900,"cat":"B","dim":"GNC","pag":143,"fichaOk":true},{"codigo":"MA1","desc":"Modelo de utilidad A1","peso":3000,"cat":"TOP","dim":"GNC","pag":142,"fichaOk":true},{"codigo":"MA2","desc":"Modelo de utilidad A2","peso":2100,"cat":"TOP","dim":"GNC","pag":142,"fichaOk":true},{"codigo":"MA3","desc":"Modelo de utilidad A3","peso":1800,"cat":"A","dim":"GNC","pag":142,"fichaOk":true},{"codigo":"MA4","desc":"Modelo de utilidad A4","peso":1665,"cat":"A","dim":"GNC","pag":142,"fichaOk":true},{"codigo":"MB1","desc":"Modelo de utilidad B1","peso":1500,"cat":"B","dim":"GNC","pag":143,"fichaOk":true},{"codigo":"MB2","desc":"Modelo de utilidad B2","peso":1050,"cat":"B","dim":"GNC","pag":143,"fichaOk":true},{"codigo":"MB3","desc":"Modelo de utilidad B3","peso":900,"cat":"B","dim":"GNC","pag":143,"fichaOk":true},{"codigo":"MB4","desc":"Modelo de utilidad B4","peso":850,"cat":"B","dim":"GNC","pag":143,"fichaOk":true},{"codigo":"MB5","desc":"Modelo de utilidad B5","peso":750,"cat":"B","dim":"GNC","pag":143,"fichaOk":true},{"codigo":"MC","desc":"Modelo de utilidad C","peso":550,"cat":"B","dim":"GNC","pag":143,"fichaOk":true},{"codigo":"VV_A1","desc":"Variedad vegetal A1","peso":3000,"cat":"TOP","dim":"GNC","pag":144,"fichaOk":true},{"codigo":"VV_A2","desc":"Variedad vegetal A2","peso":2400,"cat":"TOP","dim":"GNC","pag":144,"fichaOk":true},{"codigo":"VV_A3","desc":"Variedad vegetal A3","peso":1500,"cat":"A","dim":"GNC","pag":144,"fichaOk":true},{"codigo":"VV_A4","desc":"Variedad vegetal A4","peso":750,"cat":"A","dim":"GNC","pag":144,"fichaOk":true},{"codigo":"VV_B1","desc":"Variedad vegetal B1 (ciclo corto)","peso":1500,"cat":"B","dim":"GNC","pag":145,"fichaOk":true},{"codigo":"VV_B2","desc":"Variedad vegetal B2 (ciclo corto)","peso":1200,"cat":"B","dim":"GNC","pag":145,"fichaOk":true},{"codigo":"VV_B3","desc":"Variedad vegetal B3 (ciclo corto)","peso":750,"cat":"B","dim":"GNC","pag":145,"fichaOk":true},{"codigo":"VV_B4","desc":"Variedad vegetal B4 (ciclo corto)","peso":300,"cat":"B","dim":"GNC","pag":145,"fichaOk":true},{"codigo":"VA_A","desc":"Nueva raza animal A","peso":3000,"cat":"TOP","dim":"GNC","pag":145,"fichaOk":true},{"codigo":"VA_B","desc":"Poblaciones mejoradas pecuarias B","peso":1500,"cat":"A","dim":"GNC","pag":145,"fichaOk":true},{"codigo":"AAD_A1","desc":"Producto AAD A1 (creación / investigación-creación)","peso":1000,"cat":"TOP","dim":"GNC","pag":146,"fichaOk":true},{"codigo":"AAD_A","desc":"Producto AAD A","peso":800,"cat":"TOP","dim":"GNC","pag":147,"fichaOk":true},{"codigo":"AAD_B","desc":"Producto AAD B","peso":600,"cat":"A","dim":"GNC","pag":146,"fichaOk":true},{"codigo":"AAD_C","desc":"Producto AAD C","peso":400,"cat":"B","dim":"GNC","pag":146,"fichaOk":true},{"codigo":"DI_A","desc":"Diseño Industrial A","peso":350,"cat":"A","dim":"DTI","pag":147,"fichaOk":true},{"codigo":"DI_B","desc":"Diseño Industrial B","peso":175,"cat":"B","dim":"DTI","pag":147,"fichaOk":true},{"codigo":"ECI","desc":"Esquema de circuito integrado","peso":140,"cat":"A","dim":"DTI","pag":147,"fichaOk":true},{"codigo":"SF","desc":"Software con calidad","peso":280,"cat":"B","dim":"DTI","pag":147,"fichaOk":true},{"codigo":"PP","desc":"Planta piloto con calidad","peso":140,"cat":"A","dim":"DTI","pag":148,"fichaOk":true},{"codigo":"PI","desc":"Prototipo industrial con calidad","peso":140,"cat":"A","dim":"DTI","pag":148,"fichaOk":true},{"codigo":"SD","desc":"Signo distintivo del grupo","peso":140,"cat":"A","dim":"DTI","pag":148,"fichaOk":true},{"codigo":"PN","desc":"Producto nutracéutico con calidad","peso":210,"cat":"B","dim":"DTI","pag":148,"fichaOk":true},{"codigo":"CC","desc":"Colección científica con calidad","peso":350,"cat":"B","dim":"DTI","pag":148,"fichaOk":true},{"codigo":"NRC_A","desc":"Nuevo registro científico A","peso":280,"cat":"B","dim":"DTI","pag":148,"fichaOk":true},{"codigo":"NRC_B","desc":"Nuevo registro científico B","peso":175,"cat":"B","dim":"DTI","pag":148,"fichaOk":true},{"codigo":"SE","desc":"Producto con secreto empresarial","peso":1000,"cat":"A","dim":"DTI","pag":149,"fichaOk":true},{"codigo":"EBT_A","desc":"Empresa de base tecnológica A","peso":1000,"cat":"A","dim":"DTI","pag":149,"fichaOk":true},{"codigo":"EBT_B","desc":"Empresa de base tecnológica B","peso":600,"cat":"B","dim":"DTI","pag":149,"fichaOk":true},{"codigo":"ICC_A","desc":"Empresa creativa y cultural A","peso":1000,"cat":"A","dim":"DTI","pag":149,"fichaOk":true},{"codigo":"ICC_B","desc":"Empresa creativa y cultural B","peso":600,"cat":"B","dim":"DTI","pag":149,"fichaOk":true},{"codigo":"IG_A1","desc":"Innovación en gestión empresarial A1","peso":1000,"cat":"A","dim":"DTI","pag":149,"fichaOk":true},{"codigo":"IG_A2","desc":"Innovación en gestión empresarial A2","peso":800,"cat":"A","dim":"DTI","pag":149,"fichaOk":true},{"codigo":"IG_B1","desc":"Innovación en gestión empresarial B1","peso":700,"cat":"B","dim":"DTI","pag":150,"fichaOk":true},{"codigo":"IG_B2","desc":"Innovación en gestión empresarial B2","peso":500,"cat":"B","dim":"DTI","pag":150,"fichaOk":true},{"codigo":"IPP","desc":"Innovación en procedimientos (procesos) y servicios","peso":1000,"cat":"B","dim":"DTI","pag":150,"fichaOk":true},{"codigo":"RNL_A","desc":"Regulación, norma, reglamento o legislación A","peso":1000,"cat":"TOP","dim":"DTI","pag":150,"fichaOk":true},{"codigo":"RNL_B","desc":"Regulación, norma, reglamento o legislación B","peso":1000,"cat":"A","dim":"DTI","pag":150,"fichaOk":true},{"codigo":"RNR","desc":"Normatividad del espectro radioeléctrico","peso":1000,"cat":"A","dim":"DTI","pag":150,"fichaOk":true},{"codigo":"RNT","desc":"Norma técnica con calidad","peso":1000,"cat":"B","dim":"DTI","pag":150,"fichaOk":true},{"codigo":"RNPC","desc":"Guía de práctica clínica con calidad","peso":1000,"cat":"B","dim":"DTI","pag":150,"fichaOk":true},{"codigo":"GMCF","desc":"Guía de Manejo Clínico Forense con calidad","peso":1000,"cat":"B","dim":"DTI","pag":151,"fichaOk":true},{"codigo":"MADV","desc":"Manual/Modelo de atención diferencial a víctimas","peso":1000,"cat":"B","dim":"DTI","pag":151,"fichaOk":true},{"codigo":"PAU","desc":"Protocolo de atención a usuarios con calidad","peso":1000,"cat":"B","dim":"DTI","pag":151,"fichaOk":true},{"codigo":"PVE","desc":"Protocolo de vigilancia epidemiológica con calidad","peso":1000,"cat":"B","dim":"DTI","pag":151,"fichaOk":true},{"codigo":"AL","desc":"Acuerdo de Ley con calidad","peso":1000,"cat":"B","dim":"DTI","pag":151,"fichaOk":true},{"codigo":"RNPL","desc":"Proyecto de Ley con calidad","peso":1000,"cat":"B","dim":"DTI","pag":151,"fichaOk":true},{"codigo":"CT","desc":"Concepto técnico con calidad","peso":150,"cat":"B","dim":"DTI","pag":152,"fichaOk":true},{"codigo":"MR","desc":"Registro de licencia de obras AAD (derechos de autor)","peso":140,"cat":"B","dim":"DTI","pag":152,"fichaOk":true},{"codigo":"FIS","desc":"Procesos ASC para fortalecimiento social","peso":2000,"cat":"ASC","dim":"ASC","pag":152,"fichaOk":true},{"codigo":"GPP_A","desc":"Insumos de política pública A","peso":2000,"cat":"ASC","dim":"ASC","pag":153,"fichaOk":true},{"codigo":"GPP_B","desc":"Insumos de política pública B","peso":1400,"cat":"ASC","dim":"ASC","pag":153,"fichaOk":true},{"codigo":"GPP_C","desc":"Insumos de política pública C","peso":1000,"cat":"ASC","dim":"ASC","pag":153,"fichaOk":true},{"codigo":"FCP_A","desc":"Fortalecimiento cadenas productivas A","peso":2000,"cat":"ASC","dim":"ASC","pag":154,"fichaOk":true},{"codigo":"FCP_B","desc":"Fortalecimiento cadenas productivas B","peso":1000,"cat":"ASC","dim":"ASC","pag":154,"fichaOk":true},{"codigo":"FCP_C","desc":"Fortalecimiento cadenas productivas C","peso":600,"cat":"ASC","dim":"ASC","pag":154,"fichaOk":true},{"codigo":"TCCG_A","desc":"Trabajo conjunto con Centro de Ciencia A","peso":2000,"cat":"ASC","dim":"ASC","pag":155,"fichaOk":true},{"codigo":"TCCG_B","desc":"Trabajo conjunto con Centro de Ciencia B","peso":1400,"cat":"ASC","dim":"ASC","pag":155,"fichaOk":true},{"codigo":"TCCG_C","desc":"Trabajo conjunto con Centro de Ciencia C","peso":800,"cat":"ASC","dim":"ASC","pag":155,"fichaOk":true},{"codigo":"TCCG_D","desc":"Trabajo conjunto con Centro de Ciencia D","peso":200,"cat":"ASC","dim":"ASC","pag":155,"fichaOk":true},{"codigo":"EC_A","desc":"Evento científico A","peso":1000,"cat":"DPC","dim":"DPC","pag":156,"fichaOk":true},{"codigo":"EC_B","desc":"Evento científico B","peso":600,"cat":"DPC","dim":"DPC","pag":156,"fichaOk":true},{"codigo":"RC_A","desc":"Red de conocimiento A (lidera)","peso":1000,"cat":"DPC","dim":"DPC","pag":157,"fichaOk":true},{"codigo":"RC_B","desc":"Red de conocimiento B","peso":600,"cat":"DPC","dim":"DPC","pag":157,"fichaOk":true},{"codigo":"TC_A","desc":"Taller de Creación A","peso":1000,"cat":"DPC","dim":"DPC","pag":157,"fichaOk":true},{"codigo":"TC_B","desc":"Taller de Creación B","peso":800,"cat":"DPC","dim":"DPC","pag":157,"fichaOk":true},{"codigo":"TC_C","desc":"Taller de Creación C","peso":600,"cat":"DPC","dim":"DPC","pag":157,"fichaOk":true},{"codigo":"ECA_A","desc":"Evento artístico/arquitectura/diseño A","peso":800,"cat":"DPC","dim":"DPC","pag":157,"fichaOk":true},{"codigo":"ECA_B","desc":"Evento artístico/arquitectura/diseño B","peso":600,"cat":"DPC","dim":"DPC","pag":157,"fichaOk":true},{"codigo":"WP","desc":"Working paper","peso":1000,"cat":"DPC","dim":"DPC","pag":158,"fichaOk":true},{"codigo":"NSG","desc":"Nueva secuencia genética","peso":1000,"cat":"DPC","dim":"DPC","pag":158,"fichaOk":true},{"codigo":"ERL","desc":"Edición de revista o libro de divulgación","peso":600,"cat":"DPC","dim":"DPC","pag":158,"fichaOk":true},{"codigo":"IFI","desc":"Informe final de investigación","peso":200,"cat":"DPC","dim":"DPC","pag":158,"fichaOk":true},{"codigo":"INF","desc":"Informe técnico","peso":500,"cat":"DPC","dim":"DPC","pag":158,"fichaOk":true},{"codigo":"CON_CT","desc":"Consultoría científico-tecnológica","peso":750,"cat":"DPC","dim":"DPC","pag":158,"fichaOk":true},{"codigo":"CON_AAD","desc":"Consultoría en arte, arquitectura y diseño","peso":750,"cat":"DPC","dim":"DPC","pag":158,"fichaOk":true},{"codigo":"PEE_A1","desc":"Publicación editorial no especializada A1","peso":1000,"cat":"DPC","dim":"DPC","pag":159,"fichaOk":true},{"codigo":"PEE_A2","desc":"Publicación editorial no especializada A2","peso":800,"cat":"DPC","dim":"DPC","pag":159,"fichaOk":true},{"codigo":"PEE_B1","desc":"Publicación editorial no especializada B1","peso":700,"cat":"DPC","dim":"DPC","pag":159,"fichaOk":true},{"codigo":"PEE_B2","desc":"Publicación editorial no especializada B2","peso":500,"cat":"DPC","dim":"DPC","pag":159,"fichaOk":true},{"codigo":"PEE_C1","desc":"Publicación editorial no especializada C1","peso":500,"cat":"DPC","dim":"DPC","pag":159,"fichaOk":true},{"codigo":"PEE_C2","desc":"Publicación editorial no especializada C2","peso":300,"cat":"DPC","dim":"DPC","pag":159,"fichaOk":true},{"codigo":"PCD_A1","desc":"Producción de contenido digital A1","peso":1000,"cat":"DPC","dim":"DPC","pag":160,"fichaOk":true},{"codigo":"PCD_A2","desc":"Producción de contenido digital A2","peso":800,"cat":"DPC","dim":"DPC","pag":160,"fichaOk":true},{"codigo":"PCD_B1","desc":"Producción de contenido digital B1","peso":700,"cat":"DPC","dim":"DPC","pag":160,"fichaOk":true},{"codigo":"PCD_B2","desc":"Producción de contenido digital B2","peso":500,"cat":"DPC","dim":"DPC","pag":160,"fichaOk":true},{"codigo":"PCD_C1","desc":"Producción de contenido digital C1","peso":500,"cat":"DPC","dim":"DPC","pag":160,"fichaOk":true},{"codigo":"PCD_C2","desc":"Producción de contenido digital C2","peso":300,"cat":"DPC","dim":"DPC","pag":160,"fichaOk":true},{"codigo":"TRM_A1","desc":"Estrategia/contenido Transmedia A1","peso":1000,"cat":"DPC","dim":"DPC","pag":160,"fichaOk":true},{"codigo":"TRM_A2","desc":"Estrategia/contenido Transmedia A2","peso":800,"cat":"DPC","dim":"DPC","pag":161,"fichaOk":true},{"codigo":"TRM_B1","desc":"Estrategia/contenido Transmedia B1","peso":700,"cat":"DPC","dim":"DPC","pag":161,"fichaOk":true},{"codigo":"TRM_B2","desc":"Estrategia/contenido Transmedia B2","peso":500,"cat":"DPC","dim":"DPC","pag":161,"fichaOk":true},{"codigo":"TRM_C1","desc":"Estrategia/contenido Transmedia C1","peso":500,"cat":"DPC","dim":"DPC","pag":161,"fichaOk":true},{"codigo":"TRM_C2","desc":"Estrategia/contenido Transmedia C2","peso":300,"cat":"DPC","dim":"DPC","pag":161,"fichaOk":true},{"codigo":"DW_A1","desc":"Desarrollo Web A1","peso":1000,"cat":"DPC","dim":"DPC","pag":162,"fichaOk":true},{"codigo":"DW_A2","desc":"Desarrollo Web A2","peso":800,"cat":"DPC","dim":"DPC","pag":162,"fichaOk":true},{"codigo":"DW_B1","desc":"Desarrollo Web B1","peso":700,"cat":"DPC","dim":"DPC","pag":162,"fichaOk":true},{"codigo":"DW_B2","desc":"Desarrollo Web B2","peso":500,"cat":"DPC","dim":"DPC","pag":162,"fichaOk":true},{"codigo":"DW_C1","desc":"Desarrollo Web C1","peso":500,"cat":"DPC","dim":"DPC","pag":162,"fichaOk":true},{"codigo":"DW_C2","desc":"Desarrollo Web C2","peso":300,"cat":"DPC","dim":"DPC","pag":162,"fichaOk":true},{"codigo":"LIB_FOR2","desc":"Libro de Formación Q2","peso":1000,"cat":"DPC","dim":"DPC","pag":164,"fichaOk":true},{"codigo":"LIB_FOR3","desc":"Libro de Formación Q3","peso":600,"cat":"DPC","dim":"DPC","pag":164,"fichaOk":true},{"codigo":"BOL","desc":"Boletín divulgativo","peso":1000,"cat":"DPC","dim":"DPC","pag":165,"fichaOk":true},{"codigo":"LIB_DIV","desc":"Libro de Divulgación","peso":1000,"cat":"DPC","dim":"DPC","pag":165,"fichaOk":true},{"codigo":"LIB_CRE","desc":"Libro de Creación (piloto, sin puntaje)","peso":0,"cat":"DPC","dim":"DPC","pag":167,"fichaOk":true},{"codigo":"GC","desc":"Generación de contenido","peso":1000,"cat":"DPC","dim":"DPC","pag":166,"fichaOk":true},{"codigo":"MAN_GUI","desc":"Manual / Guía especializada","peso":1000,"cat":"DPC","dim":"DPC","pag":166,"fichaOk":true},{"codigo":"TD_A","desc":"Tesis doctoral dirigida A (con distinción)","peso":1600,"cat":"FRH_A","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"TD_B","desc":"Tesis doctoral dirigida B (aprobada)","peso":800,"cat":"FRH_A","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"AP_A","desc":"Apoyo a creación de programa de doctorado","peso":1000,"cat":"FRH_A","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"AP_C","desc":"Apoyo a creación de cursos de doctorado","peso":500,"cat":"FRH_A","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"TM_A","desc":"Tesis de maestría dirigida A (con distinción)","peso":700,"cat":"FRH_B","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"TM_B","desc":"Tesis de maestría dirigida B (aprobada)","peso":350,"cat":"FRH_B","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"TP_A","desc":"Trabajo de pregrado dirigido A (con distinción)","peso":200,"cat":"FRH_B","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"TP_B","desc":"Trabajo de pregrado dirigido B (aprobado)","peso":100,"cat":"FRH_B","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"PID_A","desc":"Proyecto I+D A (financiación externa internacional)","peso":500,"cat":"FRH_B","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"PID_B","desc":"Proyecto I+D B (financiación externa nacional)","peso":300,"cat":"FRH_B","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"PID_C","desc":"Proyecto I+D C (financiación interna)","peso":100,"cat":"FRH_B","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"PIC_A","desc":"Proyecto investigación-creación A (ext. internac.)","peso":500,"cat":"FRH_B","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"PIC_B","desc":"Proyecto investigación-creación B (ext. nacional)","peso":300,"cat":"FRH_B","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"PIC_C","desc":"Proyecto investigación-creación C (interna)","peso":100,"cat":"FRH_B","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"PF_A","desc":"Proyecto ID+I con formación A","peso":500,"cat":"FRH_B","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"PF_B","desc":"Proyecto ID+I con formación B","peso":400,"cat":"FRH_B","dim":"FRHCTI","pag":168,"fichaOk":true},{"codigo":"PE","desc":"Proyecto de extensión / responsabilidad social","peso":1000,"cat":"FRH_B","dim":"FRHCTI","pag":169,"fichaOk":true},{"codigo":"AP_B","desc":"Apoyo a creación de programas de maestría","peso":800,"cat":"FRH_B","dim":"FRHCTI","pag":169,"fichaOk":true},{"codigo":"AP_D","desc":"Apoyo a creación de cursos de maestría","peso":300,"cat":"FRH_B","dim":"FRHCTI","pag":169,"fichaOk":true},{"codigo":"APO","desc":"Acompañamiento Programa Ondas","peso":300,"cat":"FRH_B","dim":"FRHCTI","pag":169,"fichaOk":true}];
 const PDF_BASE = "https://minciencias.gov.co/sites/default/files/upload/convocatoria/m601pr04g01_modelo_medicion_grupos_investigacion_tecnologica_o_innovacion_y_reconocimiento_investigadores_-_2024_1.pdf";
@@ -455,13 +681,39 @@ function getFiltered() {
   return result;
 }
 
+const DIMS = {
+  all: {sigla:'Todas las dimensiones', nombre:'Los 170 productos del modelo', desc:'Elija una dimensión para ver de qué trata, cuánto pesa en el indicador del grupo y qué productos la componen.', nota:'', peso:'100%', pesoLbl:'del indicador'},
+  GNC: {sigla:'GNC · Dimensión 1', nombre:'Generación de Nuevo Conocimiento', desc:'Artículos, libros y capítulos de investigación, patentes, variedades vegetales, razas animales y obras de investigación-creación.', nota:'Comparte con DTI un peso del 64 % y se divide en tres niveles: TOP, A y B.', peso:'64%', pesoLbl:'compartido con DTI'},
+  DTI: {sigla:'DTI · Dimensión 2', nombre:'Desarrollo Tecnológico e Innovación', desc:'Diseños industriales, software, prototipos, signos distintivos, empresas de base tecnológica y normas técnicas.', nota:'Comparte con GNC un peso del 64 % y se divide en tres niveles: TOP, A y B.', peso:'64%', pesoLbl:'compartido con GNC'},
+  ASC: {sigla:'ASC · Dimensión 3', nombre:'Apropiación Social del Conocimiento', desc:'Procesos de investigación con participación activa de comunidades: política pública, cadenas productivas, Centros de Ciencia.', nota:'Tiene un coeficiente único, sin niveles de calidad. Desde 2024 va separada de la divulgación.', peso:'15%', pesoLbl:'del indicador'},
+  DPC: {sigla:'DPC · Dimensión 4', nombre:'Divulgación Pública de la Ciencia', desc:'Working papers, informes, contenido digital, transmedia, desarrollos web y libros de divulgación.', nota:'Es la segunda dimensión con más productos y la que menos pesa. Tiene un coeficiente único, sin niveles.', peso:'5%', pesoLbl:'del indicador'},
+  FRHCTI: {sigla:'FRHCTI · Dimensión 5', nombre:'Formación del Recurso Humano en CTeI', desc:'Dirección de tesis de doctorado, maestría y pregrado, proyectos de investigación con formación y Programa Ondas.', nota:'Se divide en Tipo A (10 %) y Tipo B (2 %). Esos tipos no equivalen a los niveles A y B de GNC y DTI.', peso:'12%', pesoLbl:'del indicador'}
+};
+
+function renderDimInfo() {
+  const clave = state.filter.startsWith('dim-') ? state.filter.slice(4) : 'all';
+  const d = DIMS[clave] || DIMS.all;
+  const n = clave === 'all' ? PRODUCTOS.length : PRODUCTOS.filter(p => p.dim === clave).length;
+  document.getElementById('dim-info').dataset.dim = clave;
+  document.getElementById('dim-info-sigla').textContent = d.sigla;
+  document.getElementById('dim-info-nombre').textContent = d.nombre;
+  document.getElementById('dim-info-desc').textContent = d.desc;
+  const nota = document.getElementById('dim-info-nota');
+  nota.textContent = d.nota;
+  nota.hidden = !d.nota;
+  document.getElementById('dim-info-prod').textContent = n;
+  document.getElementById('dim-info-peso').textContent = d.peso;
+  document.getElementById('dim-info-peso-lbl').textContent = d.pesoLbl;
+}
+
 function render() {
+  renderDimInfo();
   const filtered = getFiltered();
   const body = document.getElementById('ranking-body');
   const count = document.getElementById('results-count');
 
   if (filtered.length === 0) {
-    body.innerHTML = '<div class="empty">Sin resultados. Probá con otra búsqueda o ajustá los filtros.</div>';
+    body.innerHTML = '<div class="empty">Sin resultados. Pruebe con otra búsqueda o cambie los filtros.</div>';
     count.textContent = 'Sin coincidencias';
     return;
   }
@@ -514,6 +766,7 @@ document.querySelectorAll('.chip').forEach(chip => {
   chip.addEventListener('click', () => {
     document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
     chip.classList.add('active');
+    document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'));
     state.filter = chip.dataset.filter;
     render();
   });
