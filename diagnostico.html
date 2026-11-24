@@ -576,6 +576,16 @@ html,body{overflow-x:clip}
 @media (max-width:860px){.contacto-form{margin-left:0;padding:22px}.contacto-campos{grid-template-columns:minmax(0,1fr)}.versiones-lista{grid-template-columns:minmax(0,1fr);gap:4px}.versiones-lista dd{margin-bottom:12px}.contacto-inner,.versiones-inner{padding-top:64px;padding-bottom:64px}}
 @media (prefers-reduced-motion:reduce){.contacto-boton{transition:none}}
 .contacto-pagina .contacto-form{margin-left:0;max-width:820px}
+.firma-section{border-top:1px solid var(--linea-suave);background:var(--tinte-1)}
+.firma-inner{max-width:var(--ancho);margin:0 auto;padding:48px var(--margen);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 40px}
+.firma-texto{margin:0;max-width:720px;font-family:var(--serif-lectura);font-size:19px;line-height:1.55}
+.firma-enlace{display:inline-flex;align-items:center;min-height:48px;padding:10px 20px;background:var(--papel);border:1.5px solid var(--tinta);box-shadow:var(--sombra);font-weight:700;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.firma-enlace::after{content:" →";margin-left:6px;color:var(--azul)}
+.firma-enlace:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--tinta);color:var(--tinta)}
+.quienes-pagina .acerca-card{margin-top:0}
+.quienes-pagina .lineas-block{margin-top:72px}
+.quienes-pagina #desarrolladores{margin-top:72px!important}
+@media (prefers-reduced-motion:reduce){.firma-enlace{transition:none}}
 :root{
   --azul:#005883;--amarillo:#F0B429;--naranja:#F47920;--naranja-claro:#F9B98A;
   --gris-oscuro:#333333;--gris:#808080;--gris-claro:#B3B3B3;
@@ -697,7 +707,7 @@ select,input[type=number]{border-width:1.5px}
 <div class="top-strip">
   <div class="top-strip-inner">
     <span>Universidad Nacional Abierta y a Distancia · ECSAH · UDR La Tebaida</span>
-    <span class="right-strip">Un desarrollo del grupo SUMECO · <a href="index.html#sobre">Acerca de la herramienta</a> · <a href="index.html#acerca">Grupo SUMECO</a> · <a href="index.html#desarrolladores">Créditos</a> · <a href="contacto.html">Contacto</a></span>
+    <span class="right-strip">Un desarrollo del grupo SUMECO · <a href="index.html#sobre">Acerca de la herramienta</a> · <a href="quienes-somos.html">Quiénes somos</a> · <a href="contacto.html">Contacto</a></span>
   </div>
 </div>
 
@@ -729,8 +739,7 @@ select,input[type=number]{border-width:1.5px}
       <div class="nav-autoria">
         <span>Un desarrollo del grupo SUMECO</span>
         <a href="index.html#sobre">Acerca de la herramienta</a>
-        <a href="index.html#acerca">Grupo SUMECO</a>
-        <a href="index.html#desarrolladores">Créditos</a>
+        <a href="quienes-somos.html">Quiénes somos</a>
         <a href="contacto.html">Contacto</a>
       </div>
     </div>
