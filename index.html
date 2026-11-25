@@ -590,6 +590,11 @@ html,body{overflow-x:clip}
 .quienes-pagina #desarrolladores{margin-top:72px!important}
 @media (prefers-reduced-motion:reduce){.firma-enlace{transition:none}}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.cat-scroll{overflow-x:auto;margin-top:28px}
+.cat-table{border-collapse:collapse;width:100%;min-width:760px;font-size:16px;line-height:1.4}
+.cat-table th,.cat-table td{text-align:left;vertical-align:top;padding:12px 14px 12px 0;border-bottom:1px solid #CFD8DC}
+.cat-table thead th{border-bottom:2px solid var(--azul);color:var(--azul);font-weight:800}
+.cat-table tbody th{font-weight:700;width:26%}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Cómo mide Minciencias", "alternateName": "Cómo mide Minciencias: herramienta para consultar el modelo de medición de grupos e investigadores del SNCTeI", "url": "https://sumeco-ecsah.github.io/comomide-minciencias/", "description": "Herramienta abierta para consultar los 170 productos del modelo de medición de grupos e investigadores de Minciencias (Convocatoria 957 de 2024) y entender cuánto pesa cada uno.", "inLanguage": "es-CO", "applicationCategory": "EducationalApplication", "operatingSystem": "Navegador web", "isAccessibleForFree": true, "license": "https://creativecommons.org/licenses/by/4.0/", "dateModified": "2026-11-23", "author": [{"@type": "Person", "name": "Ángel Saúl Díaz-Téllez", "identifier": "https://orcid.org/0000-0002-5660-4685"}, {"@type": "Person", "name": "Jennifer Mejía-Ríos"}], "creator": {"@type": "Organization", "name": "Grupo de Investigación SUMECO (Sujeto, Mente y Comunidad)"}, "publisher": {"@type": "CollegeOrUniversity", "name": "Universidad Nacional Abierta y a Distancia (UNAD)", "url": "https://www.unad.edu.co/"}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "COP"}}</script>
 </head>
@@ -685,7 +690,7 @@ html,body{overflow-x:clip}
       <div class="section-label">¿Qué es esto?</div>
       <div class="intro-text">
         <p>El modelo de medición Minciencias, aplicado en la <span class="highlight">Convocatoria 957 de 2024</span>, organiza la producción científica colombiana en cinco dimensiones de producción y dos indicadores complementarios del grupo (cohesión y cooperación), con un total de <strong>ciento setenta productos</strong>: ciento sesenta y nueve con coeficiente de medición asignado y uno (el Libro de Creación) en fase de pilotaje, aún sin puntaje. Dentro de cada dimensión, los productos se ubican en niveles de calidad (TOP, A o B según corresponda). El documento conceptual oficial tiene doscientas cincuenta y dos páginas.</p>
-        <p><span class="ink-strong">Cronología de la convocatoria.</span> La Convocatoria 957 fue publicada por Minciencias en 2024. Operó sobre una ventana de observación de cinco años (enero de 2019 a diciembre de 2023). Los resultados preliminares se publicaron en marzo de 2025 y los resultados finales el 5 de diciembre de 2025. El modelo seguirá vigente hasta que Minciencias publique una nueva convocatoria.</p>
+        <p><span class="ink-strong">Cronología de la convocatoria.</span> La Convocatoria 957 fue publicada por Minciencias en 2024. La ventana general es de cinco años (enero de 2019 a diciembre de 2023), pero algunos productos tienen una más amplia: siete años para artículos A1 a C y libros de investigación; diez para patentes, variedades vegetales, razas animales y obras de investigación-creación (documento conceptual, página 98). Los resultados preliminares se publicaron en marzo de 2025 y los resultados finales el 5 de diciembre de 2025. El modelo seguirá vigente hasta que Minciencias publique una nueva convocatoria.</p>
         <p>Aquí se puede buscar un producto por nombre, filtrar por dimensión o categoría, comparar pesos y saltar a la página del documento conceptual donde aparece cada producto.</p>
         <p>Es un aporte abierto del grupo de investigación <strong><a class="text-link" href="https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000007065" target="_blank" rel="noopener">SUMECO · Sujeto, Mente y Comunidad</a></strong>, Categoría A de Minciencias, adscrito a la Escuela de Ciencias Sociales, Artes y Humanidades de la <strong>Universidad Nacional Abierta y a Distancia, UDR La Tebaida</strong>, Zona Occidente.</p>
         <p>La herramienta es de <span class="highlight">libre consulta y uso para cualquier grupo de investigación de la UNAD</span> y demás instituciones del Sistema Nacional de Ciencia, Tecnología e Innovación. No pide registro ni tiene publicidad.</p>
@@ -777,7 +782,7 @@ html,body{overflow-x:clip}
     <div class="section-label">02 · Coeficientes</div>
     <div>
       <h2 class="section-title">Diez puntos del <em>indicador</em> de grupo</h2>
-      <p class="section-desc">El indicador del grupo suma diez puntos, distribuidos entre las cinco dimensiones de producción (con sus niveles de calidad TOP, A y B) y los dos indicadores complementarios del grupo (cohesión y cooperación). Quien produce en nivel TOP de GNC y DTI captura el 37 por ciento del puntaje total.</p>
+      <p class="section-desc">El indicador del grupo suma diez puntos, distribuidos entre las cinco dimensiones de producción (con sus niveles de calidad TOP, A y B) y los dos indicadores complementarios del grupo (cohesión y cooperación). El nivel TOP de GNC y DTI concentra el 37 por ciento del puntaje posible.</p>
     </div>
   </div>
 
@@ -847,13 +852,13 @@ html,body{overflow-x:clip}
       <div class="col-bar"></div>
     </div>
     <div class="coef-row sublevel">
-      <div class="coef-name"><span class="level-tag level-frha">FRH-A</span> Tipo A · tesis doctorales, proyectos de investigación con formación</div>
+      <div class="coef-name"><span class="level-tag level-frha">FRH-A</span> Tipo A · tesis doctorales, apoyo a programas y cursos de doctorado</div>
       <div class="coef-value">1,0</div>
       <div class="coef-pct">10,0%</div>
       <div class="col-bar"><div class="coef-bar-track"><div class="coef-bar-fill" style="width:27%"></div></div></div>
     </div>
     <div class="coef-row sublevel">
-      <div class="coef-name"><span class="level-tag level-frhb">FRH-B</span> Tipo B · tesis de maestría, trabajos de pregrado</div>
+      <div class="coef-name"><span class="level-tag level-frhb">FRH-B</span> Tipo B · trabajos de maestría y pregrado, proyectos, apoyo a maestrías, Programa Ondas</div>
       <div class="coef-value">0,2</div>
       <div class="coef-pct">2,0%</div>
       <div class="col-bar"><div class="coef-bar-track"><div class="coef-bar-fill" style="width:5%"></div></div></div>
@@ -915,26 +920,44 @@ html,body{overflow-x:clip}
 
     <div class="lectura-block">
     <div class="lectura-eyebrow">Cómo leer esta tabla</div>
-    <h3 class="lectura-title">La <em>calidad</em> pesa más que la cantidad</h3>
-    <p class="lectura-text">Un solo producto en nivel TOP de GNC o DTI aporta al indicador casi <strong>diez veces más</strong> que un producto Tipo B de la misma dimensión (3,7 frente a 0,4). La diferencia no es lineal: el modelo está diseñado para reconocer la producción de máxima calidad internacional (Q1 y Q2 para artículos) con un peso desproporcionadamente alto. Para un grupo que planea su producción, la consecuencia es clara: un artículo Q1 vale más que una pila de artículos D.</p>
+    <h3 class="lectura-title">El coeficiente multiplica un <em>índice</em>, no cada producto</h3>
+    <p class="lectura-text">Cada coeficiente es lo máximo que una clase de productos puede aportar al indicador. Para saber cuánto aporta de verdad, Minciencias calcula un índice entre 0 y 1: compara la producción del grupo con el <strong>valor más alto de su gran área de conocimiento</strong>. Por eso ningún producto suma por sí solo 3,7 ni 0,4 puntos.</p>
     <div class="ejemplos-grid">
       <div class="ejemplo-card">
-        <div class="ejemplo-num">Caso 1</div>
-        <div class="ejemplo-title">Investigador novel</div>
-        <div class="ejemplo-body">Tres artículos calidad D al año (Tipo B): aporta <strong>1,2 puntos</strong> al indicador (3 × 0,4).</div>
+        <div class="ejemplo-num">Paso 1</div>
+        <div class="ejemplo-title">Se escala la cantidad</div>
+        <div class="ejemplo-body">Siete artículos Q3 abiertos en siete años: ln(7 ÷ 7 + 1) = <strong>0,693</strong>. Con catorce sería 1,099: el doble de artículos aumenta el valor un 58 %, no un 100 %.</div>
       </div>
       <div class="ejemplo-card">
-        <div class="ejemplo-num">Caso 2</div>
-        <div class="ejemplo-title">Investigador en consolidación</div>
-        <div class="ejemplo-body">Dos artículos Q3 al año (Tipo A): aporta <strong>4,6 puntos</strong> al indicador (2 × 2,3).</div>
+        <div class="ejemplo-num">Paso 2</div>
+        <div class="ejemplo-title">Se multiplica por el peso</div>
+        <div class="ejemplo-body">ART_OPEN_B pesa 350: 0,693 × 350 = <strong>242,6</strong>. Se suma con los demás productos de nivel A del grupo.</div>
       </div>
       <div class="ejemplo-card">
-        <div class="ejemplo-num">Caso 3</div>
-        <div class="ejemplo-title">Investigador sénior</div>
-        <div class="ejemplo-body">Un artículo Q1 al año (TOP) más una tesis doctoral dirigida (FRHCTI A): aporta <strong>4,7 puntos</strong> (3,7 + 1,0).</div>
+        <div class="ejemplo-num">Paso 3</div>
+        <div class="ejemplo-title">Se compara y se pondera</div>
+        <div class="ejemplo-body">Si el máximo del área en nivel A fuera 2.426 (valor supuesto), el índice sería 0,1 y el aporte 2,3 × 0,1 = <strong>0,23 puntos</strong>.</div>
       </div>
     </div>
-    <p class="lectura-disclaimer">Los ejemplos son ilustrativos del peso relativo entre niveles. El cálculo real del indicador de grupo aplica una normalización logarítmica para eliminar efectos de escala, descrita en el capítulo III, sección 3.5 del documento conceptual.</p>
+    <p class="lectura-disclaimer">Fórmulas: documento conceptual, secciones 3.5 a 3.10, páginas 115 a 127. El máximo del área en el ejemplo es supuesto; el real solo se conoce con los datos de cada convocatoria.</p>
+    <div class="lectura-eyebrow" style="margin-top:56px">Categorías de grupo</div>
+    <h3 class="lectura-title">Qué exige <em>cada categoría</em></h3>
+    <p class="lectura-text">Primero hay que ser grupo reconocido. Después se cumplen todos los requisitos de la columna. Los cuartiles se calculan entre los grupos de la misma gran área de conocimiento de la OCDE (documento conceptual, páginas 128 a 130).</p>
+    <div class="cat-scroll" tabindex="0" role="region" aria-label="Requisitos de las categorías de grupo">
+    <table class="cat-table">
+      <thead><tr><th scope="col">Requisito</th><th scope="col">A1</th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Indicador de grupo</th><td>Cuartil 1</td><td>Cuartil 2 o superior</td><td>Cuartil 3 o superior</td><td>Mayor que cero</td></tr>
+        <tr><th scope="row">Nuevo conocimiento y desarrollo tecnológico</th><td>Indicador TOP en cuartil 1</td><td>TOP o A mayor que cero</td><td>TOP o A mayor que cero</td><td>TOP o A mayor que cero</td></tr>
+        <tr><th scope="row">Apropiación social o divulgación pública</th><td>Mayor que cero</td><td>Mayor que cero</td><td>Mayor que cero</td><td>Mayor que cero</td></tr>
+        <tr><th scope="row">Formación</th><td>Tipo A mayor que cero *</td><td>Tipo A mayor que cero *</td><td>Tipo A mayor que cero, o tipo B en cuartil 2 o superior</td><td>Tipo A o B mayor que cero</td></tr>
+        <tr><th scope="row">Integrante con vínculo contractual en el SNCTI y residente en Colombia</th><td>Emérito, sénior o asociado</td><td>Emérito, sénior o asociado</td><td>También junior o integrante vinculado con doctorado</td><td>No se exige</td></tr>
+        <tr><th scope="row">Cohesión</th><td>Mayor que cero</td><td>Mayor que cero</td><td>Mayor que cero</td><td>No se exige</td></tr>
+        <tr><th scope="row">Años de existencia</th><td>5</td><td>5</td><td>3</td><td>2</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="lectura-disclaimer">* Los grupos que no pertenecen al sector universitario pueden homologar este requisito con productos TOP: patente A obtenida, variedad vegetal o animal, o cinco artículos TOP en la ventana de cinco años.</p>
   </div>
 
 </section>
@@ -951,42 +974,42 @@ html,body{overflow-x:clip}
   <div class="faq-grid">
     <details class="faq-card" name="faq">
       <summary class="faq-q">Estoy iniciando mi doctorado, ¿qué cuenta más para el grupo?</summary>
-      <div class="faq-a">Para un investigador en formación lo más estratégico suele ser un buen artículo Q2 (nivel TOP: 3,7 puntos) o, si es muy difícil, un Q3 o Q4 (Tipo A: 2,3 puntos). Un capítulo de libro o ponencia, aunque útiles para la trayectoria, aportan menos al indicador.</div>
+      <div class="faq-a">Depende de la trayectoria, pero conviene mirar el nivel: un artículo Q1 o Q2 cuenta en TOP, y un Q3 o Q4, en nivel A. Un capítulo de libro también puede ser TOP si alcanza calidad A1 o A. Las ponencias no se cuentan como artículos: van en divulgación pública, como eventos científicos.</div>
     </details>
 
     <details class="faq-card" name="faq">
       <summary class="faq-q">¿Vale la pena publicar en Q4?</summary>
-      <div class="faq-a">Sí. Un artículo Q4 cuenta como Tipo A (2,3 puntos), igual que un Q3. Solo los artículos calidad D quedan en Tipo B. Así que un Q4 sí aporta al indicador, y además sirve para acreditar trayectoria, alimentar el CvLAC y validar pares. Es un buen punto de partida para un semillero o un primer artículo, mientras se desarrollan capacidades para apuntar a Q2 o Q1.</div>
+      <div class="faq-a">Sí. Un artículo Q4 está en nivel A, igual que un Q3, aunque con menor peso (200 frente a 350 en acceso abierto). Solo los artículos D quedan en nivel B. Un Q4 aporta al indicador y sirve para acreditar trayectoria. Es un buen punto de partida mientras se desarrollan capacidades para apuntar a Q2 o Q1.</div>
     </details>
 
     <details class="faq-card" name="faq">
       <summary class="faq-q">¿Qué pasa si publico con coautores de otro grupo?</summary>
-      <div class="faq-a">Suma doble. El producto cuenta en su dimensión correspondiente (GNC, DTI, etc.) y además activa el indicador de cooperación del grupo (0,3 puntos en total). El modelo Minciencias premia explícitamente las redes de investigación entre grupos colombianos y con grupos internacionales.</div>
+      <div class="faq-a">El producto no suma doble en un mismo grupo: cada grupo lo cuenta una sola vez. Cuando los autores son de grupos distintos, cada uno puede vincularlo al suyo y allí cuenta como autoría completa. Además, las coautorías de GNC y DTI entre grupos alimentan el indicador de cooperación, cuyo coeficiente es 0,3 (páginas 99, 100 y 126).</div>
     </details>
 
     <details class="faq-card" name="faq">
-      <summary class="faq-q">¿Y si publico con compañeros del mismo grupo SUMECO?</summary>
-      <div class="faq-a">Eso alimenta el indicador de cohesión (0,1 puntos), que mide qué tanto trabajan juntos los integrantes. Pesa poco, pero muestra un grupo que funciona como grupo, y eso se nota en la categorización.</div>
+      <summary class="faq-q">¿Y si publico con compañeros de mi grupo?</summary>
+      <div class="faq-a">Eso alimenta el indicador de cohesión, cuyo coeficiente es 0,1. Se calcula con las coautorías de productos de GNC y DTI. Pesa poco, pero las categorías A1, A y B exigen que sea mayor que cero.</div>
     </details>
 
     <details class="faq-card" name="faq">
       <summary class="faq-q">Soy del semillero, ¿cómo aporto al grupo?</summary>
-      <div class="faq-a">Como estudiante de pregrado vinculado al semillero, usted forma parte del Bloque III (integrantes vinculados). Su aporte directo al indicador llega por dos vías: como parte del talento humano en formación (FRHCTI: cuando egrese con trabajo de pregrado o de maestría, suma 0,2 puntos) y como coautor de productos. Empezar como coautor con un investigador asociado o sénior es la vía más estratégica.</div>
+      <div class="faq-a">Si está vinculado a un grupo, se clasifica como estudiante de pregrado (EP), que es un tipo de integrante propio. El documento conceptual no mide los semilleros por separado. Su aporte llega por dos vías: los trabajos de grado dirigidos, que cuentan para el grupo en formación tipo B, y los productos que firme como coautor.</div>
     </details>
 
     <details class="faq-card" name="faq">
       <summary class="faq-q">¿Qué es más importante: muchos productos o pocos pero buenos?</summary>
-      <div class="faq-a">Pocos pero buenos, sin duda. El modelo aplica una normalización logarítmica que reduce el efecto de la cantidad pura. Diez artículos calidad D (Tipo B) generan menos puntaje que dos artículos Q1 (TOP). Lo sensato es publicar con regularidad y apuntar a TOP cuando se pueda.</div>
+      <div class="faq-a">En general, la calidad. La cantidad se escala con un logaritmo, así que cada producto adicional del mismo subtipo suma menos que el anterior. Además, los niveles tienen coeficientes distintos: 3,7 para TOP y 0,4 para B. Lo sensato es publicar con regularidad y apuntar a TOP cuando se pueda.</div>
     </details>
 
     <details class="faq-card" name="faq">
       <summary class="faq-q">¿Los working papers cuentan?</summary>
-      <div class="faq-a">Sí, pero en la dimensión DPC (Divulgación Pública de la Ciencia, 0,5 puntos en total para todo el grupo). Un working paper bien hecho es útil como evidencia de producción intermedia, como borrador de un artículo Q1 o Q2 que vendrá después, y aparece en el GrupLAC. No es el producto de mayor peso, pero sí un buen complemento.</div>
+      <div class="faq-a">Sí, en divulgación pública de la ciencia, cuyo coeficiente es 0,5. Dentro de esa dimensión están entre los productos de mayor peso (1.000), pero toda la dimensión vale el 5 % del indicador. Sirven como evidencia de producción intermedia y como borrador de un artículo.</div>
     </details>
 
     <details class="faq-card" name="faq">
       <summary class="faq-q">¿Cómo paso de Junior a Asociado?</summary>
-      <div class="faq-a">Cumpliendo simultáneamente tres condiciones en la siguiente convocatoria: doctorado/maestría/especialidad finalizada o 7 productos GNC-DTI tipo A en toda la trayectoria; 3 productos tipo A en los últimos 10 años más 4 adicionales en 5 años; y dirección de 1 tesis doctoral, 2 maestrías u 8 pregrados en los últimos 5 años. La sección Investigadores de esta herramienta detalla los requisitos completos.</div>
+      <div class="faq-a">Cumpliendo simultáneamente tres condiciones en la siguiente convocatoria: doctorado/maestría/especialidad finalizada o 7 productos GNC-DTI tipo A en toda la trayectoria; 3 productos tipo A en los últimos 10 años más 4 adicionales en 5 años; y dirección o codirección de 1 tesis doctoral, 2 maestrías u 8 pregrados en los últimos 5 años. La sección Investigadores de esta herramienta detalla los requisitos completos.</div>
     </details>
   </div>
 </section>
@@ -995,7 +1018,7 @@ html,body{overflow-x:clip}
   <div class="section-head">
     <div class="section-label">04 · Ranking completo</div>
     <div>
-      <h2 class="section-title">170 productos, del que <em>más pesa</em> al que menos</h2>
+      <h2 class="section-title">170 productos, por <em>dimensión</em> y nivel</h2>
       <p class="section-desc">Pesos individuales calculados con la fórmula oficial del documento conceptual de la Convocatoria 957 de 2024: peso global del subtipo A1 multiplicado por el peso relativo del producto.</p>
     </div>
   </div>
@@ -1011,12 +1034,12 @@ html,body{overflow-x:clip}
       <div class="section-label">05 · Investigadores</div>
       <div>
         <h2 class="section-title">Clasificación de <em>investigadores</em> e integrantes</h2>
-        <p class="section-desc">El modelo Minciencias reconoce niveles de investigador según trayectoria, formación y producción. Cada nivel exige condiciones específicas que se acumulan en distintas ventanas temporales.</p>
+        <p class="section-desc">El modelo Minciencias reconoce niveles de investigador según trayectoria, formación y producción. Los productos de formación se exigen a quienes trabajan en el sector universitario; para otras instituciones hay equivalencias con proyectos (páginas 44 a 46). Las mujeres con hijos nacidos en la ventana de observación tienen dos años adicionales, solo para el reconocimiento de su hoja de vida (página 49).</p>
       </div>
     </div>
 
         <div class="inv-group-divider">
-      <span class="inv-group-eyebrow">Bloque I</span>
+      <span class="inv-group-eyebrow">Tipo de integrante</span>
       <h3>Investigadores reconocidos</h3>
     </div>
 
@@ -1034,9 +1057,9 @@ html,body{overflow-x:clip}
         <ul class="inv-reqs">
           <li><strong>Doctorado finalizado</strong> o quince (15) productos de GNC o DTI tipo A en toda la trayectoria.</li>
           <li>Productos tipo <strong>TOP o A</strong> en su producción.</li>
-          <li>Dirección de tesis de doctorado o maestría finalizadas.</li>
+          <li>Dirección de tesis de doctorado finalizadas o de trabajos de maestría.</li>
           <li>Edad: <strong>65 años o más</strong>.</li>
-          <li>Vinculado a institución colombiana.</li>
+          <li>Haber estado vinculado a instituciones colombianas.</li>
         </ul>
         <p class="inv-note">Reconocimiento al 25 % superior de su gran área de conocimiento. Lo evalúa un comité de expertos.</p>
       </div>
@@ -1053,7 +1076,7 @@ html,body{overflow-x:clip}
         <ul class="inv-reqs">
           <li><strong>Formación.</strong> Doctorado finalizado o quince (15) productos GNC o DTI tipo A en toda la trayectoria.</li>
           <li><strong>Producción.</strong> Diez (10) productos tipo TOP o A en los últimos diez (10) años.</li>
-          <li><strong>Formación de talento humano.</strong> Dirección de cuatro (4) trabajos de maestría o una (1) tesis de doctorado finalizados en los últimos diez (10) años.</li>
+          <li><strong>Formación de talento humano.</strong> Dirección o codirección de cuatro (4) trabajos de maestría o una (1) tesis de doctorado finalizados en los últimos diez (10) años.</li>
         </ul>
         <p class="inv-note">Vigencia hasta la siguiente convocatoria de Minciencias.</p>
       </div>
@@ -1070,7 +1093,7 @@ html,body{overflow-x:clip}
         <ul class="inv-reqs">
           <li><strong>Formación.</strong> Doctorado finalizado, maestría o especialidad clínica finalizada, o siete (7) productos GNC o DTI tipo A en toda la trayectoria.</li>
           <li><strong>Producción.</strong> Tres (3) productos GNC o DTI tipo A en los últimos diez (10) años, más cuatro (4) productos adicionales GNC o DTI en los últimos cinco (5) años.</li>
-          <li><strong>Formación de talento humano.</strong> Dirección de una (1) tesis de doctorado, dos (2) trabajos de maestría u ocho (8) trabajos de pregrado en los últimos cinco (5) años.</li>
+          <li><strong>Formación de talento humano.</strong> Dirección o codirección de una (1) tesis de doctorado, dos (2) trabajos de maestría u ocho (8) trabajos de pregrado en los últimos cinco (5) años.</li>
         </ul>
         <p class="inv-note">Vigencia hasta la siguiente convocatoria de Minciencias.</p>
       </div>
@@ -1094,8 +1117,8 @@ html,body{overflow-x:clip}
     </div>
 
         <div class="inv-group-divider">
-      <span class="inv-group-eyebrow">Bloque II</span>
-      <h3>Integrantes en formación</h3>
+      <span class="inv-group-eyebrow">Tipo de integrante</span>
+      <h3>Investigadores en formación</h3>
     </div>
 
     <div class="inv-grid">
@@ -1130,6 +1153,15 @@ html,body{overflow-x:clip}
         </ul>
       </div>
 
+    </div>
+
+        <div class="inv-group-divider">
+      <span class="inv-group-eyebrow">Tipo de integrante</span>
+      <h3>Estudiantes de pregrado</h3>
+    </div>
+
+    <div class="inv-grid">
+
             <div class="inv-card tier-formacion">
         <div class="inv-head">
           <div class="inv-head-text">
@@ -1138,19 +1170,19 @@ html,body{overflow-x:clip}
           </div>
           <div class="inv-badge">EP</div>
         </div>
-        <p class="inv-summary">Integrante en formación de pregrado, generalmente vinculado vía semilleros de investigación.</p>
+        <p class="inv-summary">Estudiante vinculado a un grupo de investigación.</p>
         <ul class="inv-reqs">
           <li>Estudiante en formación de pregrado.</li>
-          <li>Vinculado al grupo a través de proyectos o semilleros.</li>
         </ul>
       </div>
 
     </div>
 
         <div class="inv-group-divider">
-      <span class="inv-group-eyebrow">Bloque III</span>
+      <span class="inv-group-eyebrow">Tipo de integrante</span>
       <h3>Integrantes vinculados</h3>
     </div>
+    <p class="section-desc" style="margin-bottom:28px">Son quienes están vinculados a un grupo y no cumplen los requisitos anteriores. El sistema asigna el tipo en este orden: emérito, sénior, asociado, junior, vinculado con doctorado, estudiante de doctorado, vinculado con maestría, estudiante de maestría, vinculado con especialización, vinculado con pregrado, estudiante de pregrado e integrante vinculado (páginas 42 y 43).</p>
 
     <div class="inv-grid">
 
@@ -1198,6 +1230,17 @@ html,body{overflow-x:clip}
         <p class="inv-summary">Persona vinculada al grupo, con formación de pregrado culminada, que no cumple las condiciones de los niveles anteriores.</p>
       </div>
 
+      <div class="inv-card tier-vinculado">
+        <div class="inv-head">
+          <div class="inv-head-text">
+            <div class="inv-tier">Otros casos</div>
+            <div class="inv-name">Integrante <em>vinculado</em></div>
+          </div>
+          <div class="inv-badge">IV</div>
+        </div>
+        <p class="inv-summary">Persona vinculada al grupo que no cumple ninguna de las definiciones anteriores.</p>
+      </div>
+
     </div>
 
   </div>
@@ -1232,7 +1275,7 @@ html,body{overflow-x:clip}
         <h2 class="versiones-titulo">Historial de cambios</h2>
         <dl class="versiones-lista">
           <dt>Noviembre de 2026</dt>
-          <dd>Nuevo diseño con la identidad visual de la UNAD. Panel explicativo por dimensión en el ranking, reparto del 100 % del indicador, enlace a Scopus en la guía de revistas, nota de privacidad, tipografías alojadas en el propio sitio y formulario de contacto.</dd>
+          <dd>Nuevo diseño con la identidad visual de la UNAD. Panel explicativo por dimensión en el ranking, reparto del 100 % del indicador, enlace a Scopus en la guía de revistas, nota de privacidad, tipografías alojadas en el propio sitio y formulario de contacto. Verificación con el documento conceptual: se corrigieron 21 pesos, 88 fichas, los ejemplos del indicador, los tipos de integrante, la guía de revistas y el autodiagnóstico; se agregaron los requisitos de las categorías de grupo.</dd>
           <dt>Agosto de 2026</dt>
           <dd>Versión anterior: portada, ranking de los 170 productos, guía para verificar revistas y autodiagnóstico de investigador.</dd>
         </dl>
