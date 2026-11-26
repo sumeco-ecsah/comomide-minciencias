@@ -699,6 +699,21 @@ select,input[type=number]{border-width:1.5px}
 .st{border-width:1.5px;text-transform:none;letter-spacing:0;font-weight:700}
 .disclaimer{border-left:4px solid var(--azul)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Tabla de cantidades separadas del autodiagnóstico */
+.tabla-entrada{overflow-x:auto;margin:0 -4px}
+.tabla-entrada table{border-collapse:collapse;width:100%;min-width:300px}
+.tabla-entrada th,.tabla-entrada td{padding:6px 4px;text-align:left;vertical-align:middle}
+.tabla-entrada thead th{font-size:13px;font-weight:700;line-height:1.2;text-transform:none;letter-spacing:0}
+.tabla-entrada tbody th{font-size:15px;font-weight:700;line-height:1.25;width:34%}
+.tabla-entrada tbody th small{display:block;font-weight:400;font-size:12.5px;line-height:1.3;opacity:.8;margin-top:2px}
+.tabla-entrada input{width:100%;min-width:52px;min-height:42px;padding:6px 8px;text-align:right;font-size:16px}
+.nota-tabla,.resumen-tabla{font-size:14.5px;line-height:1.45;margin:0 0 10px}
+.resumen-tabla{margin:10px 0 0;font-weight:600}
+@media (max-width:480px){.tabla-entrada tbody th small{display:none}.tabla-entrada thead th{font-size:12px}}
+.tabla-entrada input{border:1.5px solid var(--tinta);background:#fff;font-family:inherit}
+.fs-tabla{margin-top:0}
+.tabla-entrada table,.tabla-entrada tr,.tabla-entrada th,.tabla-entrada td{border:0;background:transparent}
 </style>
 </head>
 <body>
@@ -766,6 +781,7 @@ select,input[type=number]{border-width:1.5px}
           <div class="field">
             <label for="formacion">Máxima formación finalizada</label>
             <select id="formacion">
+              <option value="" selected>Elija una opción</option>
               <option value="ninguna">Ninguna aún</option>
               <option value="pregrado">Pregrado</option>
               <option value="especializacion">Especialización</option>
@@ -789,38 +805,32 @@ select,input[type=number]{border-width:1.5px}
         </fieldset>
 
         <fieldset>
-          <legend>Vínculo y dirección (trayectoria)</legend>
+          <legend>Vínculos</legend>
           <label class="check"><input type="checkbox" id="vinc"> Estoy vinculado(a) a un grupo de investigación</label>
           <label class="check"><input type="checkbox" id="proyecto"> Participo en un proyecto del grupo</label>
           <label class="check"><input type="checkbox" id="docReciente"> Terminé mi doctorado hace 3 años o menos</label>
           <label class="check"><input type="checkbox" id="vincCol" checked> He estado vinculado(a) a instituciones colombianas</label>
-          <label class="check"><input type="checkbox" id="dirEver"> He dirigido al menos una tesis de doctorado finalizada o un trabajo de maestría</label>
         </fieldset>
 
-        <fieldset>
-          <legend>Producción (GNC / DTI)</legend>
-          <div class="field"><label for="gncTotal">Productos GNC/DTI en toda su trayectoria</label><input type="number" id="gncTotal" min="0" value="0"></div>
-          <div class="field"><label for="tipoAtotal">De esos, ¿cuántos son tipo A o superior?</label><input type="number" id="tipoAtotal" min="0" value="0"></div>
-          <div class="field"><label for="gnc5">Productos GNC/DTI en los últimos 5 años</label><input type="number" id="gnc5" min="0" value="0"></div>
-          <div class="field"><label for="tipoA5">De los últimos 5 años, ¿cuántos son tipo A?</label><input type="number" id="tipoA5" min="0" value="0"></div>
-          <div class="field"><label for="tipoA10">Productos tipo A en los últimos 10 años</label><input type="number" id="tipoA10" min="0" value="0"></div>
-          <div class="field"><label for="topA10">Productos TOP o A en los últimos 10 años</label><input type="number" id="topA10" min="0" value="0"></div>
+        <fieldset class="fs-tabla"><legend>Producción de nuevo conocimiento y desarrollo tecnológico</legend>
+        <p class="nota-tabla">Ponga cada producto en <b>una sola casilla</b>, según su nivel y el año en que se obtuvo. La herramienta suma los totales.</p>
+        <div class="tabla-entrada"><table><thead><tr><th scope="col">Nivel</th><th scope="col">Últimos 5 años</th><th scope="col">Hace 6 a 10 años</th><th scope="col">Hace más de 10 años</th></tr></thead><tbody>
+        <tr><th scope="row">TOP<small>Artículos Q1 y Q2, libros y capítulos A1 y A, patentes A1 y A2…</small></th><td><input type="number" inputmode="numeric" min="0" value="0" id="pT5" aria-label="TOP, últimos 5 años"></td><td><input type="number" inputmode="numeric" min="0" value="0" id="pT10" aria-label="TOP, hace 6 a 10 años"></td><td><input type="number" inputmode="numeric" min="0" value="0" id="pTold" aria-label="TOP, hace más de 10 años"></td></tr>
+        <tr><th scope="row">Nivel A<small>Artículos Q3 y Q4, libros y capítulos B, patentes A3 y A4…</small></th><td><input type="number" inputmode="numeric" min="0" value="0" id="pA5" aria-label="Nivel A, últimos 5 años"></td><td><input type="number" inputmode="numeric" min="0" value="0" id="pA10" aria-label="Nivel A, hace 6 a 10 años"></td><td><input type="number" inputmode="numeric" min="0" value="0" id="pAold" aria-label="Nivel A, hace más de 10 años"></td></tr>
+        <tr><th scope="row">Otros<small>Nivel B y demás productos de nuevo conocimiento o desarrollo tecnológico</small></th><td><input type="number" inputmode="numeric" min="0" value="0" id="pO5" aria-label="Otros, últimos 5 años"></td><td><input type="number" inputmode="numeric" min="0" value="0" id="pO10" aria-label="Otros, hace 6 a 10 años"></td><td><input type="number" inputmode="numeric" min="0" value="0" id="pOold" aria-label="Otros, hace más de 10 años"></td></tr>
+        </tbody></table></div>
+        <p class="resumen-tabla" id="resumenProd" aria-live="polite"></p>
         </fieldset>
 
-        <fieldset>
-          <legend>Dirección o codirección de trabajos de grado</legend>
-          <p class="subtitulo">En los últimos 5 años</p>
-          <div class="cols">
-            <div class="field"><label for="dir5doc">Doctorado</label><input type="number" id="dir5doc" min="0" value="0"></div>
-            <div class="field"><label for="dir5mae">Maestría</label><input type="number" id="dir5mae" min="0" value="0"></div>
-            <div class="field"><label for="dir5pre">Pregrado</label><input type="number" id="dir5pre" min="0" value="0"></div>
-          </div>
-          <p class="subtitulo">En los últimos 10 años</p>
-          <div class="cols">
-            <div class="field"><label for="dir10doc">Doctorado</label><input type="number" id="dir10doc" min="0" value="0"></div>
-            <div class="field"><label for="dir10mae">Maestría</label><input type="number" id="dir10mae" min="0" value="0"></div>
-            <div></div>
-          </div>
+        <fieldset class="fs-tabla"><legend>Dirección o codirección de trabajos de grado finalizados</legend>
+        <p class="nota-tabla">Cada trabajo va en una sola casilla, según el año en que terminó.</p>
+        <div class="tabla-entrada"><table><thead><tr><th scope="col">Trabajo</th><th scope="col">Últimos 5 años</th><th scope="col">Hace 6 a 10 años</th></tr></thead><tbody>
+        <tr><th scope="row">Tesis de doctorado</th><td><input type="number" inputmode="numeric" min="0" value="0" id="dD5" aria-label="Tesis de doctorado, últimos 5 años"></td><td><input type="number" inputmode="numeric" min="0" value="0" id="dD10" aria-label="Tesis de doctorado, hace 6 a 10 años"></td></tr>
+        <tr><th scope="row">Trabajos de maestría</th><td><input type="number" inputmode="numeric" min="0" value="0" id="dM5" aria-label="Trabajos de maestría, últimos 5 años"></td><td><input type="number" inputmode="numeric" min="0" value="0" id="dM10" aria-label="Trabajos de maestría, hace 6 a 10 años"></td></tr>
+        <tr><th scope="row">Trabajos de pregrado</th><td><input type="number" inputmode="numeric" min="0" value="0" id="dP5" aria-label="Trabajos de pregrado, últimos 5 años"></td><td><input type="number" inputmode="numeric" min="0" value="0" id="dP10" aria-label="Trabajos de pregrado, hace 6 a 10 años"></td></tr>
+        </tbody></table></div>
+        <label class="check"><input type="checkbox" id="dirOld"> Antes de esos 10 años dirigí tesis de doctorado o trabajos de maestría finalizados</label>
+        <p class="resumen-tabla" id="resumenDir" aria-live="polite"></p>
         </fieldset>
       </div>
 
@@ -831,7 +841,7 @@ select,input[type=number]{border-width:1.5px}
         <div id="breakdown"></div>
       </div>
     </div>
-    <p class="disclaimer"><b>Diagnóstico orientativo, no oficial.</b> La clasificación real la realiza Minciencias con verificación documental y criterios adicionales (por ejemplo, el Emérito exige estar en el 25% superior del área y evaluación de un comité de expertos). Los requisitos de dirección aplican al sector universitario; otras instituciones tienen equivalencias con proyectos. Úselo para planear su trayectoria, no como un resultado definitivo.</p>
+    <p class="disclaimer"><b>Diagnóstico orientativo, no oficial.</b> La clasificación real la realiza Minciencias con verificación documental y criterios adicionales (por ejemplo, el Emérito exige estar en el 25% superior del área y evaluación de un comité de expertos). Los requisitos de dirección aplican al sector universitario; otras instituciones tienen equivalencias con proyectos. Úselo para planear su trayectoria, no como un resultado definitivo. Un producto TOP también se cuenta como tipo A. El documento pide productos «tipo A» para junior y asociado, y «TOP o tipo A» para sénior, sin aclarar si TOP vale como A; aquí se asume que sí, porque es de mayor calidad (páginas 45 a 47).</p>
   </div>
 </div>
 
@@ -912,37 +922,30 @@ select,input[type=number]{border-width:1.5px}
 </script>
 <script>
   var $=function(id){return document.getElementById(id);};
-  var ids=['formacion','estudia','aniosEstudio','edad','vinc','proyecto','docReciente','vincCol','dirEver','gncTotal','tipoAtotal','gnc5','tipoA5','tipoA10','topA10','dir5doc','dir5mae','dir5pre','dir10doc','dir10mae'];
+  var ids=['formacion','estudia','aniosEstudio','edad','vinc','proyecto','docReciente','vincCol','pT5','pT10','pTold','pA5','pA10','pAold','pO5','pO10','pOold','dD5','dD10','dM5','dM10','dP5','dP10','dirOld'];
   function val(id){var e=$(id);return e.type==='checkbox'?e.checked:(e.type==='number'?Math.max(0,parseInt(e.value,10)||0):e.value);}
   function c(label,ok){return {label:label,ok:ok};}
 
+  function datosTabla(n,chk,f,fNombre){
+    var T5=n('pT5'),T10=n('pT10'),To=n('pTold'),A5=n('pA5'),A10=n('pA10'),Ao=n('pAold'),O5=n('pO5'),O10=n('pO10'),Oo=n('pOold');
+    var D5=n('dD5'),D10=n('dD10'),M5=n('dM5'),M10=n('dM10'),P5=n('dP5');
+    var d={f:f,fNombre:fNombre,doctorado:f==='doctorado',maestriaMas:['maestria','especialidad_clinica','doctorado'].indexOf(f)>=0,pregOrEsp:['pregrado','especializacion'].indexOf(f)>=0};
+    d.gncTotal=T5+T10+To+A5+A10+Ao+O5+O10+Oo; d.tipoAtotal=T5+T10+To+A5+A10+Ao; d.gnc5=T5+A5+O5;
+    d.tipoA5=T5+A5; d.tipoA10=T5+T10+A5+A10; d.topA10=d.tipoA10;
+    d.dir5doc=D5; d.dir10doc=D5+D10; d.dir5mae=M5; d.dir10mae=M5+M10; d.dir5pre=P5;
+    d.dirEver=D5+D10+M5+M10>0||chk('dirOld');
+    return d;
+  }
   function data(){
-    var f=val('formacion');
-    return {
-      f:f, doctorado:f==='doctorado', maestriaMas:['maestria','especialidad_clinica','doctorado'].indexOf(f)>=0,
-      pregOrEsp:['pregrado','especializacion'].indexOf(f)>=0,
-      estudia:val('estudia'), aniosEstudio:val('aniosEstudio'), edad:val('edad'),
-      vinc:val('vinc'), proyecto:val('proyecto'), docReciente:val('docReciente'), vincCol:val('vincCol'), dirEver:val('dirEver'),
-      gncTotal:val('gncTotal'), tipoAtotal:val('tipoAtotal'), gnc5:val('gnc5'), tipoA5:val('tipoA5'), tipoA10:val('tipoA10'), topA10:val('topA10'),
-      dir5doc:val('dir5doc'), dir5mae:val('dir5mae'), dir5pre:val('dir5pre'), dir10doc:val('dir10doc'), dir10mae:val('dir10mae')
-    };
+    var e=$('formacion'), d=datosTabla(function(i){return Math.max(0,parseInt($(i).value,10)||0)},function(i){return $(i).checked},e.value,e.options[e.selectedIndex].text);
+    ['estudia','aniosEstudio','edad','vinc','proyecto','docReciente','vincCol'].forEach(function(i){d[i]=val(i)});
+    return d;
   }
 
   // Detecta respuestas que no pueden ser ciertas a la vez.
   function incoherencias(d){
     var e=[];
-    function max(a,b,txt){if(a>b)e.push(txt+' ('+a+' frente a '+b+').');}
-    max(d.tipoAtotal,d.gncTotal,'Los productos tipo A o superior no pueden ser más que el total de la trayectoria');
-    max(d.gnc5,d.gncTotal,'Los productos de los últimos 5 años no pueden ser más que el total de la trayectoria');
-    max(d.tipoA5,d.gnc5,'Los tipo A de los últimos 5 años no pueden ser más que los productos de esos 5 años');
-    max(d.tipoA5,d.tipoA10,'Los tipo A de los últimos 5 años no pueden ser más que los de los últimos 10');
-    max(d.tipoA10,d.topA10,'Los tipo A de los últimos 10 años no pueden ser más que la suma de TOP y A');
-    max(d.topA10,d.tipoAtotal,'Los TOP o A de los últimos 10 años no pueden ser más que los tipo A o superior de toda la trayectoria');
-    if(d.tipoA5<=d.gnc5&&d.tipoA5<=d.tipoA10)max(d.tipoA10+d.gnc5-d.tipoA5,d.gncTotal,'Los tipo A de los últimos 10 años y los demás productos de los últimos 5 no pueden sumar más que el total de la trayectoria');
-    max(d.dir5doc,d.dir10doc,'Las tesis de doctorado de los últimos 5 años no pueden ser más que las de los últimos 10');
-    max(d.dir5mae,d.dir10mae,'Los trabajos de maestría de los últimos 5 años no pueden ser más que los de los últimos 10');
     if(d.docReciente&&!d.doctorado)e.push('Marcó que terminó el doctorado hace 3 años o menos, pero su máxima formación finalizada no es doctorado.');
-    if(d.dir10doc+d.dir10mae>0&&!d.dirEver)e.push('Registró tesis de doctorado o maestría dirigidas, pero no marcó que ha dirigido al menos una.');
     return e;
   }
 
@@ -960,7 +963,7 @@ select,input[type=number]{border-width:1.5px}
     var jrProd = d.tipoAtotal>=1 && d.gnc5>=4;
     var junior={met:jrI||(jrForm&&jrProd),conds:[
       c('Ruta A: doctorado terminado hace 3 años o menos, vínculo con un grupo y participación en un proyecto', jrI),
-      c('Ruta B, formación: posgrado, o pregrado con 7 productos GNC/DTI (tiene '+d.gncTotal+')', jrForm),
+      c('Ruta B, formación: posgrado, o pregrado con 7 productos GNC/DTI (indicó «'+d.fNombre+'» y '+d.gncTotal+' productos)', jrForm),
       c('Ruta B, producción: 1 producto tipo A en la trayectoria (tiene '+d.tipoAtotal+')', d.tipoAtotal>=1),
       c('Ruta B, producción: 4 productos GNC/DTI en los últimos 5 años (tiene '+d.gnc5+')', d.gnc5>=4)
     ]};
@@ -1009,6 +1012,9 @@ select,input[type=number]{border-width:1.5px}
     $('aniosAyuda').textContent=esDoc
       ?'Ejemplo: si empezó el doctorado en 2021 y hoy es 2026, escriba 5. Se cuenta como estudiante de doctorado hasta 8 años después de iniciarlo.'
       :'Ejemplo: si empezó la maestría en 2024 y hoy es 2026, escriba 2. Se cuenta como estudiante de maestría o especialidad clínica hasta 4 años después de iniciarla.';
+  $('resumenProd').textContent='En total: '+d.gncTotal+' productos, '+d.tipoAtotal+' de ellos TOP o A. En los últimos 5 años: '+d.gnc5+'. TOP o A en los últimos 10 años: '+d.topA10+'.';
+  $('resumenDir').textContent='En los últimos 5 años: '+d.dir5doc+' de doctorado, '+d.dir5mae+' de maestría y '+d.dir5pre+' de pregrado. En los últimos 10 años: '+d.dir10doc+' de doctorado y '+d.dir10mae+' de maestría.';
+    if(!d.f){$('chips').innerHTML='';$('breakdown').innerHTML='';$('projection').innerHTML='';$('verdict').innerHTML='<span class="big">Empiece por su formación</span>Elija arriba su máxima formación finalizada. Con eso y su producción aparece el diagnóstico.';return;}
     var errores=incoherencias(d);
     if(errores.length){
       $('chips').innerHTML='';$('breakdown').innerHTML='';
